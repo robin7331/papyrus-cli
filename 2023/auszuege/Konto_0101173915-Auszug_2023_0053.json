@@ -1,0 +1,29 @@
+{
+  "statement_no": "53/2023",
+  "rows": [
+    {
+      "datum": "18.04.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 18.04.2023, Auszug Nr. 52",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "17.184,62"
+    },
+    {
+      "datum": "21.04.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung IP Robin Reiter Reisekostenabrechnung Hackaday Berlin 24.03-26.03.2023 DATUM 21.04.2023, 12.28 UHR BIC/IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "soll_eur": "504,30",
+      "haben_eur": null,
+      "saldo_eur": "16.680,32"
+    },
+    {
+      "datum": "21.04.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 21.04.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "16.680,32"
+    }
+  ]
+}

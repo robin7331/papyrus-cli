@@ -1,0 +1,29 @@
+{
+  "statement_no": "123/2023",
+  "rows": [
+    {
+      "datum": "18.09.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 18.09.2023, Auszug Nr. 122",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.733,69"
+    },
+    {
+      "datum": "19.09.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029469181992 . sevDesk GmbH, Ihr Einkauf bei sevDesk GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029469181992 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "27,25",
+      "haben_eur": null,
+      "saldo_eur": "3.706,44"
+    },
+    {
+      "datum": "19.09.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 19.09.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.706,44"
+    }
+  ]
+}

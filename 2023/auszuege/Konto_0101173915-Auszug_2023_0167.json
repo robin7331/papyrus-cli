@@ -1,0 +1,29 @@
+{
+  "statement_no": "167/2023",
+  "rows": [
+    {
+      "datum": "18.12.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 18.12.2023, Auszug Nr. 166",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "1.345,48"
+    },
+    {
+      "datum": "19.12.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "cleverbridge GmbH Mandat:125557628/ Glaubiger-ID:DE39 ZZZ00000342938/ Cleverbridge GmbH / Ref.-Nr:436052533/ FastBill GmbH 303397357 BIC / IBAN: DEUTDEDK DE04 3707 0060 0192 1444 05",
+      "soll_eur": "154,70",
+      "haben_eur": null,
+      "saldo_eur": "1.190,78"
+    },
+    {
+      "datum": "19.12.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 19.12.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "1.190,78"
+    }
+  ]
+}

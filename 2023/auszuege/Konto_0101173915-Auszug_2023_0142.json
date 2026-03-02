@@ -1,0 +1,29 @@
+{
+  "statement_no": "142/2023",
+  "rows": [
+    {
+      "datum": "25.10.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 25.10.2023, Auszug Nr. 141",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.333,75"
+    },
+    {
+      "datum": "27.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 0406616138 OB-96957618 EUR 163,28. BEITRAG 1023 - 1023 0406616138 OB-96957618 BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
+      "soll_eur": "163,28",
+      "haben_eur": null,
+      "saldo_eur": "2.170,47"
+    },
+    {
+      "datum": "27.10.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 27.10.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.170,47"
+    }
+  ]
+}

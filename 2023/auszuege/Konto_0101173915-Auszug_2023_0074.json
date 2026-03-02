@@ -1,0 +1,29 @@
+{
+  "statement_no": "74/2023",
+  "rows": [
+    {
+      "datum": "19.06.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 19.06.2023, Auszug Nr. 73",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "9.538,24"
+    },
+    {
+      "datum": "22.06.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online CustomPack Sp. z o.o. Pro Forma Invoice 002023/06/04/P DATUM 22.06.2023, 14.00 UHR BIC / IBAN: ALBPPLPWXXX PL87 2490 0005 0000 4600 3856 9940",
+      "soll_eur": "3.760,00",
+      "haben_eur": null,
+      "saldo_eur": "5.778,24"
+    },
+    {
+      "datum": "22.06.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 22.06.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.778,24"
+    }
+  ]
+}

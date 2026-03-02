@@ -28,3 +28,64 @@ export async function apiGet<T>(path: string, params?: Record<string, string | n
 
   return (await response.json()) as T;
 }
+
+export async function apiDelete<T>(path: string): Promise<T> {
+  const response = await fetch(`${API_BASE}${path}`, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    const fallback = `API-Fehler ${response.status}`;
+    const body = await response.json().catch(() => null);
+    const message = body?.error?.message ?? fallback;
+    throw new Error(message);
+  }
+  return (await response.json()) as T;
+}
+
+export async function apiPatch<T>(path: string, body: unknown): Promise<T> {
+  const response = await fetch(`${API_BASE}${path}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) {
+    const fallback = `API-Fehler ${response.status}`;
+    const payload = await response.json().catch(() => null);
+    const message = payload?.error?.message ?? fallback;
+    throw new Error(message);
+  }
+  return (await response.json()) as T;
+}
+
+export async function apiPostFormData<T>(path: string, formData: FormData): Promise<T> {
+  const response = await fetch(`${API_BASE}${path}`, {
+    method: "POST",
+    body: formData,
+  });
+  if (!response.ok) {
+    const fallback = `API-Fehler ${response.status}`;
+    const payload = await response.json().catch(() => null);
+    const message = payload?.error?.message ?? fallback;
+    throw new Error(message);
+  }
+  return (await response.json()) as T;
+}
+
+export async function apiPost<T>(path: string, body: unknown): Promise<T> {
+  const response = await fetch(`${API_BASE}${path}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) {
+    const fallback = `API-Fehler ${response.status}`;
+    const payload = await response.json().catch(() => null);
+    const message = payload?.error?.message ?? fallback;
+    throw new Error(message);
+  }
+  return (await response.json()) as T;
+}

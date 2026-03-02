@@ -1,0 +1,29 @@
+{
+  "statement_no": "19/2023",
+  "rows": [
+    {
+      "datum": "08.02.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 07.02.2023, Auszug Nr. 18",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "22.247,43"
+    },
+    {
+      "datum": "08.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "KRA-BOX P.P.H.U. ADAM KRASIENKO PRO FORMA - 106 DATUM 08.02.2023, 16.44 UHR BIC / IBAN: PKOPPLPWXXX PL50 1240 6218 1978 0000 4619 1816",
+      "soll_eur": "85,00",
+      "haben_eur": null,
+      "saldo_eur": "22.162,43"
+    },
+    {
+      "datum": "08.02.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 08.02.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "22.162,43"
+    }
+  ]
+}

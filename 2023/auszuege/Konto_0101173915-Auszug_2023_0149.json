@@ -1,0 +1,29 @@
+{
+  "statement_no": "149/2023",
+  "rows": [
+    {
+      "datum": "14.11.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 14.11.2023, Auszug Nr. 148",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.671,11"
+    },
+    {
+      "datum": "15.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 PZ9K8JTH3GMTCPK52P BIC / IBAN: DEUTNL2A NL24 DEUT 0265 1950 47",
+      "soll_eur": "207,35",
+      "haben_eur": null,
+      "saldo_eur": "2.463,76"
+    },
+    {
+      "datum": "15.11.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 15.11.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.463,76"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "statement_no": "73/2023",
+  "rows": [
+    {
+      "datum": "13.06.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 13.06.2023, Auszug Nr. 72",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "9.637,44"
+    },
+    {
+      "datum": "19.06.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31557713000691/06.06.2023 Zahlbeleg 357136579971 BIC / IBAN: DRESDEFF370 DE75 3708 0040 0232 1130 01",
+      "soll_eur": "99,20",
+      "haben_eur": null,
+      "saldo_eur": "9.538,24"
+    },
+    {
+      "datum": "19.06.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 19.06.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "9.538,24"
+    }
+  ]
+}

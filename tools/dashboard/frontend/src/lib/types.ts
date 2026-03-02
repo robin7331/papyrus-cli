@@ -41,6 +41,8 @@ export type CounterpartyRow = {
   outflow_cents: number;
 };
 
+export type DocumentStatus = "offen" | "zugeordnet" | "nicht_erforderlich" | "in_klaerung";
+
 export type TransactionRow = {
   id: number;
   booking_date: string;
@@ -52,6 +54,10 @@ export type TransactionRow = {
   reference: string | null;
   tx_type: string;
   statement_doc_id: number;
+  document_status: DocumentStatus;
+  missing_invoice_flag: 0 | 1;
+  linked_documents_count: number;
+  pending_match_suggestions_count: number;
 };
 
 export type TransactionsResponse = {
@@ -61,10 +67,102 @@ export type TransactionsResponse = {
   total: number;
 };
 
+export type LinkedDocument = {
+  id: number;
+  link_role: "primary" | "supporting";
+  link_origin: "manual" | "auto_confirmed" | "import";
+  confidence: number | null;
+  is_active: 0 | 1;
+  created_at: string;
+  created_by: string | null;
+  document_id: number;
+  year: number;
+  source_type: string;
+  lifecycle_status: string;
+  storage_rel_path: string;
+  original_filename: string | null;
+  mime_type: string | null;
+  file_size_bytes: number;
+  file_sha256: string;
+  document_date: string | null;
+  issuer_name: string | null;
+  invoice_number: string | null;
+  gross_amount_cents: number | null;
+  currency: string;
+};
+
+export type MatchSuggestion = {
+  id: number;
+  document_id: number;
+  matcher_name: string;
+  matcher_version: string;
+  score: number;
+  reason_codes_json: string;
+  status: "pending" | "accepted" | "rejected" | "auto_applied" | "expired";
+  created_at: string;
+  decided_at: string | null;
+  decided_by: string | null;
+  storage_rel_path: string;
+  original_filename: string | null;
+  source_type: string;
+};
+
+export type DocumentStatusHistoryRow = {
+  id: number;
+  old_status: DocumentStatus | null;
+  new_status: DocumentStatus;
+  reason: string | null;
+  changed_by: string | null;
+  changed_at: string;
+};
+
+export type TransactionDetail = {
+  id: number;
+  account_id: number;
+  statement_doc_id: number;
+  booking_date: string;
+  valuta_date: string | null;
+  amount_cents: number;
+  currency: string;
+  running_balance_cents: number | null;
+  purpose: string | null;
+  counterparty_name: string | null;
+  counterparty_iban: string | null;
+  counterparty_bic: string | null;
+  reference: string | null;
+  tx_type: string | null;
+  fingerprint: string;
+  is_reversal: 0 | 1;
+  document_status: DocumentStatus;
+  missing_invoice_flag: 0 | 1;
+  document_status_updated_at: string | null;
+  document_note: string | null;
+  statement_no: string | null;
+  period_from: string | null;
+  period_to: string | null;
+  opening_balance_cents: number | null;
+  closing_balance_cents: number | null;
+  file_path: string | null;
+  year: number | null;
+  file_sha256: string | null;
+};
+
 export type TransactionDetailResponse = {
-  transaction: Record<string, unknown>;
+  transaction: TransactionDetail;
   raw_rows: Array<Record<string, unknown>>;
   audit_rows: Array<Record<string, unknown>>;
+  linked_documents: LinkedDocument[];
+  match_suggestions: MatchSuggestion[];
+  document_status_history: DocumentStatusHistoryRow[];
+  tax_determination: TaxDetermination | null;
+};
+
+export type UploadDocumentResponse = {
+  transaction_id: number;
+  deduplicated: boolean;
+  document: Record<string, unknown>;
+  link: Record<string, unknown>;
+  new_status: DocumentStatus;
 };
 
 export type ImportQualityResponse = {
@@ -78,4 +176,95 @@ export type ImportQualityResponse = {
     tx_without_audit: number;
   };
   docs_without_transactions: number;
+};
+
+export type TaxMonthlyReportRow = {
+  period: string;
+  output_tax_cents: number;
+  input_tax_cents: number;
+  net_liability_cents: number;
+  uncertain_case_count: number;
+  uncertain_tax_cents: number;
+  generated_at: string;
+};
+
+export type TaxMonthlyReportResponse = {
+  year: number;
+  items: TaxMonthlyReportRow[];
+  totals: {
+    output_tax_cents: number;
+    input_tax_cents: number;
+    net_liability_cents: number;
+    uncertain_case_count: number;
+    uncertain_tax_cents: number;
+  };
+};
+
+export type TaxReviewQueueItem = {
+  id: number;
+  bank_transaction_id: number;
+  status: "draft" | "final" | "review_required";
+  tax_code: string | null;
+  tax_rate_bps: number | null;
+  net_amount_cents: number | null;
+  tax_amount_cents: number | null;
+  country_code: string | null;
+  evidence_level: "low" | "medium" | "high";
+  confidence: number;
+  calculation_mode: "auto" | "manual";
+  reason_codes_json: string;
+  updated_at: string;
+  booking_date: string;
+  amount_cents: number;
+  purpose: string | null;
+  counterparty_name: string | null;
+  linked_document_count: number;
+};
+
+export type TaxReviewQueueResponse = {
+  items: TaxReviewQueueItem[];
+  page: number;
+  pageSize: number;
+  total: number;
+};
+
+export type TaxRecomputeResponse = {
+  year: number;
+  processed: number;
+  final_count: number;
+  review_count: number;
+  skipped_manual_final_count: number;
+};
+
+export type OssReportRow = {
+  period: string;
+  oss_country_code: string;
+  base_cents: number;
+  tax_cents: number;
+  line_count: number;
+};
+
+export type OssReportResponse = {
+  year: number;
+  items: OssReportRow[];
+};
+
+export type TaxDetermination = {
+  id: number;
+  bank_transaction_id: number;
+  status: "draft" | "final" | "review_required";
+  calculation_mode: "auto" | "manual";
+  tax_code: string | null;
+  tax_rate_bps: number | null;
+  net_amount_cents: number | null;
+  tax_amount_cents: number | null;
+  country_code: string | null;
+  counterparty_vat_id: string | null;
+  evidence_level: "low" | "medium" | "high";
+  confidence: number;
+  reason_codes_json: string;
+  source_snapshot_json: string;
+  decided_at: string | null;
+  decided_by: string | null;
+  updated_at: string;
 };

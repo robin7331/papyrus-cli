@@ -1,0 +1,37 @@
+{
+  "statement_no": "134/2023",
+  "rows": [
+    {
+      "datum": "09.10.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 09.10.2023, Auszug Nr. 133",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.943,71"
+    },
+    {
+      "datum": "12.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON MEDIA EU S.A R.L. D01-6555778-0491844 Kindle Svcs 7J9 9REQ8SABOEXKM 7J99REQ8SABOEXKM BIC / IBAN: TUBDDEDD DE64 3003 0880 1938 6270 09",
+      "soll_eur": "10,79",
+      "haben_eur": null,
+      "saldo_eur": "3.932,92"
+    },
+    {
+      "datum": "12.10.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "AMAZON MEDIA EU S.A R.L. D01-6555778-0491844 Kindle Svcs 69X S733CN2HY31KY 69XS733CN2HY31KY BIC / IBAN: TUBDDEDD DE64 3003 0880 1938 6270 09",
+      "soll_eur": null,
+      "haben_eur": "10,79",
+      "saldo_eur": "3.943,71"
+    },
+    {
+      "datum": "12.10.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 12.10.2023 um 20:05 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.943,71"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "statement_no": "75/2023",
+  "rows": [
+    {
+      "datum": "22.06.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 22.06.2023, Auszug Nr. 74",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.778,24"
+    },
+    {
+      "datum": "23.06.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online Bundesamt für Justiz Kassenzeichen 855647603255 DATUM 23.06.2023, 09.11 UHR BIC / IBAN: MARKDEF1590 DE81 5900 0000 0059 0010 20",
+      "soll_eur": "103,50",
+      "haben_eur": null,
+      "saldo_eur": "5.674,74"
+    },
+    {
+      "datum": "23.06.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 23.06.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.674,74"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "statement_no": "101/2023",
+  "rows": [
+    {
+      "datum": "11.08.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 11.08.2023, Auszug Nr. 100",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.668,97"
+    },
+    {
+      "datum": "14.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001917144 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
+      "soll_eur": "32,34",
+      "haben_eur": null,
+      "saldo_eur": "4.636,63"
+    },
+    {
+      "datum": "14.08.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 14.08.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.636,63"
+    }
+  ]
+}

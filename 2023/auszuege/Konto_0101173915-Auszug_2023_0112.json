@@ -1,0 +1,37 @@
+{
+  "statement_no": "112/2023",
+  "rows": [
+    {
+      "datum": "01.09.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 30.08.2023, Auszug Nr. 111",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.963,16"
+    },
+    {
+      "datum": "01.09.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Abrechnung 31.08.2023 / Wert: 30.08.2023, siehe Anlage Nr. 1",
+      "soll_eur": "30,15",
+      "haben_eur": null,
+      "saldo_eur": "2.933,01"
+    },
+    {
+      "datum": "01.09.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "STRIPE STRIPE AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 STRIPE-P53JGM92X89USXQIVPHGDLYB0RW0 BIC/IBAN: CITINL2X NL41 CITI 2032 3048 05",
+      "soll_eur": null,
+      "haben_eur": "579,37",
+      "saldo_eur": "3.512,38"
+    },
+    {
+      "datum": "01.09.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 01.09.2023 um 20:05 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.512,38"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+[2026-03-02 14:26:48] Batch-Import gestartet (YEAR=2023, STMT_DIR=/Users/robin/Documents/Projects/buchhaltung/2023/auszuege)
+[2026-03-02 14:26:48] Logs: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_142648_1-1_41741
+[2026-03-02 14:26:48] Gefundene PDFs: 172
+[2026-03-02 14:26:48] Verarbeite Bereich: 1-1 (Anzahl: 1)
+[2026-03-02 14:26:48] Codex Optionen: model=gpt-5.3-codex reasoning=medium
+[2026-03-02 14:26:48] DB-Abgleich: immer aktiv (db=/Users/robin/Documents/Projects/buchhaltung/datenbank.sqlite, account_id=1)
+[2026-03-02 14:26:48] START [1/1] 2023/auszuege/Konto_0101173915-Auszug_2023_0001.pdf (global 1/172)
+[2026-03-02 14:26:48] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_142648_1-1_41741/Konto_0101173915-Auszug_2023_0001.log
+[2026-03-02 14:26:48] SKIP_DB_COMPLETE 2023/auszuege/Konto_0101173915-Auszug_2023_0001.pdf (statement_no=1/2023, movements=4)
+[2026-03-02 14:26:48] FERTIG range=1-1 processed=1 skipped=1 checked_json=1 db_complete_skipped=1 imported_from_existing_json=0 generated_json=0 imported_after_generation=0 failed=0

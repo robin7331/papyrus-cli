@@ -1,0 +1,29 @@
+{
+  "statement_no": "86/2023",
+  "rows": [
+    {
+      "datum": "17.07.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 14.07.2023, Auszug Nr. 85",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.798,33"
+    },
+    {
+      "datum": "17.07.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO YYW1028196844073 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": null,
+      "haben_eur": "674,02",
+      "saldo_eur": "4.472,35"
+    },
+    {
+      "datum": "17.07.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 17.07.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.472,35"
+    }
+  ]
+}

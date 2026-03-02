@@ -1,0 +1,29 @@
+{
+  "statement_no": "15/2023",
+  "rows": [
+    {
+      "datum": "01.02.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 01.02.2023, Auszug Nr. 14",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "22.222,13"
+    },
+    {
+      "datum": "02.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025018880814 PP.9577.PP . DigitalOcean, Ihr Einkauf bei DigitalOcean AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025018880814 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "4,77",
+      "haben_eur": null,
+      "saldo_eur": "22.217,36"
+    },
+    {
+      "datum": "02.02.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 02.02.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "22.217,36"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "statement_no": "120/2023",
+  "rows": [
+    {
+      "datum": "12.09.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 12.09.2023, Auszug Nr. 119",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.914,53"
+    },
+    {
+      "datum": "14.09.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029363978445 PP.9577.PP . Ecwid Inc., Ihr Einkauf bei Ecwid Inc. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029363978445 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "46,41",
+      "haben_eur": null,
+      "saldo_eur": "3.868,12"
+    },
+    {
+      "datum": "14.09.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 14.09.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.868,12"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "statement_no": "100/2023",
+  "rows": [
+    {
+      "datum": "11.08.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 10.08.2023, Auszug Nr. 99",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.183,08"
+    },
+    {
+      "datum": "11.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028708280659, Ihr Einkauf bei 1028708280659 PAYPAL, BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "14,11",
+      "haben_eur": null,
+      "saldo_eur": "5.168,97"
+    },
+    {
+      "datum": "11.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung IP an Robin Reiter Privat, DATUM 11.08.2023, 06:29 UHR, BIC/IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "soll_eur": "500,00",
+      "haben_eur": null,
+      "saldo_eur": "4.668,97"
+    },
+    {
+      "datum": "11.08.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 11.08.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.668,97"
+    }
+  ]
+}

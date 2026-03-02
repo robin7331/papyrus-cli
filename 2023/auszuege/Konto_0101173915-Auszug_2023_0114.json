@@ -1,0 +1,29 @@
+{
+  "statement_no": "114/2023",
+  "rows": [
+    {
+      "datum": "04.09.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 04.09.2023, Auszug Nr. 113",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.162,36"
+    },
+    {
+      "datum": "05.09.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Leonhardt, Adolf, Spöri, Christoph GbR Steuerberatungskanzlei LEONHARDT & SPÖRI Re.Nr.44992 2309010904-0000001 BIC / IBAN: SOLADES1RVB DE51 6505 0110 0000 2397 23",
+      "soll_eur": "47,60",
+      "haben_eur": null,
+      "saldo_eur": "4.114,76"
+    },
+    {
+      "datum": "05.09.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 05.09.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.114,76"
+    }
+  ]
+}

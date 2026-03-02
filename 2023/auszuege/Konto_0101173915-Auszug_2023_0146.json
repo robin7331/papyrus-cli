@@ -1,0 +1,29 @@
+{
+  "statement_no": "146/2023",
+  "rows": [
+    {
+      "datum": "06.11.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 03.11.2023, Auszug Nr. 145",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.311,78"
+    },
+    {
+      "datum": "06.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Leonhardt, Adolf, Spoeri, Christoph GbR Steuerberatungskanzlei LEONHARDT & SPOERI, Glaeubiger-ID: DE45ZZZ00000174923, Mandatsreferenz: 449920000002, RNr: 10 127/17.10.23",
+      "soll_eur": "66,40",
+      "haben_eur": null,
+      "saldo_eur": "3.245,38"
+    },
+    {
+      "datum": "06.11.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 06.11.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.245,38"
+    }
+  ]
+}

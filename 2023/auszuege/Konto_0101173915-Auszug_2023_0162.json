@@ -1,0 +1,29 @@
+{
+  "statement_no": "162/2023",
+  "rows": [
+    {
+      "datum": "08.12.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 08.12.2023, Auszug Nr. 161",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.087,24"
+    },
+    {
+      "datum": "11.12.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung IP / Wert: 10.12.2023 Robin Reiter privat DATUM 10.12.2023, 14.24 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "soll_eur": "500,00",
+      "haben_eur": null,
+      "saldo_eur": "1.587,24"
+    },
+    {
+      "datum": "11.12.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 11.12.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "1.587,24"
+    }
+  ]
+}

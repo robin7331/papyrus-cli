@@ -1,0 +1,22 @@
+{
+  "status": "ok",
+  "statement_no": "44/2023",
+  "db_path": "/Users/robin/Documents/Projects/buchhaltung/datenbank.sqlite",
+  "account_id": 1,
+  "db_prepared": false,
+  "row_count": 6,
+  "movement_count": 4,
+  "opening_balance_cents": 699788,
+  "expected_closing_balance_cents": 748864,
+  "computed_closing_balance_cents": 748864,
+  "source_file_id": 44,
+  "statement_doc_id": 44,
+  "inserted_raw": 6,
+  "inserted_tx": 4,
+  "duplicate_tx": 0,
+  "inserted_audit": 6,
+  "warnings": [],
+  "errors": [],
+  "error_count": 0,
+  "warning_count": 0
+}

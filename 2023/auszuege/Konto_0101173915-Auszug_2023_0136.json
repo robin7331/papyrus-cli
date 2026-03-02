@@ -1,0 +1,45 @@
+{
+  "statement_no": "136/2023",
+  "rows": [
+    {
+      "datum": "16.10.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 13.10.2023, Auszug Nr. 135",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.867,54"
+    },
+    {
+      "datum": "16.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029969230725 PP.9577.PP. Shopify International Limited, Ihr Einkauf bei Shopify International Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029969230725 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "44,63",
+      "haben_eur": null,
+      "saldo_eur": "3.822,91"
+    },
+    {
+      "datum": "16.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029959565263 PP.9577.PP. Ecwid Inc., Ihr Einkauf bei Ecwid Inc. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029959565263 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "46,41",
+      "haben_eur": null,
+      "saldo_eur": "3.776,50"
+    },
+    {
+      "datum": "16.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31999861000691/04.10.2023 RG 31999861000691/04.10.2023 Zahlbeleg 309616590170 BIC / IBAN: DRESDEFF370 DE75 3708 0040 0232 1130 01",
+      "soll_eur": "95,79",
+      "haben_eur": null,
+      "saldo_eur": "3.680,71"
+    },
+    {
+      "datum": "16.10.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 16.10.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.680,71"
+    }
+  ]
+}

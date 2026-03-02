@@ -1,0 +1,61 @@
+{
+  "statement_no": "36/2023",
+  "rows": [
+    {
+      "datum": "13.03.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 13.03.2023, Auszug Nr. 35",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.815,60"
+    },
+    {
+      "datum": "14.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025738496853 PP.9577.PP, Ihr Einkauf bei BoxesNBoxes Limited",
+      "soll_eur": "26,00",
+      "haben_eur": null,
+      "saldo_eur": "5.789,60"
+    },
+    {
+      "datum": "14.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025741577476 PP.9577.PP, Ihr Einkauf bei JLCPCB GmbH",
+      "soll_eur": "7,91",
+      "haben_eur": null,
+      "saldo_eur": "5.781,69"
+    },
+    {
+      "datum": "14.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S.C.A. 1025792479500 PP.9577.PP, Ihr Einkauf bei Prusa Development a.s.",
+      "soll_eur": "30,24",
+      "haben_eur": null,
+      "saldo_eur": "5.751,45"
+    },
+    {
+      "datum": "14.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S.C.A. 1025768139598 PP.9577.PP, Ihr Einkauf bei Prusa Development a.s.",
+      "soll_eur": "82,32",
+      "haben_eur": null,
+      "saldo_eur": "5.669,13"
+    },
+    {
+      "datum": "14.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025740343166 PP.9577.PP, Ihr Einkauf bei JLCPCB GmbH",
+      "soll_eur": "145,71",
+      "haben_eur": null,
+      "saldo_eur": "5.523,42"
+    },
+    {
+      "datum": "14.03.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 14.03.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.523,42"
+    }
+  ]
+}

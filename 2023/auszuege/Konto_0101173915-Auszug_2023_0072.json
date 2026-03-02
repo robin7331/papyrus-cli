@@ -1,0 +1,29 @@
+{
+  "statement_no": "72/2023",
+  "rows": [
+    {
+      "datum": "13.06.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 12.06.2023, Auszug Nr. 71",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "9.669,78"
+    },
+    {
+      "datum": "13.06.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer: HVDSC66 98102",
+      "soll_eur": "32,34",
+      "haben_eur": null,
+      "saldo_eur": "9.637,44"
+    },
+    {
+      "datum": "13.06.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 13.06.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "9.637,44"
+    }
+  ]
+}

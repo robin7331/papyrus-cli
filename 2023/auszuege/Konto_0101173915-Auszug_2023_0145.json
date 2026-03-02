@@ -1,0 +1,29 @@
+{
+  "statement_no": "145/2023",
+  "rows": [
+    {
+      "datum": "02.11.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 02.11.2023, Auszug Nr. 144",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.650,70"
+    },
+    {
+      "datum": "03.11.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-2TRZCH5O3ARAXATLURYOFGGX2SL BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
+      "soll_eur": null,
+      "haben_eur": "661,08",
+      "saldo_eur": "3.311,78"
+    },
+    {
+      "datum": "03.11.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 03.11.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.311,78"
+    }
+  ]
+}

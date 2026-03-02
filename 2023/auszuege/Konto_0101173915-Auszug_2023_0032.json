@@ -1,0 +1,29 @@
+{
+  "statement_no": "32/2023",
+  "rows": [
+    {
+      "datum": "02.03.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 02.03.2023, Auszug Nr. 31",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "6.541,38"
+    },
+    {
+      "datum": "06.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online; DHL Express Germany GmbH Rechn. Nr: ZIT4724227 DATUM 05.03.2023, 16.58 UHR BIC / IBAN: PBNKDEFFXXX DE51 3701 0050 0474 8495 09",
+      "soll_eur": "97,42",
+      "haben_eur": null,
+      "saldo_eur": "6.443,96"
+    },
+    {
+      "datum": "06.03.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 06.03.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "6.443,96"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "statement_no": "106/2023",
+  "rows": [
+    {
+      "datum": "22.08.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 21.08.2023, Auszug Nr. 105",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.964,61"
+    },
+    {
+      "datum": "22.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028921299800 . Lemon Squeezy LLC, Ihr Einkauf bei Lemon Squeezy LLC AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028921299800 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "95,10",
+      "haben_eur": null,
+      "saldo_eur": "3.869,51"
+    },
+    {
+      "datum": "22.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028921242050 PP.9577.PP . , Ihr Einkauf bei 1028921242050 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "27,86",
+      "haben_eur": null,
+      "saldo_eur": "3.841,65"
+    },
+    {
+      "datum": "22.08.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 22.08.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.841,65"
+    }
+  ]
+}

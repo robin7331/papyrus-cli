@@ -1,0 +1,37 @@
+{
+  "statement_no": "66/2023",
+  "rows": [
+    {
+      "datum": "26.05.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 26.05.2023, Auszug Nr. 65",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "10.042,13"
+    },
+    {
+      "datum": "30.05.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Dauerauftrag Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
+      "soll_eur": "520,00",
+      "haben_eur": null,
+      "saldo_eur": "9.522,13"
+    },
+    {
+      "datum": "30.05.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "REGULATEURS GEORGIN facture Number 69 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 REGLT FRS ROBINS BIC / IBAN: CCFRFRPP FR76 3005 6007 8907 8948 6065 766",
+      "soll_eur": null,
+      "haben_eur": "672,90",
+      "saldo_eur": "10.195,03"
+    },
+    {
+      "datum": "30.05.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 30.05.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "10.195,03"
+    }
+  ]
+}

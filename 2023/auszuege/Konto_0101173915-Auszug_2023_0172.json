@@ -1,0 +1,37 @@
+{
+  "statement_no": "172/2023",
+  "rows": [
+    {
+      "datum": "29.12.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 28.12.2023, Auszug Nr. 171",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.714,11"
+    },
+    {
+      "datum": "29.12.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Dauerauftrag Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
+      "soll_eur": "520,00",
+      "haben_eur": null,
+      "saldo_eur": "3.194,11"
+    },
+    {
+      "datum": "29.12.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Abrechnung 29.12.2023 siehe Anlage Nr. 1 Rechnungsabschluss",
+      "soll_eur": "17,65",
+      "haben_eur": null,
+      "saldo_eur": "3.176,46"
+    },
+    {
+      "datum": "29.12.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 29.12.2023 um 23:05 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.176,46"
+    }
+  ]
+}

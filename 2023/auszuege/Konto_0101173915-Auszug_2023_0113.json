@@ -1,0 +1,37 @@
+{
+  "statement_no": "113/2023",
+  "rows": [
+    {
+      "datum": "01.09.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 01.09.2023, Auszug Nr. 112",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.512,38"
+    },
+    {
+      "datum": "04.09.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029129970589 PP.9577.PP . DigitalOcean, Ihr Einkauf bei DigitalOcean",
+      "soll_eur": "24,04",
+      "haben_eur": null,
+      "saldo_eur": "3.488,34"
+    },
+    {
+      "datum": "04.09.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO",
+      "soll_eur": null,
+      "haben_eur": "674,02",
+      "saldo_eur": "4.162,36"
+    },
+    {
+      "datum": "04.09.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 04.09.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.162,36"
+    }
+  ]
+}

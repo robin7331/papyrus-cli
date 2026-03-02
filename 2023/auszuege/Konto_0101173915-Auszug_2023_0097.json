@@ -1,0 +1,165 @@
+{
+  "statement_no": "97/2023",
+  "rows": [
+    {
+      "datum": "07.08.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 07.08.2023, Auszug Nr. 96",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "-346,09"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. - Packlink - Auctane SL - Ref 1028579820069 PP.9577.PP",
+      "soll_eur": "0,99",
+      "haben_eur": null,
+      "saldo_eur": "-347,08"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Rechnung Rückgabe Lastschrift über 104,84 EUR - Ref 1028579820069 PP.9577.PP - 20230808-BW016-00021024690",
+      "soll_eur": null,
+      "haben_eur": "104,84",
+      "saldo_eur": "-242,24"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A - Packlink - Auctane SL - Ref 1028580012069 PP.9577.PP",
+      "soll_eur": "0,99",
+      "haben_eur": null,
+      "saldo_eur": "-243,23"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Rechnung Rückgabe Lastschrift über 4,94 EUR - Ref 1028580012069 PP.9577.PP - 20230808-BW016-00021024691",
+      "soll_eur": null,
+      "haben_eur": "4,94",
+      "saldo_eur": "-238,29"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. - Packlink - Auctane SL - Ref 1028579864731 PP.9577.PP",
+      "soll_eur": "0,99",
+      "haben_eur": null,
+      "saldo_eur": "-239,28"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Rechnung Rückgabe Lastschrift über 69,00 EUR - Ref 1028579864731 PP.9577.PP - 20230808-BW016-00021024692",
+      "soll_eur": null,
+      "haben_eur": "69,00",
+      "saldo_eur": "-170,28"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A - Packlink - Auctane SL - Ref 1028579728816 PP.9577.PP",
+      "soll_eur": "0,99",
+      "haben_eur": null,
+      "saldo_eur": "-171,27"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Rechnung Rückgabe Lastschrift über 69,00 EUR - Ref 1028579728816 PP.9577.PP - 20230808-BW016-00021024693",
+      "soll_eur": null,
+      "haben_eur": "69,00",
+      "saldo_eur": "-102,27"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A - Packlink - Auctane SL - Ref 1028580040648 PP.9577.PP",
+      "soll_eur": "0,99",
+      "haben_eur": null,
+      "saldo_eur": "-103,26"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Rechnung Rückgabe Lastschrift über 11,15 EUR - Ref 1028580040648 PP.9577.PP - 20230808-BW016-00021024694",
+      "soll_eur": null,
+      "haben_eur": "11,15",
+      "saldo_eur": "-92,11"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A - Packlink - Auctane SL - Ref 1028579975035 PP.9577.PP",
+      "soll_eur": "0,99",
+      "haben_eur": null,
+      "saldo_eur": "-93,10"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Rechnung Rückgabe Lastschrift über 13,00 EUR - Ref 1028579975035 PP.9577.PP - 20230808-BW016-00021024695",
+      "soll_eur": null,
+      "haben_eur": "13,00",
+      "saldo_eur": "-80,10"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A - Packlink - Auctane SL - Ref 1028579923430 PP.9577.PP",
+      "soll_eur": "0,99",
+      "haben_eur": null,
+      "saldo_eur": "-81,09"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Rechnung Rückgabe Lastschrift über 69,00 EUR - Ref 1028579923430 PP.9577.PP - 20230808-BW016-00021024696",
+      "soll_eur": null,
+      "haben_eur": "69,00",
+      "saldo_eur": "-12,09"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A - Packlink - Auctane SL - Ref 1028579766045 PP.9577.PP",
+      "soll_eur": "0,99",
+      "haben_eur": null,
+      "saldo_eur": "-13,08"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Rechnung Rückgabe Lastschrift über 4,94 EUR - Ref 1028579766045 PP.9577.PP - 20230808-BW016-00021024697",
+      "soll_eur": null,
+      "haben_eur": "4,94",
+      "saldo_eur": "-8,14"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A - Packlink - Auctane SL - Ref 1028592889275 PP.9577.PP",
+      "soll_eur": "0,99",
+      "haben_eur": null,
+      "saldo_eur": "-9,13"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Rechnung Rückgabe Lastschrift über 4,94 EUR - Ref 1028592889275 PP.9577.PP - 20230808-BW016-00021024698",
+      "soll_eur": null,
+      "haben_eur": "4,94",
+      "saldo_eur": "-4,19"
+    },
+    {
+      "datum": "08.08.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 08.08.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "-4,19"
+    }
+  ]
+}

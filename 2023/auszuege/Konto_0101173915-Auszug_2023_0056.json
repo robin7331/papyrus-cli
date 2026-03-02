@@ -1,0 +1,37 @@
+{
+  "statement_no": "56/2023",
+  "rows": [
+    {
+      "datum": "26.04.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 25.04.2023, Auszug Nr. 55 Überweisung online CustomPack Sp. z o.o. Pro Forma Invoice 002023/04/06/P DATUM 25.04.2023, 22.31 UHR BIC / IBAN: ALBPPLPWXXX PL87 2490 0005 0000 4600 3856 9940",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.783,95"
+    },
+    {
+      "datum": "26.04.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online CustomPack Sp. z o.o. Pro Forma Invoice 002023/04/06/P DATUM 25.04.2023, 22.31 UHR BIC / IBAN: ALBPPLPWXXX PL87 2490 0005 0000 4600 3856 9940",
+      "soll_eur": "1.400,00",
+      "haben_eur": null,
+      "saldo_eur": "4.383,95"
+    },
+    {
+      "datum": "26.04.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 7339656526 OB-96957618 EUR 163,28. BEITRAG 0423 - 0423 7339656526 OB-96957618 BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
+      "soll_eur": "163,28",
+      "haben_eur": null,
+      "saldo_eur": "4.220,67"
+    },
+    {
+      "datum": "26.04.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 26.04.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.220,67"
+    }
+  ]
+}

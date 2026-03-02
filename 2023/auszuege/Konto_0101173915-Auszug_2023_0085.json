@@ -1,0 +1,45 @@
+{
+  "statement_no": "85/2023",
+  "rows": [
+    {
+      "datum": "13.07.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 13.07.2023, Auszug Nr. 84",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.845,73"
+    },
+    {
+      "datum": "14.07.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028154742041 PP.9577.PP. Shopify International Limited, Ihr Einkauf bei Shopify International Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028154742041 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "1,00",
+      "haben_eur": null,
+      "saldo_eur": "3.844,73"
+    },
+    {
+      "datum": "14.07.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028152190459 PP.9577.PP. Ecwid Inc., Ihr Einkauf bei Ecwid Inc. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028152190459 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "23,79",
+      "haben_eur": null,
+      "saldo_eur": "3.820,94"
+    },
+    {
+      "datum": "14.07.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028151770363 PP.9577.PP. Ecwid Inc., Ihr Einkauf bei Ecwid Inc. 1028151770363 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "22,61",
+      "haben_eur": null,
+      "saldo_eur": "3.798,33"
+    },
+    {
+      "datum": "14.07.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 14.07.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.798,33"
+    }
+  ]
+}

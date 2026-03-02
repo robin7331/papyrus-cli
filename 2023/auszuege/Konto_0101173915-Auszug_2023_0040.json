@@ -1,0 +1,45 @@
+{
+  "statement_no": "40/2023",
+  "rows": [
+    {
+      "datum": "17.03.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 17.03.2023, Auszug Nr. 39",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.182,24"
+    },
+    {
+      "datum": "20.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025854313290 PP.9577.PP . Printgroup GmbH & Co. KG, Ihr Einkauf bei Printgroup GmbH & Co. KG",
+      "soll_eur": "209,77",
+      "haben_eur": null,
+      "saldo_eur": "4.972,47"
+    },
+    {
+      "datum": "20.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025854335867 PP.9577.PP . Labelident GmbH, Ihr Einkauf bei Labelident GmbH",
+      "soll_eur": "58,17",
+      "haben_eur": null,
+      "saldo_eur": "4.914,30"
+    },
+    {
+      "datum": "20.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31227603000691/06.03.2023 Zahlbeleg 334035621204",
+      "soll_eur": "95,02",
+      "haben_eur": null,
+      "saldo_eur": "4.819,28"
+    },
+    {
+      "datum": "20.03.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 20.03.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.819,28"
+    }
+  ]
+}

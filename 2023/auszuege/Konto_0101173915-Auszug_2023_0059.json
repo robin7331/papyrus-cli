@@ -1,0 +1,37 @@
+{
+  "statement_no": "59/2023",
+  "rows": [
+    {
+      "datum": "03.05.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 03.05.2023, Auszug Nr. 58",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.632,71"
+    },
+    {
+      "datum": "04.05.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online Hetzner Online GmbH R0018737233 DATUM 04.05.2023, 09.53 UHR BIC / IBAN: DEUTDEMM760 DE92 7607 0012 0750 0077 00",
+      "soll_eur": "7,35",
+      "haben_eur": null,
+      "saldo_eur": "3.625,36"
+    },
+    {
+      "datum": "04.05.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online VBG 20233498381 DATUM 04.05.2023, 09.57 UHR BIC / IBAN: COBADEFFXXX DE66 2004 0000 0131 0291 00",
+      "soll_eur": "97,64",
+      "haben_eur": null,
+      "saldo_eur": "3.527,72"
+    },
+    {
+      "datum": "04.05.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 04.05.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.527,72"
+    }
+  ]
+}

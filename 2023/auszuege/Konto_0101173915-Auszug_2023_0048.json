@@ -1,0 +1,29 @@
+{
+  "statement_no": "48/2023",
+  "rows": [
+    {
+      "datum": "06.04.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 06.04.2023, Auszug Nr. 47",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "6.651,49"
+    },
+    {
+      "datum": "11.04.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "EXCELLENT MOBILE TECHNOLOGIES GMBH Rnr. 2023-02-0001, Knr. 1001 CCB.101.UE.69593 BIC / IBAN: COBADEFF DE04 6704 0031 0373 5511 00",
+      "soll_eur": null,
+      "haben_eur": "2.499,00",
+      "saldo_eur": "9.150,49"
+    },
+    {
+      "datum": "11.04.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 11.04.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "9.150,49"
+    }
+  ]
+}

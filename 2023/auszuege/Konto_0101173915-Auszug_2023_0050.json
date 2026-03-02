@@ -1,0 +1,37 @@
+{
+  "statement_no": "50/2023",
+  "rows": [
+    {
+      "datum": "12.04.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 12.04.2023, Auszug Nr. 49",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "9.022,07"
+    },
+    {
+      "datum": "13.04.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026352952648 PP.9577.PP. RAJAPACK GmbH, Ihr Einkauf bei RAJAPACK GmbH; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; BIC/IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "346,81",
+      "haben_eur": null,
+      "saldo_eur": "8.675,26"
+    },
+    {
+      "datum": "13.04.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer: HVDSC66 98102; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; BIC/IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
+      "soll_eur": "32,34",
+      "haben_eur": null,
+      "saldo_eur": "8.642,92"
+    },
+    {
+      "datum": "13.04.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 13.04.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "8.642,92"
+    }
+  ]
+}

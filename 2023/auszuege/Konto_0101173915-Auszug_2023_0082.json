@@ -1,0 +1,29 @@
+{
+  "statement_no": "82/2023",
+  "rows": [
+    {
+      "datum": "05.07.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 05.07.2023, Auszug Nr. 81",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.990,97"
+    },
+    {
+      "datum": "07.07.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028007739843 PP.9577.PP. Labelident GmbH, Ihr Einkauf bei Labelident GmbH 1028007739843 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "99,91",
+      "haben_eur": null,
+      "saldo_eur": "3.891,06"
+    },
+    {
+      "datum": "07.07.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 07.07.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.891,06"
+    }
+  ]
+}

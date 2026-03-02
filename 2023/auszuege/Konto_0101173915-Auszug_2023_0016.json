@@ -1,0 +1,29 @@
+{
+  "statement_no": "16/2023",
+  "rows": [
+    {
+      "datum": "02.02.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 02.02.2023, Auszug Nr. 15",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "22.217,36"
+    },
+    {
+      "datum": "03.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025021159520 PP.9577.PP . BoxesNBoxes Limited, Ihr Einkauf bei BoxesNBoxes Limited 1025021159520 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "6,50",
+      "haben_eur": null,
+      "saldo_eur": "22.210,86"
+    },
+    {
+      "datum": "03.02.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 03.02.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "22.210,86"
+    }
+  ]
+}

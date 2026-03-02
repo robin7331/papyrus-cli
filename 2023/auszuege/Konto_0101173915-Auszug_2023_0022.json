@@ -1,0 +1,53 @@
+{
+  "statement_no": "22/2023",
+  "rows": [
+    {
+      "datum": "10.02.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 10.02.2023, Auszug Nr. 21",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "21.956,46"
+    },
+    {
+      "datum": "13.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer: HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001797853 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
+      "soll_eur": "32,34",
+      "haben_eur": null,
+      "saldo_eur": "21.924,12"
+    },
+    {
+      "datum": "13.02.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG D 028-0519544-3789925 AMZ Amazon.de 1 8HHQYGTNSRAVNBD 18HHQYGTNSRAVNBD BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "soll_eur": null,
+      "haben_eur": "132,67",
+      "saldo_eur": "22.056,79"
+    },
+    {
+      "datum": "13.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online Digi-Key Electronics PRO FORMA Invoice 95534441 Robin Reiter BitMechanics GmbH DATUM 13.02.2023, 11.35 UHR BIC / IBAN: DRESDEFFXXX DE15 5008 0000 0975 1105 00",
+      "soll_eur": "589,40",
+      "haben_eur": null,
+      "saldo_eur": "21.467,39"
+    },
+    {
+      "datum": "13.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online IHK Schwaben 05575263 DATUM 13.02.2023, 11.41 UHR BIC / IBAN: BYLADEM1AUG DE38 7205 0101 0030 1313 87",
+      "soll_eur": "140,00",
+      "haben_eur": null,
+      "saldo_eur": "21.327,39"
+    },
+    {
+      "datum": "13.02.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 13.02.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "21.327,39"
+    }
+  ]
+}

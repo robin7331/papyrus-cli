@@ -1,0 +1,29 @@
+{
+  "statement_no": "94/2023",
+  "rows": [
+    {
+      "datum": "02.08.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 02.08.2023, Auszug Nr. 93",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "748,59"
+    },
+    {
+      "datum": "03.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 303-2638165-9821902 Amazon.de 40WFKNDREO6V6240 BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "soll_eur": "54,10",
+      "haben_eur": null,
+      "saldo_eur": "694,49"
+    },
+    {
+      "datum": "03.08.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 03.08.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "694,49"
+    }
+  ]
+}

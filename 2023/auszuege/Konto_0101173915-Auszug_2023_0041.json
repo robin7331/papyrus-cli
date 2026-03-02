@@ -1,0 +1,29 @@
+{
+  "statement_no": "41/2023",
+  "rows": [
+    {
+      "datum": "20.03.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 20.03.2023, Auszug Nr. 40",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.819,28"
+    },
+    {
+      "datum": "29.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 5173676802 OB-96957618 EUR 163,28. BEITRAG 0323 - 0323 5173676802 OB-96957618",
+      "soll_eur": "163,28",
+      "haben_eur": null,
+      "saldo_eur": "4.656,00"
+    },
+    {
+      "datum": "29.03.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 29.03.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.656,00"
+    }
+  ]
+}

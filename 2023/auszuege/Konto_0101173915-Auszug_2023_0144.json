@@ -1,0 +1,77 @@
+{
+  "statement_no": "144/2023",
+  "rows": [
+    {
+      "datum": "30.10.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 30.10.2023, Auszug Nr. 143",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "1.650,47"
+    },
+    {
+      "datum": "02.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Abrechnung 31.10.2023 / Wert: 30.10.2023, siehe Anlage Nr. 1",
+      "soll_eur": "18,80",
+      "haben_eur": null,
+      "saldo_eur": "1.631,67"
+    },
+    {
+      "datum": "02.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud",
+      "soll_eur": "49,34",
+      "haben_eur": null,
+      "saldo_eur": "1.582,33"
+    },
+    {
+      "datum": "02.11.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "STRIPE SHOPIFY SHOPIFY-0DE3DEZ6AGX6BQOKUTUZYUKNNWY",
+      "soll_eur": null,
+      "haben_eur": "621,30",
+      "saldo_eur": "2.203,63"
+    },
+    {
+      "datum": "02.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online Bft Station Klaus Sohler Beleg Nr. 4654",
+      "soll_eur": "104,97",
+      "haben_eur": null,
+      "saldo_eur": "2.098,66"
+    },
+    {
+      "datum": "02.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online DHL Express Germany GmbH Rechn. Nr: ZIT5305656",
+      "soll_eur": "158,60",
+      "haben_eur": null,
+      "saldo_eur": "1.940,06"
+    },
+    {
+      "datum": "02.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online United Parcel Service Rechnung 321889849",
+      "soll_eur": "154,21",
+      "haben_eur": null,
+      "saldo_eur": "1.785,85"
+    },
+    {
+      "datum": "02.11.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "STRIPE SHOPIFY SHOPIFY-ZA4GTU2FYDVYGI3A4Y34WOFGXGD",
+      "soll_eur": null,
+      "haben_eur": "864,85",
+      "saldo_eur": "2.650,70"
+    },
+    {
+      "datum": "02.11.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 02.11.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.650,70"
+    }
+  ]
+}

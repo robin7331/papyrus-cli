@@ -25,12 +25,12 @@ export function getDb(): Database.Database {
   }
 
   dbInstance = new Database(dbPath, {
-    readonly: true,
+    readonly: false,
     fileMustExist: true,
     timeout: 5_000,
   });
 
-  dbInstance.pragma("query_only = ON");
+  dbInstance.pragma("foreign_keys = ON");
 
   return dbInstance;
 }

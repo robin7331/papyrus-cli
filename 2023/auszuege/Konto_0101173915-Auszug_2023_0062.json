@@ -1,0 +1,29 @@
+{
+  "statement_no": "62/2023",
+  "rows": [
+    {
+      "datum": "09.05.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 09.05.2023, Auszug Nr. 61",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.368,36"
+    },
+    {
+      "datum": "11.05.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Leonhardt, Adolf, Spöri, Christoph GbR Steuerberatungskanzlei LEONHARDT & SPÖRI Gläubiger-ID: DE45ZZZ00000174923 Mandatsreferenz: 449920000002 RNr: 3975/20.04.23 Deb: 44992 2305100842-0000004 BIC / IBAN: SOLADES1RVB DE51 6505 0110 0000 2397 23",
+      "soll_eur": "66,40",
+      "haben_eur": null,
+      "saldo_eur": "3.301,96"
+    },
+    {
+      "datum": "11.05.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 11.05.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.301,96"
+    }
+  ]
+}

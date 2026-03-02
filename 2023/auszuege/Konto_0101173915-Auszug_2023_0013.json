@@ -1,0 +1,45 @@
+{
+  "statement_no": "13/2023",
+  "rows": [
+    {
+      "datum": "27.01.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 27.01.2023, Auszug Nr. 12",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "30.808,83"
+    },
+    {
+      "datum": "30.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online P-Form Thomas Pfeffer Rechnungs Nr 3887 Teil 1/2 DATUM 28.01.2023, 10.28 UHR BIC/IBAN: GENODES1TET DE66 6519 1500 0072 6940 09",
+      "soll_eur": "7.000,00",
+      "haben_eur": null,
+      "saldo_eur": "23.808,83"
+    },
+    {
+      "datum": "30.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Dauerauftrag Johann Reiter Lohn BIC/IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
+      "soll_eur": "520,00",
+      "haben_eur": null,
+      "saldo_eur": "23.288,83"
+    },
+    {
+      "datum": "30.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online P-Form Thomas Pfeffer Rechnungs Nr 3887 Teil 2/2 DATUM 28.01.2023, 10.28 UHR DATUM 30.01.2023, 08.11 UHR BIC/IBAN: GENODES1TET DE66 6519 1500 0072 6940 09",
+      "soll_eur": "973,00",
+      "haben_eur": null,
+      "saldo_eur": "22.315,83"
+    },
+    {
+      "datum": "30.01.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 30.01.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "22.315,83"
+    }
+  ]
+}

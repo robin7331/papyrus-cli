@@ -1,0 +1,29 @@
+{
+  "statement_no": "76/2023",
+  "rows": [
+    {
+      "datum": "23.06.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 23.06.2023, Auszug Nr. 75",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.674,74"
+    },
+    {
+      "datum": "27.06.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1027779869234 PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc.",
+      "soll_eur": "9,52",
+      "haben_eur": null,
+      "saldo_eur": "5.665,22"
+    },
+    {
+      "datum": "27.06.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 27.06.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.665,22"
+    }
+  ]
+}

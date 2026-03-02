@@ -1,0 +1,37 @@
+{
+  "statement_no": "151/2023",
+  "rows": [
+    {
+      "datum": "16.11.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 16.11.2023, Auszug Nr. 150",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.406,63"
+    },
+    {
+      "datum": "20.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung IP / Wert: 19.11.2023 Robin Reiter Privat DATUM 19.11.2023, 13.47 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "soll_eur": "500,00",
+      "haben_eur": null,
+      "saldo_eur": "1.906,63"
+    },
+    {
+      "datum": "20.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 32110051000691/07.11.2023 RG 32110051000691/07.11.2023 Zahlbeleg 364397913811 BIC / IBAN: DRESDEFF370 DE75 3708 0040 0232 1130 01",
+      "soll_eur": "98,43",
+      "haben_eur": null,
+      "saldo_eur": "1.808,20"
+    },
+    {
+      "datum": "20.11.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 20.11.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "1.808,20"
+    }
+  ]
+}

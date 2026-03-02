@@ -1,0 +1,45 @@
+{
+  "statement_no": "98/2023",
+  "rows": [
+    {
+      "datum": "08.08.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 08.08.2023, Auszug Nr. 97",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "-4,19"
+    },
+    {
+      "datum": "09.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Leonhardt, Adolf, Spöri, Christoph GbR Steuerberatungskanzlei LEONHARDT & SPÖRI Gläubiger-ID: DE45ZZZ00000174923 Mandatsreferenz: 449920000002 RNr: 6918/20.07.23 Deb: 44992 2308040815-0000009",
+      "soll_eur": "66,40",
+      "haben_eur": null,
+      "saldo_eur": "-70,59"
+    },
+    {
+      "datum": "09.08.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028671727893 PP.9577.PP Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB 1028671727893 PP.9577.PP PAYPAL",
+      "soll_eur": "12,99",
+      "haben_eur": null,
+      "saldo_eur": "-83,58"
+    },
+    {
+      "datum": "09.08.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "ELEKTOR INT MEDIA BV PO230368 Rechnung 2023-02-0006 Lev 12472 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 Elektor",
+      "soll_eur": null,
+      "haben_eur": "5.630,00",
+      "saldo_eur": "5.546,42"
+    },
+    {
+      "datum": "09.08.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 09.08.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.546,42"
+    }
+  ]
+}

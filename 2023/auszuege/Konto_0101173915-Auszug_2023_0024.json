@@ -1,0 +1,61 @@
+{
+  "statement_no": "24/2023",
+  "rows": [
+    {
+      "datum": "14.02.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 14.02.2023, Auszug Nr. 23",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "14.680,32"
+    },
+    {
+      "datum": "15.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025271919980 PP.9577.PP . S.K.S. Produkte fur die Oberflachentechnologie GmbH, Ihr Einkauf bei S.K.S. Produkte fur die Oberflachentechnolog 1025271919980 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "60,17",
+      "haben_eur": null,
+      "saldo_eur": "14.620,15"
+    },
+    {
+      "datum": "15.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-6123780-5107562 AMZN Mktp DE 5UZCQJB7TU6SIXWV 5UZCQJB7TU6SIXWV BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "soll_eur": "75,75",
+      "haben_eur": null,
+      "saldo_eur": "14.544,40"
+    },
+    {
+      "datum": "15.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025259932426 PP.9577.PP . AH Hoffmann GmbH, Ihr Einkauf bei AH Hoffmann GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025259932426 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "17,99",
+      "haben_eur": null,
+      "saldo_eur": "14.526,41"
+    },
+    {
+      "datum": "15.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025257200048 PP.9577.PP . ........ ......, Ihr Einkauf bei ........... ... 1025257200048 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "440,72",
+      "haben_eur": null,
+      "saldo_eur": "14.085,69"
+    },
+    {
+      "datum": "15.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025259847926 PP.9577.PP . Re-In Retail International GmbH, Ihr Einkauf bei Re-In Retail International GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025259847926 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "94,55",
+      "haben_eur": null,
+      "saldo_eur": "13.991,14"
+    },
+    {
+      "datum": "15.02.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 15.02.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "13.991,14"
+    }
+  ]
+}

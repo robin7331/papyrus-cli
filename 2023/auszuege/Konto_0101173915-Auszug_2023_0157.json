@@ -1,0 +1,61 @@
+{
+  "statement_no": "157/2023",
+  "rows": [
+    {
+      "datum": "29.11.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 28.11.2023, Auszug Nr. 156",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.397,14"
+    },
+    {
+      "datum": "29.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud; PGGT56NF6BGQH7XB2; BIC/IBAN: DEUTNL2A NL24 DEUT 0265 1950 47",
+      "soll_eur": "187,96",
+      "haben_eur": null,
+      "saldo_eur": "3.209,18"
+    },
+    {
+      "datum": "29.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online an United Parcel Service, Rechnung 833403346, Datum 29.11.2023 09:00 Uhr; BIC/IBAN: BNPADEFFXXX DE30 5121 0600 3223 3350 21",
+      "soll_eur": "100,18",
+      "haben_eur": null,
+      "saldo_eur": "3.109,00"
+    },
+    {
+      "datum": "29.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online an Ordnungs- und Sozialamt Wangen, 505.37.607819.6, Datum 29.11.2023 09:02 Uhr; BIC/IBAN: SOLADES1RVB DE73 6505 0110 0000 2010 12",
+      "soll_eur": "55,00",
+      "haben_eur": null,
+      "saldo_eur": "3.054,00"
+    },
+    {
+      "datum": "29.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online an United Parcel Service, Rechnung 322097810, Datum 29.11.2023 09:08 Uhr; BIC/IBAN: BNPADEFFXXX DE30 5121 0600 3223 3350 21",
+      "soll_eur": "6,31",
+      "haben_eur": null,
+      "saldo_eur": "3.047,69"
+    },
+    {
+      "datum": "29.11.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online an Rajapack GmbH, Belegnummer DE-5726350, Datum 29.11.2023 09:10 Uhr; BIC/IBAN: DEUTDESM660 DE70 6607 0004 0072 6810 00",
+      "soll_eur": "70,15",
+      "haben_eur": null,
+      "saldo_eur": "2.977,54"
+    },
+    {
+      "datum": "29.11.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 29.11.2023 um 20:05 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.977,54"
+    }
+  ]
+}

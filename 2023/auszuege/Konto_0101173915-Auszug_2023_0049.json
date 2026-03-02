@@ -1,0 +1,45 @@
+{
+  "statement_no": "49/2023",
+  "rows": [
+    {
+      "datum": "11.04.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 11.04.2023, Auszug Nr. 48",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "9.150,49"
+    },
+    {
+      "datum": "12.04.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026300329119 PP.9577.PP . Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB",
+      "soll_eur": "12,99",
+      "haben_eur": null,
+      "saldo_eur": "9.137,50"
+    },
+    {
+      "datum": "12.04.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026265188057 PP.9577.PP . Herrmann, Papenfuss, Ziebold GbR, Ihr Einkauf bei Herrmann, Papenfuss, Ziebold GbR",
+      "soll_eur": "61,95",
+      "haben_eur": null,
+      "saldo_eur": "9.075,55"
+    },
+    {
+      "datum": "12.04.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026284849506 PP.9577.PP . S.K.S. Produkte fur die Oberflachentechnologie GmbH, Ihr Einkauf bei S.K.S. Produkte fur die Oberflachentechnologie",
+      "soll_eur": "53,48",
+      "haben_eur": null,
+      "saldo_eur": "9.022,07"
+    },
+    {
+      "datum": "12.04.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 12.04.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "9.022,07"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "statement_no": "35/2023",
+  "rows": [
+    {
+      "datum": "09.03.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 09.03.2023, Auszug Nr. 34",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "6.217,31"
+    },
+    {
+      "datum": "13.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer: HVDSC66 98102 001820366",
+      "soll_eur": "32,34",
+      "haben_eur": null,
+      "saldo_eur": "6.184,97"
+    },
+    {
+      "datum": "13.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025725891977, Ihr Einkauf bei OMIO GOEURO",
+      "soll_eur": "343,37",
+      "haben_eur": null,
+      "saldo_eur": "5.841,60"
+    },
+    {
+      "datum": "13.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S.C.A. 1025719843145 PP.9577.PP, Ihr Einkauf bei BoxesNBoxes Limited",
+      "soll_eur": "26,00",
+      "haben_eur": null,
+      "saldo_eur": "5.815,60"
+    },
+    {
+      "datum": "13.03.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 13.03.2023 um 20:06 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.815,60"
+    }
+  ]
+}

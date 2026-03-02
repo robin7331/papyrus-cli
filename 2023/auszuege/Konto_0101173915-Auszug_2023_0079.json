@@ -1,0 +1,29 @@
+{
+  "statement_no": "79/2023",
+  "rows": [
+    {
+      "datum": "03.07.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 30.06.2023, Auszug Nr. 78",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.981,94"
+    },
+    {
+      "datum": "03.07.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Abrechnung 30.06.2023 / Wert: 30.06.2023 (siehe Anlage Nr. 1)",
+      "soll_eur": "12,85",
+      "haben_eur": null,
+      "saldo_eur": "4.969,09"
+    },
+    {
+      "datum": "03.07.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 03.07.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.969,09"
+    }
+  ]
+}

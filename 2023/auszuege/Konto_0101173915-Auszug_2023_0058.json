@@ -1,0 +1,37 @@
+{
+  "statement_no": "58/2023",
+  "rows": [
+    {
+      "datum": "02.05.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 02.05.2023, Auszug Nr. 57",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.682,42"
+    },
+    {
+      "datum": "03.05.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Verband zur Rücknahme und Verwertung von Elektro- und Elektronik-Altgeräten VERE e.V. VER20233458 v. 06.04.23",
+      "soll_eur": "29,75",
+      "haben_eur": null,
+      "saldo_eur": "3.652,67"
+    },
+    {
+      "datum": "03.05.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S.C.A. 1026739994354 PP.9577.PP DigitalOcean, Ihr Einkauf bei DigitalOcean",
+      "soll_eur": "19,96",
+      "haben_eur": null,
+      "saldo_eur": "3.632,71"
+    },
+    {
+      "datum": "03.05.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 03.05.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.632,71"
+    }
+  ]
+}

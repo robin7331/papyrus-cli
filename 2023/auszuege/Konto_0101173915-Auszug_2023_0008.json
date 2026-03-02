@@ -1,0 +1,61 @@
+{
+  "statement_no": "8/2023",
+  "rows": [
+    {
+      "datum": "16.01.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 16.01.2023, Auszug Nr. 7",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "31.507,50"
+    },
+    {
+      "datum": "17.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "take-e-way GmbH; 2023-01-3166-DRG 0021540000ZV003475Z; BIC/IBAN: NOLADE21HOL DE59 2135 2240 0134 9606 24",
+      "soll_eur": "414,12",
+      "haben_eur": null,
+      "saldo_eur": "31.093,38"
+    },
+    {
+      "datum": "17.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1024675224724 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL 1024675224724 PP.9577.PP PAYPAL; BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "6,32",
+      "haben_eur": null,
+      "saldo_eur": "31.087,06"
+    },
+    {
+      "datum": "17.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024712607701 PP.9577.PP . Paddle.net, Ihr Einkauf bei Paddle.net; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1024712607701; BIC/IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "58,31",
+      "haben_eur": null,
+      "saldo_eur": "31.028,75"
+    },
+    {
+      "datum": "17.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1024675467323 PP.9577.PP . Kab24 GmbH, Ihr Einkauf bei Kab24 GmbH 1024675467323 PP.9577.PP PAYPAL; BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "92,30",
+      "haben_eur": null,
+      "saldo_eur": "30.936,45"
+    },
+    {
+      "datum": "17.01.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "STRIPE STRIPE; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 LI3UKUYLKG9FE629D5GDX4VC3TULL8UBLIK; BIC/IBAN: CITINL2X NL41 CITI 2032 3048 05",
+      "soll_eur": null,
+      "haben_eur": "591,35",
+      "saldo_eur": "31.527,80"
+    },
+    {
+      "datum": "17.01.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 17.01.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "31.527,80"
+    }
+  ]
+}

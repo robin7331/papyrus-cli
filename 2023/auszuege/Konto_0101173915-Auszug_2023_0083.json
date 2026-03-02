@@ -1,0 +1,29 @@
+{
+  "statement_no": "83/2023",
+  "rows": [
+    {
+      "datum": "07.07.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 07.07.2023, Auszug Nr. 82",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.891,06"
+    },
+    {
+      "datum": "11.07.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028066757635 PP.9577.PP. Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB 1028066757635 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "12,99",
+      "haben_eur": null,
+      "saldo_eur": "3.878,07"
+    },
+    {
+      "datum": "11.07.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 11.07.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.878,07"
+    }
+  ]
+}

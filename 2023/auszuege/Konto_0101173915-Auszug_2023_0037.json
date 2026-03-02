@@ -1,0 +1,29 @@
+{
+  "statement_no": "37/2023",
+  "rows": [
+    {
+      "datum": "15.03.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 14.03.2023, Auszug Nr. 36",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.523,42"
+    },
+    {
+      "datum": "15.03.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 303-3335459-9212348 AMZN Mktp DE 6R TKVKUMCF6GP4TT 6RTKVKUMCF6GP4TT BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "soll_eur": "53,97",
+      "haben_eur": null,
+      "saldo_eur": "5.469,45"
+    },
+    {
+      "datum": "15.03.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 15.03.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "5.469,45"
+    }
+  ]
+}

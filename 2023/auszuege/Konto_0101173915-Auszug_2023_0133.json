@@ -1,0 +1,37 @@
+{
+  "statement_no": "133/2023",
+  "rows": [
+    {
+      "datum": "06.10.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 06.10.2023, Auszug Nr. 132",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "4.216,83"
+    },
+    {
+      "datum": "09.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1029816651937 PP.9577.PP . Schlauch 24 GmbH, Ihr Einkauf bei Schlauch24 GmbH 1029816651937 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "247,93",
+      "haben_eur": null,
+      "saldo_eur": "3.968,90"
+    },
+    {
+      "datum": "09.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-0225325-4525923 AMZN Mktp DE 47 0I3X6U0BMBQBRS 470I3X6U0BMBQBRS BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "soll_eur": "25,19",
+      "haben_eur": null,
+      "saldo_eur": "3.943,71"
+    },
+    {
+      "datum": "09.10.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 09.10.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.943,71"
+    }
+  ]
+}

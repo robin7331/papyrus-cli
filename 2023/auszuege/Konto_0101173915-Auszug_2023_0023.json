@@ -1,0 +1,53 @@
+{
+  "statement_no": "23/2023",
+  "rows": [
+    {
+      "datum": "13.02.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 13.02.2023, Auszug Nr. 22",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "21.327,39"
+    },
+    {
+      "datum": "14.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025247811478 . Digi-Key Corporation, Ihr Einkauf bei Digi-Key Corporation 1025247811478 PAYPAL",
+      "soll_eur": "490,10",
+      "haben_eur": null,
+      "saldo_eur": "20.837,29"
+    },
+    {
+      "datum": "14.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025234287264 PP.9577.PP ..., Ihr Einkauf bei ... 1025234287264",
+      "soll_eur": "735,87",
+      "haben_eur": null,
+      "saldo_eur": "20.101,42"
+    },
+    {
+      "datum": "14.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025234306187 PP.9577.PP . Kab24 GmbH, Ihr Einkauf bei Kab24 GmbH 1025234306187 PP.9577.PP PAYPAL",
+      "soll_eur": "89,90",
+      "haben_eur": null,
+      "saldo_eur": "20.011,52"
+    },
+    {
+      "datum": "14.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online P-Form Thomas Pfeffer Rechnungs Nr 3901 DATUM 14.02.2023, 09.24 UHR",
+      "soll_eur": "5.331,20",
+      "haben_eur": null,
+      "saldo_eur": "14.680,32"
+    },
+    {
+      "datum": "14.02.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 14.02.2023 um 20:02 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "14.680,32"
+    }
+  ]
+}

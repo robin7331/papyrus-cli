@@ -1,0 +1,29 @@
+{
+  "statement_no": "60/2023",
+  "rows": [
+    {
+      "datum": "04.05.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 04.05.2023, Auszug Nr. 59",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.527,72"
+    },
+    {
+      "datum": "08.05.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026809329758 PP.9577.PP . Ecwid Inc., Ihr Einkauf bei Ecwid Inc. 1026809329758 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "46,41",
+      "haben_eur": null,
+      "saldo_eur": "3.481,31"
+    },
+    {
+      "datum": "08.05.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 08.05.2023 um 20:05 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "3.481,31"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "statement_no": "131/2023",
+  "rows": [
+    {
+      "datum": "02.10.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 02.10.2023, Auszug Nr. 130",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.496,97"
+    },
+    {
+      "datum": "04.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029723094362 PP.9577.PP . DigitalOcean, Ihr Einkauf bei DigitalOcean AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029723094362 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "24,67",
+      "haben_eur": null,
+      "saldo_eur": "2.472,30"
+    },
+    {
+      "datum": "04.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029726213898 PP.9577.PP . Melia Hotels International S.A., Ihr Einkauf bei Melia Hotels International S.A. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029726213898 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "108,00",
+      "haben_eur": null,
+      "saldo_eur": "2.364,30"
+    },
+    {
+      "datum": "04.10.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 PCX8XJJ6XTNMTM232P BIC / IBAN: DEUTNL2A NL24 DEUT 0265 1950 47",
+      "soll_eur": "60,94",
+      "haben_eur": null,
+      "saldo_eur": "2.303,36"
+    },
+    {
+      "datum": "04.10.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-ZBHWTMGT0BTD522LEWPC9GMDWVQ BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
+      "soll_eur": null,
+      "haben_eur": "560,97",
+      "saldo_eur": "2.864,33"
+    },
+    {
+      "datum": "04.10.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 04.10.2023 um 20:04 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "2.864,33"
+    }
+  ]
+}

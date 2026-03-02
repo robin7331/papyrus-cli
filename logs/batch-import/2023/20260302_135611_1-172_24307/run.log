@@ -1,0 +1,83 @@
+[2026-03-02 13:56:11] Batch-Import gestartet (YEAR=2023, STMT_DIR=/Users/robin/Documents/Projects/buchhaltung/2023/auszuege)
+[2026-03-02 13:56:11] Logs: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307
+[2026-03-02 13:56:11] Gefundene PDFs: 172
+[2026-03-02 13:56:11] Verarbeite Bereich: 1-172 (Anzahl: 172)
+[2026-03-02 13:56:11] Codex Optionen: model=gpt-5.3-codex reasoning=low
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0001.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0002.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0003.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0004.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0005.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0006.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0007.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0008.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0009.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0010.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0011.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0012.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0013.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0014.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0015.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0016.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0017.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0018.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0019.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0020.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0021.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0022.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0023.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0024.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0025.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0026.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0027.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0028.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0029.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0030.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0031.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0032.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0033.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0034.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0035.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0036.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0037.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0038.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0039.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0040.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] SKIP 2023/auszuege/Konto_0101173915-Auszug_2023_0041.pdf (JSON existiert bereits)
+[2026-03-02 13:56:11] START [42/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0042.pdf (global 42/172)
+[2026-03-02 13:56:11] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0042.log
+[2026-03-02 13:56:55] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0042.pdf (Dauer 44s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0042.log)
+[2026-03-02 13:56:55] START [43/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0043.pdf (global 43/172)
+[2026-03-02 13:56:55] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0043.log
+[2026-03-02 13:57:35] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0043.pdf (Dauer 40s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0043.log)
+[2026-03-02 13:57:35] START [44/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0044.pdf (global 44/172)
+[2026-03-02 13:57:35] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0044.log
+[2026-03-02 13:58:30] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0044.pdf (Dauer 55s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0044.log)
+[2026-03-02 13:58:30] START [45/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0045.pdf (global 45/172)
+[2026-03-02 13:58:30] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0045.log
+[2026-03-02 13:59:29] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0045.pdf (Dauer 59s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0045.log)
+[2026-03-02 13:59:29] START [46/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0046.pdf (global 46/172)
+[2026-03-02 13:59:29] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0046.log
+[2026-03-02 14:00:14] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0046.pdf (Dauer 45s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0046.log)
+[2026-03-02 14:00:14] START [47/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0047.pdf (global 47/172)
+[2026-03-02 14:00:14] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0047.log
+[2026-03-02 14:01:04] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0047.pdf (Dauer 50s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0047.log)
+[2026-03-02 14:01:04] START [48/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0048.pdf (global 48/172)
+[2026-03-02 14:01:04] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0048.log
+[2026-03-02 14:01:50] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0048.pdf (Dauer 46s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0048.log)
+[2026-03-02 14:01:50] START [49/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0049.pdf (global 49/172)
+[2026-03-02 14:01:50] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0049.log
+[2026-03-02 14:02:37] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0049.pdf (Dauer 47s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0049.log)
+[2026-03-02 14:02:37] START [50/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0050.pdf (global 50/172)
+[2026-03-02 14:02:37] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0050.log
+[2026-03-02 14:03:25] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0050.pdf (Dauer 48s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0050.log)
+[2026-03-02 14:03:25] START [51/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0051.pdf (global 51/172)
+[2026-03-02 14:03:25] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0051.log
+[2026-03-02 14:04:46] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0051.pdf (Dauer 81s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0051.log)
+[2026-03-02 14:04:46] START [52/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0052.pdf (global 52/172)
+[2026-03-02 14:04:46] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0052.log
+[2026-03-02 14:05:33] OK 2023/auszuege/Konto_0101173915-Auszug_2023_0052.pdf (Dauer 47s, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0052.log)
+[2026-03-02 14:05:33] START [53/172] 2023/auszuege/Konto_0101173915-Auszug_2023_0053.pdf (global 53/172)
+[2026-03-02 14:05:33] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0053.log
+[2026-03-02 14:05:48] FEHLER 2023/auszuege/Konto_0101173915-Auszug_2023_0053.pdf (Exit 101, Dauer 15s), siehe /Users/robin/Documents/Projects/buchhaltung/logs/batch-import/2023/20260302_135611_1-172_24307/Konto_0101173915-Auszug_2023_0053.log
+[2026-03-02 14:05:48] FERTIG range=1-172 processed=11 skipped=41 failed=1

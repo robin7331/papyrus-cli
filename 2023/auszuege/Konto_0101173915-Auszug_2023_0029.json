@@ -1,0 +1,45 @@
+{
+  "statement_no": "29/2023",
+  "rows": [
+    {
+      "datum": "28.02.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 27.02.2023, Auszug Nr. 28",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "8.114,84"
+    },
+    {
+      "datum": "28.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025466672665 PP.9577.PP, Ihr Einkauf bei ... 1025466672665 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "1.070,62",
+      "haben_eur": null,
+      "saldo_eur": "7.044,22"
+    },
+    {
+      "datum": "28.02.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Dauerauftrag Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
+      "soll_eur": "520,00",
+      "haben_eur": null,
+      "saldo_eur": "6.524,22"
+    },
+    {
+      "datum": "28.02.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Leonhardt, Adolf, Spöri, Christoph Doppelzahlung Re.Nr.708 2302280851-0000001 BIC / IBAN: SOLADES1RVB DE51 6505 0110 0000 2397 23",
+      "soll_eur": null,
+      "haben_eur": "63,55",
+      "saldo_eur": "6.587,77"
+    },
+    {
+      "datum": "28.02.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 28.02.2023 um 20:03 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "6.587,77"
+    }
+  ]
+}
