@@ -1,7 +1,7 @@
 [project]
 name = "raw-booking-inserter"
 version = "0.1.0"
-description = "Add your description here"
+description = "CLI zur Validierung von Rohbuchungen und Saldenketten"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = []
