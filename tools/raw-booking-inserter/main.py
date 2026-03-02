@@ -212,6 +212,14 @@ ISSUE_GUIDANCE: dict[str, dict[str, str]] = {
         "suggested_action": "fix_closing_balance",
         "ask_user": "Please correct the Schlusssaldo to match the computed running balance.",
     },
+    "opening_balance_db_mismatch": {
+        "category": "database",
+        "suggested_action": "align_with_current_db_balance",
+        "ask_user": (
+            "Please ensure Eröffnungssaldo equals the current account balance "
+            "in the database before importing a new statement."
+        ),
+    },
     "file_read_failed": {
         "category": "io",
         "suggested_action": "check_file_path",
@@ -1111,6 +1119,82 @@ def _find_or_create_statement_doc(
     return int(cursor.lastrowid)
 
 
+def _statement_doc_exists_for_account(
+    conn: sqlite3.Connection, *, account_id: int, statement_no: str
+) -> bool:
+    row = conn.execute(
+        """
+        SELECT 1
+        FROM statement_docs sd
+        JOIN source_files sf ON sf.id = sd.source_file_id
+        WHERE sf.account_id = ? AND sd.statement_no = ?
+        LIMIT 1
+        """,
+        (account_id, statement_no),
+    ).fetchone()
+    return row is not None
+
+
+def _current_account_balance_cents(conn: sqlite3.Connection, *, account_id: int) -> int | None:
+    tx_row = conn.execute(
+        """
+        SELECT running_balance_cents
+        FROM bank_transactions
+        WHERE account_id = ? AND running_balance_cents IS NOT NULL
+        ORDER BY booking_date DESC, id DESC
+        LIMIT 1
+        """,
+        (account_id,),
+    ).fetchone()
+    if tx_row is not None:
+        return int(tx_row[0])
+
+    statement_row = conn.execute(
+        """
+        SELECT sd.closing_balance_cents
+        FROM statement_docs sd
+        JOIN source_files sf ON sf.id = sd.source_file_id
+        WHERE sf.account_id = ? AND sd.closing_balance_cents IS NOT NULL
+        ORDER BY sd.period_to DESC, sd.id DESC
+        LIMIT 1
+        """,
+        (account_id,),
+    ).fetchone()
+    if statement_row is not None:
+        return int(statement_row[0])
+
+    return None
+
+
+def _validate_opening_balance_against_db(
+    conn: sqlite3.Connection,
+    *,
+    account_id: int,
+    statement_no: str,
+    opening_balance_cents: int,
+) -> None:
+    if _statement_doc_exists_for_account(conn, account_id=account_id, statement_no=statement_no):
+        return
+
+    current_balance_cents = _current_account_balance_cents(conn, account_id=account_id)
+    if current_balance_cents is None:
+        return
+
+    if opening_balance_cents != current_balance_cents:
+        raise ValidationFailure(
+            "opening_balance_db_mismatch",
+            (
+                "Eröffnungssaldo passt nicht zum aktuellen Datenbankstand: "
+                f"Erwartet {current_balance_cents}, gefunden {opening_balance_cents}."
+            ),
+            report_context={
+                "statement_no": statement_no,
+                "expected_opening_balance_cents": current_balance_cents,
+                "provided_opening_balance_cents": opening_balance_cents,
+            },
+        )
+
+
 def _movements(rows: list[ParsedRow]) -> list[ParsedRow]:
     opening_idx = next(i for i, row in enumerate(rows) if row.is_opening)
     closing_idx = next(i for i, row in enumerate(rows) if row.is_closing)
@@ -1297,6 +1381,12 @@ def run_import(
 
         with conn:
             ensure_account(conn, account_id)
+            _validate_opening_balance_against_db(
+                conn,
+                account_id=account_id,
+                statement_no=statement_no,
+                opening_balance_cents=validation["opening_balance_cents"],
+            )
             source_file_id = _upsert_source_file(
                 conn,
                 account_id=account_id,
