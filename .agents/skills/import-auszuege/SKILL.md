@@ -32,7 +32,7 @@ Regeln:
 ## Harte Regeln (immer einhalten)
 
 1. Verarbeite nur einen Auszug pro Lauf. Wenn unklar ist, welche Datei gemeint ist, frage nach.
-2. Lies und interpretiere die PDF mit dem `pdf`-Skill.
+2. Lies und interpretiere die PDF mit dem `pdf`-Skill. Fuer die reine Text-Extraktion immer `swift` mit `PDFKit` verwenden (kein `pdftotext`, keine Python-PDF-Bibliotheken).
 3. Erzeuge JSON exakt im Format von `tools/raw-booking-inserter/README.md`.
 4. Fuehre danach immer den `import`-Befehl von `tools/raw-booking-inserter/main.py` mit der JSON-Datei aus.
 5. Schreibe niemals direkt per SQL in die Datenbank.
@@ -100,6 +100,27 @@ Regeln:
 ## Ablauf (verbindliche Reihenfolge)
 
 1. PDF lesen und alle Buchungszeilen inkl. Eroffnungs- und Schlusssaldo extrahieren.
+   - Immer per `swift` + `PDFKit`:
+
+```bash
+swift - <<'SWIFT'
+import Foundation
+import PDFKit
+
+let path = "/ABS/PFAD/ZUM/AUSZUG.pdf"
+guard let doc = PDFDocument(url: URL(fileURLWithPath: path)) else {
+    fputs("ERR: cannot open\n", stderr)
+    exit(1)
+}
+for i in 0..<doc.pageCount {
+    if let page = doc.page(at: i), let s = page.string {
+        print("===== PAGE \(i+1) =====")
+        print(s)
+    }
+}
+SWIFT
+```
+
 2. JSON im geforderten Format erstellen.
 3. JSON mit korrekter Namensregel im selben Ordner speichern.
 4. Import ausfuehren (inkl. Validierung):
