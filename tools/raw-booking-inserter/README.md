@@ -4,11 +4,11 @@ Validate statement rows before import.
 
 ## Run
 ```bash
-python tools/raw-booking-inserter/main.py validate --bookings-file /abs/path/bookings.json --strict
+uv run tools/raw-booking-inserter/main.py validate --bookings-file /abs/path/bookings.json --strict
 ```
 
 ```bash
-python tools/raw-booking-inserter/main.py import --bookings-file /abs/path/bookings.json --strict
+uv run tools/raw-booking-inserter/main.py import --bookings-file /abs/path/bookings.json --strict
 ```
 
 `import` validates first, then writes on success.

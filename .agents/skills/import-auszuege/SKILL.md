@@ -34,7 +34,7 @@ Regeln:
 1. Verarbeite nur einen Auszug pro Lauf. Wenn unklar ist, welche Datei gemeint ist, frage nach.
 2. Lies und interpretiere die PDF mit dem `pdf`-Skill. Fuer die reine Text-Extraktion immer `swift` mit `PDFKit` verwenden (kein `pdftotext`, keine Python-PDF-Bibliotheken).
 3. Erzeuge JSON exakt im Format von `tools/raw-booking-inserter/README.md`.
-4. Fuehre danach immer den `import`-Befehl von `tools/raw-booking-inserter/main.py` mit der JSON-Datei aus.
+4. Fuehre danach immer den `import`-Befehl von `tools/raw-booking-inserter/main.py` mit der JSON-Datei aus, und zwar mit `uv run`.
 5. Schreibe niemals direkt per SQL in die Datenbank.
 6. Wenn die Verarbeitung erfolgreich ist, frage explizit, ob der nachste Auszug bearbeitet werden soll.
 7. Bei Fehlern/Issues: strukturiert berichten und um Entscheidung/Korrektur bitten.
@@ -126,7 +126,7 @@ SWIFT
 4. Import ausfuehren (inkl. Validierung):
 
 ```bash
-python tools/raw-booking-inserter/main.py import --bookings-file /ABS/PFAD/ZUR/DATEI.json --strict
+uv run tools/raw-booking-inserter/main.py import --bookings-file /ABS/PFAD/ZUR/DATEI.json --strict
 ```
 
 Optional:
