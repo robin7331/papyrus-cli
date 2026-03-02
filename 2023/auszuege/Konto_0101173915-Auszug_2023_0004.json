@@ -1,0 +1,77 @@
+{
+  "statement_no": "4/2023",
+  "rows": [
+    {
+      "datum": "09.01.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 09.01.2023, Auszug Nr. 3",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "33.751,32"
+    },
+    {
+      "datum": "10.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A.; 028-3999210-3417931 AMZN Mktp DE 1BFTS054VZJI1CZ2; BIC/IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "soll_eur": "139,99",
+      "haben_eur": null,
+      "saldo_eur": "33.611,33"
+    },
+    {
+      "datum": "10.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND; 302-5388617-3029112 Amazon.de 74LWSIUT05BGSPNE; BIC/IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "soll_eur": "66,13",
+      "haben_eur": null,
+      "saldo_eur": "33.545,20"
+    },
+    {
+      "datum": "10.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND; 302-4949890-3457167 Amazon.de 5D3GD2GZWNHC5F69; BIC/IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "soll_eur": "20,16",
+      "haben_eur": null,
+      "saldo_eur": "33.525,04"
+    },
+    {
+      "datum": "10.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024576241545 PP.9577.PP; Epidemic Sound AB; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; BIC/IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "12,99",
+      "haben_eur": null,
+      "saldo_eur": "33.512,05"
+    },
+    {
+      "datum": "10.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A.; 028-3999210-3417931 AMZN Mktp DE 1VKZ1SF9K6PSVPCC; BIC/IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "soll_eur": "38,53",
+      "haben_eur": null,
+      "saldo_eur": "33.473,52"
+    },
+    {
+      "datum": "10.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A.; 028-0442985-2757124 AMZN Mktp DE 3D8XOUPMP5T1WTBE; BIC/IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "soll_eur": "18,98",
+      "haben_eur": null,
+      "saldo_eur": "33.454,54"
+    },
+    {
+      "datum": "10.01.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "STRIPE STRIPE; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; STRIPE-IU97RYBVH6JLYIIYVK6MAZJIEHHV; BIC/IBAN: CITINL2X NL41 CITI 2032 3048 05",
+      "soll_eur": null,
+      "haben_eur": "52,79",
+      "saldo_eur": "33.507,33"
+    },
+    {
+      "datum": "10.01.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 10.01.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "33.507,33"
+    }
+  ]
+}

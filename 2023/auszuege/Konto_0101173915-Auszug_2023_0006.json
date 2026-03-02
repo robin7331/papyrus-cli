@@ -1,0 +1,37 @@
+{
+  "statement_no": "6/2023",
+  "rows": [
+    {
+      "datum": "12.01.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 12.01.2023, Auszug Nr. 5",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "32.867,72"
+    },
+    {
+      "datum": "13.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1024633680786 PP.9577.PP . Paddle.n et, Ihr Einkauf bei Paddle.net 1024633680786 PP.9577.PP PAYPAL; BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "58,31",
+      "haben_eur": null,
+      "saldo_eur": "32.809,41"
+    },
+    {
+      "datum": "13.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online; Suzhou Gaoyuda Trading Co., Ltd. Alibaba Order 163312575501029121 DATUM 13.01.2023, 09.58 UHR; BIC/IBAN: CHASLULXXXX LU65 0670 0041 9964 2644",
+      "soll_eur": "688,51",
+      "haben_eur": null,
+      "saldo_eur": "32.120,90"
+    },
+    {
+      "datum": "13.01.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 13.01.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "32.120,90"
+    }
+  ]
+}

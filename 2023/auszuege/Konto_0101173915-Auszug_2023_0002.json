@@ -1,0 +1,69 @@
+{
+  "statement_no": "2/2023",
+  "rows": [
+    {
+      "datum": "03.01.2023",
+      "typ": "Eröffnungssaldo",
+      "buchungstext": "Kontostand am 03.01.2023, Auszug Nr. 1",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "34.825,35"
+    },
+    {
+      "datum": "05.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1024493716224; Digi-Key Corporation; Ihr Einkauf bei Digi-Key Corporation 1024493716224 PAYPAL; BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "726,61",
+      "haben_eur": null,
+      "saldo_eur": "34.098,74"
+    },
+    {
+      "datum": "05.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024486888921 PP.9577.PP; Packlink - Auctane SL; Ihr Einkauf bei Packlink - Auctane SL; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; BIC/IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "soll_eur": "14,50",
+      "haben_eur": null,
+      "saldo_eur": "34.084,24"
+    },
+    {
+      "datum": "05.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024481359913 PP.9577.PP; Alipay (EUROPE) Limited; Ihr Einkauf bei Alipay (EUROPE) Limited; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; BIC/IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "soll_eur": "32,22",
+      "haben_eur": null,
+      "saldo_eur": "34.052,02"
+    },
+    {
+      "datum": "05.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1024486502028 PP.9577.PP; Packlink - Auctane SL; Ihr Einkauf bei Packlink - Auctane SL 1024486502028 PP.9577.PP PAYPAL; BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "4,72",
+      "haben_eur": null,
+      "saldo_eur": "34.047,30"
+    },
+    {
+      "datum": "05.01.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "Coenen, Claudius Order 54 SMD mega pack; BIC/IBAN: HELADEF1ERB DE15 5085 1952 0140 5126 90",
+      "soll_eur": null,
+      "haben_eur": "124,47",
+      "saldo_eur": "34.171,77"
+    },
+    {
+      "datum": "05.01.2023",
+      "typ": "Gutschrift/Überweisung",
+      "buchungstext": "R.M. Philippart Order ?55; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; TRIODOS/NL/20230104/37955990; BIC/IBAN: TRIONL2U NL23 TRIO 0254 8536 41",
+      "soll_eur": null,
+      "haben_eur": "25,65",
+      "saldo_eur": "34.197,42"
+    },
+    {
+      "datum": "05.01.2023",
+      "typ": "Schlusssaldo",
+      "buchungstext": "Kontostand am 05.01.2023 um 20:01 Uhr",
+      "soll_eur": null,
+      "haben_eur": null,
+      "saldo_eur": "34.197,42"
+    }
+  ]
+}
