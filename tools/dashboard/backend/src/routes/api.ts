@@ -131,6 +131,149 @@ function txIdFromParams(value: string): number {
   return txId;
 }
 
+function parseStatementNo(valueRaw: string | null): { statementNo: number | null; year: number | null } {
+  if (!valueRaw) {
+    return { statementNo: null, year: null };
+  }
+  const value = valueRaw.trim();
+  if (!value) {
+    return { statementNo: null, year: null };
+  }
+  const slashMatch = value.match(/^(\d{1,6})\s*\/\s*(\d{4})$/);
+  if (slashMatch) {
+    return {
+      statementNo: Number.parseInt(slashMatch[1], 10),
+      year: Number.parseInt(slashMatch[2], 10),
+    };
+  }
+  const numberMatch = value.match(/(\d{1,6})/);
+  if (!numberMatch) {
+    return { statementNo: null, year: null };
+  }
+  return {
+    statementNo: Number.parseInt(numberMatch[1], 10),
+    year: null,
+  };
+}
+
+function resolveAccountTokenFromIban(ibanRaw: string | null): string | null {
+  if (!ibanRaw) {
+    return null;
+  }
+  const digits = ibanRaw.replace(/\D/g, "");
+  if (digits.length < 10) {
+    return null;
+  }
+  return digits.slice(-10);
+}
+
+function resolveStatementFilePath(input: {
+  filePathRaw: string | null;
+  statementNoRaw?: string | null;
+  sourceFileYear?: number | null;
+  bookingDate?: string | null;
+  accountIban?: string | null;
+}): string | null {
+  const filePathRaw = input.filePathRaw;
+  if (!filePathRaw) {
+    return null;
+  }
+
+  const value = filePathRaw.trim();
+  if (!value) {
+    return null;
+  }
+
+  if (!value.startsWith("raw-booking-inserter://")) {
+    if (value.startsWith("file://")) {
+      try {
+        const url = new URL(value);
+        const resolved = url.protocol === "file:" ? decodeURIComponent(url.pathname) : "";
+        if (resolved && fs.existsSync(resolved) && fs.statSync(resolved).isFile()) {
+          return resolved;
+        }
+        return null;
+      } catch {
+        return null;
+      }
+    }
+
+    const absolutePath = path.isAbsolute(value) ? path.resolve(value) : path.resolve(projectRoot, value);
+    if (!fs.existsSync(absolutePath)) {
+      return null;
+    }
+    try {
+      if (!fs.statSync(absolutePath).isFile()) {
+        return null;
+      }
+    } catch {
+      return null;
+    }
+
+    return absolutePath;
+  }
+
+  const statementInfo = parseStatementNo(input.statementNoRaw ?? value.slice("raw-booking-inserter://".length));
+  if (!statementInfo.statementNo || statementInfo.statementNo <= 0) {
+    return null;
+  }
+
+  const inferredYear =
+    (typeof input.sourceFileYear === "number" ? input.sourceFileYear : null) ??
+    statementInfo.year ??
+    (input.bookingDate && /^\d{4}-\d{2}-\d{2}$/.test(input.bookingDate) ? Number.parseInt(input.bookingDate.slice(0, 4), 10) : null);
+  if (!inferredYear || inferredYear < 2000 || inferredYear > 2100) {
+    return null;
+  }
+
+  const statementSuffix = String(statementInfo.statementNo).padStart(4, "0");
+  const accountToken = resolveAccountTokenFromIban(input.accountIban ?? null);
+  const baseDirs = [path.join(projectRoot, String(inferredYear), "Auszuege"), path.join(projectRoot, String(inferredYear), "auszuege")];
+
+  const matches: string[] = [];
+  for (const dir of baseDirs) {
+    if (!fs.existsSync(dir)) {
+      continue;
+    }
+    let entries: string[];
+    try {
+      entries = fs.readdirSync(dir);
+    } catch {
+      continue;
+    }
+    for (const entry of entries) {
+      if (!entry.toLowerCase().endsWith(".pdf")) {
+        continue;
+      }
+      if (!new RegExp(`[-_]Auszug_${inferredYear}_${statementSuffix}\\.pdf$`, "i").test(entry)) {
+        continue;
+      }
+      const entryPath = path.join(dir, entry);
+      if (!fs.existsSync(entryPath)) {
+        continue;
+      }
+      matches.push(entryPath);
+    }
+  }
+
+  if (matches.length === 0) {
+    return null;
+  }
+
+  if (accountToken) {
+    const tokenMatch = matches.filter((item) =>
+      new RegExp(`Konto_${accountToken}-`, "i").test(path.basename(item)),
+    );
+    if (tokenMatch.length > 0) {
+      tokenMatch.sort();
+      return tokenMatch[0];
+    }
+  }
+
+  matches.sort();
+  return matches[0];
+}
+
 function buildTransactionsWhere(
   filters: {
     from?: string;
@@ -198,6 +341,7 @@ function buildDocumentsWhere(
     lifecycleStatus?: string;
     q?: string;
   },
+  availableColumns: Set<string>,
   tableAlias?: string,
 ): { whereSql: string; params: unknown[] } {
   const clauses: string[] = [];
@@ -220,17 +364,66 @@ function buildDocumentsWhere(
   }
 
   if (filters.q) {
-    const pattern = `%${escapeLike(filters.q)}%`;
-    clauses.push(
-      `(${col("original_filename")} LIKE ? ESCAPE '\\\\' OR ${col("issuer_name")} LIKE ? ESCAPE '\\\\' OR ${col("invoice_number")} LIKE ? ESCAPE '\\\\')`,
-    );
-    params.push(pattern, pattern, pattern);
+    const searchableTextColumns = [
+      "original_filename",
+      "issuer_name",
+      "invoice_number",
+      "storage_rel_path",
+      "mime_type",
+      "source_type",
+      "document_date",
+      "subject",
+      "summary_short",
+      "ocr_text",
+      "metadata_json",
+    ].filter((name) => availableColumns.has(name));
+
+    const searchableNumericColumns = [
+      "gross_amount_cents",
+      "net_amount_cents",
+      "vat_amount_cents",
+      "vat_rate_bps",
+      "file_size_bytes",
+      "id",
+      "year",
+    ].filter((name) => availableColumns.has(name));
+
+    const terms = filters.q
+      .split(/\s+/)
+      .map((term) => term.trim())
+      .filter((term) => term.length > 0)
+      .slice(0, 10);
+
+    for (const term of terms) {
+      const pattern = `%${escapeLike(term)}%`;
+      const termClauses: string[] = [];
+
+      for (const textCol of searchableTextColumns) {
+        termClauses.push(`${col(textCol)} LIKE ? ESCAPE '\\\\'`);
+        params.push(pattern);
+      }
+
+      for (const numericCol of searchableNumericColumns) {
+        termClauses.push(`CAST(${col(numericCol)} AS TEXT) LIKE ? ESCAPE '\\\\'`);
+        params.push(pattern);
+      }
+
+      if (termClauses.length > 0) {
+        clauses.push(`(${termClauses.join(" OR ")})`);
+      }
+    }
   }
 
   return {
     whereSql: clauses.length > 0 ? `WHERE ${clauses.join(" AND ")}` : "",
     params,
   };
+}
+
+function getDocumentsColumnSet(): Set<string> {
+  const db = getDb();
+  const rows = db.prepare("PRAGMA table_info(documents)").all() as Array<{ name: string }>;
+  return new Set(rows.map((row) => row.name));
 }
 
 function sendError(res: Response, error: unknown) {
@@ -642,11 +835,13 @@ router.get("/transactions/:id", (req, res) => {
            sd.period_to,
            sd.opening_balance_cents,
            sd.closing_balance_cents,
+           ba.iban AS account_iban,
            sf.file_path,
            sf.year,
            sf.file_sha256
          FROM bank_transactions bt
          LEFT JOIN statement_docs sd ON sd.id = bt.statement_doc_id
+         LEFT JOIN bank_accounts ba ON ba.id = bt.account_id
          LEFT JOIN source_files sf ON sf.id = sd.source_file_id
          WHERE bt.id = ?`,
       )
@@ -791,14 +986,92 @@ router.get("/transactions/:id", (req, res) => {
       )
       .get(txId);
 
+    const statementFilePath = resolveStatementFilePath({
+      filePathRaw: (transaction as { file_path: string | null }).file_path,
+      statementNoRaw: (transaction as { statement_no: string | null }).statement_no,
+      sourceFileYear: (transaction as { year: number | null }).year,
+      bookingDate: (transaction as { booking_date: string | null }).booking_date,
+      accountIban: (transaction as { account_iban: string | null }).account_iban,
+    });
+    const transactionWithStatementLink = {
+      ...(transaction as Record<string, unknown>),
+      statement_file_url: statementFilePath ? `/api/transactions/${txId}/statement-file` : null,
+    };
+
     res.json({
-      transaction,
+      transaction: transactionWithStatementLink,
       raw_rows: rawRows,
       audit_rows: auditRows,
       linked_documents: linkedDocuments,
       match_suggestions: suggestions,
       document_status_history: statusHistory,
       tax_determination: taxDetermination ?? null,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.get("/transactions/:id/statement-file", (req, res) => {
+  try {
+    const txId = txIdFromParams(req.params.id);
+    const db = getDb();
+
+    const row = db
+      .prepare(
+        `SELECT
+           sf.file_path,
+           sd.statement_no,
+           sf.year,
+           bt.booking_date,
+           ba.iban AS account_iban
+         FROM bank_transactions bt
+         LEFT JOIN statement_docs sd ON sd.id = bt.statement_doc_id
+         LEFT JOIN bank_accounts ba ON ba.id = bt.account_id
+         LEFT JOIN source_files sf ON sf.id = sd.source_file_id
+         WHERE bt.id = ?`,
+      )
+      .get(txId) as
+      | {
+          file_path: string | null;
+          statement_no: string | null;
+          year: number | null;
+          booking_date: string | null;
+          account_iban: string | null;
+        }
+      | undefined;
+
+    if (!row) {
+      res.status(404).json({
+        error: {
+          code: "not_found",
+          message: "Transaktion nicht gefunden",
+        },
+      });
+      return;
+    }
+
+    const statementFilePath = resolveStatementFilePath({
+      filePathRaw: row.file_path,
+      statementNoRaw: row.statement_no,
+      sourceFileYear: row.year,
+      bookingDate: row.booking_date,
+      accountIban: row.account_iban,
+    });
+    if (!statementFilePath) {
+      res.status(404).json({
+        error: {
+          code: "statement_file_not_found",
+          message: "Kein oeffenbarer Kontoauszug fuer diese Transaktion gefunden.",
+        },
+      });
+      return;
+    }
+
+    res.sendFile(statementFilePath, {
+      headers: {
+        "Content-Disposition": "inline",
+      },
     });
   } catch (error) {
     sendError(res, error);
@@ -1071,11 +1344,12 @@ router.get("/documents", (req, res) => {
   try {
     const query = validateQuery(documentsQuerySchema, req.query);
     const db = getDb();
+    const documentColumns = getDocumentsColumnSet();
 
-    const { whereSql, params } = buildDocumentsWhere(query, "d");
+    const { whereSql, params } = buildDocumentsWhere(query, documentColumns, "d");
     const offset = (query.page - 1) * query.pageSize;
 
-    const totalRow = db.prepare(`SELECT COUNT(*) AS total FROM documents ${whereSql}`).get(...params) as { total: number };
+    const totalRow = db.prepare(`SELECT COUNT(*) AS total FROM documents d ${whereSql}`).get(...params) as { total: number };
     const items = db
       .prepare(
         `SELECT

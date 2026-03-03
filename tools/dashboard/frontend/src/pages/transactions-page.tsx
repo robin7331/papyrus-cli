@@ -416,14 +416,14 @@ export function TransactionsPage() {
           }
         }}
       >
-        <SheetContent className="sm:max-w-2xl">
+        <SheetContent className="flex flex-col overflow-hidden sm:max-w-2xl">
           <SheetHeader>
             <SheetTitle>Transaktionsdetails</SheetTitle>
             <SheetDescription>Mit Belegen, Status und Import-Auditdaten.</SheetDescription>
           </SheetHeader>
 
           {detail ? (
-            <div className="mt-6 space-y-5 overflow-y-auto pr-2 text-sm">
+            <div className="mt-6 min-h-0 flex-1 space-y-5 overflow-y-auto pr-2 text-sm">
               <Card>
                 <CardHeader>
                   <CardTitle>Belegstatus</CardTitle>
@@ -434,6 +434,17 @@ export function TransactionsPage() {
                       {statusLabel(detail.transaction.document_status)}
                     </Badge>
                     <Badge variant="secondary">{detail.linked_documents.length} verknüpft</Badge>
+                    {detail.transaction.statement_file_url ? (
+                      <Button variant="outline" size="sm" asChild>
+                        <a href={detail.transaction.statement_file_url} target="_blank" rel="noreferrer">
+                          Kontoauszug öffnen
+                        </a>
+                      </Button>
+                    ) : (
+                      <Button variant="outline" size="sm" disabled>
+                        Kontoauszug nicht verfügbar
+                      </Button>
+                    )}
                   </div>
                   <div className="flex flex-wrap gap-2">
                     <Button

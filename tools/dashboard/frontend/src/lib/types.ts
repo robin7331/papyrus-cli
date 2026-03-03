@@ -143,6 +143,7 @@ export type TransactionDetail = {
   opening_balance_cents: number | null;
   closing_balance_cents: number | null;
   file_path: string | null;
+  statement_file_url: string | null;
   year: number | null;
   file_sha256: string | null;
 };
@@ -163,6 +164,38 @@ export type UploadDocumentResponse = {
   document: Record<string, unknown>;
   link: Record<string, unknown>;
   new_status: DocumentStatus;
+};
+
+export type DocumentListItem = {
+  id: number;
+  year: number;
+  source_type: "email" | "scan" | "portal" | "manuell" | "sonstiges";
+  lifecycle_status: "inbox" | "archiviert" | "verworfen";
+  storage_rel_path: string;
+  original_filename: string | null;
+  mime_type: string | null;
+  file_size_bytes: number;
+  file_sha256: string;
+  document_date: string | null;
+  issuer_name: string | null;
+  invoice_number: string | null;
+  gross_amount_cents: number | null;
+  net_amount_cents?: number | null;
+  vat_amount_cents?: number | null;
+  vat_rate_bps?: number | null;
+  subject?: string | null;
+  summary_short?: string | null;
+  metadata_json?: string | null;
+  created_at: string;
+  updated_at: string;
+  linked_transactions_count: number;
+};
+
+export type DocumentsResponse = {
+  items: DocumentListItem[];
+  page: number;
+  pageSize: number;
+  total: number;
 };
 
 export type ImportQualityResponse = {

@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { to: "/", label: "Dashboard" },
+  { to: "/belege", label: "Belege" },
   { to: "/transactions", label: "Transaktionen" },
   { to: "/tax", label: "Steuer/MwSt" },
   { to: "/ops", label: "Import/Ops" },
