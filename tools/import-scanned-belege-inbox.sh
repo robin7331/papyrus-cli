@@ -14,15 +14,16 @@ Beispiele:
 Hinweise:
   - Quelle ist immer: ./scanned_belege (Root-Buffer fuer unprozessierte Scans).
   - Pro PDF wird der Skill import-scanned-belege ausgefuehrt.
-  - Bei Erfolg wird die Rohdatei per Inserter nach belege/<year>/.../raw verschoben.
+  - Bei Erfolg wird die Datei nach /<year>/belege/<YYYY-MM>/ abgelegt (PDF + .scan.json).
   - Fehlerfaelle werden nach ./scanned_belege_failed/<RUN_ID>/ verschoben.
+  - Default reasoning: low (schneller, weniger Tool-Exploration).
 EOF
 }
 
 START_INDEX="1"
 END_INDEX=""
 MODEL="gpt-5.3-codex"
-REASONING="medium"
+REASONING="low"
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -96,6 +97,10 @@ BUFFER_DIR="${ROOT_DIR}/scanned_belege"
 FAILED_ROOT_DIR="${ROOT_DIR}/scanned_belege_failed"
 DB_PATH="${ROOT_DIR}/datenbank.sqlite"
 INSERTER="${ROOT_DIR}/tools/scanned-beleg-inserter/main.py"
+
+# Stabilisiert Tooling in sandboxed Runs.
+export UV_CACHE_DIR="${UV_CACHE_DIR:-/tmp/uv-cache}"
+export TESSDATA_PREFIX="${TESSDATA_PREFIX:-/opt/homebrew/share/tessdata}"
 
 if [[ ! -d "$BUFFER_DIR" ]]; then
   echo "Fehler: Buffer-Ordner nicht gefunden: $BUFFER_DIR" >&2
@@ -183,6 +188,13 @@ fi
 if [[ -n "$REASONING" ]]; then
   CODEX_BASE_CMD+=(-c "model_reasoning_effort=\"${REASONING}\"")
 fi
+# MCP-Server fuer diesen Batch deaktivieren (reduziert Startup-Rauschen/Fehler).
+CODEX_BASE_CMD+=(
+  -c "mcp_servers.paper.enabled=false"
+  -c "mcp_servers.laravel-boost.enabled=false"
+  -c "mcp_servers.pencil.enabled=false"
+  -c "mcp_servers.herd.enabled=false"
+)
 if command -v stdbuf >/dev/null 2>&1; then
   CODEX_STREAM_PREFIX=(stdbuf -oL -eL)
 else
@@ -226,7 +238,7 @@ for pdf in "${PDF_FILES[@]}"; do
   log "START [${selected_index}/${SELECTED_TOTAL}] ${rel_pdf}"
   log "LIVE-OUTPUT -> ${file_log}"
 
-  prompt="Nutze die Skills import-scanned-belege und pdf. Bearbeite genau diese Datei: ${rel_pdf}. Lies und interpretiere den Beleg. Erzeuge/aktualisiere exakt diese JSON-Datei: ${rel_json}. Fuehre danach den Import aus mit: uv run tools/scanned-beleg-inserter/main.py import --beleg-file \"${json}\" --strict --db \"${DB_PATH}\" --relocate-raw-scan --source-buffer-root \"${BUFFER_DIR}\"."
+  prompt="Nutze die Skills import-scanned-belege und pdf. Bearbeite genau diese Datei: ${rel_pdf}. Lies und interpretiere den Beleg. Erzeuge/aktualisiere exakt diese JSON-Datei: ${rel_json}. Verwende in dieser Umgebung direkt diese Pipeline und KEINE Tool-Probing-Runden: (1) PDF->Bild mit sips nach /private/tmp, (2) OCR mit TESSDATA_PREFIX=/opt/homebrew/share/tessdata und tesseract -l eng, (3) JSON schreiben, (4) Import exakt mit: UV_CACHE_DIR=/tmp/uv-cache uv run tools/scanned-beleg-inserter/main.py import --beleg-file \"${json}\" --strict --db \"${DB_PATH}\" --relocate-raw-scan --source-buffer-root \"${BUFFER_DIR}\". Keine Versuche mit pdfinfo/pdftotext/mutool/magick/swift, ausser wenn die direkte Pipeline fehlschlaegt."
 
   set +e
   if [[ ${#CODEX_STREAM_PREFIX[@]} -gt 0 ]]; then

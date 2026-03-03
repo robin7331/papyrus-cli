@@ -20,6 +20,7 @@ Nutze diesen Skill, wenn genau eine PDF-Datei aus `/scanned_belege` (Root-Buffer
 
 - `uv run`
 - Datei `tools/scanned-beleg-inserter/main.py`
+- in dieser Umgebung: `sips` + `tesseract` (OCR-Fallback)
 
 ## Befehl
 
@@ -87,6 +88,8 @@ Regeln:
 1. PDF lesen und interpretieren.
    - Nutze den `pdf`-Skill.
    - Fuer reine Textextraktion: `swift` + `PDFKit`.
+   - Bevorzugte Pipeline in diesem Repo: `sips` + `tesseract` (`TESSDATA_PREFIX=/opt/homebrew/share/tessdata`, `-l eng`).
+   - Vermeide unnötige Tool-Probing-Runden (`pdfinfo`, `pdftotext`, `mutool`, `magick`, `gs`), wenn die bevorzugte Pipeline verfügbar ist.
 2. JSON in obigem Format erzeugen und als `*.scan.json` speichern.
 3. JSON validieren (optional, empfohlen):
 
@@ -97,7 +100,7 @@ uv run tools/scanned-beleg-inserter/main.py validate --beleg-file /ABS/PFAD/date
 4. Import ausfuehren:
 
 ```bash
-uv run tools/scanned-beleg-inserter/main.py import --beleg-file /ABS/PFAD/datei.scan.json --strict --relocate-raw-scan --source-buffer-root /ABS/PFAD/scanned_belege
+UV_CACHE_DIR=/tmp/uv-cache uv run tools/scanned-beleg-inserter/main.py import --beleg-file /ABS/PFAD/datei.scan.json --strict --relocate-raw-scan --source-buffer-root /ABS/PFAD/scanned_belege
 ```
 
 Optional:
@@ -108,8 +111,9 @@ Optional:
 
 - `/scanned_belege` ist ein reiner Eingangsbuffer fuer unprozessierte Scans.
 - Nach erfolgreichem Import muss die originale Rohdatei aus dem Buffer verschoben werden.
-- Zielordner: `belege/<year>/archiviert/scan/<YYYY-MM>/raw/`
-- Dateiname: `raw_scan_{rechnungsdatum}_{rechnungsnummer}.pdf`
+- Zielordner: `/<year>/belege/<YYYY-MM>/`
+- Dateiname PDF: `raw_scan_{rechnungsdatum}_{rechnungsnummer}.pdf`
+- Dateiname JSON: `raw_scan_{rechnungsdatum}_{rechnungsnummer}.scan.json` (im gleichen Ordner)
   - Fallback bei fehlendem Datum: `unknown_date`
   - Fallback bei fehlender Rechnungsnummer: `unknown_number`
   - Bei Namenskollision Suffix mit Hash-Praefix anhaengen.

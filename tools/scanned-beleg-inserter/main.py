@@ -102,14 +102,6 @@ def _infer_year(source_pdf: Path, document_date: str | None, given_year: Any) ->
     return int(datetime.now(tz=timezone.utc).strftime("%Y"))
 
 
-def _sanitize_filename(value: str) -> str:
-    return (
-        value.encode("ascii", errors="ignore")
-        .decode("ascii")
-        .replace(" ", "_")
-    )
-
-
 def _sanitize_filename_token(value: str | None, fallback: str, max_len: int = 120) -> str:
     if not value:
         return fallback
@@ -129,54 +121,88 @@ def _month_part(document_date: str | None, now: str) -> str:
     return now[:10][:7]
 
 
-def _relocate_raw_scan(
-    source_pdf: Path,
+def _assert_within_buffer(path: Path, source_buffer_root: Path | None) -> None:
+    if source_buffer_root is None:
+        return
+    path_resolved = path.resolve()
+    buffer_root_resolved = source_buffer_root.resolve()
+    if not path_resolved.is_relative_to(buffer_root_resolved):
+        raise RuntimeError(
+            f"Pfad liegt nicht unter source-buffer-root: path={path_resolved} root={buffer_root_resolved}"
+        )
+
+
+def _storage_rel_path_exists(conn: sqlite3.Connection, rel_path: Path) -> bool:
+    row = conn.execute(
+        "SELECT 1 FROM documents WHERE storage_rel_path = ? LIMIT 1",
+        (str(rel_path),),
+    ).fetchone()
+    return row is not None
+
+
+def _resolve_archive_targets(
     normalized: dict[str, Any],
     *,
+    conn: sqlite3.Connection,
     file_sha: str,
     project_root: Path,
     now: str,
-    source_buffer_root: Path | None,
-) -> tuple[Path, Path]:
-    source_resolved = source_pdf.resolve()
-    if source_buffer_root is not None:
-        buffer_root_resolved = source_buffer_root.resolve()
-        if not source_resolved.is_relative_to(buffer_root_resolved):
-            raise RuntimeError(
-                f"source_pdf liegt nicht unter source-buffer-root: source={source_resolved} root={buffer_root_resolved}"
-            )
+) -> tuple[Path, Path, Path, Path]:
+    year = str(normalized["year"])
+    month_part = _month_part(normalized["document_date"], now)
+    rel_dir = Path(year) / "belege" / month_part
+    abs_dir = project_root / rel_dir
+    abs_dir.mkdir(parents=True, exist_ok=True)
 
     date_token = normalized["document_date"] if normalized["document_date"] else "unknown_date"
     invoice_token = _sanitize_filename_token(normalized["invoice_number"], "unknown_number")
-    raw_name = f"raw_scan_{date_token}_{invoice_token}.pdf"
+    stem_base = f"raw_scan_{date_token}_{invoice_token}"
 
-    month_part = _month_part(normalized["document_date"], now)
-    raw_rel_dir = (
-        Path("belege")
-        / str(normalized["year"])
-        / "archiviert"
-        / "scan"
-        / month_part
-        / "raw"
-    )
-    raw_abs_dir = project_root / raw_rel_dir
-    raw_abs_dir.mkdir(parents=True, exist_ok=True)
+    sha_suffix = file_sha[:8]
+    suffix_counter = 0
+    while True:
+        if suffix_counter == 0:
+            stem = stem_base
+        elif suffix_counter == 1:
+            stem = f"{stem_base}_{sha_suffix}"
+        else:
+            stem = f"{stem_base}_{sha_suffix}_{suffix_counter}"
 
-    target_name = raw_name
-    target_abs = raw_abs_dir / target_name
-    if target_abs.exists():
-        stem = target_abs.stem
-        suffix = target_abs.suffix
-        target_name = f"{stem}_{file_sha[:8]}{suffix}"
-        target_abs = raw_abs_dir / target_name
-        collision_counter = 2
-        while target_abs.exists():
-            target_name = f"{stem}_{file_sha[:8]}_{collision_counter}{suffix}"
-            target_abs = raw_abs_dir / target_name
-            collision_counter += 1
+        pdf_rel = rel_dir / f"{stem}.pdf"
+        json_rel = rel_dir / f"{stem}.scan.json"
+        pdf_abs = project_root / pdf_rel
+        json_abs = project_root / json_rel
 
-    shutil.move(str(source_resolved), str(target_abs))
-    return target_abs, raw_rel_dir / target_name
+        if pdf_abs.exists() or json_abs.exists():
+            suffix_counter += 1
+            continue
+        if _storage_rel_path_exists(conn, pdf_rel):
+            suffix_counter += 1
+            continue
+        return pdf_abs, pdf_rel, json_abs, json_rel
+
+
+def _copy_archive_files(
+    source_pdf: Path,
+    beleg_file: Path,
+    archived_pdf_abs: Path,
+    archived_json_abs: Path,
+) -> None:
+    copied: list[Path] = []
+    try:
+        shutil.copyfile(source_pdf.resolve(), archived_pdf_abs)
+        copied.append(archived_pdf_abs)
+        shutil.copyfile(beleg_file.resolve(), archived_json_abs)
+        copied.append(archived_json_abs)
+    except Exception:
+        for path in copied:
+            path.unlink(missing_ok=True)
+        raise
+
+
+def _remove_buffer_files(source_pdf: Path, beleg_file: Path) -> None:
+    source_pdf.unlink(missing_ok=True)
+    beleg_file.unlink(missing_ok=True)
 
 
 def load_and_validate(beleg_file: Path, strict: bool) -> dict[str, Any]:
@@ -324,32 +350,40 @@ def run_import(
         raise RuntimeError(f"DB nicht gefunden: {db_path}")
 
     source_pdf: Path = normalized["source_pdf"]
+    beleg_file = beleg_file.resolve()
     source_bytes = source_pdf.read_bytes()
     file_sha = hashlib.sha256(source_bytes).hexdigest()
     file_size = source_pdf.stat().st_size
     project_root = Path(__file__).resolve().parents[2]
     now = now_iso()
 
-    relocated_raw_abs: Path | None = None
-    relocated_raw_rel: Path | None = None
+    archived_pdf_abs: Path | None = None
+    archived_pdf_rel: Path | None = None
+    archived_json_abs: Path | None = None
+    archived_json_rel: Path | None = None
 
     conn = sqlite3.connect(str(db_path))
     conn.row_factory = sqlite3.Row
     try:
+        if relocate_raw_scan:
+            _assert_within_buffer(source_pdf, source_buffer_root)
+            _assert_within_buffer(beleg_file, source_buffer_root)
+
         existing = conn.execute(
             "SELECT id, review_required FROM documents WHERE file_sha256 = ? LIMIT 1",
             (file_sha,),
         ).fetchone()
         if existing is not None:
             if relocate_raw_scan:
-                relocated_raw_abs, relocated_raw_rel = _relocate_raw_scan(
-                    source_pdf,
+                archived_pdf_abs, archived_pdf_rel, archived_json_abs, archived_json_rel = _resolve_archive_targets(
                     normalized,
+                    conn=conn,
                     file_sha=file_sha,
                     project_root=project_root,
                     now=now,
-                    source_buffer_root=source_buffer_root,
                 )
+                _copy_archive_files(source_pdf, beleg_file, archived_pdf_abs, archived_json_abs)
+                _remove_buffer_files(source_pdf, beleg_file)
 
             result: dict[str, Any] = {
                 "status": "ok",
@@ -359,41 +393,31 @@ def run_import(
                 "review_required": bool(existing["review_required"] or 0),
                 "db_path": str(db_path),
             }
-            if relocated_raw_rel is not None:
+            if archived_pdf_rel is not None:
                 result["raw_scan_relocated"] = True
-                result["raw_scan_rel_path"] = str(relocated_raw_rel)
-                result["raw_scan_name"] = relocated_raw_abs.name if relocated_raw_abs else None
+                result["raw_scan_rel_path"] = str(archived_pdf_rel)
+                result["raw_scan_name"] = archived_pdf_abs.name if archived_pdf_abs else None
+                result["archived_json_rel_path"] = str(archived_json_rel)
             else:
                 result["raw_scan_relocated"] = False
 
             print(json.dumps(result, ensure_ascii=False))
             return EXIT_OK
 
-        month_part = _month_part(normalized["document_date"], now)
-        safe_base = _sanitize_filename(
-            "_".join(
-                [
-                    part
-                    for part in (
-                        normalized["issuer_name"],
-                        normalized["invoice_number"],
-                        normalized["document_date"],
-                    )
-                    if part
-                ]
-            )
-        ) or "beleg_scan"
-
-        rel_path = Path("belege") / str(normalized["year"]) / "archiviert" / "scan" / month_part / f"{file_sha}_{safe_base}.pdf"
-        abs_path = project_root / rel_path
-        abs_path.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copyfile(source_pdf, abs_path)
+        archived_pdf_abs, archived_pdf_rel, archived_json_abs, archived_json_rel = _resolve_archive_targets(
+            normalized,
+            conn=conn,
+            file_sha=file_sha,
+            project_root=project_root,
+            now=now,
+        )
 
         review_required = _compute_review_required(normalized)
         metadata = {
             "source": "scanned_beleg_skill",
-            "source_pdf": str(source_pdf),
-            "beleg_json": str(beleg_file),
+            "source_pdf_original": str(source_pdf),
+            "beleg_json_original": str(beleg_file),
+            "archived_json_rel_path": str(archived_json_rel),
             "vat_treatment": normalized["vat_treatment"],
             "country_code": normalized["country_code"],
             "document_type": normalized["document_type"],
@@ -406,7 +430,7 @@ def run_import(
             "year": normalized["year"],
             "source_type": "scan",
             "lifecycle_status": "archiviert",
-            "storage_rel_path": str(rel_path),
+            "storage_rel_path": str(archived_pdf_rel),
             "original_filename": source_pdf.name,
             "mime_type": "application/pdf",
             "file_size_bytes": file_size,
@@ -434,7 +458,6 @@ def run_import(
         columns_available = _document_columns(conn)
         cols = [key for key in insert_data.keys() if key in columns_available]
         if not cols:
-            abs_path.unlink(missing_ok=True)
             raise RuntimeError("documents hat keine erwarteten Spalten.")
 
         values = [insert_data[key] for key in cols]
@@ -445,19 +468,26 @@ def run_import(
             cursor = conn.execute(sql, values)
             conn.commit()
         except Exception:
-            abs_path.unlink(missing_ok=True)
             raise
 
         document_id = int(cursor.lastrowid)
-        if relocate_raw_scan:
-            relocated_raw_abs, relocated_raw_rel = _relocate_raw_scan(
-                source_pdf,
-                normalized,
-                file_sha=file_sha,
-                project_root=project_root,
-                now=now,
-                source_buffer_root=source_buffer_root,
-            )
+        try:
+            _copy_archive_files(source_pdf, beleg_file, archived_pdf_abs, archived_json_abs)
+            if relocate_raw_scan:
+                _remove_buffer_files(source_pdf, beleg_file)
+        except Exception as exc:
+            archived_pdf_abs.unlink(missing_ok=True)
+            archived_json_abs.unlink(missing_ok=True)
+            try:
+                conn.execute("DELETE FROM documents WHERE id = ?", (document_id,))
+                conn.commit()
+            except Exception as rollback_exc:
+                raise RuntimeError(
+                    f"Import teilweise fehlgeschlagen (Dateiablage), Rollback fehlgeschlagen fuer document_id={document_id}: {rollback_exc}"
+                ) from exc
+            raise RuntimeError(
+                f"Import teilweise fehlgeschlagen (Dateiablage), DB-Insert wurde rueckgaengig gemacht fuer document_id={document_id}."
+            ) from exc
 
         result = {
             "status": "ok",
@@ -465,13 +495,13 @@ def run_import(
             "deduplicated": False,
             "document_id": document_id,
             "review_required": bool(review_required),
-            "storage_rel_path": str(rel_path),
+            "storage_rel_path": str(archived_pdf_rel),
             "db_path": str(db_path),
-            "raw_scan_relocated": bool(relocated_raw_rel),
+            "raw_scan_relocated": bool(relocate_raw_scan),
+            "raw_scan_rel_path": str(archived_pdf_rel),
+            "raw_scan_name": archived_pdf_abs.name if archived_pdf_abs else None,
+            "archived_json_rel_path": str(archived_json_rel),
         }
-        if relocated_raw_rel is not None:
-            result["raw_scan_rel_path"] = str(relocated_raw_rel)
-            result["raw_scan_name"] = relocated_raw_abs.name if relocated_raw_abs else None
 
         print(json.dumps(result, ensure_ascii=False))
         return EXIT_OK
