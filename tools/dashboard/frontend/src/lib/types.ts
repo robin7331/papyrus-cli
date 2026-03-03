@@ -210,6 +210,11 @@ export type DocumentListItem = {
   vat_rate_bps?: number | null;
   subject?: string | null;
   summary_short?: string | null;
+  ocr_text?: string | null;
+  ocr_confidence?: number | null;
+  ai_confidence?: number | null;
+  review_required?: 0 | 1;
+  extraction_model?: string | null;
   metadata_json?: string | null;
   created_at: string;
   updated_at: string;
@@ -223,6 +228,101 @@ export type DocumentsResponse = {
   page: number;
   pageSize: number;
   total: number;
+};
+
+export type DocumentMatchTransactionSuggestion = {
+  transaction_id: number;
+  booking_date: string;
+  amount_cents: number;
+  purpose: string | null;
+  counterparty_name: string | null;
+  reference: string | null;
+  tx_type: string | null;
+  document_status: DocumentStatus;
+  linked_documents_count: number;
+  score: number;
+  reason_codes_json: string;
+};
+
+export type DocumentMatchTransactionsResponse = {
+  ok: boolean;
+  document_id: number;
+  candidate_count: number;
+  suggestions: DocumentMatchTransactionSuggestion[];
+};
+
+export type DocumentLinkedTransaction = {
+  link_id: number;
+  link_role: "primary" | "supporting";
+  link_origin: "manual" | "auto_confirmed" | "import";
+  confidence: number | null;
+  created_at: string;
+  created_by: string | null;
+  transaction_id: number;
+  booking_date: string;
+  valuta_date: string | null;
+  amount_cents: number;
+  currency: string;
+  purpose: string | null;
+  counterparty_name: string | null;
+  reference: string | null;
+  tx_type: string | null;
+  document_status: DocumentStatus;
+  missing_invoice_flag: 0 | 1;
+};
+
+export type DocumentLinkedTransactionsResponse = {
+  document_id: number;
+  total: number;
+  items: DocumentLinkedTransaction[];
+};
+
+export type DocumentRescanResponse = {
+  ok: boolean;
+  document_id: number;
+  document: DocumentListItem;
+  rescan: {
+    model: string;
+    ocr_pages: number | null;
+    used_uploaded_pdf: boolean;
+  };
+};
+
+export type DocumentPatchPayload = {
+  documentDate?: string | null;
+  issuerName?: string | null;
+  invoiceNumber?: string | null;
+  subject?: string | null;
+  summaryShort?: string | null;
+  documentType?: string | null;
+  grossAmountCents?: number | null;
+  netAmountCents?: number | null;
+  vatAmountCents?: number | null;
+  vatRateBps?: number | null;
+  vatTreatment?: "VAT_19" | "VAT_0" | "VAT_OSS" | "VAT_EXPORT" | "VAT_REVERSE_CHARGE" | "VAT_UNKNOWN";
+  countryCode?: string | null;
+  notes?: string[];
+  reviewRequired?: boolean;
+  ocrText?: string | null;
+  aiConfidence?: number | null;
+  ocrConfidence?: number | null;
+  changeReason?: string;
+};
+
+export type DocumentPatchResponse = {
+  ok: boolean;
+  document_id: number;
+  document: DocumentListItem;
+  changed_fields: string[];
+  expired_match_suggestions: number;
+  linked_transaction_ids: number[];
+  tax_recompute: Array<{
+    transaction_id: number;
+    ok: boolean;
+    skipped_manual_final?: boolean;
+    forced_final?: boolean;
+    message?: string;
+  }>;
 };
 
 export type ImportQualityResponse = {

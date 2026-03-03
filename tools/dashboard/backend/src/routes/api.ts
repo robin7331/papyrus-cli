@@ -1,6 +1,9 @@
 import { createHash } from "node:crypto";
+import { execFile } from "node:child_process";
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
+import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { Router, type Response } from "express";
 import multer from "multer";
@@ -13,8 +16,10 @@ import {
   validateQuery,
   withValidDateRange,
 } from "../lib/validation.js";
+import { recomputeTaxFromLinksForTransaction } from "./tax.js";
 
 const router = Router();
+const execFileAsync = promisify(execFile);
 
 const dateRangeBaseSchema = z.object({
   from: isoDateSchema.optional(),
@@ -45,6 +50,7 @@ const documentsQuerySchema = z.object({
   year: z.coerce.number().int().min(2000).max(2100).optional(),
   sourceType: z.enum(["email", "scan", "portal", "manuell", "sonstiges"]).optional(),
   lifecycleStatus: z.enum(["inbox", "archiviert", "verworfen"]).optional(),
+  mappedStatus: z.enum(["mapped", "unmapped"]).optional(),
   q: z.string().trim().max(160).optional(),
   page: z.coerce.number().int().min(1).optional().default(1),
   pageSize: z.coerce.number().int().min(1).max(200).optional().default(50),
@@ -66,6 +72,58 @@ const missingInvoicePatchSchema = z.object({
   missingInvoiceFlag: z.boolean(),
 });
 
+const vatTreatmentValues = ["VAT_19", "VAT_0", "VAT_OSS", "VAT_EXPORT", "VAT_REVERSE_CHARGE", "VAT_UNKNOWN"] as const;
+
+const documentPatchSchema = z
+  .object({
+    documentDate: isoDateSchema.nullable().optional(),
+    issuerName: z.string().trim().max(200).nullable().optional(),
+    invoiceNumber: z.string().trim().max(120).nullable().optional(),
+    subject: z.string().trim().max(200).nullable().optional(),
+    summaryShort: z.string().trim().max(400).nullable().optional(),
+    documentType: z.string().trim().max(80).nullable().optional(),
+    grossAmountCents: z.number().int().nullable().optional(),
+    netAmountCents: z.number().int().nullable().optional(),
+    vatAmountCents: z.number().int().nullable().optional(),
+    vatRateBps: z.number().int().min(0).max(10000).nullable().optional(),
+    vatTreatment: z.enum(vatTreatmentValues).optional(),
+    countryCode: z.string().trim().max(2).nullable().optional(),
+    notes: z.array(z.string().trim().min(1).max(200)).max(30).optional(),
+    reviewRequired: z.boolean().optional(),
+    ocrText: z.string().trim().max(50_000).nullable().optional(),
+    aiConfidence: z.number().min(0).max(1).nullable().optional(),
+    ocrConfidence: z.number().min(0).max(1).nullable().optional(),
+    changeReason: z.string().trim().max(240).optional(),
+  })
+  .superRefine((value, ctx) => {
+    const hasAnyUpdate = Object.keys(value).some((key) => key !== "changeReason");
+    if (!hasAnyUpdate) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Mindestens ein editierbares Feld muss gesetzt sein.",
+      });
+    }
+
+    if (value.countryCode !== undefined && value.countryCode !== null && !/^[A-Za-z]{2}$/.test(value.countryCode.trim())) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["countryCode"],
+        message: "countryCode muss ein ISO-2 Ländercode sein (z.B. DE).",
+      });
+    }
+
+    const gross = value.grossAmountCents;
+    const net = value.netAmountCents;
+    const vat = value.vatAmountCents;
+    if (typeof gross === "number" && typeof net === "number" && typeof vat === "number" && Math.abs(gross - (net + vat)) > 1) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["grossAmountCents"],
+        message: "Brutto muss Netto + MwSt entsprechen (Toleranz 1 Cent).",
+      });
+    }
+  });
+
 const matchSuggestionsRefreshSchema = z.object({
   limit: z.coerce.number().int().min(1).max(20).optional().default(8),
 });
@@ -84,9 +142,34 @@ const nextOpenQuerySchema = withValidDateRange(
   }),
 );
 
+const rescanExtractedFieldsSchema = z.object({
+  documentDate: isoDateSchema.nullable(),
+  issuerName: z.string().trim().max(200).nullable(),
+  invoiceNumber: z.string().trim().max(120).nullable(),
+  subject: z.string().trim().max(200).nullable(),
+  summaryShort: z.string().trim().max(400).nullable(),
+  documentType: z.string().trim().max(80).nullable(),
+  grossAmountCents: z.number().int().nullable(),
+  netAmountCents: z.number().int().nullable(),
+  vatAmountCents: z.number().int().nullable(),
+  vatRateBps: z.number().int().min(0).max(10000).nullable(),
+  vatTreatment: z.string().trim().max(40).nullable(),
+  countryCode: z.string().trim().max(2).nullable(),
+  confidence: z.number().min(0).max(1),
+  ocrConfidence: z.number().min(0).max(1).nullable(),
+  notes: z.array(z.string().trim().min(1).max(200)).default([]),
+});
+
+type RescanExtractedFields = z.infer<typeof rescanExtractedFieldsSchema>;
+
 const projectRoot = path.resolve(fileURLToPath(new URL("../../../../../", import.meta.url)));
 const documentsRoot = path.join(projectRoot, "belege");
 const maxUploadBytes = Number(process.env.DASHBOARD_MAX_UPLOAD_BYTES ?? 25 * 1024 * 1024);
+const rescanModelName = process.env.AI_MODEL ?? "gpt-5.3-codex";
+const rescanReasoning = process.env.DASHBOARD_RESCAN_REASONING ?? "low";
+const rescanConfidenceThreshold = Number(process.env.SCANNED_BELEG_MIN_CONFIDENCE ?? "0.80");
+const rescanOcrScale = process.env.DASHBOARD_RESCAN_OCR_SCALE ?? "2.2";
+const rescanCodexTimeoutMs = Number(process.env.DASHBOARD_RESCAN_CODEX_TIMEOUT_MS ?? "600000");
 
 const allowedExtensions = new Set([".pdf", ".jpg", ".jpeg", ".png", ".webp", ".tif", ".tiff"]);
 const allowedMimeTypes = new Set([
@@ -103,6 +186,7 @@ const preferredExtensionByMime: Record<string, string> = {
   "image/webp": ".webp",
   "image/tiff": ".tiff",
 };
+const allowedVatTreatments = new Set<string>(vatTreatmentValues);
 
 const upload = multer({
   storage: multer.memoryStorage(),
@@ -292,6 +376,221 @@ function resolveStatementFilePath(input: {
   return matches[0];
 }
 
+function normalizeNullableString(value: string | null | undefined): string | null {
+  if (!value) {
+    return null;
+  }
+  const normalized = value.trim();
+  return normalized.length > 0 ? normalized : null;
+}
+
+function parseMetadataJsonObject(value: string | null | undefined): Record<string, unknown> {
+  if (!value) {
+    return {};
+  }
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+      return parsed as Record<string, unknown>;
+    }
+    return {};
+  } catch {
+    return {};
+  }
+}
+
+function normalizeMetadataNotes(value: unknown): string[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value
+    .filter((item): item is string => typeof item === "string")
+    .map((item) => item.trim())
+    .filter((item) => item.length > 0)
+    .slice(0, 30);
+}
+
+function normalizeCountryCode(value: string | null | undefined): string | null {
+  if (!value) {
+    return null;
+  }
+  const normalized = value.trim().toUpperCase();
+  return /^[A-Z]{2}$/.test(normalized) ? normalized : null;
+}
+
+function normalizeVatTreatment(value: string | null | undefined): (typeof vatTreatmentValues)[number] {
+  const normalized = (value ?? "VAT_UNKNOWN").trim().toUpperCase();
+  return allowedVatTreatments.has(normalized as (typeof vatTreatmentValues)[number])
+    ? (normalized as (typeof vatTreatmentValues)[number])
+    : "VAT_UNKNOWN";
+}
+
+const codexRescanJsonSchema = z
+  .object({
+    extracted: z
+      .object({
+        document_date: isoDateSchema.nullable().optional(),
+        issuer_name: z.string().trim().max(200).nullable().optional(),
+        invoice_number: z.string().trim().max(120).nullable().optional(),
+        subject: z.string().trim().max(200).nullable().optional(),
+        summary_short: z.string().trim().max(400).nullable().optional(),
+        document_type: z.string().trim().max(80).nullable().optional(),
+        gross_amount_cents: z.number().int().nullable().optional(),
+        net_amount_cents: z.number().int().nullable().optional(),
+        vat_amount_cents: z.number().int().nullable().optional(),
+        vat_rate_bps: z.number().int().min(0).max(10000).nullable().optional(),
+        vat_treatment: z.string().trim().max(40).nullable().optional(),
+        country_code: z.string().trim().max(2).nullable().optional(),
+        ai_confidence: z.number().min(0).max(1).nullable().optional(),
+        ocr_confidence: z.number().min(0).max(1).nullable().optional(),
+        ocr_text: z.string().trim().max(50_000).nullable().optional(),
+        notes: z.array(z.string().trim().min(1).max(200)).optional(),
+      })
+      .passthrough(),
+  })
+  .passthrough();
+
+function countOcrPages(ocrText: string | null): number | null {
+  if (!ocrText) {
+    return null;
+  }
+  const matches = ocrText.match(/===== PAGE \d+ =====/g);
+  if (!matches || matches.length === 0) {
+    return null;
+  }
+  return matches.length;
+}
+
+function normalizeRescanExtractedFields(extracted: RescanExtractedFields): RescanExtractedFields {
+  const vatTreatmentCandidate = (extracted.vatTreatment ?? "VAT_UNKNOWN").trim().toUpperCase();
+  const vatTreatment = allowedVatTreatments.has(vatTreatmentCandidate) ? vatTreatmentCandidate : "VAT_UNKNOWN";
+  const countryCodeCandidate = extracted.countryCode?.trim().toUpperCase() ?? "";
+  const countryCode = /^[A-Z]{2}$/.test(countryCodeCandidate) ? countryCodeCandidate : null;
+
+  return {
+    ...extracted,
+    issuerName: normalizeNullableString(extracted.issuerName),
+    invoiceNumber: normalizeNullableString(extracted.invoiceNumber),
+    subject: normalizeNullableString(extracted.subject),
+    summaryShort: normalizeNullableString(extracted.summaryShort),
+    documentType: normalizeNullableString(extracted.documentType),
+    vatTreatment,
+    countryCode,
+    notes: extracted.notes.map((item) => item.trim()).filter((item) => item.length > 0).slice(0, 30),
+  };
+}
+
+function computeReviewRequiredForRescan(extracted: RescanExtractedFields): number {
+  if (extracted.confidence < rescanConfidenceThreshold) {
+    return 1;
+  }
+  if (extracted.grossAmountCents === null || extracted.subject === null) {
+    return 1;
+  }
+  if (extracted.vatTreatment === "VAT_UNKNOWN") {
+    return 1;
+  }
+  return 0;
+}
+
+async function extractWithCodexCliForRescan(pdfPath: string): Promise<{
+  extracted: RescanExtractedFields;
+  ocrText: string | null;
+  pageCount: number | null;
+}> {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "dashboard-rescan-"));
+  const outputJson = path.join(tempDir, "rescan.scan.json");
+  const outputOcr = path.join(tempDir, "rescan.ocr.txt");
+
+  const prompt = [
+    "Nutze die Skills import-scanned-belege und pdf.",
+    `Bearbeite genau diese Datei: ${pdfPath}.`,
+    `Erzeuge/aktualisiere exakt diese JSON-Datei: ${outputJson}.`,
+    "Verwende in dieser Umgebung direkt diese Pipeline und KEINE Tool-Probing-Runden:",
+    `(1) OCR fuer ALLE PDF-Seiten mit: tools/ocr-pdf-multipage.sh \"${pdfPath}\" \"${outputOcr}\" eng ${rescanOcrScale},`,
+    `(2) lies den kompletten OCR-Text aus \"${outputOcr}\" inkl. aller PAGE-Bloecke,`,
+    "(3) JSON schreiben im scanned-beleg-Format mit extracted-Feldern.",
+    "FUEHRE KEINEN Import-Befehl aus, KEINE DB-Aenderungen und KEINE Datei-Verschiebung.",
+    "Keine Versuche mit pdfinfo/pdftotext/mutool/magick/Einzelseiten-OCR.",
+  ].join(" ");
+
+  const codexArgs = ["exec", "--full-auto", "-C", projectRoot];
+  if (rescanModelName.trim().length > 0) {
+    codexArgs.push("--model", rescanModelName);
+  }
+  if (rescanReasoning.trim().length > 0) {
+    codexArgs.push("-c", `model_reasoning_effort=\"${rescanReasoning}\"`);
+  }
+  codexArgs.push(
+    "-c",
+    "mcp_servers.paper.enabled=false",
+    "-c",
+    "mcp_servers.laravel-boost.enabled=false",
+    "-c",
+    "mcp_servers.pencil.enabled=false",
+    "-c",
+    "mcp_servers.herd.enabled=false",
+    prompt,
+  );
+
+  try {
+    await execFileAsync("codex", codexArgs, {
+      cwd: projectRoot,
+      maxBuffer: 16 * 1024 * 1024,
+      timeout: rescanCodexTimeoutMs,
+      env: {
+        ...process.env,
+        UV_CACHE_DIR: process.env.UV_CACHE_DIR ?? "/tmp/uv-cache",
+      },
+    });
+
+    if (!fs.existsSync(outputJson) || !fs.statSync(outputJson).isFile()) {
+      throw new Error("Codex hat keine Rescan-JSON erzeugt.");
+    }
+
+    const payload = JSON.parse(fs.readFileSync(outputJson, "utf8")) as unknown;
+    const parsed = codexRescanJsonSchema.parse(payload);
+    const extractedRaw = parsed.extracted;
+    const ocrTextFromJson = normalizeNullableString(extractedRaw.ocr_text ?? null);
+    const ocrTextFromFile = fs.existsSync(outputOcr) ? normalizeNullableString(fs.readFileSync(outputOcr, "utf8")) : null;
+    const ocrText = (ocrTextFromFile ?? ocrTextFromJson)?.slice(0, 50_000) ?? null;
+
+    const normalized = normalizeRescanExtractedFields({
+      documentDate: extractedRaw.document_date ?? null,
+      issuerName: extractedRaw.issuer_name ?? null,
+      invoiceNumber: extractedRaw.invoice_number ?? null,
+      subject: extractedRaw.subject ?? null,
+      summaryShort: extractedRaw.summary_short ?? null,
+      documentType: extractedRaw.document_type ?? null,
+      grossAmountCents: extractedRaw.gross_amount_cents ?? null,
+      netAmountCents: extractedRaw.net_amount_cents ?? null,
+      vatAmountCents: extractedRaw.vat_amount_cents ?? null,
+      vatRateBps: extractedRaw.vat_rate_bps ?? null,
+      vatTreatment: extractedRaw.vat_treatment ?? "VAT_UNKNOWN",
+      countryCode: extractedRaw.country_code ?? null,
+      confidence: extractedRaw.ai_confidence ?? 0,
+      ocrConfidence: extractedRaw.ocr_confidence ?? null,
+      notes: extractedRaw.notes ?? [],
+    });
+
+    return {
+      extracted: normalized,
+      ocrText,
+      pageCount: countOcrPages(ocrText),
+    };
+  } catch (error) {
+    const code = (error as { code?: unknown }).code;
+    if (code === "ENOENT") {
+      throw new Error("Lokale codex CLI wurde nicht gefunden.");
+    }
+    const message = error instanceof Error ? error.message : "Unbekannter Codex-Fehler";
+    const stderr = typeof (error as { stderr?: unknown }).stderr === "string" ? String((error as { stderr: string }).stderr).trim() : "";
+    throw new Error(`Codex-Rescan fehlgeschlagen: ${stderr ? `${message} (${stderr.slice(0, 400)})` : message}`);
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
+}
+
 function buildTransactionsWhere(
   filters: {
     from?: string;
@@ -357,6 +656,7 @@ function buildDocumentsWhere(
     year?: number;
     sourceType?: string;
     lifecycleStatus?: string;
+    mappedStatus?: "mapped" | "unmapped";
     q?: string;
   },
   availableColumns: Set<string>,
@@ -379,6 +679,26 @@ function buildDocumentsWhere(
   if (filters.lifecycleStatus) {
     clauses.push(`${col("lifecycle_status")} = ?`);
     params.push(filters.lifecycleStatus);
+  }
+
+  if (filters.mappedStatus === "mapped") {
+    clauses.push(
+      `EXISTS (
+        SELECT 1
+        FROM transaction_document_links l
+        WHERE l.document_id = ${col("id")}
+          AND l.is_active = 1
+      )`,
+    );
+  } else if (filters.mappedStatus === "unmapped") {
+    clauses.push(
+      `NOT EXISTS (
+        SELECT 1
+        FROM transaction_document_links l
+        WHERE l.document_id = ${col("id")}
+          AND l.is_active = 1
+      )`,
+    );
   }
 
   if (filters.q) {
@@ -444,6 +764,50 @@ function getDocumentsColumnSet(): Set<string> {
   return new Set(rows.map((row) => row.name));
 }
 
+function getDocumentWithLinkCounts(db: ReturnType<typeof getDb>, documentId: number) {
+  return db
+    .prepare(
+      `SELECT
+         d.*,
+         COALESCE(link_counts.link_count, 0) AS linked_transactions_count,
+         COALESCE(link_counts.inflow_count, 0) AS linked_inflow_count,
+         COALESCE(link_counts.outflow_count, 0) AS linked_outflow_count
+       FROM documents d
+       LEFT JOIN (
+         SELECT
+           l.document_id,
+           COUNT(*) AS link_count,
+           SUM(CASE WHEN t.amount_cents > 0 THEN 1 ELSE 0 END) AS inflow_count,
+           SUM(CASE WHEN t.amount_cents < 0 THEN 1 ELSE 0 END) AS outflow_count
+         FROM transaction_document_links l
+         JOIN bank_transactions t ON t.id = l.bank_transaction_id
+         WHERE l.is_active = 1
+         GROUP BY l.document_id
+       ) link_counts ON link_counts.document_id = d.id
+       WHERE d.id = ?`,
+    )
+    .get(documentId);
+}
+
+function ensureDocumentChangeHistoryTable(db: ReturnType<typeof getDb>) {
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS document_change_history (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      document_id INTEGER NOT NULL REFERENCES documents(id) ON DELETE CASCADE,
+      changed_at TEXT NOT NULL,
+      changed_by TEXT,
+      change_reason TEXT,
+      changed_fields_json TEXT NOT NULL,
+      before_json TEXT NOT NULL,
+      after_json TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_document_change_history_doc_changed
+      ON document_change_history(document_id, changed_at DESC);
+  `);
+}
+
+type DocumentPatchPayload = z.infer<typeof documentPatchSchema>;
+
 type MatchInputTransaction = {
   id: number;
   booking_date: string;
@@ -492,6 +856,37 @@ type MatchSuggestionRow = {
   invoice_number: string | null;
   gross_amount_cents: number | null;
   currency: string;
+};
+
+type MatchTransactionCandidateRow = MatchInputTransaction & {
+  tx_type: string | null;
+  document_status: "offen" | "zugeordnet" | "nicht_erforderlich" | "in_klaerung";
+  linked_documents_count: number;
+};
+
+type MatchTransactionSuggestion = MatchTransactionCandidateRow & {
+  score: number;
+  reason_codes_json: string;
+};
+
+type DocumentLinkedTransactionRow = {
+  link_id: number;
+  link_role: "primary" | "supporting";
+  link_origin: "manual" | "auto_confirmed" | "import";
+  confidence: number | null;
+  created_at: string;
+  created_by: string | null;
+  transaction_id: number;
+  booking_date: string;
+  valuta_date: string | null;
+  amount_cents: number;
+  currency: string;
+  purpose: string | null;
+  counterparty_name: string | null;
+  reference: string | null;
+  tx_type: string | null;
+  document_status: "offen" | "zugeordnet" | "nicht_erforderlich" | "in_klaerung";
+  missing_invoice_flag: 0 | 1;
 };
 
 function normalizeTokens(value: string | null | undefined): string[] {
@@ -799,6 +1194,28 @@ function recomputeTransactionDocumentStatus(
       : "offen";
 
   return setTransactionDocumentStatus(db, txId, targetStatus, reason, changedBy);
+}
+
+function tryAutoFinalizeTaxForLinkedTransaction(txId: number): {
+  ok: boolean;
+  skipped_manual_final?: boolean;
+  forced_final?: boolean;
+  message?: string;
+} {
+  try {
+    const result = recomputeTaxFromLinksForTransaction(txId, { forceFinalIfNoErrors: true });
+    return {
+      ok: true,
+      skipped_manual_final: result.skipped_manual_final,
+      forced_final: result.forced_final,
+    };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Steuer konnte nicht automatisch neu berechnet werden.";
+    return {
+      ok: false,
+      message,
+    };
+  }
 }
 
 router.get("/health", (_req, res) => {
@@ -1443,12 +1860,14 @@ router.post("/transactions/:id/match-selection", (req, res) => {
     });
 
     const result = writeTx();
+    const taxRecompute = tryAutoFinalizeTaxForLinkedTransaction(txId);
 
     res.json({
       ok: true,
       transaction_id: txId,
       linked_document_ids: selectedIds,
       new_status: result.status,
+      tax_recompute: taxRecompute,
     });
   } catch (error) {
     sendError(res, error);
@@ -1577,6 +1996,580 @@ router.get("/transactions/:id/statement-file", (req, res) => {
   } catch (error) {
     sendError(res, error);
   }
+});
+
+router.post("/documents/:id/match-transactions/refresh", (req, res) => {
+  try {
+    const documentId = Number(req.params.id);
+    if (!Number.isInteger(documentId) || documentId <= 0) {
+      throw new ValidationError("Ungültige Dokument-ID");
+    }
+
+    const payload = matchSuggestionsRefreshSchema.parse(req.body ?? {});
+    const db = getDb();
+    const documentColumns = getDocumentsColumnSet();
+
+    const reviewRequiredExpr = documentColumns.has("review_required")
+      ? "COALESCE(d.review_required, 0) AS review_required"
+      : "0 AS review_required";
+    const aiConfidenceExpr = documentColumns.has("ai_confidence")
+      ? "d.ai_confidence AS ai_confidence"
+      : "NULL AS ai_confidence";
+
+    const doc = db
+      .prepare(
+        `SELECT
+           d.id,
+           d.source_type,
+           d.storage_rel_path,
+           d.original_filename,
+           d.document_date,
+           d.issuer_name,
+           d.invoice_number,
+           d.gross_amount_cents,
+           d.currency,
+           ${reviewRequiredExpr},
+           ${aiConfidenceExpr}
+         FROM documents d
+         WHERE d.id = ?`,
+      )
+      .get(documentId) as MatchInputDocument | undefined;
+
+    if (!doc) {
+      throw new ValidationError("Dokument nicht gefunden");
+    }
+
+    if (typeof doc.gross_amount_cents !== "number" || !doc.document_date) {
+      res.json({
+        ok: true,
+        document_id: documentId,
+        candidate_count: 0,
+        suggestions: [],
+      });
+      return;
+    }
+
+    const txCandidates = db
+      .prepare(
+        `SELECT
+           bt.id,
+           bt.booking_date,
+           bt.amount_cents,
+           bt.purpose,
+           bt.counterparty_name,
+           bt.reference,
+           bt.tx_type,
+           bt.document_status,
+           COALESCE(ld.linked_documents_count, 0) AS linked_documents_count
+         FROM bank_transactions bt
+         LEFT JOIN (
+           SELECT bank_transaction_id, COUNT(*) AS linked_documents_count
+           FROM transaction_document_links
+           WHERE is_active = 1
+           GROUP BY bank_transaction_id
+         ) ld ON ld.bank_transaction_id = bt.id
+         WHERE ABS(? - ABS(bt.amount_cents)) <= 500
+           AND ABS(julianday(?) - julianday(bt.booking_date)) <= 30
+           AND NOT EXISTS (
+             SELECT 1
+             FROM transaction_document_links l
+             WHERE l.bank_transaction_id = bt.id
+               AND l.document_id = ?
+               AND l.is_active = 1
+           )
+         ORDER BY ABS(? - ABS(bt.amount_cents)) ASC, ABS(julianday(?) - julianday(bt.booking_date)) ASC, bt.id DESC
+         LIMIT 600`,
+      )
+      .all(
+        doc.gross_amount_cents,
+        doc.document_date,
+        documentId,
+        doc.gross_amount_cents,
+        doc.document_date,
+      ) as MatchTransactionCandidateRow[];
+
+    const suggestions = txCandidates
+      .map((tx) => {
+        const draft = buildSuggestionDraft(tx, doc);
+        if (!draft) {
+          return null;
+        }
+        const row: MatchTransactionSuggestion = {
+          ...tx,
+          score: draft.score,
+          reason_codes_json: JSON.stringify(draft.reasonCodes),
+        };
+        return row;
+      })
+      .filter((row): row is MatchTransactionSuggestion => row !== null)
+      .sort((a, b) => b.score - a.score || b.id - a.id)
+      .slice(0, payload.limit)
+      .map((row) => ({
+        transaction_id: row.id,
+        booking_date: row.booking_date,
+        amount_cents: row.amount_cents,
+        purpose: row.purpose,
+        counterparty_name: row.counterparty_name,
+        reference: row.reference,
+        tx_type: row.tx_type,
+        document_status: row.document_status,
+        linked_documents_count: row.linked_documents_count,
+        score: row.score,
+        reason_codes_json: row.reason_codes_json,
+      }));
+
+    res.json({
+      ok: true,
+      document_id: documentId,
+      candidate_count: suggestions.length,
+      suggestions,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.get("/documents/:id/linked-transactions", (req, res) => {
+  try {
+    const documentId = Number(req.params.id);
+    if (!Number.isInteger(documentId) || documentId <= 0) {
+      throw new ValidationError("Ungültige Dokument-ID");
+    }
+
+    const db = getDb();
+    const document = db
+      .prepare("SELECT id FROM documents WHERE id = ?")
+      .get(documentId) as { id: number } | undefined;
+
+    if (!document) {
+      throw new ValidationError("Dokument nicht gefunden");
+    }
+
+    const items = db
+      .prepare(
+        `SELECT
+           l.id AS link_id,
+           l.link_role,
+           l.link_origin,
+           l.confidence,
+           l.created_at,
+           l.created_by,
+           bt.id AS transaction_id,
+           bt.booking_date,
+           bt.valuta_date,
+           bt.amount_cents,
+           bt.currency,
+           bt.purpose,
+           bt.counterparty_name,
+           bt.reference,
+           bt.tx_type,
+           bt.document_status,
+           bt.missing_invoice_flag
+         FROM transaction_document_links l
+         JOIN bank_transactions bt ON bt.id = l.bank_transaction_id
+         WHERE l.document_id = ?
+           AND l.is_active = 1
+         ORDER BY bt.booking_date DESC, bt.id DESC`,
+      )
+      .all(documentId) as DocumentLinkedTransactionRow[];
+
+    res.json({
+      document_id: documentId,
+      total: items.length,
+      items,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.patch("/documents/:id", (req, res) => {
+  try {
+    const documentId = Number(req.params.id);
+    if (!Number.isInteger(documentId) || documentId <= 0) {
+      throw new ValidationError("Ungültige Dokument-ID");
+    }
+
+    const payload = documentPatchSchema.parse(req.body ?? {}) as DocumentPatchPayload;
+    const db = getDb();
+    const row = db.prepare("SELECT * FROM documents WHERE id = ?").get(documentId) as Record<string, unknown> | undefined;
+
+    if (!row) {
+      res.status(404).json({
+        error: {
+          code: "not_found",
+          message: "Dokument nicht gefunden",
+        },
+      });
+      return;
+    }
+
+    const hasOwn = (key: keyof DocumentPatchPayload) => Object.prototype.hasOwnProperty.call(payload, key);
+    const readString = (key: string) => (typeof row[key] === "string" ? normalizeNullableString(String(row[key])) : null);
+    const readInt = (key: string) => (typeof row[key] === "number" && Number.isInteger(row[key]) ? Number(row[key]) : null);
+    const readNumber = (key: string) => (typeof row[key] === "number" ? Number(row[key]) : null);
+
+    const metadataBefore = parseMetadataJsonObject(typeof row.metadata_json === "string" ? row.metadata_json : null);
+    const metadataVatBefore = normalizeVatTreatment(typeof metadataBefore.vat_treatment === "string" ? metadataBefore.vat_treatment : null);
+    const metadataCountryBefore = normalizeCountryCode(
+      typeof metadataBefore.country_code === "string" ? metadataBefore.country_code : null,
+    );
+    const metadataDocumentTypeBefore = normalizeNullableString(
+      typeof metadataBefore.document_type === "string" ? metadataBefore.document_type : null,
+    );
+    const metadataNotesBefore = normalizeMetadataNotes(metadataBefore.notes);
+
+    const nextDocumentDate = hasOwn("documentDate") ? payload.documentDate ?? null : readString("document_date");
+    const nextIssuerName = hasOwn("issuerName") ? normalizeNullableString(payload.issuerName ?? null) : readString("issuer_name");
+    const nextInvoiceNumber = hasOwn("invoiceNumber")
+      ? normalizeNullableString(payload.invoiceNumber ?? null)
+      : readString("invoice_number");
+    const nextSubject = hasOwn("subject") ? normalizeNullableString(payload.subject ?? null) : readString("subject");
+    const nextSummaryShort = hasOwn("summaryShort")
+      ? normalizeNullableString(payload.summaryShort ?? null)
+      : readString("summary_short");
+    const nextGrossAmountCents = hasOwn("grossAmountCents") ? payload.grossAmountCents ?? null : readInt("gross_amount_cents");
+    const nextNetAmountCents = hasOwn("netAmountCents") ? payload.netAmountCents ?? null : readInt("net_amount_cents");
+    const nextVatAmountCents = hasOwn("vatAmountCents") ? payload.vatAmountCents ?? null : readInt("vat_amount_cents");
+    const nextVatRateBps = hasOwn("vatRateBps") ? payload.vatRateBps ?? null : readInt("vat_rate_bps");
+    const nextReviewRequired = hasOwn("reviewRequired")
+      ? payload.reviewRequired === true
+        ? 1
+        : 0
+      : readInt("review_required") === 1
+        ? 1
+        : 0;
+    const nextOcrText = hasOwn("ocrText") ? normalizeNullableString(payload.ocrText ?? null) : readString("ocr_text");
+    const nextAiConfidence = hasOwn("aiConfidence") ? payload.aiConfidence ?? null : readNumber("ai_confidence");
+    const nextOcrConfidence = hasOwn("ocrConfidence") ? payload.ocrConfidence ?? null : readNumber("ocr_confidence");
+
+    const nextVatTreatment = hasOwn("vatTreatment") ? payload.vatTreatment ?? "VAT_UNKNOWN" : metadataVatBefore;
+    const nextCountryCode = hasOwn("countryCode")
+      ? normalizeCountryCode(payload.countryCode ?? null)
+      : metadataCountryBefore;
+    const nextDocumentType = hasOwn("documentType")
+      ? normalizeNullableString(payload.documentType ?? null)
+      : metadataDocumentTypeBefore;
+    const nextNotes = hasOwn("notes")
+      ? (payload.notes ?? []).map((item) => item.trim()).filter((item) => item.length > 0).slice(0, 30)
+      : metadataNotesBefore;
+
+    const now = nowIso();
+    const mergedMetadata: Record<string, unknown> = {
+      ...metadataBefore,
+      vat_treatment: nextVatTreatment,
+      country_code: nextCountryCode,
+      document_type: nextDocumentType,
+      notes: nextNotes,
+      ai_confidence: nextAiConfidence,
+      ocr_confidence: nextOcrConfidence,
+      manual_edit: {
+        source: "dashboard",
+        edited_at: now,
+      },
+    };
+
+    const updateValues: Record<string, unknown> = {
+      document_date: nextDocumentDate,
+      issuer_name: nextIssuerName,
+      invoice_number: nextInvoiceNumber,
+      subject: nextSubject,
+      summary_short: nextSummaryShort,
+      gross_amount_cents: nextGrossAmountCents,
+      net_amount_cents: nextNetAmountCents,
+      vat_amount_cents: nextVatAmountCents,
+      vat_rate_bps: nextVatRateBps,
+      review_required: nextReviewRequired,
+      ocr_text: nextOcrText,
+      ai_confidence: nextAiConfidence,
+      ocr_confidence: nextOcrConfidence,
+      metadata_json: JSON.stringify(mergedMetadata, null, 0),
+      updated_at: now,
+    };
+
+    const changedFields: string[] = [];
+    const pushIfChanged = (field: string, before: unknown, after: unknown) => {
+      if (JSON.stringify(before) !== JSON.stringify(after)) {
+        changedFields.push(field);
+      }
+    };
+
+    pushIfChanged("document_date", readString("document_date"), nextDocumentDate);
+    pushIfChanged("issuer_name", readString("issuer_name"), nextIssuerName);
+    pushIfChanged("invoice_number", readString("invoice_number"), nextInvoiceNumber);
+    pushIfChanged("subject", readString("subject"), nextSubject);
+    pushIfChanged("summary_short", readString("summary_short"), nextSummaryShort);
+    pushIfChanged("gross_amount_cents", readInt("gross_amount_cents"), nextGrossAmountCents);
+    pushIfChanged("net_amount_cents", readInt("net_amount_cents"), nextNetAmountCents);
+    pushIfChanged("vat_amount_cents", readInt("vat_amount_cents"), nextVatAmountCents);
+    pushIfChanged("vat_rate_bps", readInt("vat_rate_bps"), nextVatRateBps);
+    pushIfChanged("review_required", readInt("review_required") === 1 ? 1 : 0, nextReviewRequired);
+    pushIfChanged("ocr_text", readString("ocr_text"), nextOcrText);
+    pushIfChanged("ai_confidence", readNumber("ai_confidence"), nextAiConfidence);
+    pushIfChanged("ocr_confidence", readNumber("ocr_confidence"), nextOcrConfidence);
+    pushIfChanged("metadata.vat_treatment", metadataVatBefore, nextVatTreatment);
+    pushIfChanged("metadata.country_code", metadataCountryBefore, nextCountryCode);
+    pushIfChanged("metadata.document_type", metadataDocumentTypeBefore, nextDocumentType);
+    pushIfChanged("metadata.notes", metadataNotesBefore, nextNotes);
+
+    if (changedFields.length === 0) {
+      res.json({
+        ok: true,
+        document_id: documentId,
+        document: getDocumentWithLinkCounts(db, documentId),
+        changed_fields: [],
+        expired_match_suggestions: 0,
+        linked_transaction_ids: [],
+        tax_recompute: [],
+      });
+      return;
+    }
+
+    const documentColumns = getDocumentsColumnSet();
+    const keys = Object.keys(updateValues).filter((key) => documentColumns.has(key));
+    if (keys.length === 0) {
+      throw new Error("documents hat keine aktualisierbaren Spalten für manuelle Änderungen.");
+    }
+
+    ensureDocumentChangeHistoryTable(db);
+
+    const assignments = keys.map((key) => `${key} = ?`).join(", ");
+    const params = keys.map((key) => updateValues[key]);
+    const applyDocumentUpdate = db.transaction(() => {
+      db.prepare(`UPDATE documents SET ${assignments} WHERE id = ?`).run(...params, documentId);
+
+      const expiredSuggestionsResult = db
+        .prepare(
+          `UPDATE transaction_document_match_suggestions
+           SET status = 'expired', decided_at = ?, decided_by = 'dashboard'
+           WHERE document_id = ?
+             AND status = 'pending'`,
+        )
+        .run(now, documentId);
+
+      const linkedTransactionIds = db
+        .prepare(
+          `SELECT DISTINCT bank_transaction_id
+           FROM transaction_document_links
+           WHERE document_id = ?
+             AND is_active = 1`,
+        )
+        .all(documentId) as Array<{ bank_transaction_id: number }>;
+
+      const document = getDocumentWithLinkCounts(db, documentId);
+      db.prepare(
+        `INSERT INTO document_change_history
+          (document_id, changed_at, changed_by, change_reason, changed_fields_json, before_json, after_json)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      ).run(
+        documentId,
+        now,
+        "dashboard",
+        payload.changeReason ?? null,
+        JSON.stringify(changedFields),
+        JSON.stringify(row),
+        JSON.stringify(document),
+      );
+
+      return {
+        expiredMatchSuggestions: expiredSuggestionsResult.changes,
+        linkedTransactionIds,
+        document,
+      };
+    });
+
+    const updateResult = applyDocumentUpdate();
+    const taxRecomputeResults = updateResult.linkedTransactionIds.map((item) => ({
+      transaction_id: item.bank_transaction_id,
+      ...tryAutoFinalizeTaxForLinkedTransaction(item.bank_transaction_id),
+    }));
+
+    res.json({
+      ok: true,
+      document_id: documentId,
+      document: updateResult.document,
+      changed_fields: changedFields,
+      expired_match_suggestions: updateResult.expiredMatchSuggestions,
+      linked_transaction_ids: updateResult.linkedTransactionIds.map((item) => item.bank_transaction_id),
+      tax_recompute: taxRecomputeResults,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.post("/documents/:id/rescan", upload.single("rawPdf"), (req, res) => {
+  void (async () => {
+    try {
+      const documentId = Number(req.params.id);
+      if (!Number.isInteger(documentId) || documentId <= 0) {
+        throw new ValidationError("Ungültige Dokument-ID");
+      }
+
+      const db = getDb();
+      const row = db
+        .prepare(
+          `SELECT id, source_type, mime_type, storage_rel_path, original_filename, metadata_json
+           FROM documents
+           WHERE id = ?`,
+        )
+        .get(documentId) as
+        | {
+            id: number;
+            source_type: string;
+            mime_type: string | null;
+            storage_rel_path: string;
+            original_filename: string | null;
+            metadata_json: string | null;
+          }
+        | undefined;
+
+      if (!row) {
+        res.status(404).json({
+          error: {
+            code: "not_found",
+            message: "Dokument nicht gefunden",
+          },
+        });
+        return;
+      }
+
+      if (row.source_type !== "scan") {
+        throw new ValidationError("Rescan ist nur für Scan-Belege erlaubt.");
+      }
+
+      if (!req.file && (row.mime_type ?? "application/pdf") !== "application/pdf") {
+        throw new ValidationError("Rescan ist nur für PDF-Belege erlaubt.");
+      }
+
+      const absPath = path.resolve(projectRoot, row.storage_rel_path);
+      const projectRootAbs = path.resolve(projectRoot);
+      if (absPath !== projectRootAbs && !absPath.startsWith(`${projectRootAbs}${path.sep}`)) {
+        throw new ValidationError("Ungültiger Dokumentpfad");
+      }
+      if (!req.file && (!fs.existsSync(absPath) || !fs.statSync(absPath).isFile())) {
+        res.status(404).json({
+          error: {
+            code: "file_not_found",
+            message: "Datei zu diesem Dokument wurde nicht gefunden",
+          },
+        });
+        return;
+      }
+
+      let uploadedFileSha256: string | null = null;
+      let uploadedRawPdf = false;
+      if (req.file) {
+        const uploadedExt = path.extname(req.file.originalname).toLowerCase();
+        const isPdf = req.file.mimetype === "application/pdf" || uploadedExt === ".pdf";
+        if (!isPdf) {
+          throw new ValidationError("rawPdf muss eine PDF-Datei sein.");
+        }
+        fs.mkdirSync(path.dirname(absPath), { recursive: true });
+        fs.writeFileSync(absPath, req.file.buffer, { flag: "w" });
+        uploadedFileSha256 = createHash("sha256").update(req.file.buffer).digest("hex");
+        uploadedRawPdf = true;
+      }
+
+      const rescanResult = await extractWithCodexCliForRescan(absPath);
+      const extracted = rescanResult.extracted;
+      const reviewRequired = computeReviewRequiredForRescan(extracted);
+      const now = nowIso();
+
+      const metadata = parseMetadataJsonObject(row.metadata_json);
+      const mergedMetadata = {
+        ...metadata,
+        vat_treatment: extracted.vatTreatment,
+        country_code: extracted.countryCode,
+        document_type: extracted.documentType,
+        notes: extracted.notes,
+        ai_confidence: extracted.confidence,
+        ocr_confidence: extracted.ocrConfidence,
+        rescan: {
+          source: "dashboard",
+          model: rescanModelName,
+          rescanned_at: now,
+          ocr_pages: rescanResult.pageCount,
+          ocr_scale: rescanOcrScale,
+          codex_reasoning: rescanReasoning,
+          uploaded_raw_pdf: uploadedRawPdf,
+          uploaded_raw_filename: uploadedRawPdf ? req.file?.originalname ?? null : null,
+        },
+      };
+
+      const updateValues: Record<string, unknown> = {
+        document_date: extracted.documentDate,
+        issuer_name: extracted.issuerName,
+        invoice_number: extracted.invoiceNumber,
+        gross_amount_cents: extracted.grossAmountCents,
+        net_amount_cents: extracted.netAmountCents,
+        vat_amount_cents: extracted.vatAmountCents,
+        vat_rate_bps: extracted.vatRateBps,
+        subject: extracted.subject,
+        summary_short: extracted.summaryShort,
+        ocr_text: rescanResult.ocrText,
+        ocr_confidence: extracted.ocrConfidence,
+        ai_confidence: extracted.confidence,
+        review_required: reviewRequired,
+        extraction_model: "dashboard_rescan",
+        ocr_status: rescanResult.ocrText ? "done" : "failed",
+        metadata_json: JSON.stringify(mergedMetadata, null, 0),
+        updated_at: now,
+      };
+      if (uploadedRawPdf) {
+        updateValues.file_size_bytes = req.file?.size ?? null;
+        updateValues.file_sha256 = uploadedFileSha256;
+        updateValues.mime_type = "application/pdf";
+        updateValues.original_filename = normalizeNullableString(req.file?.originalname ?? null) ?? row.original_filename;
+      }
+
+      const documentColumns = getDocumentsColumnSet();
+      const keys = Object.keys(updateValues).filter((key) => documentColumns.has(key));
+      if (keys.length === 0) {
+        throw new Error("documents hat keine aktualisierbaren Spalten für Rescan.");
+      }
+
+      const assignments = keys.map((key) => `${key} = ?`).join(", ");
+      const params = keys.map((key) => updateValues[key]);
+      db.prepare(`UPDATE documents SET ${assignments} WHERE id = ?`).run(...params, documentId);
+
+      const document = db
+        .prepare(
+          `SELECT
+             d.*,
+             COALESCE(link_counts.link_count, 0) AS linked_transactions_count,
+             COALESCE(link_counts.inflow_count, 0) AS linked_inflow_count,
+             COALESCE(link_counts.outflow_count, 0) AS linked_outflow_count
+           FROM documents d
+           LEFT JOIN (
+             SELECT
+               l.document_id,
+               COUNT(*) AS link_count,
+               SUM(CASE WHEN t.amount_cents > 0 THEN 1 ELSE 0 END) AS inflow_count,
+               SUM(CASE WHEN t.amount_cents < 0 THEN 1 ELSE 0 END) AS outflow_count
+             FROM transaction_document_links l
+             JOIN bank_transactions t ON t.id = l.bank_transaction_id
+             WHERE l.is_active = 1
+             GROUP BY l.document_id
+           ) link_counts ON link_counts.document_id = d.id
+           WHERE d.id = ?`,
+        )
+        .get(documentId);
+
+      res.json({
+        ok: true,
+        document_id: documentId,
+        document,
+        rescan: {
+          model: rescanModelName,
+          ocr_pages: rescanResult.pageCount,
+          used_uploaded_pdf: uploadedRawPdf,
+        },
+      });
+    } catch (error) {
+      sendError(res, error);
+    }
+  })();
 });
 
 router.get("/documents/:id/file", (req, res) => {
@@ -1755,6 +2748,7 @@ router.post("/transactions/:id/documents/upload", upload.single("file"), (req, r
 
     try {
       const result = writeTx();
+      const taxRecompute = tryAutoFinalizeTaxForLinkedTransaction(txId);
       documentRow = (result.document ?? {}) as Record<string, unknown>;
       res.json({
         transaction_id: txId,
@@ -1762,6 +2756,7 @@ router.post("/transactions/:id/documents/upload", upload.single("file"), (req, r
         document: documentRow,
         link: result.link,
         new_status: result.newStatus,
+        tax_recompute: taxRecompute,
       });
     } catch (error) {
       if (writtenPath) {
@@ -1802,12 +2797,14 @@ router.post("/transactions/:id/document-links", (req, res) => {
     ).run(txId, payload.documentId, payload.linkRole, now);
 
     const status = recomputeTransactionDocumentStatus(db, txId, "Beleg manuell verknüpft", "dashboard");
+    const taxRecompute = tryAutoFinalizeTaxForLinkedTransaction(txId);
 
     res.json({
       ok: true,
       transaction_id: txId,
       document_id: payload.documentId,
       new_status: status,
+      tax_recompute: taxRecompute,
     });
   } catch (error) {
     sendError(res, error);
