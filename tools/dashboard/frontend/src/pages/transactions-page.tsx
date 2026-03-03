@@ -8,9 +8,13 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { apiDelete, apiGet, apiPatch, apiPostFormData } from "@/lib/api";
+import { apiDelete, apiGet, apiPatch, apiPost, apiPostFormData } from "@/lib/api";
 import type {
   DocumentStatus,
+  MatchSelectionResponse,
+  MatchSuggestionsRefreshResponse,
+  NextOpenTransactionResponse,
+  TaxRecomputeFromLinksResponse,
   TransactionDetailResponse,
   TransactionsResponse,
   UploadDocumentResponse,
@@ -65,6 +69,26 @@ function statusLabel(status: DocumentStatus): string {
   }
 }
 
+function parseReasonCodes(value: string): string[] {
+  try {
+    const parsed = JSON.parse(value);
+    if (!Array.isArray(parsed)) {
+      return [];
+    }
+    return parsed
+      .filter((item): item is string => typeof item === "string")
+      .map((item) => item.trim())
+      .filter((item) => item.length > 0)
+      .slice(0, 6);
+  } catch {
+    return [];
+  }
+}
+
+function documentFileUrl(documentId: number): string {
+  return `/api/documents/${documentId}/file`;
+}
+
 export function TransactionsPage() {
   const queryClient = useQueryClient();
 
@@ -89,6 +113,11 @@ export function TransactionsPage() {
   const [vatTaxCents, setVatTaxCents] = useState("");
   const [vatCountryCode, setVatCountryCode] = useState("DE");
   const [vatError, setVatError] = useState("");
+  const [primarySuggestionDocumentId, setPrimarySuggestionDocumentId] = useState<number | null>(null);
+  const [supportingSuggestionDocumentIds, setSupportingSuggestionDocumentIds] = useState<number[]>([]);
+  const [matchError, setMatchError] = useState("");
+  const [matchNotice, setMatchNotice] = useState("");
+  const [movingToNext, setMovingToNext] = useState(false);
 
   const params = useMemo(
     () => ({
@@ -206,10 +235,77 @@ export function TransactionsPage() {
     },
   });
 
+  const refreshSuggestionsMutation = useMutation({
+    mutationFn: () => {
+      if (!selectedId) {
+        throw new Error("Keine Transaktion ausgewählt");
+      }
+      return apiPost<MatchSuggestionsRefreshResponse>(`/transactions/${selectedId}/match-suggestions/refresh`, { limit: 8 });
+    },
+    onSuccess: async (result) => {
+      setMatchError("");
+      setPrimarySuggestionDocumentId(null);
+      setSupportingSuggestionDocumentIds([]);
+      setMatchNotice(
+        result.candidate_count > 0
+          ? `${result.candidate_count} Kandidat(en) gefunden.`
+          : "Keine passenden Beleg-Kandidaten gefunden.",
+      );
+      await queryClient.invalidateQueries({ queryKey: ["transactions"] });
+      await queryClient.invalidateQueries({ queryKey: ["transaction-detail", selectedId] });
+    },
+  });
+
+  const applyMatchSelectionMutation = useMutation({
+    mutationFn: async () => {
+      if (!selectedId) {
+        throw new Error("Keine Transaktion ausgewählt");
+      }
+      if (!primarySuggestionDocumentId) {
+        throw new Error("Bitte Hauptbeleg auswählen.");
+      }
+
+      const response = await apiPost<MatchSelectionResponse>(`/transactions/${selectedId}/match-selection`, {
+        primaryDocumentId: primarySuggestionDocumentId,
+        supportingDocumentIds: supportingSuggestionDocumentIds,
+      });
+      let taxErrorMessage: string | null = null;
+      let taxResult: TaxRecomputeFromLinksResponse | null = null;
+      try {
+        taxResult = await apiPost<TaxRecomputeFromLinksResponse>(`/tax/transactions/${selectedId}/recompute-from-links`, {});
+      } catch (error) {
+        taxErrorMessage = error instanceof Error ? error.message : "MwSt konnte nicht automatisch aktualisiert werden.";
+      }
+      return { response, taxResult, taxErrorMessage };
+    },
+    onSuccess: async ({ response, taxResult, taxErrorMessage }) => {
+      setMatchError("");
+      if (taxErrorMessage) {
+        setMatchError(`Beleg übernommen, MwSt-Update fehlgeschlagen: ${taxErrorMessage}`);
+      } else if (taxResult?.skipped_manual_final) {
+        setMatchNotice(`${response.linked_document_ids.length} Beleg(e) übernommen. MwSt blieb unverändert (manuell final).`);
+      } else {
+        setMatchNotice(`${response.linked_document_ids.length} Beleg(e) übernommen und MwSt aktualisiert.`);
+      }
+      setPrimarySuggestionDocumentId(null);
+      setSupportingSuggestionDocumentIds([]);
+      await queryClient.invalidateQueries({ queryKey: ["transactions"] });
+      await queryClient.invalidateQueries({ queryKey: ["transaction-detail", selectedId] });
+      await queryClient.invalidateQueries({ queryKey: ["tax-reports-monthly"] });
+      await queryClient.invalidateQueries({ queryKey: ["tax-review-queue"] });
+    },
+  });
+
   const data = transactionsQuery.data;
   const detail = detailQuery.data;
+  const pendingMatchSuggestions = useMemo(
+    () => (detail?.match_suggestions ?? []).filter((row) => row.status === "pending"),
+    [detail?.match_suggestions],
+  );
   const totalPages = data ? Math.max(Math.ceil(data.total / data.pageSize), 1) : 1;
   const uploadError = uploadMutation.error instanceof Error ? uploadMutation.error.message : "";
+  const applyMatchError = applyMatchSelectionMutation.error instanceof Error ? applyMatchSelectionMutation.error.message : "";
+  const refreshMatchError = refreshSuggestionsMutation.error instanceof Error ? refreshSuggestionsMutation.error.message : "";
   const transactionAmountAbs = Math.abs(detail?.transaction.amount_cents ?? 0);
   const parsedRateBps = Number.parseInt(vatRateBps, 10);
   const autoComputed = useMemo(() => {
@@ -239,6 +335,37 @@ export function TransactionsPage() {
     setVatCountryCode(determination?.country_code ?? "DE");
     setVatError("");
   }, [detail]);
+
+  useEffect(() => {
+    if (!detail) {
+      setPrimarySuggestionDocumentId(null);
+      setSupportingSuggestionDocumentIds([]);
+      return;
+    }
+
+    const pendingDocumentIds = detail.match_suggestions
+      .filter((row) => row.status === "pending")
+      .map((row) => row.document_id);
+    if (pendingDocumentIds.length === 0) {
+      setPrimarySuggestionDocumentId(null);
+      setSupportingSuggestionDocumentIds([]);
+      return;
+    }
+
+    const nextPrimary =
+      primarySuggestionDocumentId && pendingDocumentIds.includes(primarySuggestionDocumentId)
+        ? primarySuggestionDocumentId
+        : pendingDocumentIds[0];
+    setPrimarySuggestionDocumentId(nextPrimary);
+    setSupportingSuggestionDocumentIds((prev) =>
+      prev.filter((docId) => pendingDocumentIds.includes(docId) && docId !== nextPrimary),
+    );
+  }, [detail?.transaction.id, detail?.match_suggestions, primarySuggestionDocumentId]);
+
+  useEffect(() => {
+    setMatchError("");
+    setMatchNotice("");
+  }, [selectedId]);
 
   function submitVatFinal() {
     if (!detail) {
@@ -279,6 +406,43 @@ export function TransactionsPage() {
 
     setVatError("");
     updateTaxMutation.mutate(payload);
+  }
+
+  function toggleSupportingSelection(documentId: number) {
+    if (documentId === primarySuggestionDocumentId) {
+      return;
+    }
+    setSupportingSuggestionDocumentIds((prev) =>
+      prev.includes(documentId) ? prev.filter((id) => id !== documentId) : [...prev, documentId],
+    );
+  }
+
+  async function goToNextOpenTransaction() {
+    if (!selectedId) {
+      return;
+    }
+
+    setMovingToNext(true);
+    setMatchError("");
+    try {
+      const response = await apiGet<NextOpenTransactionResponse>(`/transactions/${selectedId}/next-open`, {
+        from: from || undefined,
+        to: to || undefined,
+        q: q || undefined,
+        txType: txType === "all" ? undefined : txType,
+      });
+
+      if (typeof response.nextTransactionId === "number") {
+        setSelectedId(response.nextTransactionId);
+        setMatchNotice("");
+      } else {
+        setMatchNotice("Keine weitere offene Transaktion im aktuellen Filter.");
+      }
+    } catch (error) {
+      setMatchError(error instanceof Error ? error.message : "Nächste Transaktion konnte nicht geladen werden.");
+    } finally {
+      setMovingToNext(false);
+    }
   }
 
   return (
@@ -412,6 +576,10 @@ export function TransactionsPage() {
             setUploadIssuerName("");
             setUploadInvoiceNumber("");
             setVatError("");
+            setPrimarySuggestionDocumentId(null);
+            setSupportingSuggestionDocumentIds([]);
+            setMatchError("");
+            setMatchNotice("");
             uploadMutation.reset();
           }
         }}
@@ -480,7 +648,16 @@ export function TransactionsPage() {
                     <div key={doc.id} className="rounded-md border p-2">
                       <div className="flex items-center justify-between gap-2">
                         <div className="text-xs">
-                          <p className="font-medium">{doc.original_filename ?? `Dokument ${doc.document_id}`}</p>
+                          <p className="font-medium">
+                            <a
+                              href={documentFileUrl(doc.document_id)}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="underline decoration-dotted underline-offset-2 hover:no-underline"
+                            >
+                              {doc.original_filename ?? `Dokument ${doc.document_id}`}
+                            </a>
+                          </p>
                           <p className="text-muted-foreground">{doc.storage_rel_path}</p>
                         </div>
                         <Button
@@ -494,6 +671,132 @@ export function TransactionsPage() {
                       </div>
                     </div>
                   ))}
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between">
+                  <CardTitle>Auto Find Beleg ({pendingMatchSuggestions.length})</CardTitle>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={refreshSuggestionsMutation.isPending}
+                    onClick={() => refreshSuggestionsMutation.mutate()}
+                  >
+                    {refreshSuggestionsMutation.isPending ? "Suche ..." : "Auto Find Beleg"}
+                  </Button>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Button
+                      size="sm"
+                      disabled={
+                        applyMatchSelectionMutation.isPending ||
+                        movingToNext ||
+                        !primarySuggestionDocumentId ||
+                        pendingMatchSuggestions.length === 0
+                      }
+                      onClick={() => applyMatchSelectionMutation.mutate()}
+                    >
+                      {applyMatchSelectionMutation.isPending ? "Übernehme ..." : "Übernehmen"}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      disabled={movingToNext || applyMatchSelectionMutation.isPending}
+                      onClick={() => void goToNextOpenTransaction()}
+                    >
+                      {movingToNext ? "Lade ..." : "Nächste"}
+                    </Button>
+                  </div>
+
+                  {matchNotice ? <p className="text-xs text-muted-foreground">{matchNotice}</p> : null}
+                  {matchError ? <p className="text-xs text-rose-700">{matchError}</p> : null}
+                  {refreshMatchError ? <p className="text-xs text-rose-700">{refreshMatchError}</p> : null}
+                  {applyMatchError ? <p className="text-xs text-rose-700">{applyMatchError}</p> : null}
+
+                  {pendingMatchSuggestions.length === 0 ? (
+                    <p className="text-xs text-muted-foreground">
+                      Keine offenen Kandidaten. Mit "Auto Find Beleg" wird für diese Transaktion neu gesucht.
+                    </p>
+                  ) : null}
+
+                  {pendingMatchSuggestions.map((suggestion) => {
+                    const reasonCodes = parseReasonCodes(suggestion.reason_codes_json);
+                    return (
+                      <div key={suggestion.id} className="space-y-2 rounded-md border p-2">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <div className="text-xs">
+                            <p className="font-medium">
+                              <a
+                                href={documentFileUrl(suggestion.document_id)}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="underline decoration-dotted underline-offset-2 hover:no-underline"
+                              >
+                                {suggestion.original_filename ?? `Dokument ${suggestion.document_id}`}
+                              </a>
+                            </p>
+                            <p className="text-muted-foreground">{suggestion.storage_rel_path}</p>
+                          </div>
+                          <Badge variant="outline">Score {(suggestion.score ?? 0).toFixed(2)}</Badge>
+                        </div>
+
+                        <div className="grid gap-2 text-xs md:grid-cols-2">
+                          <p>
+                            <span className="text-muted-foreground">Aussteller:</span> {suggestion.issuer_name ?? "-"}
+                          </p>
+                          <p>
+                            <span className="text-muted-foreground">Rechnungsnr:</span> {suggestion.invoice_number ?? "-"}
+                          </p>
+                          <p>
+                            <span className="text-muted-foreground">Belegdatum:</span> {suggestion.document_date ?? "-"}
+                          </p>
+                          <p>
+                            <span className="text-muted-foreground">Brutto:</span>{" "}
+                            {typeof suggestion.gross_amount_cents === "number" ? formatEuro(suggestion.gross_amount_cents) : "-"}
+                          </p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-4 text-xs">
+                          <label className="flex items-center gap-2">
+                            <input
+                              type="radio"
+                              name="primary-suggestion"
+                              checked={primarySuggestionDocumentId === suggestion.document_id}
+                              onChange={() => {
+                                setPrimarySuggestionDocumentId(suggestion.document_id);
+                                setSupportingSuggestionDocumentIds((prev) =>
+                                  prev.filter((docId) => docId !== suggestion.document_id),
+                                );
+                                setMatchError("");
+                              }}
+                            />
+                            <span>Primary</span>
+                          </label>
+                          <label className="flex items-center gap-2">
+                            <input
+                              type="checkbox"
+                              checked={supportingSuggestionDocumentIds.includes(suggestion.document_id)}
+                              disabled={primarySuggestionDocumentId === suggestion.document_id}
+                              onChange={() => toggleSupportingSelection(suggestion.document_id)}
+                            />
+                            <span>Supporting</span>
+                          </label>
+                        </div>
+
+                        {reasonCodes.length > 0 ? (
+                          <div className="flex flex-wrap gap-1">
+                            {reasonCodes.map((code) => (
+                              <Badge key={`${suggestion.id}-${code}`} variant="secondary">
+                                {code}
+                              </Badge>
+                            ))}
+                          </div>
+                        ) : null}
+                      </div>
+                    );
+                  })}
                 </CardContent>
               </Card>
 

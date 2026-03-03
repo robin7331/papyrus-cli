@@ -105,6 +105,11 @@ export type MatchSuggestion = {
   storage_rel_path: string;
   original_filename: string | null;
   source_type: string;
+  document_date: string | null;
+  issuer_name: string | null;
+  invoice_number: string | null;
+  gross_amount_cents: number | null;
+  currency: string;
 };
 
 export type DocumentStatusHistoryRow = {
@@ -164,6 +169,26 @@ export type UploadDocumentResponse = {
   document: Record<string, unknown>;
   link: Record<string, unknown>;
   new_status: DocumentStatus;
+};
+
+export type MatchSuggestionsRefreshResponse = {
+  ok: boolean;
+  transaction_id: number;
+  has_active_link: boolean;
+  expired_count: number;
+  candidate_count: number;
+  suggestions: MatchSuggestion[];
+};
+
+export type MatchSelectionResponse = {
+  ok: boolean;
+  transaction_id: number;
+  linked_document_ids: number[];
+  new_status: DocumentStatus;
+};
+
+export type NextOpenTransactionResponse = {
+  nextTransactionId: number | null;
 };
 
 export type DocumentListItem = {
@@ -267,6 +292,13 @@ export type TaxRecomputeResponse = {
   final_count: number;
   review_count: number;
   skipped_manual_final_count: number;
+};
+
+export type TaxRecomputeFromLinksResponse = {
+  ok: boolean;
+  transaction_id: number;
+  skipped_manual_final: boolean;
+  determination: TaxDetermination | null;
 };
 
 export type OssReportRow = {

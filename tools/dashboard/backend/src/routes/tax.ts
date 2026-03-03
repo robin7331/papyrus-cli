@@ -675,6 +675,93 @@ router.get("/review-queue", (req, res) => {
   }
 });
 
+router.post("/transactions/:id/recompute-from-links", (req, res) => {
+  try {
+    const txId = Number(req.params.id);
+    if (!Number.isInteger(txId) || txId <= 0) {
+      throw new ValidationError("Ungültige Transaktions-ID");
+    }
+
+    const db = getDb();
+    const tx = db
+      .prepare(
+        `SELECT id, booking_date, amount_cents, purpose, counterparty_name
+         FROM bank_transactions
+         WHERE id = ?`,
+      )
+      .get(txId) as
+      | {
+          id: number;
+          booking_date: string;
+          amount_cents: number;
+          purpose: string | null;
+          counterparty_name: string | null;
+        }
+      | undefined;
+
+    if (!tx) {
+      throw new ValidationError("Transaktion nicht gefunden");
+    }
+
+    const existing = db
+      .prepare(
+        `SELECT status, decided_by
+         FROM transaction_tax_determinations
+         WHERE bank_transaction_id = ?`,
+      )
+      .get(txId) as { status: DeterminationStatus; decided_by: string | null } | undefined;
+
+    if (existing?.status === "final" && existing.decided_by && existing.decided_by !== "tax-engine") {
+      const existingDetermination = db
+        .prepare("SELECT * FROM transaction_tax_determinations WHERE bank_transaction_id = ?")
+        .get(txId);
+      res.json({
+        ok: true,
+        transaction_id: txId,
+        skipped_manual_final: true,
+        determination: existingDetermination ?? null,
+      });
+      return;
+    }
+
+    const docs = db
+      .prepare(
+        `SELECT d.id, d.source_type, d.gross_amount_cents, d.invoice_number, d.metadata_json
+         FROM transaction_document_links l
+         JOIN documents d ON d.id = l.document_id
+         WHERE l.bank_transaction_id = ?
+           AND l.is_active = 1`,
+      )
+      .all(txId) as Array<{
+      id: number;
+      source_type: string;
+      gross_amount_cents: number | null;
+      invoice_number: string | null;
+      metadata_json: string | null;
+    }>;
+
+    const determination = determineTaxForTransaction(tx, docs);
+    upsertDetermination(txId, determination);
+    rebuildLedgerForTransaction(txId);
+
+    const year = Number.parseInt(tx.booking_date.slice(0, 4), 10);
+    refreshPeriodReports(year);
+
+    const savedDetermination = db
+      .prepare("SELECT * FROM transaction_tax_determinations WHERE bank_transaction_id = ?")
+      .get(txId);
+
+    res.json({
+      ok: true,
+      transaction_id: txId,
+      skipped_manual_final: false,
+      determination: savedDetermination ?? null,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
 router.patch("/transactions/:id/determination", (req, res) => {
   try {
     const txId = Number(req.params.id);

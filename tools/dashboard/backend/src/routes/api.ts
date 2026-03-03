@@ -66,6 +66,24 @@ const missingInvoicePatchSchema = z.object({
   missingInvoiceFlag: z.boolean(),
 });
 
+const matchSuggestionsRefreshSchema = z.object({
+  limit: z.coerce.number().int().min(1).max(20).optional().default(8),
+});
+
+const matchSelectionSchema = z.object({
+  primaryDocumentId: z.coerce.number().int().positive(),
+  supportingDocumentIds: z.array(z.coerce.number().int().positive()).max(20).optional().default([]),
+});
+
+const nextOpenQuerySchema = withValidDateRange(
+  dateRangeBaseSchema.extend({
+    q: z.string().trim().max(160).optional(),
+    txType: z.string().trim().max(120).optional(),
+    minCents: z.coerce.number().int().optional(),
+    maxCents: z.coerce.number().int().optional(),
+  }),
+);
+
 const projectRoot = path.resolve(fileURLToPath(new URL("../../../../../", import.meta.url)));
 const documentsRoot = path.join(projectRoot, "belege");
 const maxUploadBytes = Number(process.env.DASHBOARD_MAX_UPLOAD_BYTES ?? 25 * 1024 * 1024);
@@ -424,6 +442,213 @@ function getDocumentsColumnSet(): Set<string> {
   const db = getDb();
   const rows = db.prepare("PRAGMA table_info(documents)").all() as Array<{ name: string }>;
   return new Set(rows.map((row) => row.name));
+}
+
+type MatchInputTransaction = {
+  id: number;
+  booking_date: string;
+  amount_cents: number;
+  purpose: string | null;
+  counterparty_name: string | null;
+  reference: string | null;
+};
+
+type MatchInputDocument = {
+  id: number;
+  source_type: string;
+  storage_rel_path: string;
+  original_filename: string | null;
+  document_date: string | null;
+  issuer_name: string | null;
+  invoice_number: string | null;
+  gross_amount_cents: number | null;
+  currency: string;
+  review_required: number;
+  ai_confidence: number | null;
+};
+
+type MatchSuggestionDraft = {
+  documentId: number;
+  score: number;
+  reasonCodes: string[];
+};
+
+type MatchSuggestionRow = {
+  id: number;
+  document_id: number;
+  matcher_name: string;
+  matcher_version: string;
+  score: number;
+  reason_codes_json: string;
+  status: "pending" | "accepted" | "rejected" | "auto_applied" | "expired";
+  created_at: string;
+  decided_at: string | null;
+  decided_by: string | null;
+  storage_rel_path: string;
+  original_filename: string | null;
+  source_type: string;
+  document_date: string | null;
+  issuer_name: string | null;
+  invoice_number: string | null;
+  gross_amount_cents: number | null;
+  currency: string;
+};
+
+function normalizeTokens(value: string | null | undefined): string[] {
+  if (!value) {
+    return [];
+  }
+
+  const normalized = value
+    .normalize("NFKD")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ");
+
+  const unique = new Set<string>();
+  for (const token of normalized.split(/\s+/)) {
+    if (token.length < 3) {
+      continue;
+    }
+    unique.add(token.slice(0, 40));
+  }
+  return Array.from(unique);
+}
+
+function hasAnyTokenOverlap(needle: string[], haystack: string[]): boolean {
+  if (needle.length === 0 || haystack.length === 0) {
+    return false;
+  }
+  const haystackSet = new Set(haystack);
+  return needle.some((token) => haystackSet.has(token));
+}
+
+function dateDistanceDays(dateA: string | null, dateB: string | null): number {
+  if (!dateA || !dateB) {
+    return Number.POSITIVE_INFINITY;
+  }
+  const a = Date.parse(`${dateA}T00:00:00Z`);
+  const b = Date.parse(`${dateB}T00:00:00Z`);
+  if (!Number.isFinite(a) || !Number.isFinite(b)) {
+    return Number.POSITIVE_INFINITY;
+  }
+  const msPerDay = 24 * 60 * 60 * 1000;
+  return Math.abs(a - b) / msPerDay;
+}
+
+function buildSuggestionDraft(tx: MatchInputTransaction, doc: MatchInputDocument): MatchSuggestionDraft | null {
+  if (typeof doc.gross_amount_cents !== "number" || !doc.document_date) {
+    return null;
+  }
+
+  const amountDiff = Math.abs(Math.abs(tx.amount_cents) - doc.gross_amount_cents);
+  const dateDiffDays = dateDistanceDays(tx.booking_date, doc.document_date);
+  if (amountDiff > 500 || dateDiffDays > 30) {
+    return null;
+  }
+
+  let score = 0;
+  const reasons: string[] = [];
+
+  if (amountDiff === 0) {
+    score += 0.65;
+    reasons.push("amount_exact");
+  } else if (amountDiff <= 50) {
+    score += 0.45;
+    reasons.push("amount_50c");
+  } else if (amountDiff <= 200) {
+    score += 0.25;
+    reasons.push("amount_200c");
+  } else {
+    score += 0.1;
+    reasons.push("amount_500c");
+  }
+
+  if (dateDiffDays <= 3) {
+    score += 0.2;
+    reasons.push("date_3d");
+  } else if (dateDiffDays <= 7) {
+    score += 0.12;
+    reasons.push("date_7d");
+  } else if (dateDiffDays <= 14) {
+    score += 0.08;
+    reasons.push("date_14d");
+  } else {
+    score += 0.04;
+    reasons.push("date_30d");
+  }
+
+  const counterpartyTokens = normalizeTokens(tx.counterparty_name);
+  const purposeTokens = normalizeTokens(tx.purpose);
+  const referenceTokens = normalizeTokens(tx.reference);
+  const txEntityTokens = [...counterpartyTokens, ...purposeTokens];
+  const txRefTokens = [...referenceTokens, ...purposeTokens];
+
+  const issuerTokens = normalizeTokens(doc.issuer_name);
+  if (hasAnyTokenOverlap(issuerTokens, txEntityTokens)) {
+    score += 0.1;
+    reasons.push("issuer_overlap");
+  }
+
+  const invoiceTokens = normalizeTokens(doc.invoice_number);
+  if (hasAnyTokenOverlap(invoiceTokens, txRefTokens)) {
+    score += 0.1;
+    reasons.push("invoice_overlap");
+  }
+
+  if (doc.review_required === 0 && typeof doc.ai_confidence === "number") {
+    if (doc.ai_confidence >= 0.85) {
+      score += 0.05;
+      reasons.push("doc_high_confidence");
+    } else if (doc.ai_confidence >= 0.7) {
+      score += 0.02;
+      reasons.push("doc_medium_confidence");
+    }
+  }
+
+  if (score < 0.2) {
+    return null;
+  }
+
+  return {
+    documentId: doc.id,
+    score: Math.min(1, Number(score.toFixed(6))),
+    reasonCodes: reasons,
+  };
+}
+
+function getMatchSuggestionsForTransaction(
+  db: ReturnType<typeof getDb>,
+  txId: number,
+  maxRows = 200,
+) {
+  return db
+    .prepare(
+      `SELECT
+         s.id,
+         s.document_id,
+         s.matcher_name,
+         s.matcher_version,
+         s.score,
+         s.reason_codes_json,
+         s.status,
+         s.created_at,
+         s.decided_at,
+         s.decided_by,
+         d.storage_rel_path,
+         d.original_filename,
+         d.source_type,
+         d.document_date,
+         d.issuer_name,
+         d.invoice_number,
+         d.gross_amount_cents,
+         d.currency
+       FROM transaction_document_match_suggestions s
+       JOIN documents d ON d.id = s.document_id
+       WHERE s.bank_transaction_id = ?
+       ORDER BY s.status = 'pending' DESC, s.score DESC, s.id DESC
+       LIMIT ?`,
+    )
+    .all(txId, maxRows) as MatchSuggestionRow[];
 }
 
 function sendError(res: Response, error: unknown) {
@@ -927,29 +1152,7 @@ router.get("/transactions/:id", (req, res) => {
       )
       .all(txId);
 
-    const suggestions = db
-      .prepare(
-        `SELECT
-           s.id,
-           s.document_id,
-           s.matcher_name,
-           s.matcher_version,
-           s.score,
-           s.reason_codes_json,
-           s.status,
-           s.created_at,
-           s.decided_at,
-           s.decided_by,
-           d.storage_rel_path,
-           d.original_filename,
-           d.source_type
-         FROM transaction_document_match_suggestions s
-         JOIN documents d ON d.id = s.document_id
-         WHERE s.bank_transaction_id = ?
-         ORDER BY s.status = 'pending' DESC, s.score DESC, s.id DESC
-         LIMIT 200`,
-      )
-      .all(txId);
+    const suggestions = getMatchSuggestionsForTransaction(db, txId, 200);
 
     const statusHistory = db
       .prepare(
@@ -1006,6 +1209,304 @@ router.get("/transactions/:id", (req, res) => {
       match_suggestions: suggestions,
       document_status_history: statusHistory,
       tax_determination: taxDetermination ?? null,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.post("/transactions/:id/match-suggestions/refresh", (req, res) => {
+  try {
+    const txId = txIdFromParams(req.params.id);
+    const payload = matchSuggestionsRefreshSchema.parse(req.body ?? {});
+    const db = getDb();
+
+    const tx = db
+      .prepare(
+        `SELECT id, booking_date, amount_cents, purpose, counterparty_name, reference
+         FROM bank_transactions
+         WHERE id = ?`,
+      )
+      .get(txId) as MatchInputTransaction | undefined;
+
+    if (!tx) {
+      throw new ValidationError("Transaktion nicht gefunden");
+    }
+
+    const hasActiveLinkRow = db
+      .prepare(
+        `SELECT EXISTS(
+           SELECT 1
+           FROM transaction_document_links
+           WHERE bank_transaction_id = ?
+             AND is_active = 1
+         ) AS has_active_link`,
+      )
+      .get(txId) as { has_active_link: 0 | 1 };
+
+    const documentColumns = getDocumentsColumnSet();
+    const reviewRequiredExpr = documentColumns.has("review_required")
+      ? "COALESCE(d.review_required, 0) AS review_required"
+      : "0 AS review_required";
+    const aiConfidenceExpr = documentColumns.has("ai_confidence")
+      ? "d.ai_confidence AS ai_confidence"
+      : "NULL AS ai_confidence";
+
+    const candidates = db
+      .prepare(
+        `SELECT
+           d.id,
+           d.source_type,
+           d.storage_rel_path,
+           d.original_filename,
+           d.document_date,
+           d.issuer_name,
+           d.invoice_number,
+           d.gross_amount_cents,
+           d.currency,
+           ${reviewRequiredExpr},
+           ${aiConfidenceExpr}
+         FROM documents d
+         WHERE d.lifecycle_status = 'archiviert'
+           AND d.gross_amount_cents IS NOT NULL
+           AND d.document_date IS NOT NULL
+           AND ABS(? - d.gross_amount_cents) <= 500
+           AND ABS(julianday(?) - julianday(d.document_date)) <= 30
+           AND NOT EXISTS (
+             SELECT 1
+             FROM transaction_document_links l
+             WHERE l.document_id = d.id
+               AND l.is_active = 1
+           )
+         ORDER BY ABS(? - d.gross_amount_cents) ASC, ABS(julianday(?) - julianday(d.document_date)) ASC, d.id DESC
+         LIMIT 400`,
+      )
+      .all(
+        Math.abs(tx.amount_cents),
+        tx.booking_date,
+        Math.abs(tx.amount_cents),
+        tx.booking_date,
+      ) as MatchInputDocument[];
+
+    const drafts = candidates
+      .map((doc) => buildSuggestionDraft(tx, doc))
+      .filter((row): row is MatchSuggestionDraft => row !== null)
+      .sort((a, b) => b.score - a.score || a.documentId - b.documentId)
+      .slice(0, payload.limit);
+
+    const writeTx = db.transaction(() => {
+      const now = nowIso();
+      const expiredResult = db
+        .prepare(
+          `UPDATE transaction_document_match_suggestions
+           SET status = 'expired', decided_at = ?, decided_by = 'dashboard'
+           WHERE bank_transaction_id = ?
+             AND status = 'pending'`,
+        )
+        .run(now, txId);
+
+      const updateSuggestion = db.prepare(
+        `UPDATE transaction_document_match_suggestions
+         SET score = ?,
+             reason_codes_json = ?,
+             status = 'pending',
+             created_at = ?,
+             decided_at = NULL,
+             decided_by = NULL
+         WHERE bank_transaction_id = ?
+           AND document_id = ?
+           AND matcher_name = 'deterministic_v1'
+           AND matcher_version = '1.0.0'`,
+      );
+      const insertSuggestion = db.prepare(
+        `INSERT INTO transaction_document_match_suggestions
+          (bank_transaction_id, document_id, matcher_name, matcher_version, score, reason_codes_json, status, created_at, decided_at, decided_by)
+         VALUES (?, ?, 'deterministic_v1', '1.0.0', ?, ?, 'pending', ?, NULL, NULL)`,
+      );
+
+      for (const suggestion of drafts) {
+        const updated = updateSuggestion.run(
+          suggestion.score,
+          JSON.stringify(suggestion.reasonCodes),
+          now,
+          txId,
+          suggestion.documentId,
+        );
+        if (updated.changes === 0) {
+          insertSuggestion.run(txId, suggestion.documentId, suggestion.score, JSON.stringify(suggestion.reasonCodes), now);
+        }
+      }
+
+      return {
+        expiredCount: expiredResult.changes,
+      };
+    });
+
+    const writeResult = writeTx();
+    const pendingSuggestions = getMatchSuggestionsForTransaction(db, txId, 200).filter((row) => row.status === "pending");
+
+    res.json({
+      ok: true,
+      transaction_id: txId,
+      has_active_link: hasActiveLinkRow.has_active_link === 1,
+      expired_count: writeResult.expiredCount,
+      candidate_count: pendingSuggestions.length,
+      suggestions: pendingSuggestions,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.post("/transactions/:id/match-selection", (req, res) => {
+  try {
+    const txId = txIdFromParams(req.params.id);
+    const payload = matchSelectionSchema.parse(req.body);
+    const db = getDb();
+
+    getTransactionOrThrow(db, txId);
+
+    const supportingUnique = Array.from(new Set(payload.supportingDocumentIds));
+    if (supportingUnique.length !== payload.supportingDocumentIds.length) {
+      throw new ValidationError("supportingDocumentIds enthält Duplikate.");
+    }
+    if (supportingUnique.includes(payload.primaryDocumentId)) {
+      throw new ValidationError("Der Primary-Beleg darf nicht gleichzeitig als Supporting gewählt werden.");
+    }
+
+    const selectedIds = [payload.primaryDocumentId, ...supportingUnique];
+    const placeholders = selectedIds.map(() => "?").join(", ");
+
+    const pendingRows = db
+      .prepare(
+        `SELECT document_id, score
+         FROM transaction_document_match_suggestions
+         WHERE bank_transaction_id = ?
+           AND status = 'pending'
+           AND document_id IN (${placeholders})`,
+      )
+      .all(txId, ...selectedIds) as Array<{ document_id: number; score: number }>;
+
+    if (pendingRows.length !== selectedIds.length) {
+      throw new ValidationError("Auswahl muss aus den aktuell offenen Vorschlägen stammen.");
+    }
+
+    const scoreByDocument = new Map<number, number>(pendingRows.map((row) => [row.document_id, row.score]));
+
+    const writeTx = db.transaction(() => {
+      const now = nowIso();
+      db.prepare(
+        `UPDATE transaction_document_links
+         SET link_role = 'supporting'
+         WHERE bank_transaction_id = ?
+           AND is_active = 1
+           AND link_role = 'primary'
+           AND document_id <> ?`,
+      ).run(txId, payload.primaryDocumentId);
+
+      const upsertLink = db.prepare(
+        `INSERT INTO transaction_document_links
+          (bank_transaction_id, document_id, link_role, link_origin, confidence, is_active, created_at, created_by)
+         VALUES (?, ?, ?, 'manual', ?, 1, ?, 'dashboard')
+         ON CONFLICT(bank_transaction_id, document_id)
+         DO UPDATE SET
+           is_active = 1,
+           link_role = excluded.link_role,
+           link_origin = excluded.link_origin,
+           confidence = excluded.confidence,
+           created_at = excluded.created_at,
+           created_by = excluded.created_by`,
+      );
+
+      for (const documentId of selectedIds) {
+        const role = documentId === payload.primaryDocumentId ? "primary" : "supporting";
+        upsertLink.run(txId, documentId, role, scoreByDocument.get(documentId) ?? null, now);
+      }
+
+      db.prepare(
+        `UPDATE transaction_document_match_suggestions
+         SET status = 'accepted', decided_at = ?, decided_by = 'dashboard'
+         WHERE bank_transaction_id = ?
+           AND status = 'pending'
+           AND document_id IN (${placeholders})`,
+      ).run(now, txId, ...selectedIds);
+
+      db.prepare(
+        `UPDATE transaction_document_match_suggestions
+         SET status = 'rejected', decided_at = ?, decided_by = 'dashboard'
+         WHERE bank_transaction_id = ?
+           AND status = 'pending'`,
+      ).run(now, txId);
+
+      const status = recomputeTransactionDocumentStatus(db, txId, "Belegauswahl aus Match-Vorschlag übernommen", "dashboard");
+      return { status };
+    });
+
+    const result = writeTx();
+
+    res.json({
+      ok: true,
+      transaction_id: txId,
+      linked_document_ids: selectedIds,
+      new_status: result.status,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.get("/transactions/:id/next-open", (req, res) => {
+  try {
+    const txId = txIdFromParams(req.params.id);
+    const query = validateQuery(nextOpenQuerySchema, req.query);
+    const db = getDb();
+
+    if (typeof query.minCents === "number" && typeof query.maxCents === "number" && query.minCents > query.maxCents) {
+      throw new ValidationError("minCents darf nicht größer als maxCents sein");
+    }
+
+    const current = db
+      .prepare(
+        `SELECT id, booking_date
+         FROM bank_transactions
+         WHERE id = ?`,
+      )
+      .get(txId) as { id: number; booking_date: string } | undefined;
+
+    if (!current) {
+      throw new ValidationError("Transaktion nicht gefunden");
+    }
+
+    const { whereSql, params } = buildTransactionsWhere(
+      {
+        from: query.from,
+        to: query.to,
+        q: query.q,
+        txType: query.txType,
+        minCents: query.minCents,
+        maxCents: query.maxCents,
+      },
+      "bt",
+    );
+
+    const openStatusClause = `bt.document_status IN ('offen', 'in_klaerung')`;
+    const cursorClause = `(bt.booking_date < ? OR (bt.booking_date = ? AND bt.id < ?))`;
+    const finalWhereSql = whereSql
+      ? `${whereSql} AND ${openStatusClause} AND ${cursorClause}`
+      : `WHERE ${openStatusClause} AND ${cursorClause}`;
+
+    const next = db
+      .prepare(
+        `SELECT bt.id
+         FROM bank_transactions bt
+         ${finalWhereSql}
+         ORDER BY bt.booking_date DESC, bt.id DESC
+         LIMIT 1`,
+      )
+      .get(...params, current.booking_date, current.booking_date, current.id) as { id: number } | undefined;
+
+    res.json({
+      nextTransactionId: next?.id ?? null,
     });
   } catch (error) {
     sendError(res, error);
@@ -1071,6 +1572,60 @@ router.get("/transactions/:id/statement-file", (req, res) => {
     res.sendFile(statementFilePath, {
       headers: {
         "Content-Disposition": "inline",
+      },
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.get("/documents/:id/file", (req, res) => {
+  try {
+    const documentId = Number(req.params.id);
+    if (!Number.isInteger(documentId) || documentId <= 0) {
+      throw new ValidationError("Ungültige Dokument-ID");
+    }
+
+    const db = getDb();
+    const row = db
+      .prepare(
+        `SELECT id, storage_rel_path, original_filename
+         FROM documents
+         WHERE id = ?`,
+      )
+      .get(documentId) as { id: number; storage_rel_path: string; original_filename: string | null } | undefined;
+
+    if (!row) {
+      res.status(404).json({
+        error: {
+          code: "not_found",
+          message: "Dokument nicht gefunden",
+        },
+      });
+      return;
+    }
+
+    const absPath = path.resolve(projectRoot, row.storage_rel_path);
+    const projectRootAbs = path.resolve(projectRoot);
+    if (absPath !== projectRootAbs && !absPath.startsWith(`${projectRootAbs}${path.sep}`)) {
+      throw new ValidationError("Ungültiger Dokumentpfad");
+    }
+
+    if (!fs.existsSync(absPath) || !fs.statSync(absPath).isFile()) {
+      res.status(404).json({
+        error: {
+          code: "file_not_found",
+          message: "Datei zu diesem Dokument wurde nicht gefunden",
+        },
+      });
+      return;
+    }
+
+    const fileName = row.original_filename?.trim() || path.basename(absPath);
+    const encoded = encodeURIComponent(fileName);
+    res.sendFile(absPath, {
+      headers: {
+        "Content-Disposition": `inline; filename*=UTF-8''${encoded}`,
       },
     });
   } catch (error) {
