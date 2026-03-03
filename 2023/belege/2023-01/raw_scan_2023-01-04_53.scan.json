@@ -1,0 +1,28 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 9.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-04",
+    "issuer_name": "Robins Tools",
+    "invoice_number": "53",
+    "subject": "Rechnung Belegnummer 53 (ORDER-53)",
+    "summary_short": "SMD Magazines Mega Pack inkl. Versand",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 3522,
+    "net_amount_cents": 2960,
+    "vat_amount_cents": 562,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.86,
+    "ai_confidence": 0.88,
+    "ocr_text": "05/01/2023, 15:35 Bestellungen - #57, #56, #55, #54, #53, #52\\n\\nRechnung\\nRobins Tools Rechnung\\nrobins-tools.com/products Belegnummer 53\\nVAT ID: DE300112279 Datum 04.01.2023\\nBitMechanics GmbH Kundenservice:\\nLindenhofstr. 23 robin@robins-tools.com\\n88145 Hergatz, Bayern\\nDeutschland\\nVersenden an Kaufer\\nAdam Mandera USt-Nummer: DE315737563\\nnanoDyne info@nanodyne.de\\nAm Mihlberg 1 Zahlungsmethode Credit or debit card\\n86441 Zusmarshausen\\nDeutschland\\n\\nArtikel Stk. Preis Menge VAT Zwischensumme\\n48 x SMD Magazines Mega Pack €25,00 1 19% €25,00\\nArt.-Nr. R-MGZNS8PK6\\nDPD €5,47 19% €5,47\\nFalls nicht anders angegeben, entspricht das Artikel €25,00\\nRechnungsdatum dem Lieferdatum. Versand €4,60\\nVAT €5,62\\nGesamtsumme €35,22\\nVielen Dank fur Ihre Bestellung!\\nORDER-53",
+    "notes": [
+      "VAT ID issuer: DE300112279",
+      "Customer VAT: DE315737563",
+      "Payment method: Credit or debit card",
+      "Line item: 48 x SMD Magazines Mega Pack, Art.-Nr. R-MGZNS8PK6",
+      "Shipping gross 5.47 EUR (net 4.60 EUR)"
+    ]
+  }
+}

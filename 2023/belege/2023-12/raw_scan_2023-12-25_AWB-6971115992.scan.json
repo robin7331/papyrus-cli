@@ -1,0 +1,26 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 10.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-12-25",
+    "issuer_name": "JOYFUL ABILITY INTERNATIONAL LTD",
+    "invoice_number": "AWB-6971115992",
+    "subject": "Commercial Invoice AWB 6971115992",
+    "summary_short": "Commercial Invoice fuer Warenlieferung (Air Pump/Air Valve)",
+    "document_type": "Commercial Invoice",
+    "gross_amount_cents": 126600,
+    "net_amount_cents": 126600,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_EXPORT",
+    "country_code": "HK",
+    "ocr_confidence": 0.7,
+    "ai_confidence": 0.74,
+    "ocr_text": "Commercial Invoice\n\nAWB No: 6971115992\n\nSHIP FROM:\n\nJOYFUL ABILITY INTERNATIONAL LTD\nKEN SUN-A62\n\nFLAT RM D G/F BHOTAI INDUSTRIAL\nBUILDING 10 TIN HAU ROAD TUEN MUN\n\nHONG KONG\nHong Kong SAR, China\n\n+85236110255\nKelvinCheuk@joyfulcn.cn\n\nInvoice Date: 2023-12-25 Invoice No:\n\nSHIP TO:\nBITMECHANICS GMBH\nROBIN REITER\nLINDENHOFSTR 23\nHERGATZ BAYERN\n\nHERGATZ, 88145\nBavaria\n\nGermany\n+491711930690\n\nTrader Type:BUSINESS Trader Type:BUSINESS\nVAT No: VAT No:\nEORI EORI:\nTAX ID\nShipper Reference: 600500512394\nReceiver Reference:\nRemarks:\nItem | Description Commo- | Tax Item Weight! | COO Reference Type & |QTY Unit —_—| Sub Total\ndity Code| paid Weight ID Value | Value\n1 | AIR PUMP IB: 0.021 kg | CHINA, 300.00 PC| 2.35 USD | 705.00\n8414809- 6.300 kg | PEOPLES USD\n090 REPUBLIC\n2 AIR VALVE 1B: 0.021 kg | CHINA, 300.00 PC|0.89 USD | 267.00\n8481804- 6.300 kg _| PEOPLES | USD\n| 090 REPUBLIC |\n[3 | AIR VALVE 1B: 0.021 kg | CHINA, 300.00 PC|0.98 USD | 294.00\n8481804- 6.300 kg | PEOPLES | USD\n0390 REPUBLIC |\n\nPage 1 of 2\n",
+    "notes": [
+      "OCR via sips+tesseract (eng).",
+      "Invoice No im OCR nicht lesbar; AWB No als invoice_number verwendet.",
+      "Seite 2 der PDF war mit lokaler OCR-Pipeline nicht extrahierbar; Betraege aus den auf Seite 1 erkannten Positionen (705+267+294 USD)."
+    ]
+  }
+}

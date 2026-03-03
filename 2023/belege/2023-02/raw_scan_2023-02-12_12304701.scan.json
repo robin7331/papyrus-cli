@@ -1,0 +1,26 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 4.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-02-12",
+    "issuer_name": "Kab24 GmbH",
+    "invoice_number": "12304701",
+    "subject": "Rechnung 12304701 Telefonkabel und DHL Versand",
+    "summary_short": "Kab24 Rechnung fuer Telefonkabel/Versand",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 8990,
+    "net_amount_cents": 7555,
+    "vat_amount_cents": 1435,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.82,
+    "ai_confidence": 0.92,
+    "ocr_text": "GmbH\n\n24\n\nKab\n\nutzer?\n\n/ Ber\n\n®\nAudio-, Video-, Computerkabel & Adapter - Programmierung - Netzwerktechnik\nStromversorgung - Kommunikation - SAT & BK-Technik - ISDN & Analog - Batterien e\n\nTelefontechnik - xDSL & Netzwerktechnik - Beleuchtung - Werkzeug\n\nRECHN =i eae\nRechnungsnummer: = 12304701\nKundennummer: 499855\n|Rechnungsdatum: 12.02.2023\nLieferdatum: 12.02.2023\n|Unsere Steuernummer: 32494/41572\n| Unsere USt-IdNr.: DE272871736\n| Seite: 1\nKab24 GmbH, Gutenbergstr. 8, 69214 Eppelheim ee\nBitMechanics GmbH\nFirma Robin Reiter\nBitMechanics GmbH Lindenhofstr. 23\nRobin Reiter\nLindenhofstr. 23 D-88145 Hergatz\n88145 Hergatz\neMail: robin@robins-tools.com\n*12304701* *732363\nWebshop-Bestellnummer\nWir danken fiir Ihren Auftrag, hiermit stellen wir Ihnen folgende Positionen in Rechnung:\n| Pos. | Menge. Einh. Art.-Nr. Bezeichnung St. E-Preis | G-Preis\n| 1. 100| Sttick 30220 Telefonkabel Modularkabel 3m RJ11 Re 19% 0,706 | 70, 600)\n| Stecker auf Rj11l Stecker ‘= | |\ni |\n0,036/ 3,60 Kg |HTR 34] 100] 4250940911799 eg\n2. 1| Stuck DHL Versandkosten versichertes DHL Paket 1- li98! 4,958 4,958)\n31,5 Kg | |\n0,001/ 0,00 Kgl |\nGesamtgewicht aller Artikel: 3.60 Kg Warenwert netto Gesamt: 75,55 EUR\nMwSt. 19%: 14,35 EUR\nRechnungsbetrag: 89,90 EUR\n\nZahlungsbedingungen:\nPayPal, Betrag dankend per PayPal erhalten\n\nMit freundlichen GrtiBen, Ihr Kab24 Team\n\nEs gelten unsere allgemeinen Geschaftsbedingungen Diese kénnen Sie unter http:/Awww.kab24.de einsehen\nDie gelieferte Ware bleibt bis zur volistandigen Bezahlung unser ee WEE-Reg.-Nr.: DE 764 762 12.\nGemass Verpackungsverordnung sind wir dem Entsorger LANDBELL unter der Mitgliedsnummer 4134330 angeschlossen\n\n] rt\nKab24 GmbH Tel: +49 (0) 6221 75858-0 | Volkebank Krelehgau WWiestocn | Konto 405 349707\nGutenbergstr. 8 Fax: +49 (0) 6221 7 58 58-1 | pr eeass 03200 | BLZ: 600 100 70\n69214 Eppelheim eMail. info@kab24.de jj Inhaber. Kab24 GmbH |B) Innaber: Kab24 GmbH\nHRB: 709726 Mannheim http /www.kab24 de IBAN. DE44672922000033750714 IBAN. DE58600100700465349707\n\n| BIC: PBNKDEFF\n\nGeschaftsfuhrer: Roger Koch _http./www.facebook.com/kab24 de u BIC. GENODES1WIE",
+    "notes": [
+      "Kundennummer 499855",
+      "Lieferdatum 2023-02-12",
+      "Webshop-Bestellnummer laut OCR vermutlich 732363"
+    ]
+  }
+}

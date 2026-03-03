@@ -1,0 +1,26 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 5.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": null,
+    "issuer_name": null,
+    "invoice_number": "SOS3",
+    "subject": "Beleg SOS3 (OCR unsicher)",
+    "summary_short": "OCR-Scan mit Betrag 20,00 EUR und 0,00 EUR Steuer",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 2000,
+    "net_amount_cents": 2000,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "ocr_confidence": 0.22,
+    "ai_confidence": 0.35,
+    "ocr_text": "===== PAGE 1 =====\nKOULOWWPAPS\\us | VYOPIW YSITEL |\n\nBEL QPELMG\\ZNUG: ELALATINUG Pitts an Loeuags RauKASL’ IpVY: |\n\nEUSPI|L6UG AOLefenGL\n\nBATVDEWI004\n\nDETS TS0O3 OOOO THEY WES de\n\nVOL €\n\nElefssgnubepesig&\n\nCS6DSCKPELOLQeELNUR esc’\n\n16}6,0U* poLro’ D9LKbygrs*\n\nBGleG-YEPGUK V\n\nre pelkeynbreu Bejsbeu\n\nB’ bSNecUS|6 GNLcy WLpEIfGeper elzerse (,gI]2 smsLeiisuq)\n\n(OG6L pENecyg|6 59 ENO le Mpetuscyrnus)\n\n<LSIE{SPLGL: MpELusCprNUBebsnecygj6 g ENto le NPelLuscprnNue:\n\nVW 1Sfesculicue KO2feU OVUG ASLbUGE rr pelBeynBreu Relekou\n\nAPSLUSCHTMUBeKOeTSU\n\nSIUGL MPELUSCUINUE ,,,0,,, GIULLIBGU* G9 KEIU FMIecUGULIB)\nVUSSP| GEL MiecueUrsRe GIULLIBGU:\nWSPLESbIbG YGi26\n\nOa6L\n\nEIULSbIb6 Yel2s (Weep 9]2 g efnuqeIYUS' (J GIULLIBeU):\n\nAcLbleerVeeWepLIN{MguU\n\nC OUSULICUG AGLKEPLeWisfe} re pelBeynBreu Bej6beu\n\nB’ bUASE-bKM C6{SPLEUG KIN:\n\nVY bKM !W BesjuepeAacLiuOd6u\nS}LPK\n\nHGI26S!6}: |\n\nRBGEBIUU-EUCG:\n\n4G1269U|92e:\nSWE:\n\nSC '03°S053\n\nSt 03'SOS2\n\nKOPIU KEGEL\n\nPOt30 €\n\n————\nBLALLOPEsLsAOLefen6\n\nUSfOpsr.g&\n\nSAv'Ov € |\n\n1 oooe | Tax | O00€ |\naes Cie ae ae ee\n\n—_—_—_,.£..—\nBLALLOPSsLsAOLefensr\n\nVstfopes.gs\n| T| 20°00 €\n0°00 €\nLT\nFane a ee\n\n—_—_—_—_—_———$—\nBLUIfropesisAOLefenet\n\neo]\n\na,\n\nUSffoperigB\n\nT8°00 €\n\nWPLECHUNUG GLLO\\AL IU Qer ComUUELUIEE\\ Nua\n\nKOUIGLEUS (bIxX6! b1Wb Ynuqeusdnies)\n\nBING GIG efSLK NWLSUGEFEU Le|qeL Sn2in}jeU (2omels SngLeieuq):\n\nBGl26KO2f6U-LOLWINISL SOS3 — Julgua\n\ntrim tll Sian moacmsniiioeany",
+    "notes": [
+      "OCR stark verrauscht; Werte konservativ gesetzt.",
+      "Betrag 20,00 EUR und Steuer 0,00 EUR aus OCR abgeleitet.",
+      "Rechnungsnummer SOS3 aus OCR-Fragment abgeleitet."
+    ]
+  }
+}

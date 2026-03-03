@@ -1,0 +1,27 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 7.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-04",
+    "issuer_name": "Robins Tools",
+    "invoice_number": "56",
+    "subject": "Rechnung 56 Bestellung #56",
+    "summary_short": "Verkauf 48x SMD Magazines Mega Pack inkl. Versand",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 4944,
+    "net_amount_cents": 4120,
+    "vat_amount_cents": 824,
+    "vat_rate_bps": 2000,
+    "vat_treatment": "VAT_OSS",
+    "country_code": "FR",
+    "ocr_confidence": 0.85,
+    "ai_confidence": 0.9,
+    "ocr_text": "05/01/2023, 15:35 https://my.ecwid.com/cp/print_invoice?ownerid=63032792 Bestellungen - #57, #56, #55, #54, #53, #52 Rechnung Belegnummer 56 Datum 04.01.2023 Robins Tools robins-tools.com/products VAT ID: DE300112279 Kundenservice: robin@robins-tools.com BitMechanics GmbH Lindenhofstr. 23 88145 Hergatz, Bayern Deutschland Versenden an Käufer Alexandre THOMAZO alex@thomazo.info 4 rue de la prairie Zahlungsmethode Credit or debit card 35510 CESSON SEVIGNE Frankreich Artikel 48 x SMD Magazines Mega Pack €36,00 VAT 20% Zwischensumme €36,00 UPS €13,44 VAT 20% €13,44 Artikel €30,00 Versand €11,20 VAT €8,24 Gesamtsumme €49,44 ORDER-56",
+    "notes": [
+      "Kunde: Alexandre Thomazo, Frankreich",
+      "USt-Satz im Beleg: 20%",
+      "Artikel netto 30,00 EUR, Versand netto 11,20 EUR",
+      "Order-Referenz: ORDER-56"
+    ]
+  }
+}

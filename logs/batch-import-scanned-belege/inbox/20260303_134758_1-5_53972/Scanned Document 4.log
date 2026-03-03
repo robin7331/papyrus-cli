@@ -1,0 +1,286 @@
+OpenAI Codex v0.107.0 (research preview)
+--------
+workdir: /Users/robin/Documents/Projects/buchhaltung
+model: gpt-5.3-codex
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR]
+reasoning effort: low
+reasoning summaries: none
+session id: 019cb3bf-63d9-7673-8126-a20885ce7d7d
+--------
+user
+Nutze die Skills import-scanned-belege und pdf. Bearbeite genau diese Datei: scanned_belege/Scanned Document 4.pdf. Lies und interpretiere den Beleg. Erzeuge/aktualisiere exakt diese JSON-Datei: scanned_belege/Scanned Document 4.scan.json. Verwende in dieser Umgebung direkt diese Pipeline und KEINE Tool-Probing-Runden: (1) OCR fuer ALLE PDF-Seiten mit: tools/ocr-pdf-multipage.sh "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 4.pdf" "/private/tmp/beleg_ocr_20260303_134758_1-5_53972_3.txt" eng 2.2, (2) lies den kompletten OCR-Text aus "/private/tmp/beleg_ocr_20260303_134758_1-5_53972_3.txt" inkl. aller PAGE-Bloecke, (3) JSON schreiben, (4) Import exakt mit: UV_CACHE_DIR=/tmp/uv-cache uv run tools/scanned-beleg-inserter/main.py import --beleg-file "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 4.scan.json" --strict --db "/Users/robin/Documents/Projects/buchhaltung/datenbank.sqlite" --relocate-raw-scan --source-buffer-root "/Users/robin/Documents/Projects/buchhaltung/scanned_belege". Keine Versuche mit pdfinfo/pdftotext/mutool/magick/Einzelseiten-OCR.
+mcp startup: no servers
+
+thinking
+**Preparing skill doc review**
+codex
+Ich bearbeite jetzt genau den angegebenen Beleg mit den Skills `import-scanned-belege` und `pdf` und führe exakt die von dir vorgegebene 4‑Schritt-Pipeline ohne zusätzliche Probing-Tools aus. Als Erstes lade ich kurz die beiden `SKILL.md`, dann starte ich direkt mit dem OCR-Befehl.
+exec
+/bin/zsh -lc "cat '/Users/robin/Documents/Projects/buchhaltung/.agents/skills/pdf/SKILL.md'" in /Users/robin/Documents/Projects/buchhaltungexec
+/bin/zsh -lc "cat '/Users/robin/Documents/Projects/buchhaltung/.agents/skills/import-scanned-belege/SKILL.md'" in /Users/robin/Documents/Projects/buchhaltung succeeded in 52ms:
+---
+name: pdf
+description: Use this skill whenever the user wants to do anything with PDF files. This includes reading or extracting text/tables from PDFs, combining or merging multiple PDFs into one, splitting PDFs apart, rotating pages, adding watermarks, creating new PDFs, filling PDF forms, encrypting/decrypting PDFs, extracting images, and OCR on scanned PDFs to make them searchable. If the user mentions a .pdf file or asks to produce one, use this skill.
+license: Proprietary. LICENSE.txt has complete terms
+---
+
+# PDF Processing Guide
+
+## Overview
+
+This guide covers essential PDF processing operations using Python libraries and command-line tools. For advanced features, JavaScript libraries, and detailed examples, see REFERENCE.md. If you need to fill out a PDF form, read FORMS.md and follow its instructions.
+
+## Quick Start
+
+```python
+from pypdf import PdfReader, PdfWriter
+
+# Read a PDF
+reader = PdfReader("document.pdf")
+print(f"Pages: {len(reader.pages)}")
+ succeeded in 52ms:
+---
+name: import-scanned-belege
+description: Verarbeite genau einen gescannten Beleg (PDF) aus dem Buffer /scanned_belege, extrahiere Rechnungsdaten inkl. USt-Klassifikation in JSON und importiere mit tools/scanned-beleg-inserter/main.py.
+---
+
+# Import eines gescannten Belegs (PDF -> Extraktion -> documents)
+
+Nutze diesen Skill, wenn genau eine PDF-Datei aus `/scanned_belege` (Root-Buffer) importiert werden soll.
+
+## Harte Regeln
+
+1. Kein direkter SQL-Schreibzugriff durch den Agenten.
+2. Genau ein Beleg (ggf. mit mehreren Seiten) pro Lauf.
+3. PDF immer lesen und interpretieren (mit `pdf`-Skill).
+4. Erst JSON erzeugen, dann Import ueber `tools/scanned-beleg-inserter/main.py`, und zwar mit `uv run`.
+5. Fuer Batch-Verarbeitung das Loop-Script in `tools/` verwenden.
+   - `tools/import-scanned-belege-inbox.sh`
+
+## Voraussetzungen
+
+
+thinking
+**Executing OCR command**
+codex
+Die Skill-Regeln sind geladen; ich starte jetzt exakt Schritt 1 mit dem vorgegebenen OCR-Kommando auf die angegebene PDF.
+exec
+/bin/zsh -lc 'tools/ocr-pdf-multipage.sh "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 4.pdf" "/private/tmp/beleg_ocr_20260303_134758_1-5_53972_3.txt" eng 2.2' in /Users/robin/Documents/Projects/buchhaltung succeeded in 2.38s:
+ok pages=1 output=/private/tmp/beleg_ocr_20260303_134758_1-5_53972_3.txt
+
+thinking
+**Confirming OCR text file retrieval**
+codex
+OCR ist erfolgreich durchgelaufen; ich lese jetzt den vollständigen OCR-Text inklusive aller `PAGE`-Blöcke und leite daraus die JSON-Felder ab.
+exec
+/bin/zsh -lc "cat '/private/tmp/beleg_ocr_20260303_134758_1-5_53972_3.txt'" in /Users/robin/Documents/Projects/buchhaltung succeeded in 51ms:
+===== PAGE 1 =====
+BING PESCHIGU SIG NU2ELE UENG LILWIGLNUG' BSUKAGLPIUqNU NUq efeneL-YNWWeEL
+MEEEKDV.LAW EVLEbBICHL KECHUNNGeDYLNW
+
+CE2VINL ENKBO € SCOT
+
+DS 95 eT 10°00 t 30 WMet
+
+Wivqeiue6udeusnecpga
+
+NeeIDUE | MsteuMeL | Wumer-2ats | WMer-BonSa | smiechenennne
+
+BeweLKnUdEeL:
+
+Bb EILLIVG’ W NEB eflb 2\3S LOBE
+
+P085-see 12VS 12IS ID US
+jischiva-yL: IACrOPeda\OAJaee1€
+
+risys.peqiuanudeu: CbL HStdsfs"* DE riepennud s00ettS sta
+
+thinking
+**Inspecting scanned document JSON schemas**
+codex
+Der OCR-Text ist stark verrauscht; ich prüfe jetzt kurz vorhandene `*.scan.json`-Beispiele im Projekt, damit die neue Datei sicher im strikt validierbaren Format geschrieben wird.
+exec
+/bin/zsh -lc "rg --files '/Users/robin/Documents/Projects/buchhaltung' | rg '\\.scan\\.json"'$'"'" in /Users/robin/Documents/Projects/buchhaltung succeeded in 51ms:
+/Users/robin/Documents/Projects/buchhaltung/2026/belege/2026-03/raw_scan_unknown_date_unknown_number_b2536549.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2026/belege/2026-03/raw_scan_unknown_date_unknown_number.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2026/belege/2026-03/raw_scan_unknown_date_730576.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2025/belege/2025-03/raw_scan_2025-03-30_e28130.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2024/belege/2024-10/raw_scan_2024-10-10_unknown_number.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2024/belege/2024-11/raw_scan_2024-11-05_12422591.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-01/raw_scan_2023-01-04_56.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-01/raw_scan_2023-01-19_AWB-393442494659.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-01/raw_scan_2023-01-16_WDT_000003_23_211ad474.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-01/raw_scan_2023-01-04_54.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-01/raw_scan_2023-01-16_WDT_000003_23.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-01/raw_scan_2023-01-04_52.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-01/raw_scan_2023-01-04_55.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-01/raw_scan_2023-01-04_53.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-05/raw_scan_2023-05-10_88_42.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-05/raw_scan_2023-05-03_B5021211240.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-05/raw_scan_2023-05-03_unknown_number.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-10/raw_scan_2023-10-09_STYAC3530.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-12/raw_scan_2023-12-25_AWB-6971115992.scan.json
+/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-03/raw_scan_2023-03-08_YTOOOSES2SST8.scan.json
+
+thinking
+**Identifying unclear date format**
+exec
+/bin/zsh -lc "cat '/Users/robin/Documents/Projects/buchhaltung/2026/belege/2026-03/raw_scan_unknown_date_unknown_number.scan.json'" in /Users/robin/Documents/Projects/buchhaltung succeeded in 53ms:
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 6.pdf",
+  "extracted": {
+    "issuer_name": "Unklar (OCR verrauscht)",
+    "invoice_number": null,
+    "subject": "Gescanntes Zahlungsdokument/Bankaehnlicher Beleg (manuelle Pruefung noetig)",
+    "summary_short": "OCR stark verrauscht; Betrag aus OCR als 1.180,00 EUR interpretiert.",
+    "document_type": "Beleg",
+    "gross_amount_cents": 118000,
+    "net_amount_cents": 118000,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "ocr_confidence": 0.22,
+    "ai_confidence": 0.42,
+    "ocr_text": "===== PAGE 1 =====\nKScuUuNudegssnww 6usebucps risieiqsynw\n\nXSPIPSL pel ELSIE Gel KecuUNUa’\n\nER SN eT NE\n\ncc —S——==_=__-==\n\nEugenwiwe 2°331'S0 €\n\n-—_— sess\n\n+ J3'00 & WSEpLmelfesenieL 821 SO€\n\n@6eswienwiwe UEyO t't80'00 €\n\n6xciNelAs ASLesuq\n\nbléi2 DLo pnuqely | 6I[6 IUKINeIAG ASLbsCKNUA’\nKSYOU\n\nrozGLove 2000 UScY BsNfel] 2omp|ey gJe EcpAAny 1\nbye\n\n1  ebussGnerel| eWD-Ws4ssius pgee’ cgb nuq cjswb sne 20'00 JooesacK g3'e0 t'¢80'00\n\nbO2ILIOV TEICLNUG2BE2CHKEIBNUG WENGE EIVSErbi' | CE2YWL\n\neWD-Wsdssiu6E\nKD-UK™\nKecuunud\n, BIC-GEUODEe2/LEL\nD 88Jt¢2 HELOS{sS IBVU-DE@ee 2131 20000\\Seay008\nPIUQEULOlefl’ 53 KOUfO \\Sea 00d\nBINSECYSUICe GLUPH\n\nBrX e214 812 00\nAO|KepSUK | 6fUsUa\nb-Lou” (Asbdever oi y- Sei yl Voppeld KOUfOIUPSPEL: | POWS2 HISSL\nDE813203S23\nCISNGLUL\\NID: 81331\\Odd2\n\nPoAP-Sarha, « Owes Fam\n\nE9X O8380\\98) age\n. X AB AAS LE|6{OU OS3B0\\98l a8)\n\nhe a rie i\n\n88i¥\\ yoppe.d\nMsuaeuel of'y\n",
+    "notes": [
+      "OCR-Quelle ist stark verrauscht; Felder sind best effort.",
+      "Betrag 1.180,00 EUR aus Zeichenfolge 't't80'00 €' interpretiert.",
+exec
+/bin/zsh -lc "cat '/Users/robin/Documents/Projects/buchhaltung/2026/belege/2026-03/raw_scan_unknown_date_unknown_number_b2536549.scan.json'" in /Users/robin/Documents/Projects/buchhaltung succeeded in 52ms:
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 2.pdf",
+  "year": 2026,
+  "extracted": {
+    "document_date": null,
+    "issuer_name": null,
+    "invoice_number": null,
+    "subject": "Gescanntes Dokument 2 (OCR stark verrauscht)",
+    "summary_short": "Beleg aus Scan-Buffer; Inhalte nur teilweise lesbar.",
+    "document_type": "Beleg",
+    "gross_amount_cents": 4950,
+    "net_amount_cents": null,
+    "vat_amount_cents": null,
+    "vat_rate_bps": null,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.22,
+    "ai_confidence": 0.36,
+    "ocr_text": "===== PAGE 1 =====\nLat hal tah VAT AVL le TUMORAL ULL Ta LHe pavey nt HVA PEGE PROTO Oe BORO TV Dee Sn oa oa been\neee a We aaa a Heb TEVA a AUTO AEITpOL Ce ENTE ete! TYE UEMODEPTEER if HAT VIE ALITA\n\nTTRLALR RL eed TALE | Meh) WAM ihe liu Hh ye TP peep AGy pip vipa TT ek baited Me i a a Ge | ld\n\n\\ wii ae yea We Qa Wl TT LAL i hj ih tye AUEO Uh] PR aad ed GA PUP AGT\n\nieee bisa WO\n\naaa |\n\nPeCAOLU HUG BJO PAL OP Ok [PE GLUE LEDpOtie (phe Wop ye (eu)qulybb Gpetvepiien\n4 WHE Geld He pene fepeuqel GPE GOqe (OUHeH pie Qe YeOPUnuOegafeu eopiey:\nMi yhageaqe\n\nSn tS thm iin a AL in at pi tat em ig ai, a a ae rm i a all At einen tn lilt La hl\n\nMVCIOLE@ [UPOLUUETOUGU SOLU | POLE DE TAUBO PALS [UGH BE TULL PDE \\M MM Lome baa lo qea\\qe\\qareve Opa:\n\nOUEL GIA MIL [POL GL Wuylete Oeiiie Sneeuqeu!\nPe Fee NUPELA AGL ON Bs HUG Fe peLpeqUOnuteu’ Gia Bie NufeL PDe!\\MMM Loge bee e qa\\qea\\eop ejveepeu ~ouueL\n\nVuledepete Sap iude (Herel Pediuel LE Qe (a0 Get [ec unudeereyaud (Yeo punudeqaniiny\n\nSeppe pequilnudenuy 40 Lee veto\nPre peipequanual PM © OP WeLE pelea mayer (peyperappyojear)\nSA Sepeuqet permed H)'O)\nGeeomipenen no'o)\nyieQoutee fennel 10'00 Ww se'nd\nWeromaraumeit Ha'S0\nIO SESS) HeveD Bh ON\n100 W\\ddd SOO BL Wao LAW 100 A 49°50\nHeeopreypmt Oo eyprore\nhoe INGeO eute jaye hore Hemen (Pri)\nHenieavjauq\nHHIYP Heels\nPiUGQeupo eth’ Za J ouou\nHi Weopyeuioes Gipy\nMeLeuewmb quite Yerolamyoyt o's Ka\n: ‘ae Ta o''. Ka\nPereniudeqami $1'09'S034\npbeqrien YPyO Nua \\ bewenb\nPeyeinua HIODOO\\ES\n-pidaah as ated. owreyquciu 10'09'S059\nHHIde HeLOurs\nFIUaOUVOLOIL’ 34 | Dor Pwo JOU Sos9\nHil Wweoveuio® CWP} MUICPOLU Le “eOd Ne\nHejelqowius S/'09'S0384\n\nidiee boy agye Vii 1) WHA ei eUFey eI Gel\n\nHeCpUNUG 9jOS58039)\n\nINNOAS OUR IU bydefie bacwadud\n\nBEF OV04. LO2G Pag Didepic.\n",
+    "notes": [
+
+thinking
+**Assessing invoice OCR ambiguities**
+codex
+Ich prüfe jetzt kurz die Validierungslogik des Importers, damit die JSON-Struktur bei `--strict` garantiert akzeptiert wird, bevor ich schreibe und importiere.
+exec
+/bin/zsh -lc "rg -n \"gross_amount_cents|vat_treatment|document_date|required|strict|schema\" tools/scanned-beleg-inserter/main.py && sed -n '1,260p' tools/scanned-beleg-inserter/main.py" in /Users/robin/Documents/Projects/buchhaltung succeeded in 51ms:
+9:  python3 main.py validate --beleg-file /abs/path/file.scan.json [--strict]
+10:  python3 main.py import --beleg-file /abs/path/file.scan.json [--db /abs/path/datenbank.sqlite] [--strict] [--relocate-raw-scan] [--source-buffer-root /abs/path/scanned_belege]
+84:def _infer_year(source_pdf: Path, document_date: str | None, given_year: Any) -> int:
+91:    if document_date:
+92:        return int(document_date[:4])
+118:def _month_part(document_date: str | None, now: str) -> str:
+119:    if document_date:
+120:        return document_date[:7]
+152:    month_part = _month_part(normalized["document_date"], now)
+157:    date_token = normalized["document_date"] if normalized["document_date"] else "unknown_date"
+208:def load_and_validate(beleg_file: Path, strict: bool) -> dict[str, Any]:
+237:    document_date = _safe_text(extracted.get("document_date"), 20)
+238:    if document_date and not ISO_DATE_RE.fullmatch(document_date):
+239:        raise ValidationProblem("extracted.document_date muss YYYY-MM-DD sein.")
+241:    vat_treatment = _safe_text(extracted.get("vat_treatment"), 40) or "VAT_UNKNOWN"
+242:    if vat_treatment not in ALLOWED_VAT_TREATMENTS:
+244:            "extracted.vat_treatment ungueltig. Erlaubt: "
+261:        "year": _infer_year(source_pdf, document_date, payload.get("year")),
+262:        "document_date": document_date,
+268:        "gross_amount_cents": _safe_int(extracted.get("gross_amount_cents")),
+
+thinking
+**Setting fixed JSON fields**
+codex
+Ich schreibe jetzt `scanned_belege/Scanned Document 4.scan.json` im kompatiblen Strict-Format mit Best-Effort-Interpretation aus dem vollständigen OCR-Text, danach führe ich exakt den von dir vorgegebenen Import-Befehl aus.
+exec
+/bin/zsh -lc "cat > '/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 4.scan.json' <<'JSON'
+{
+  \"source_pdf\": \"/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 4.pdf\",
+  \"year\": 2026,
+  \"extracted\": {
+    \"document_date\": null,
+    \"issuer_name\": \"Unklar (OCR stark verrauscht)\",
+    \"invoice_number\": \"JISFSO38Ig\",
+    \"subject\": \"Kartenzahlungs-/Kassenbeleg (manuelle Pruefung noetig)\",
+    \"summary_short\": \"OCR stark verrauscht; Bruttobetrag best effort als 108,00 EUR interpretiert.\",
+    \"document_type\": \"Beleg\",
+    \"gross_amount_cents\": 10800,
+    \"net_amount_cents\": null,
+    \"vat_amount_cents\": null,
+    \"vat_rate_bps\": null,
+    \"vat_treatment\": \"VAT_19\",
+    \"country_code\": \"DE\",
+    \"ocr_confidence\": 0.21,
+    \"ai_confidence\": 0.35,
+    \"ocr_text\": \"===== PAGE 1 =====\\nBING PESCHIGU SIG NU2ELE UENG LILWIGLNUG' BSUKAGLPIUqNU NUq efeneL-YNWWeEL\\nMEEEKDV.LAW EVLEbBICHL KECHUNNGeDYLNW\\n\\nCE2VINL ENKBO € SCOT\\n\\nDS 95 eT 10°00 t 30 WMet\\n\\nWivqeiue6udeusnecpga\\n\\nNeeIDUE | MsteuMeL | Wumer-2ats | WMer-BonSa | smiechenennne\\n\\nBeweLKnUdEeL:\\n\\nBb EILLIVG’ W NEB eflb 2\\\\3S LOBE\\n\\nP085-see 12VS 12IS ID US\\njischiva-yL: IACrOPeda\\\\OAJaee1€\\n\\nrisys.peqiuanudeu: CbL HStdsfs\\\"* DE riepennud s00ettS sta\\n\\nTspinudepegq’: 30 1946 uesso RBGefse]|UL\\\" \\\\tOJe880\\n\\n{VLG BEeLE|UL\\\": MEB2 JO000e2 29 AGlesuqgls DH CVKKIEK DHI @LVUDVKD DEFIAEKA\\n\\nDENLECHI VUD\\n88jd2 HEBCVLS\\nriuqeupojes’ 53\\n\\nDENLECHIVUD\\n88)/¥2 HEBCVLN\\n\\npluqesupojage’ 53\\n\\nHOpIU YeIfeL\\n\\nBUWSecpsuICe QWpH\\n\\nrispeisuecul': J ISFSO38Ig woysaacp::\\n\\nHOPIU HGI{EL\\nBISVVSCYSUICe CWPH\\nBeEcpunudecUby’: 14503818 SspinuGeby': JISO38Ig\\n\\nIISO38I8\\n\\n2s6NGL-YL PZ0AT\\\\05508 |\\niliac 2MlkL:"'! CHV2DEEX'"\\nAVL DEII388\\\\903 (Sy IBVU: DE@d20) 108001 es 208ee8\\n\\nNet -19euryt’: DEJI3B8\\\\T—03 KOU{O: Ee} POgPEg\\n\\nE9X%: yo CAPO OO 38) BrX: 80) 108 00\\n\\nbvOUG: 49 CdLO ABP 135 Tb WolLdsU YG ELSUK NE SW yysiU\\nCEBWYNA BSUKAGLpIUqnUa:\\nSS3\\\\0 HECHIACEU\\nHOLOGL{GU2LLGR26 JE\\nMSiCY VIIAU CWUPH\\n\\nMGICH WIJAU’ JUC’ 12 9 eNpPeigiS1A Of H4II|- HOW f4ojqiwGe’ juc’ ID pase 1 30033053 |\\n| Re w BYOOS31A8T |\\nAi Kecuunud fgeue yaou 4 |\\n\",
+    \"notes\": [
+      \"OCR-Quelle: /private/tmp/beleg_ocr_20260303_134758_1-5_53972_3.txt\",
+      \"Inhalt stark verrauscht; Felder sind Best-Effort.\",
+      \"Bruttobetrag 108,00 EUR aus OCR-Fragment '108 00' inferiert.\",
+      \"USt-Klassifikation VAT_19 aufgrund OCR-Hinweis 'E9X%' (vermutlich 19%).\",
+      \"Manuelle Pruefung gegen Originalbeleg erforderlich.\"
+    ]
+  }
+}
+JSON" in /Users/robin/Documents/Projects/buchhaltung succeeded in 52ms:
+
+
+thinking
+**Importing with exact command and db path**
+codex
+Die JSON ist geschrieben; ich führe jetzt Schritt 4 exakt mit deinem Import-Kommando (inkl. `--strict`, `--db`, `--relocate-raw-scan`, `--source-buffer-root`) aus.
+exec
+/bin/zsh -lc 'UV_CACHE_DIR=/tmp/uv-cache uv run tools/scanned-beleg-inserter/main.py import --beleg-file "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 4.scan.json" --strict --db "/Users/robin/Documents/Projects/buchhaltung/datenbank.sqlite" --relocate-raw-scan --source-buffer-root "/Users/robin/Documents/Projects/buchhaltung/scanned_belege"' in /Users/robin/Documents/Projects/buchhaltung succeeded in 53ms:
+{"status": "ok", "created": true, "deduplicated": false, "document_id": 23, "review_required": true, "storage_rel_path": "2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.pdf", "db_path": "/Users/robin/Documents/Projects/buchhaltung/datenbank.sqlite", "raw_scan_relocated": true, "raw_scan_rel_path": "2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.pdf", "raw_scan_name": "raw_scan_unknown_date_JISFSO38Ig.pdf", "archived_json_rel_path": "2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.scan.json"}
+
+thinking
+**Providing final concise German summary**
+codex
+Verarbeitung abgeschlossen mit den Skills `import-scanned-belege` und `pdf` sowie exakt deiner Pipeline.
+
+- OCR ausgeführt: `tools/ocr-pdf-multipage.sh "...Scanned Document 4.pdf" "..._3.txt" eng 2.2`
+- Vollständigen OCR-Text (inkl. `===== PAGE 1 =====`) gelesen und interpretiert.
+- JSON erstellt/aktualisiert: [scanned_belege/Scanned Document 4.scan.json](/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%204.scan.json)
+- Import exakt mit deinem Befehl ausgeführt, Ergebnis:
+  - `status: ok`
+  - `created: true`
+  - `deduplicated: false`
+  - `document_id: 23`
+  - `review_required: true`
+  - `vat_treatment: VAT_19`
+  - `gross_amount_cents: 10800`
+  - Rohscan/JSON wurden archiviert nach:
+    - [2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.pdf](/Users/robin/Documents/Projects/buchhaltung/2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.pdf)
+    - [2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.scan.json](/Users/robin/Documents/Projects/buchhaltung/2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.scan.json)
+
+Soll ich den nächsten Beleg verarbeiten?
+tokens used
+17,380
+Verarbeitung abgeschlossen mit den Skills `import-scanned-belege` und `pdf` sowie exakt deiner Pipeline.
+
+- OCR ausgeführt: `tools/ocr-pdf-multipage.sh "...Scanned Document 4.pdf" "..._3.txt" eng 2.2`
+- Vollständigen OCR-Text (inkl. `===== PAGE 1 =====`) gelesen und interpretiert.
+- JSON erstellt/aktualisiert: [scanned_belege/Scanned Document 4.scan.json](/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%204.scan.json)
+- Import exakt mit deinem Befehl ausgeführt, Ergebnis:
+  - `status: ok`
+  - `created: true`
+  - `deduplicated: false`
+  - `document_id: 23`
+  - `review_required: true`
+  - `vat_treatment: VAT_19`
+  - `gross_amount_cents: 10800`
+  - Rohscan/JSON wurden archiviert nach:
+    - [2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.pdf](/Users/robin/Documents/Projects/buchhaltung/2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.pdf)
+    - [2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.scan.json](/Users/robin/Documents/Projects/buchhaltung/2026/belege/2026-03/raw_scan_unknown_date_JISFSO38Ig.scan.json)
+
+Soll ich den nächsten Beleg verarbeiten?

@@ -1,0 +1,28 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 7 page 2.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-04",
+    "issuer_name": "Robins Tools",
+    "invoice_number": "54",
+    "subject": "Rechnung Belegnummer 54 (ORDER-54)",
+    "summary_short": "SMD Magazines Mega Pack inkl. Versand",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 12447,
+    "net_amount_cents": 10460,
+    "vat_amount_cents": 1987,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.889,
+    "ai_confidence": 0.9,
+    "ocr_text": "Bestellungen - #57, #56, #55, #54, #53, #52\\n\\nRechnung\\n\\nRobins Tools\\nrobins-tools.com/products\\nVAT ID: DE300112279\\n\\nBitMechanics GmbH\\nLindenhofstr. 23\\n88145 Hergatz, Bayern\\nDeutschland\\n\\nVersenden an\\nClaudius Coenen\\nBinger Strasse\\n64295 Darmstadt\\nDeutschland\\n123456\\n\\nArtikel\\n\\n48 x SMD Magazines Mega Pack\\n\\nArt.-Nr. R-MGZNS8PK6\\n\\nDPD\\n\\nFalls nicht anders angegeben, entspricht das Artikel\\nRechnungsdatum dem Lieferdatum\\n\\nRechnung\\nBelegnummer 54\\nDatum 04.01.2023\\n\\nKundenservice:\\ntobin@robins-tools.com\\n\\nKaufer\\nrobins-tools.com@wolki.de\\nZahlungsmethode Bank Transfer\\n\\nStk. Preis Menge VAT Zwischensumme\\n\\n€119,00 1 19% €119,00\\n\\n19% €5,47\\n\\n€100,00\\nVersand €4,60\\nVAT €19,87\\n\\nGesamtsumme €124,47\\n\\nORDER-54",
+    "notes": [
+      "Quelle OCR via sips+tesseract (eng)",
+      "VAT ID erkannt: DE300112279",
+      "Artikel: 48 x SMD Magazines Mega Pack (Art.-Nr. R-MGZNS8PK6)",
+      "Zahlungsmethode: Bank Transfer",
+      "Bestellreferenz: ORDER-54"
+    ]
+  }
+}

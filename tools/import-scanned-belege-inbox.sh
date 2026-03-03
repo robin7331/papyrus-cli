@@ -15,6 +15,7 @@ Hinweise:
   - Quelle ist immer: ./scanned_belege (Root-Buffer fuer unprozessierte Scans).
   - Pro PDF wird der Skill import-scanned-belege ausgefuehrt.
   - Bei Erfolg wird die Datei nach /<year>/belege/<YYYY-MM>/ abgelegt (PDF + .scan.json).
+  - OCR erfolgt mehrseitig (alle PDF-Seiten), nicht nur Seite 1.
   - Fehlerfaelle werden nach ./scanned_belege_failed/<RUN_ID>/ verschoben.
   - Default reasoning: low (schneller, weniger Tool-Exploration).
 EOF
@@ -234,11 +235,12 @@ for pdf in "${PDF_FILES[@]}"; do
   rel_json="${json#${ROOT_DIR}/}"
   base="$(basename "$pdf" .pdf)"
   file_log="${RUN_DIR}/${base}.log"
+  ocr_txt="/private/tmp/beleg_ocr_${RUN_ID}_${selected_index}.txt"
 
   log "START [${selected_index}/${SELECTED_TOTAL}] ${rel_pdf}"
   log "LIVE-OUTPUT -> ${file_log}"
 
-  prompt="Nutze die Skills import-scanned-belege und pdf. Bearbeite genau diese Datei: ${rel_pdf}. Lies und interpretiere den Beleg. Erzeuge/aktualisiere exakt diese JSON-Datei: ${rel_json}. Verwende in dieser Umgebung direkt diese Pipeline und KEINE Tool-Probing-Runden: (1) PDF->Bild mit sips nach /private/tmp, (2) OCR mit TESSDATA_PREFIX=/opt/homebrew/share/tessdata und tesseract -l eng, (3) JSON schreiben, (4) Import exakt mit: UV_CACHE_DIR=/tmp/uv-cache uv run tools/scanned-beleg-inserter/main.py import --beleg-file \"${json}\" --strict --db \"${DB_PATH}\" --relocate-raw-scan --source-buffer-root \"${BUFFER_DIR}\". Keine Versuche mit pdfinfo/pdftotext/mutool/magick/swift, ausser wenn die direkte Pipeline fehlschlaegt."
+  prompt="Nutze die Skills import-scanned-belege und pdf. Bearbeite genau diese Datei: ${rel_pdf}. Lies und interpretiere den Beleg. Erzeuge/aktualisiere exakt diese JSON-Datei: ${rel_json}. Verwende in dieser Umgebung direkt diese Pipeline und KEINE Tool-Probing-Runden: (1) OCR fuer ALLE PDF-Seiten mit: tools/ocr-pdf-multipage.sh \"${pdf}\" \"${ocr_txt}\" eng 2.2, (2) lies den kompletten OCR-Text aus \"${ocr_txt}\" inkl. aller PAGE-Bloecke, (3) JSON schreiben, (4) Import exakt mit: UV_CACHE_DIR=/tmp/uv-cache uv run tools/scanned-beleg-inserter/main.py import --beleg-file \"${json}\" --strict --db \"${DB_PATH}\" --relocate-raw-scan --source-buffer-root \"${BUFFER_DIR}\". Keine Versuche mit pdfinfo/pdftotext/mutool/magick/Einzelseiten-OCR."
 
   set +e
   if [[ ${#CODEX_STREAM_PREFIX[@]} -gt 0 ]]; then

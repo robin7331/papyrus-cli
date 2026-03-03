@@ -1,0 +1,26 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 3.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-03-08",
+    "issuer_name": "ELBIe BYUK GMBH",
+    "invoice_number": "YTOOOSES2SST8",
+    "subject": "Bankbeleg/Kontoauszugsposten vom 08.03.2023",
+    "summary_short": "OCR-erkannter Bankbeleg mit Betrag 15,02 EUR",
+    "document_type": "Bankbeleg",
+    "gross_amount_cents": 1502,
+    "net_amount_cents": 1502,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "ocr_confidence": 0.45,
+    "ai_confidence": 0.51,
+    "ocr_text": "===== PAGE 1 =====\nIBYA' DEYO 3003 000 BSOT 8003 086 + BIG-Ccoge! ELKBIDEIT\neyes! moabbexesy . ymeederyzcpe mabbereesyt HKB $3432 + NeC-IGUE’! DE 3iedaag—as\nQSWcpgeECeLETpPRer: HME WHTTEX (AOLeTESeNGeL)* WILCTY Heayxwasysex* Cprrefobp ReT] + ACLeTrsevgqer gee yotejcprersce: H9ve- Norden yqorr\n\nLETSEEOU +83 SOS ATI 300030 + LOTELIX +43 SOS COdC-\\OP00 « FOOTTMEOCRErrTepsU_K' ge . MMM’ GSCLTepsU_K ‘ge\nELKIG BYUK GMPH + PTewejyerragye yp ¥3383 moabberesy\n\n- ELBle BSUK CWP -\n\nWIE ENUQIICYEU GLOREU\n\n»1 = WSUUGEpPNpL ,5 = AGLSNdesivecu\n\nYLOOOSS2SST8 08°03°S053 15'02 € 335'03°S053 2'00 € «J IMOZE\n\nKecuunuUa KecuunuGeqsyinw = wecuyunUGepesisa = LgIIG sw @>6EpnpLeu eseswypesisa\n\nDEL USCHefe SCULIf[ MELE |GIGEL GIG )AGIFELASPS NU2ELEL LOLGELNUG SU EIU |UKS22ONL{SELUSUWEU’\n\nNPELMEI26U els ebgfeefeue ple SNW J J‘Ot' SOS’ IU |VLEW GSIGEUGEU |UseLG2e6 NLW NULOSIAS KOesSU SN AGLUUEIGEU’\n2CULEIPEU OIG MNUV2\" {S||2 GIU IleeAGLefgUquI2 OGEL GIU SUELEL GLNUG SNL YSp|NUdercLsodeLnUa AOYISas BILS\nBINS NPELMEI26U VIG GGU UOCL OSU efeyEUGEU BEfLSG IU HOS AOU J5'02 € SMSNAIICU 2'00 € INSUUASpAUL ogeL\n\nTSLINUGSELIUUELNUG AOW $2°03°S0S3 Lesdiely’ Dis qsuu eIUdeLsNWAS LLef lef yenfe eLLEICUs\nPEIGEL USPEU SIG Pl2VEL MEGEL SNL NU2ELE KECUUNLG YTOOOSESSTS AOW 08'03\"SOSZ VOCL snj nue6eis\n\nOLQUNUG2ed6WS|? ELPLSCHs\nMIL USPEU SW 08\"03\"SOS3 NUIEL GEL BE2fE]|UNWWEL FSOODDeS2dLE Is AOU |VUGU IU YnLfLsa AsGepeus relenua\n\nCGUL ASEULIE DSWEU NU HELLEU’\n\n|UfELUG KELELGUS:\n\nBSefE||UNWWEL. TSOO0DESLdLE\nKNUQGUUNWWEL: 4 J00€S33S9\nKecuUunNUa2asinw: 08°03°S0S3\nKECUUNUGEUNWWEL: ttOOOSOESSTE SUQELULS|/2 KQUUGY MIL [PL6 Yapjnua vicys SNOLqueU\"\nfspideu nugq lemelje qe Asmeuqnudesmeck susndepeu'\nLOL leqe Wspunua les 6lue eebsiste npewmeienua sn\nAsimeuqnudesmeck: YTOOOSd2S5STs\n88/42 HSLdsfs TSp|Nudepes.ga: INO €\nriugeupolefL’ 53 BSUK: ELKle BSUK\nKGIfGL BIC: ELKIDES3N\nOpi IBVU: DEO 3003 000 850! 8003 08\nBIINGCUSUICe CWPH TSpinudeewbisuae: ELKI? BYUK\nKILLS (7 SSpinvdesie|: 11°OF'SOS3\n\\ + ; DSINW OT OTSOS3\nS’ WSunua 0 O¢ JY\n29\n\nSAW,\n\nMik Nlus6LUGULUEU Wit\nCSG | AOU |\n\n\\WL EIUKSN NpeL: ELBIe BYUK —",
+    "notes": [
+      "OCR ist stark verrauscht; mehrere Felder sind unsicher interpretiert.",
+      "Betrag 15,02 EUR und Datum 08.03.2023 sind aus OCR am klarsten erkennbar.",
+      "USt als VAT_0 klassifiziert (typischerweise steuerfreie Bankleistung)."
+    ]
+  }
+}

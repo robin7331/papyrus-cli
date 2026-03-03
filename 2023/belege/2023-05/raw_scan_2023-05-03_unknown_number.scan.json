@@ -1,0 +1,26 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 3.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-05-03",
+    "issuer_name": "Sparkasse",
+    "invoice_number": null,
+    "subject": "Kontoauszug / Bankbeleg (OCR unsicher)",
+    "summary_short": "Gescanntes Bankdokument mit stark verrauschtem OCR-Text; Betrag 33,22 EUR als wahrscheinlichster Wert.",
+    "document_type": "Kontoauszug",
+    "gross_amount_cents": 3322,
+    "net_amount_cents": 3322,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "ocr_confidence": 0.32,
+    "ai_confidence": 0.28,
+    "ocr_text": "===== PAGE 1 =====\nBIC — BBUKDEEE BIC’ eOrvDE2L BIC. GENODE2IBBA\n\nIBWU DEO8 C00! OO\\0 0103 Y2d\\ 09 IBVU DEOd C002 0/04 O00Y 24393 \\d IBVU DET 208 S2\\\\ 00/e 2¥00 00\nbO2{PSUK engpasy BIGGU-MNOLEWPELOI2cus BIUK AB BSUK BIAGU2pNLa-eIUdsLeU 6C\nBIC eOrvDEe1KAB BIC CENUODEeJFEN BIC HAAEDEWW4S3 fe\n\nIBV DE21 €202 0140 0000 S3a\\ $3 IBV DEO €208 JOY 0141 2300 00 IBV DE34 00S 0540 S¥AO ISI J2\nKisl2ebsixsees KsAGuepna A°IKepsuK yIJAg9N-OpéseLecumgpsu 6 HAboAsiew2psuK\n\nKSASU W ESIIIOKSN2{98 03°05 SOS3 Spaspnepr\n\nCISnp! OS3 AOU |PLELW KOUSO DEJ2020201100J04IXXXXX PS! GSl KL SbK\n\nbSl CE CUUNUdepesLsd AOU Q3'22 ENB SNW WSUGSS ¥t9d50000005 SN gs\nKecuunudepersa 3°22 ENB\nNWesfsefeneLpesigsa J9°00 1O'“N2 ENB\nenwwese yeropesisde 23°40 ENK\n\n2 Jt SIBAA SOSS\nVPMICK|NUG\\WLCUIAIGLNUG IN ONSLASOSS 9'00 ENK\n\n2 34 VP2’ S SIBAA SOSS\nVULSyIdnud qeéL fouyuspiscuunua\n\nLOVLNUG AOU POVUKOU{EU Nuq IN ONSLASOSS 3VWU It'80 ENB tt'¥O ENB\nI ii sn Oa tt ch Ln TS a RR Ta IT\nemBAA (2 ype” Ut)\n\nBexs6icyuunua T6ILINW @cedevefsuqemeyy eggs isp’ Bermsa\n\nre ea ue ee ee Maen e.g Reng\nLOL Gis jo|deuUqeU [ElefnUdeU ELISMpEU MIL NU |SNf SIBAA (2 9) SN peLecuUEU:\n\nNeFIAUE: DEITA3YSYWA\nrelejnudeqsjnw: Jeo! SOS3\n\nWHSLPSYGLUNWWEL: 10e\n\nKecuunudeqsinw: je'O) 5053\nWSUqsU{suuNWWwEeL: IIIS\nKecuunudeunwuwelt: \\O8\n\nBECHUNUC\n\nMAW 2{6NG6LKSUS|GF-MSUG6U Gs\nIU;o@ejeneixsusje-msudeu qe\nISIGISX  (O\\DSS) SS YAO\nIS|ISKOU = (CESS) BL.030\n\nsuds2(e\\; uscy 2 2g 21BELe\neISnceipeigiocuyu\n\nLEBEevV FEQUHVKBDL\n\nDeASA\nNuseLtuspweveuscpyojds\nLSCUPELSJGEL {NL\nD'!bjow-LivsusMILyy EH\n\nf 6NGLDGLYISL\n881¥2 HELOsys Ae ? AQNGLPOIAL\nPIUQ6UPOlefisRS $3 i) ae CHBICLObH @bOBbI!\nBUWSCUSsUICe @WpH a |\nLIS PSsuq- nuq LOLejmiyecpsy\n\nLSCUPELS{EL IAL\n\nLLSUS-(\\S|CLUGL-OfLSR6 13’ 88530 [ASUGEN IW yiIagn lufeLugpougiee afeneuuecpy\nFEQUHVKDL ¥ 2@bOK!I efeneipeisjer’ Lei : LSCUPELO{EL tL\nQ{SNELPELOJEL\n\nVDOrt FEOVHVBDL\neLENEBBEBVLEKCONIELVL\n\nTEOUHVBDL @ 2bOKI",
+    "notes": [
+      "OCR stark verrauscht; Betrags- und Datumsinterpretation unsicher.",
+      "Wert 33,22 EUR aus mehrfach erkennbarer Sequenz '3°22' / 'Q3'22' abgeleitet.",
+      "Dokument wirkt wie Kontoauszug/Bankbeleg (Sparkasse), nicht wie klassische Rechnung."
+    ]
+  }
+}

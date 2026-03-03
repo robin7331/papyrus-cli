@@ -1,0 +1,24 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 6.pdf",
+  "extracted": {
+    "issuer_name": "Unklar (OCR verrauscht)",
+    "invoice_number": null,
+    "subject": "Gescanntes Zahlungsdokument/Bankaehnlicher Beleg (manuelle Pruefung noetig)",
+    "summary_short": "OCR stark verrauscht; Betrag aus OCR als 1.180,00 EUR interpretiert.",
+    "document_type": "Beleg",
+    "gross_amount_cents": 118000,
+    "net_amount_cents": 118000,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "ocr_confidence": 0.22,
+    "ai_confidence": 0.42,
+    "ocr_text": "===== PAGE 1 =====\nKScuUuNudegssnww 6usebucps risieiqsynw\n\nXSPIPSL pel ELSIE Gel KecuUNUa’\n\nER SN eT NE\n\ncc —S——==_=__-==\n\nEugenwiwe 2°331'S0 €\n\n-—_— sess\n\n+ J3'00 & WSEpLmelfesenieL 821 SO€\n\n@6eswienwiwe UEyO t't80'00 €\n\n6xciNelAs ASLesuq\n\nbléi2 DLo pnuqely | 6I[6 IUKINeIAG ASLbsCKNUA’\nKSYOU\n\nrozGLove 2000 UScY BsNfel] 2omp|ey gJe EcpAAny 1\nbye\n\n1  ebussGnerel| eWD-Ws4ssius pgee’ cgb nuq cjswb sne 20'00 JooesacK g3'e0 t'¢80'00\n\nbO2ILIOV TEICLNUG2BE2CHKEIBNUG WENGE EIVSErbi' | CE2YWL\n\neWD-Wsdssiu6E\nKD-UK™\nKecuunud\n, BIC-GEUODEe2/LEL\nD 88Jt¢2 HELOS{sS IBVU-DE@ee 2131 20000\\Seay008\nPIUQEULOlefl’ 53 KOUfO \\Sea 00d\nBINSECYSUICe GLUPH\n\nBrX e214 812 00\nAO|KepSUK | 6fUsUa\nb-Lou” (Asbdever oi y- Sei yl Voppeld KOUfOIUPSPEL: | POWS2 HISSL\nDE813203S23\nCISNGLUL\\NID: 81331\\Odd2\n\nPoAP-Sarha, « Owes Fam\n\nE9X O8380\\98) age\n. X AB AAS LE|6{OU OS3B0\\98l a8)\n\nhe a rie i\n\n88i¥\\ yoppe.d\nMsuaeuel of'y\n",
+    "notes": [
+      "OCR-Quelle ist stark verrauscht; Felder sind best effort.",
+      "Betrag 1.180,00 EUR aus Zeichenfolge 't't80'00 €' interpretiert.",
+      "Bitte Beleg manuell gegen Original pruefen."
+    ]
+  }
+}

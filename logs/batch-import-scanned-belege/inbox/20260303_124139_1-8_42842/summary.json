@@ -1,0 +1,14 @@
+{
+  "run_id": "20260303_124139_1-8_42842",
+  "buffer_dir": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege",
+  "failed_dir": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_124139_1-8_42842",
+  "db_path": "/Users/robin/Documents/Projects/buchhaltung/datenbank.sqlite",
+  "processed": 8,
+  "created": 8,
+  "deduplicated": 0,
+  "failed": 0,
+  "relocated": 8,
+  "json_cleaned": 0,
+  "remaining_buffer_pdfs": 0,
+  "remaining_buffer_scan_json": 0
+}

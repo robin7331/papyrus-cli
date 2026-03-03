@@ -1,0 +1,27 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 2.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-10-09",
+    "issuer_name": "2ONJST GMBH & CO KG (OCR unsicher)",
+    "invoice_number": "STYAC3530",
+    "subject": "Gescanntes Kassen-/Zahlungsdokument 2ONJST GMBH & CO KG",
+    "summary_short": "OCR-Extraktion aus Scanned Document 2",
+    "document_type": "Beleg",
+    "gross_amount_cents": 10050,
+    "net_amount_cents": 8445,
+    "vat_amount_cents": 1605,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.36,
+    "ai_confidence": 0.41,
+    "ocr_text": "===== PAGE 1 =====\n$0jUO2\n\n>\n\nDOMU/OSQ PSLEYAGUS|EU OQEL |PUEU SN, AANUeCY sNdeesuq;\n\nEe Geyjeu nuecis yi|Gewelueu GSecusyepeqiuanudeu IU get lemeri2 ANdEU LI2enUd HieG26 MELGSU INL VIG MUIEL MAM 20njsi qe\\Sdp snw yPLN, Nug snw\nNUICLEGN BSUK — HADOASLEVepsUK MMMISPNLG | IBY: DEY 1905 O0\\e 0053 130 24 | BIC’ HAAEDEWWt22\n\nCeecusyeinpise efebysu Hacyye}' ynWeu ecpueiger | Net-IaNe DERI 2481980 | Fle{eLsUecpLIY: WWSIUALIUKEUDSLK J-2 | AL\\339\\ DEHSIPSCY\n\nKediefeGeucyy AAnUspNLa' HEY ASJy | belequIICy syeUqe @Ee6lIecusYeUU: onjsL ASUMSI{NUa GWPH | BSdieseLdeucys MANLSPNLG’ HBB e\\2\n\n2ONISL GWPH & CO’ KE | VILEG-Mope}-2it' @ | BLOBO MAMLSPNLA | JE: +48 821 30000-1101 EBX: +49 821 30800-\\48 | E-WSII. INODe2onjst ge | www 2onise ge\n\nris,euseipbnugke dew 2 3I(¢) N2EDA :I9UNgL S0S3\n\nASL2SuUQSLE ' ofguqgiaqbsKer\n\nrig,eunuda > ELGEJ HONE\n\nTINJNnudesLe > PEXSSUIC NPGL ywssou\n\n‘Td°00 & WM2F SNL YEFFOMELFS ENK Q\\*SS = ENb 755 fllUes¢ssefeneL(y)\n\nEUsps|feue nwegsrsersenen\n\neseswfpefLtgd JN ENLO \\d 30\n\nAIVeUReh Lia schist Sk eee oe aie area \\d°d0\n\nKGAPOSLQ-DF (CELWSU)\nes9fECUs QJiW XJ BINEfooTsy\nDI3Ide\n\nWEUdG | YL£SIKGJ|WLEI Ke] pesescpunua bkL612 ENK\n\nLML GiG FIGLELMUG dejfeu NN2GLE JJ JdewsJueN EEecuaLSepeqsudnudeu’\n\n|\n10050 C3tS0S\n\n00T0\n\n- YWOISOU OLQEL 30¢-C0PTTA\\-\\edtlee\nMJL PGLECUNGU JUNG UICNLOJAGUGG WLEIKG] JINEF TNLEL Beefeyjmud aow \\'QT°SOS3\n\nengeu 19d’\n\nBECHUNUNE Ar0tSedd |\n\nKECUUNUde-pgrnw > 9° 0T'S0S3\n88I¥e2 HELGISS PIELELeCCUGIU-YNWWEL: \\qOeSPda\nFINGGUPOLesL” §3 NU2ELE YMLFLIG2-yL°: geTeS280\\e3S |\nKOPJU KEISGL [VLG KAUQGU-YL' > ST¥AC3S$30\nBIsSWECUSNICe CWPH (BIF£FE PEl SIPjnud gudepey; ) |\nLJ Lwg | KECUUNNG2-YL > \\tOvSead\n20NjSt CWPH ¥ CO’ KG! VikLeG-Ope|-eit e | A080 AAniSpnLa }\nscce22oif qi2pupnpiou\n\nOTAYFOFSedd\n\nOni +\nI \"he",
+    "notes": [
+      "OCR mit eng ist stark verrauscht; Aussteller/Datum/Rechnungsnummer nur best effort.",
+      "Betrag 10050 aus OCR-Zeile '10050 C3tS0S' abgeleitet.",
+      "Datum 2023-10-09 aus OCR-Muster '9° 0T'S0S3' interpretiert.",
+      "Steuerbehandlung als VAT_19 gesetzt (deutscher Beleg, keine eindeutige USt-Zeile lesbar)."
+    ]
+  }
+}

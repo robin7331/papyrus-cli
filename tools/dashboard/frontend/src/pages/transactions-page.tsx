@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useSearchParams } from "react-router-dom";
 import { DateRangeFilters } from "@/components/layout/date-range-filters";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -91,6 +92,7 @@ function documentFileUrl(documentId: number): string {
 
 export function TransactionsPage() {
   const queryClient = useQueryClient();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -318,6 +320,21 @@ export function TransactionsPage() {
     const taxCents = Math.round((transactionAmountAbs * parsedRateBps) / (10_000 + parsedRateBps));
     return { netCents: transactionAmountAbs - taxCents, taxCents };
   }, [parsedRateBps, transactionAmountAbs]);
+
+  const txIdParam = searchParams.get("txId");
+
+  useEffect(() => {
+    if (!txIdParam) {
+      return;
+    }
+    const parsed = Number.parseInt(txIdParam, 10);
+    if (!Number.isInteger(parsed) || parsed <= 0) {
+      return;
+    }
+    if (selectedId !== parsed) {
+      setSelectedId(parsed);
+    }
+  }, [txIdParam, selectedId]);
 
   useEffect(() => {
     if (!detail) {
@@ -570,6 +587,9 @@ export function TransactionsPage() {
         open={selectedId !== null}
         onOpenChange={(open) => {
           if (!open) {
+            const nextParams = new URLSearchParams(searchParams);
+            nextParams.delete("txId");
+            setSearchParams(nextParams, { replace: true });
             setSelectedId(null);
             setUploadFile(null);
             setUploadDocumentDate("");

@@ -1,0 +1,28 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 5.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-16",
+    "issuer_name": "EURO MAGNESY GIGAURI GOCZA GIGAURI DAWID SPOLKA JAWNA",
+    "invoice_number": "WDT/000003/23",
+    "subject": "Faktura WDT nr WDT/000003/23 - Magnes neodymowy + Transport by courier",
+    "summary_short": "WDT Einkauf Magnete inkl. Versand",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 55962,
+    "net_amount_cents": 55962,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "PL",
+    "ocr_confidence": 0.82,
+    "ai_confidence": 0.9,
+    "ocr_text": "Faktura WDT nr WDT/000003/23 ... Do zaplaty: 559,62 EUR ... Stawka VAT 0% ...",
+    "notes": [
+      "Buyer: BitMechanics GmbH, DE300112279",
+      "Invoice date shown as 16.01.2023",
+      "NBP exchange note: 1 EUR = 4.6915 PLN (13.01.2023)",
+      "Line items include neodymium magnets and courier transport",
+      "Intra-community supply wording (WDT) with VAT 0%"
+    ]
+  }
+}

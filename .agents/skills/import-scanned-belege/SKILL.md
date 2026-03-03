@@ -20,7 +20,7 @@ Nutze diesen Skill, wenn genau eine PDF-Datei aus `/scanned_belege` (Root-Buffer
 
 - `uv run`
 - Datei `tools/scanned-beleg-inserter/main.py`
-- in dieser Umgebung: `sips` + `tesseract` (OCR-Fallback)
+- in dieser Umgebung: `tools/ocr-pdf-multipage.sh` + `tesseract`
 
 ## Befehl
 
@@ -87,9 +87,9 @@ Regeln:
 
 1. PDF lesen und interpretieren.
    - Nutze den `pdf`-Skill.
-   - Fuer reine Textextraktion: `swift` + `PDFKit`.
-   - Bevorzugte Pipeline in diesem Repo: `sips` + `tesseract` (`TESSDATA_PREFIX=/opt/homebrew/share/tessdata`, `-l eng`).
-   - Vermeide unnötige Tool-Probing-Runden (`pdfinfo`, `pdftotext`, `mutool`, `magick`, `gs`), wenn die bevorzugte Pipeline verfügbar ist.
+   - Bei Scan-PDFs immer alle Seiten OCR'en (nicht nur Seite 1).
+   - Bevorzugte Pipeline in diesem Repo: `tools/ocr-pdf-multipage.sh <pdf> <output.txt> eng 2.2`.
+   - Vermeide unnoetige Tool-Probing-Runden (`pdfinfo`, `pdftotext`, `mutool`, `magick`, manuelle Einzelseiten-OCR), wenn die bevorzugte Pipeline verfuegbar ist.
 2. JSON in obigem Format erzeugen und als `*.scan.json` speichern.
 3. JSON validieren (optional, empfohlen):
 

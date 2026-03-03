@@ -1,0 +1,24 @@
+[2026-03-03 13:47:58] Inbox-Batch gestartet (BUFFER_DIR=/Users/robin/Documents/Projects/buchhaltung/scanned_belege)
+[2026-03-03 13:47:58] Logs: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972
+[2026-03-03 13:47:58] Failed-Ordner: /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_134758_1-5_53972
+[2026-03-03 13:47:58] Gefundene PDFs: 5
+[2026-03-03 13:47:58] Verarbeite Bereich: 1-5 (Anzahl: 5)
+[2026-03-03 13:47:58] Codex Optionen: model=gpt-5.3-codex reasoning=low
+[2026-03-03 13:47:58] START [1/5] scanned_belege/Scanned Document 2.pdf
+[2026-03-03 13:47:58] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document 2.log
+[2026-03-03 13:48:53] OK scanned_belege/Scanned Document 2.pdf (JSON aufgeraeumt, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document 2.log)
+[2026-03-03 13:48:53] START [2/5] scanned_belege/Scanned Document 3.pdf
+[2026-03-03 13:48:53] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document 3.log
+[2026-03-03 13:49:50] OK scanned_belege/Scanned Document 3.pdf (JSON aufgeraeumt, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document 3.log)
+[2026-03-03 13:49:50] START [3/5] scanned_belege/Scanned Document 4.pdf
+[2026-03-03 13:49:50] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document 4.log
+[2026-03-03 13:50:56] OK scanned_belege/Scanned Document 4.pdf (JSON aufgeraeumt, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document 4.log)
+[2026-03-03 13:50:56] START [4/5] scanned_belege/Scanned Document 5.pdf
+[2026-03-03 13:50:56] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document 5.log
+[2026-03-03 13:51:50] OK scanned_belege/Scanned Document 5.pdf (JSON aufgeraeumt, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document 5.log)
+[2026-03-03 13:51:50] START [5/5] scanned_belege/Scanned Document.pdf
+[2026-03-03 13:51:50] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document.log
+[2026-03-03 13:53:41] OK scanned_belege/Scanned Document.pdf (JSON aufgeraeumt, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/Scanned Document.log)
+[2026-03-03 13:53:41] FERTIG processed=5 created=5 deduplicated=0 failed=0 relocated=5
+[2026-03-03 13:53:41] Buffer-Rest: pdf=0 scan_json=0
+[2026-03-03 13:53:41] Summary: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_134758_1-5_53972/summary.json

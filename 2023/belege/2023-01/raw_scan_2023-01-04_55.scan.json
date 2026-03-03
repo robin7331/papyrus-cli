@@ -1,0 +1,27 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 8.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-04",
+    "issuer_name": "Robins Tools",
+    "invoice_number": "55",
+    "subject": "Robins Tools Rechnung Belegnummer 55 (ORDER-55)",
+    "summary_short": "SMD Magazines Mega Pack inkl. UPS Versand",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 2565,
+    "net_amount_cents": 2120,
+    "vat_amount_cents": 445,
+    "vat_rate_bps": 2100,
+    "vat_treatment": "VAT_OSS",
+    "country_code": "NL",
+    "ocr_confidence": 0.84,
+    "ai_confidence": 0.9,
+    "ocr_text": "Restellungen - #57, #56 #55. #54, #53, #52\n\n05/01/2023, 15:35\n\nRechnung\nRobins Tools Rechnung\nrobins-tools.com/products Belegnummer 55\nVAT ID: DE300112279 Datum 04.01.2023\nBitMechanics GmbH Kundenservice:\nLindenhofstr. 23 robin@robins-tools.com\n88145 Hergatz, Bayern\nDeutschland\n\nKaufer\nsmd-robins-tools@cthu.lu\nZahlungsmethode Bank Transfer\n\nVersenden an\nRubin Philippart\nHoge Rijndijk 248\n2314AK Leiden\nNiederlande\n\n+31 6 10814638\n\nArtikel Stk. Preis Menge VAT Zwischensumme\n48 x SMD Magazines Mega Pack €12,10 1 21% €12,10\nArt.-Nr. R-MGZNS8PK6\n\nUPS €13,55 21% €13,55\nFalls nicht anders angegeben, entspricht das Artikel €10,00\nRechnungsdatum dem Lieferdatum. Versand €11,20\nVAT €4,45\n\nGesamtsumme €25,65\n\nVielen Dank fur Ihre Bestellung!\n\nORDER-55",
+    "notes": [
+      "VAT ID: DE300112279",
+      "Buyer/Ship-to: Leiden, Niederlande",
+      "Zahlungsmethode laut Beleg: Bank Transfer",
+      "USt laut Beleg: 21%"
+    ]
+  }
+}

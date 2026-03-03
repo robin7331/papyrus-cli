@@ -1,0 +1,28 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 4.pdf",
+  "year": 2026,
+  "extracted": {
+    "document_date": null,
+    "issuer_name": "Unklar (OCR stark verrauscht)",
+    "invoice_number": "JISFSO38Ig",
+    "subject": "Kartenzahlungs-/Kassenbeleg (manuelle Pruefung noetig)",
+    "summary_short": "OCR stark verrauscht; Bruttobetrag best effort als 108,00 EUR interpretiert.",
+    "document_type": "Beleg",
+    "gross_amount_cents": 10800,
+    "net_amount_cents": null,
+    "vat_amount_cents": null,
+    "vat_rate_bps": null,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.21,
+    "ai_confidence": 0.35,
+    "ocr_text": "===== PAGE 1 =====\nBING PESCHIGU SIG NU2ELE UENG LILWIGLNUG' BSUKAGLPIUqNU NUq efeneL-YNWWeEL\nMEEEKDV.LAW EVLEbBICHL KECHUNNGeDYLNW\n\nCE2VINL ENKBO € SCOT\n\nDS 95 eT 10°00 t 30 WMet\n\nWivqeiue6udeusnecpga\n\nNeeIDUE | MsteuMeL | Wumer-2ats | WMer-BonSa | smiechenennne\n\nBeweLKnUdEeL:\n\nBb EILLIVG’ W NEB eflb 2\\3S LOBE\n\nP085-see 12VS 12IS ID US\njischiva-yL: IACrOPeda\\OAJaee1€\n\nrisys.peqiuanudeu: CbL HStdsfs\"* DE riepennud s00ettS sta\n\nTspinudepegq’: 30 1946 uesso RBGefse]|UL\" \\tOJe880\n\n{VLG BEeLE|UL\": MEB2 JO000e2 29 AGlesuqgls DH CVKKIEK DHI @LVUDVKD DEFIAEKA\n\nDENLECHI VUD\n88jd2 HEBCVLS\nriuqeupojes’ 53\n\nDENLECHIVUD\n88)/¥2 HEBCVLN\n\npluqesupojage’ 53\n\nHOpIU YeIfeL\n\nBUWSecpsuICe QWpH\n\nrispeisuecul': J ISFSO38Ig woysaacp::\n\nHOPIU HGI{EL\nBISVVSCYSUICe CWPH\nBeEcpunudecUby’: 14503818 SspinuGeby': JISO38Ig\n\nIISO38I8\n\n2s6NGL-YL PZ0AT\\05508 |\niliac 2MlkL:! CHV2DEEX\nAVL DEII388\\903 (Sy IBVU: DE@d20) 108001 es 208ee8\n\nNet -19euryt’: DEJI3B8\\T—03 KOU{O: Ee} POgPEg\n\nE9X%: yo CAPO OO 38) BrX: 80) 108 00\n\nbvOUG: 49 CdLO ABP 135 Tb WolLdsU YG ELSUK NE SW yysiU\nCEBWYNA BSUKAGLpIUqnUa:\nSS3\\0 HECHIACEU\nHOLOGL{GU2LLGR26 JE\nMSiCY VIIAU CWUPH\n\nMGICH WIJAU’ JUC’ 12 9 eNpPeigiS1A Of H4II|- HOW f4ojqiwGe’ juc’ ID pase 1 30033053 |\n| Re w BYOOS31A8T |\nAi Kecuunud fgeue yaou 4 |\n",
+    "notes": [
+      "OCR-Quelle: /private/tmp/beleg_ocr_20260303_134758_1-5_53972_3.txt",
+      "Inhalt stark verrauscht; Felder sind Best-Effort.",
+      "Bruttobetrag 108,00 EUR aus OCR-Fragment '108 00' inferiert.",
+      "USt-Klassifikation VAT_19 aufgrund OCR-Hinweis 'E9X%' (vermutlich 19%).",
+      "Manuelle Pruefung gegen Originalbeleg erforderlich."
+    ]
+  }
+}
