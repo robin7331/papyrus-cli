@@ -7,7 +7,7 @@ Validate and import one scanned receipt extraction JSON into `documents`.
 
 Commands:
   python3 main.py validate --beleg-file /abs/path/file.scan.json [--strict]
-  python3 main.py import --beleg-file /abs/path/file.scan.json [--db /abs/path/datenbank.sqlite] [--strict]
+  python3 main.py import --beleg-file /abs/path/file.scan.json [--db /abs/path/datenbank.sqlite] [--strict] [--relocate-raw-scan] [--source-buffer-root /abs/path/scanned_belege]
 """
 
 from __future__ import annotations
@@ -108,6 +108,75 @@ def _sanitize_filename(value: str) -> str:
         .decode("ascii")
         .replace(" ", "_")
     )
+
+
+def _sanitize_filename_token(value: str | None, fallback: str, max_len: int = 120) -> str:
+    if not value:
+        return fallback
+    token = str(value).strip()
+    if not token:
+        return fallback
+    token = re.sub(r"[^A-Za-z0-9._-]+", "_", token)
+    token = re.sub(r"_+", "_", token).strip("_.-")
+    if not token:
+        return fallback
+    return token[:max_len]
+
+
+def _month_part(document_date: str | None, now: str) -> str:
+    if document_date:
+        return document_date[:7]
+    return now[:10][:7]
+
+
+def _relocate_raw_scan(
+    source_pdf: Path,
+    normalized: dict[str, Any],
+    *,
+    file_sha: str,
+    project_root: Path,
+    now: str,
+    source_buffer_root: Path | None,
+) -> tuple[Path, Path]:
+    source_resolved = source_pdf.resolve()
+    if source_buffer_root is not None:
+        buffer_root_resolved = source_buffer_root.resolve()
+        if not source_resolved.is_relative_to(buffer_root_resolved):
+            raise RuntimeError(
+                f"source_pdf liegt nicht unter source-buffer-root: source={source_resolved} root={buffer_root_resolved}"
+            )
+
+    date_token = normalized["document_date"] if normalized["document_date"] else "unknown_date"
+    invoice_token = _sanitize_filename_token(normalized["invoice_number"], "unknown_number")
+    raw_name = f"raw_scan_{date_token}_{invoice_token}.pdf"
+
+    month_part = _month_part(normalized["document_date"], now)
+    raw_rel_dir = (
+        Path("belege")
+        / str(normalized["year"])
+        / "archiviert"
+        / "scan"
+        / month_part
+        / "raw"
+    )
+    raw_abs_dir = project_root / raw_rel_dir
+    raw_abs_dir.mkdir(parents=True, exist_ok=True)
+
+    target_name = raw_name
+    target_abs = raw_abs_dir / target_name
+    if target_abs.exists():
+        stem = target_abs.stem
+        suffix = target_abs.suffix
+        target_name = f"{stem}_{file_sha[:8]}{suffix}"
+        target_abs = raw_abs_dir / target_name
+        collision_counter = 2
+        while target_abs.exists():
+            target_name = f"{stem}_{file_sha[:8]}_{collision_counter}{suffix}"
+            target_abs = raw_abs_dir / target_name
+            collision_counter += 1
+
+    shutil.move(str(source_resolved), str(target_abs))
+    return target_abs, raw_rel_dir / target_name
 
 
 def load_and_validate(beleg_file: Path, strict: bool) -> dict[str, Any]:
@@ -241,7 +310,14 @@ def _compute_review_required(normalized: dict[str, Any]) -> int:
     return 0
 
 
-def run_import(beleg_file: Path, db_path: Path, strict: bool) -> int:
+def run_import(
+    beleg_file: Path,
+    db_path: Path,
+    strict: bool,
+    *,
+    relocate_raw_scan: bool,
+    source_buffer_root: Path | None,
+) -> int:
     normalized = load_and_validate(beleg_file, strict)
 
     if not db_path.exists():
@@ -251,6 +327,11 @@ def run_import(beleg_file: Path, db_path: Path, strict: bool) -> int:
     source_bytes = source_pdf.read_bytes()
     file_sha = hashlib.sha256(source_bytes).hexdigest()
     file_size = source_pdf.stat().st_size
+    project_root = Path(__file__).resolve().parents[2]
+    now = now_iso()
+
+    relocated_raw_abs: Path | None = None
+    relocated_raw_rel: Path | None = None
 
     conn = sqlite3.connect(str(db_path))
     conn.row_factory = sqlite3.Row
@@ -260,20 +341,35 @@ def run_import(beleg_file: Path, db_path: Path, strict: bool) -> int:
             (file_sha,),
         ).fetchone()
         if existing is not None:
-            print(
-                _json_result(
-                    "ok",
-                    created=False,
-                    deduplicated=True,
-                    document_id=int(existing["id"]),
-                    review_required=bool(existing["review_required"] or 0),
-                    db_path=str(db_path),
+            if relocate_raw_scan:
+                relocated_raw_abs, relocated_raw_rel = _relocate_raw_scan(
+                    source_pdf,
+                    normalized,
+                    file_sha=file_sha,
+                    project_root=project_root,
+                    now=now,
+                    source_buffer_root=source_buffer_root,
                 )
-            )
+
+            result: dict[str, Any] = {
+                "status": "ok",
+                "created": False,
+                "deduplicated": True,
+                "document_id": int(existing["id"]),
+                "review_required": bool(existing["review_required"] or 0),
+                "db_path": str(db_path),
+            }
+            if relocated_raw_rel is not None:
+                result["raw_scan_relocated"] = True
+                result["raw_scan_rel_path"] = str(relocated_raw_rel)
+                result["raw_scan_name"] = relocated_raw_abs.name if relocated_raw_abs else None
+            else:
+                result["raw_scan_relocated"] = False
+
+            print(json.dumps(result, ensure_ascii=False))
             return EXIT_OK
 
-        now = now_iso()
-        month_part = (normalized["document_date"] or now[:10])[:7]
+        month_part = _month_part(normalized["document_date"], now)
         safe_base = _sanitize_filename(
             "_".join(
                 [
@@ -288,7 +384,6 @@ def run_import(beleg_file: Path, db_path: Path, strict: bool) -> int:
             )
         ) or "beleg_scan"
 
-        project_root = Path(__file__).resolve().parents[2]
         rel_path = Path("belege") / str(normalized["year"]) / "archiviert" / "scan" / month_part / f"{file_sha}_{safe_base}.pdf"
         abs_path = project_root / rel_path
         abs_path.parent.mkdir(parents=True, exist_ok=True)
@@ -354,17 +449,31 @@ def run_import(beleg_file: Path, db_path: Path, strict: bool) -> int:
             raise
 
         document_id = int(cursor.lastrowid)
-        print(
-            _json_result(
-                "ok",
-                created=True,
-                deduplicated=False,
-                document_id=document_id,
-                review_required=bool(review_required),
-                storage_rel_path=str(rel_path),
-                db_path=str(db_path),
+        if relocate_raw_scan:
+            relocated_raw_abs, relocated_raw_rel = _relocate_raw_scan(
+                source_pdf,
+                normalized,
+                file_sha=file_sha,
+                project_root=project_root,
+                now=now,
+                source_buffer_root=source_buffer_root,
             )
-        )
+
+        result = {
+            "status": "ok",
+            "created": True,
+            "deduplicated": False,
+            "document_id": document_id,
+            "review_required": bool(review_required),
+            "storage_rel_path": str(rel_path),
+            "db_path": str(db_path),
+            "raw_scan_relocated": bool(relocated_raw_rel),
+        }
+        if relocated_raw_rel is not None:
+            result["raw_scan_rel_path"] = str(relocated_raw_rel)
+            result["raw_scan_name"] = relocated_raw_abs.name if relocated_raw_abs else None
+
+        print(json.dumps(result, ensure_ascii=False))
         return EXIT_OK
     finally:
         conn.close()
@@ -382,6 +491,8 @@ def build_parser() -> argparse.ArgumentParser:
     import_cmd.add_argument("--beleg-file", required=True, type=Path)
     import_cmd.add_argument("--db", type=Path, default=DEFAULT_DB_PATH)
     import_cmd.add_argument("--strict", action="store_true")
+    import_cmd.add_argument("--relocate-raw-scan", action="store_true")
+    import_cmd.add_argument("--source-buffer-root", type=Path)
 
     return parser
 
@@ -394,7 +505,17 @@ def main() -> int:
         if args.command == "validate":
             return run_validate(args.beleg_file, args.strict)
         if args.command == "import":
-            return run_import(args.beleg_file, args.db, args.strict)
+            if args.relocate_raw_scan and args.source_buffer_root is None:
+                raise ValidationProblem("--relocate-raw-scan erfordert --source-buffer-root.")
+            if args.source_buffer_root is not None and not args.source_buffer_root.exists():
+                raise ValidationProblem(f"source-buffer-root nicht gefunden: {args.source_buffer_root}")
+            return run_import(
+                args.beleg_file,
+                args.db,
+                args.strict,
+                relocate_raw_scan=bool(args.relocate_raw_scan),
+                source_buffer_root=args.source_buffer_root,
+            )
         raise RuntimeError("Unbekannter command.")
     except ValidationProblem as exc:
         print(_json_result("error", error_code="validation_error", message=str(exc)))

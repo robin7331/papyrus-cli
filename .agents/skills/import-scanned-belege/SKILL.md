@@ -1,11 +1,11 @@
 ---
 name: import-scanned-belege
-description: Verarbeite genau einen gescannten Beleg (PDF), extrahiere Rechnungsdaten inkl. USt-Klassifikation in JSON und importiere mit tools/scanned-beleg-inserter/main.py.
+description: Verarbeite genau einen gescannten Beleg (PDF) aus dem Buffer /scanned_belege, extrahiere Rechnungsdaten inkl. USt-Klassifikation in JSON und importiere mit tools/scanned-beleg-inserter/main.py.
 ---
 
 # Import eines gescannten Belegs (PDF -> Extraktion -> documents)
 
-Nutze diesen Skill, wenn genau eine PDF-Datei aus `/{year}/scanned_belege` importiert werden soll.
+Nutze diesen Skill, wenn genau eine PDF-Datei aus `/scanned_belege` (Root-Buffer) importiert werden soll.
 
 ## Harte Regeln
 
@@ -14,7 +14,7 @@ Nutze diesen Skill, wenn genau eine PDF-Datei aus `/{year}/scanned_belege` impor
 3. PDF immer lesen und interpretieren (mit `pdf`-Skill).
 4. Erst JSON erzeugen, dann Import ueber `tools/scanned-beleg-inserter/main.py`, und zwar mit `uv run`.
 5. Fuer Batch-Verarbeitung das Loop-Script in `tools/` verwenden.
-   - `tools/import-scanned-belege-year.sh <YEAR>`
+   - `tools/import-scanned-belege-inbox.sh`
 
 ## Voraussetzungen
 
@@ -24,13 +24,13 @@ Nutze diesen Skill, wenn genau eine PDF-Datei aus `/{year}/scanned_belege` impor
 ## Befehl
 
 ```bash
-uv run tools/scanned-beleg-inserter/main.py import --beleg-file /ABS/PFAD/2023/scanned_belege/beleg123.scan.json --strict
+uv run tools/scanned-beleg-inserter/main.py import --beleg-file /ABS/PFAD/scanned_belege/beleg123.scan.json --strict --relocate-raw-scan --source-buffer-root /ABS/PFAD/scanned_belege
 ```
 
 ## Eingabe
 
 - `input_pdf`: Pfad zu genau einer PDF-Datei
-  - Beispiel: `2023/scanned_belege/Rechnung_2023-10-04_DigitalOcean.pdf`
+  - Beispiel: `scanned_belege/Rechnung_2023-10-04_DigitalOcean.pdf`
 
 ## Ausgabe-Datei
 
@@ -97,12 +97,23 @@ uv run tools/scanned-beleg-inserter/main.py validate --beleg-file /ABS/PFAD/date
 4. Import ausfuehren:
 
 ```bash
-uv run tools/scanned-beleg-inserter/main.py import --beleg-file /ABS/PFAD/datei.scan.json --strict
+uv run tools/scanned-beleg-inserter/main.py import --beleg-file /ABS/PFAD/datei.scan.json --strict --relocate-raw-scan --source-buffer-root /ABS/PFAD/scanned_belege
 ```
 
 Optional:
 
 - eigene DB: `--db /ABS/PFAD/zur/datenbank.sqlite`
+
+## Buffer-Regel (verbindlich)
+
+- `/scanned_belege` ist ein reiner Eingangsbuffer fuer unprozessierte Scans.
+- Nach erfolgreichem Import muss die originale Rohdatei aus dem Buffer verschoben werden.
+- Zielordner: `belege/<year>/archiviert/scan/<YYYY-MM>/raw/`
+- Dateiname: `raw_scan_{rechnungsdatum}_{rechnungsnummer}.pdf`
+  - Fallback bei fehlendem Datum: `unknown_date`
+  - Fallback bei fehlender Rechnungsnummer: `unknown_number`
+  - Bei Namenskollision Suffix mit Hash-Praefix anhaengen.
+- Zielzustand nach abgeschlossenem Batch: `/scanned_belege` ist leer (Fehlerfaelle werden separat verschoben).
 
 ## Kommunikation
 

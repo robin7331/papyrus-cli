@@ -15,6 +15,21 @@ python3 tools/scanned-beleg-inserter/main.py import --beleg-file /abs/path/beleg
 Optional:
 
 - `--db /abs/path/datenbank.sqlite`
+- `--relocate-raw-scan` (verschiebt die originale Scan-PDF nach erfolgreichem Import in `belege/<year>/archiviert/scan/<YYYY-MM>/raw/`)
+- `--source-buffer-root /abs/path/scanned_belege` (sichert ab, dass nur Dateien aus diesem Buffer verschoben werden)
+
+## Raw-Scan Benennung bei Relocation
+
+Beim Relocate wird folgende Benennung verwendet:
+
+- `raw_scan_{rechnungsdatum}_{rechnungsnummer}.pdf`
+
+Fallbacks:
+
+- fehlendes Rechnungsdatum -> `unknown_date`
+- fehlende Rechnungsnummer -> `unknown_number`
+
+Bei Namenskollision wird ein Hash-Praefix angehaengt.
 
 ## Eingabeformat (JSON)
 

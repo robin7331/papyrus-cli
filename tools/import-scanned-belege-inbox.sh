@@ -4,20 +4,21 @@ set -euo pipefail
 usage() {
   cat <<'EOF'
 Usage:
-  tools/import-scanned-belege-year.sh <YEAR> [--start-index N] [--end-index M] [--model NAME] [--reasoning LEVEL]
+  tools/import-scanned-belege-inbox.sh [--start-index N] [--end-index M] [--model NAME] [--reasoning LEVEL]
 
 Beispiele:
-  tools/import-scanned-belege-year.sh 2023
-  tools/import-scanned-belege-year.sh 2023 --start-index 1 --end-index 50
-  tools/import-scanned-belege-year.sh 2023 --model gpt-5.3-codex --reasoning high
+  tools/import-scanned-belege-inbox.sh
+  tools/import-scanned-belege-inbox.sh --start-index 1 --end-index 100
+  tools/import-scanned-belege-inbox.sh --model gpt-5.3-codex --reasoning high
 
 Hinweise:
-  - Pro PDF wird der Skill `import-scanned-belege` aufgerufen.
-  - Der Skill erzeugt JSON (*.scan.json) und fuehrt danach den Import aus.
+  - Quelle ist immer: ./scanned_belege (Root-Buffer fuer unprozessierte Scans).
+  - Pro PDF wird der Skill import-scanned-belege ausgefuehrt.
+  - Bei Erfolg wird die Rohdatei per Inserter nach belege/<year>/.../raw verschoben.
+  - Fehlerfaelle werden nach ./scanned_belege_failed/<RUN_ID>/ verschoben.
 EOF
 }
 
-YEAR=""
 START_INDEX="1"
 END_INDEX=""
 MODEL="gpt-5.3-codex"
@@ -67,26 +68,12 @@ while [[ $# -gt 0 ]]; do
       exit 1
       ;;
     *)
-      if [[ -n "${YEAR}" ]]; then
-        echo "Fehler: Mehrfaches YEAR-Argument: '$1'." >&2
-        usage
-        exit 1
-      fi
-      YEAR="$1"
-      shift
+      echo "Fehler: Unerwartetes Argument '$1'." >&2
+      usage
+      exit 1
       ;;
   esac
 done
-
-if [[ -z "${YEAR}" ]]; then
-  usage
-  exit 1
-fi
-
-if [[ ! "$YEAR" =~ ^20[0-9]{2}$ ]]; then
-  echo "Fehler: YEAR muss wie 2023 aussehen." >&2
-  exit 1
-fi
 
 if [[ ! "$START_INDEX" =~ ^[0-9]+$ || "$START_INDEX" -lt 1 ]]; then
   echo "Fehler: --start-index muss eine ganze Zahl >= 1 sein." >&2
@@ -105,12 +92,13 @@ fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
-INPUT_DIR="${ROOT_DIR}/${YEAR}/scanned_belege"
+BUFFER_DIR="${ROOT_DIR}/scanned_belege"
+FAILED_ROOT_DIR="${ROOT_DIR}/scanned_belege_failed"
 DB_PATH="${ROOT_DIR}/datenbank.sqlite"
 INSERTER="${ROOT_DIR}/tools/scanned-beleg-inserter/main.py"
 
-if [[ ! -d "$INPUT_DIR" ]]; then
-  echo "Fehler: Ordner nicht gefunden: $INPUT_DIR" >&2
+if [[ ! -d "$BUFFER_DIR" ]]; then
+  echo "Fehler: Buffer-Ordner nicht gefunden: $BUFFER_DIR" >&2
   exit 1
 fi
 
@@ -127,12 +115,12 @@ fi
 PDF_FILES=()
 while IFS= read -r file; do
   PDF_FILES+=("$file")
-done < <(find "$INPUT_DIR" -maxdepth 1 -type f -name '*.pdf' | sort)
+done < <(find "$BUFFER_DIR" -maxdepth 1 -type f -name '*.pdf' | sort)
 
 TOTAL=${#PDF_FILES[@]}
 if [[ "$TOTAL" -eq 0 ]]; then
-  echo "Fehler: Keine PDFs in $INPUT_DIR gefunden." >&2
-  exit 1
+  echo "Hinweis: Keine PDFs in $BUFFER_DIR gefunden."
+  exit 0
 fi
 
 if [[ -z "$END_INDEX" ]]; then
@@ -155,15 +143,37 @@ if [[ "$START_INDEX" -gt "$END_INDEX" ]]; then
 fi
 
 SELECTED_TOTAL=$((END_INDEX - START_INDEX + 1))
-
 RUN_ID="$(date +%Y%m%d_%H%M%S)_${START_INDEX}-${END_INDEX}_$$"
-RUN_DIR="${ROOT_DIR}/logs/batch-import-scanned-belege/${YEAR}/${RUN_ID}"
-mkdir -p "$RUN_DIR"
+RUN_DIR="${ROOT_DIR}/logs/batch-import-scanned-belege/inbox/${RUN_ID}"
+FAILED_RUN_DIR="${FAILED_ROOT_DIR}/${RUN_ID}"
+mkdir -p "$RUN_DIR" "$FAILED_RUN_DIR"
 RUN_LOG="${RUN_DIR}/run.log"
 
 log() {
   local msg="$1"
   printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$msg" | tee -a "$RUN_LOG"
+}
+
+move_to_failed() {
+  local src="$1"
+  if [[ ! -f "$src" ]]; then
+    return 0
+  fi
+  local name
+  name="$(basename "$src")"
+  local dest="${FAILED_RUN_DIR}/${name}"
+  local counter=2
+  while [[ -e "$dest" ]]; do
+    local stem="${name%.*}"
+    local ext=""
+    if [[ "$name" == *.* ]]; then
+      ext=".${name##*.}"
+      stem="${name%.*}"
+    fi
+    dest="${FAILED_RUN_DIR}/${stem}_${counter}${ext}"
+    counter=$((counter + 1))
+  done
+  mv -f "$src" "$dest"
 }
 
 CODEX_BASE_CMD=(codex exec --full-auto -C "$ROOT_DIR")
@@ -180,19 +190,23 @@ else
 fi
 
 processed=0
+created=0
+deduplicated=0
 failed=0
+relocated=0
+json_cleaned=0
 index=0
 selected_index=0
 
-log "Batch-Import gestartet (YEAR=${YEAR}, INPUT_DIR=${INPUT_DIR})"
+log "Inbox-Batch gestartet (BUFFER_DIR=${BUFFER_DIR})"
 log "Logs: ${RUN_DIR}"
+log "Failed-Ordner: ${FAILED_RUN_DIR}"
 log "Gefundene PDFs: ${TOTAL}"
 log "Verarbeite Bereich: ${START_INDEX}-${END_INDEX} (Anzahl: ${SELECTED_TOTAL})"
 log "Codex Optionen: model=${MODEL} reasoning=${REASONING}"
 
 for pdf in "${PDF_FILES[@]}"; do
   index=$((index + 1))
-
   if [[ "$index" -lt "$START_INDEX" ]]; then
     continue
   fi
@@ -212,7 +226,7 @@ for pdf in "${PDF_FILES[@]}"; do
   log "START [${selected_index}/${SELECTED_TOTAL}] ${rel_pdf}"
   log "LIVE-OUTPUT -> ${file_log}"
 
-  prompt="Nutze die Skills import-scanned-belege und pdf. Bearbeite genau diese Datei: ${rel_pdf}. Lies und interpretiere den Beleg. Erzeuge/aktualisiere exakt diese JSON-Datei: ${rel_json}. Fuehre danach den Import aus mit: uv run tools/scanned-beleg-inserter/main.py import --beleg-file \"${json}\" --strict --db \"${DB_PATH}\"."
+  prompt="Nutze die Skills import-scanned-belege und pdf. Bearbeite genau diese Datei: ${rel_pdf}. Lies und interpretiere den Beleg. Erzeuge/aktualisiere exakt diese JSON-Datei: ${rel_json}. Fuehre danach den Import aus mit: uv run tools/scanned-beleg-inserter/main.py import --beleg-file \"${json}\" --strict --db \"${DB_PATH}\" --relocate-raw-scan --source-buffer-root \"${BUFFER_DIR}\"."
 
   set +e
   if [[ ${#CODEX_STREAM_PREFIX[@]} -gt 0 ]]; then
@@ -223,24 +237,65 @@ for pdf in "${PDF_FILES[@]}"; do
   rc=${PIPESTATUS[0]}
   set -e
 
-  if [[ $rc -ne 0 ]]; then
-    log "FEHLER ${rel_pdf}: Codex Exit ${rc} (Log: ${file_log})"
-    failed=$((failed + 1))
-    break
+  run_ok=0
+  if [[ ! -f "$pdf" ]]; then
+    run_ok=1
   fi
 
-  if [[ ! -f "$json" ]]; then
-    log "FEHLER ${rel_pdf}: Kein JSON erzeugt (${rel_json})"
-    failed=$((failed + 1))
-    break
+  if [[ "$run_ok" -eq 1 ]]; then
+    if rg -q '"created"\s*:\s*true' "$file_log"; then
+      created=$((created + 1))
+    fi
+    if rg -q '"deduplicated"\s*:\s*true' "$file_log"; then
+      deduplicated=$((deduplicated + 1))
+    fi
+    if rg -q '"raw_scan_relocated"\s*:\s*true' "$file_log"; then
+      relocated=$((relocated + 1))
+    fi
+    if [[ -f "$json" ]]; then
+      rm -f "$json"
+      json_cleaned=$((json_cleaned + 1))
+    fi
+    if [[ "$rc" -ne 0 ]]; then
+      log "WARN ${rel_pdf}: Codex Exit ${rc}, Datei wurde aber aus Buffer entfernt."
+    else
+      log "OK ${rel_pdf} (JSON aufgeraeumt, Log: ${file_log})"
+    fi
+    continue
   fi
 
-  log "OK ${rel_pdf} (JSON: ${rel_json}, Log: ${file_log})"
+  failed=$((failed + 1))
+  log "FEHLER ${rel_pdf}: Datei blieb im Buffer (Codex Exit ${rc}). Verschiebe nach ${FAILED_RUN_DIR}"
+  move_to_failed "$pdf"
+  move_to_failed "$json"
 done
 
-log "FERTIG range=${START_INDEX}-${END_INDEX} processed=${processed} failed=${failed}"
+remaining_pdf_count=$(find "$BUFFER_DIR" -maxdepth 1 -type f -name '*.pdf' | wc -l | tr -d ' ')
+remaining_json_count=$(find "$BUFFER_DIR" -maxdepth 1 -type f -name '*.scan.json' | wc -l | tr -d ' ')
 
-if [[ ${failed} -gt 0 ]]; then
+SUMMARY_JSON="${RUN_DIR}/summary.json"
+cat >"$SUMMARY_JSON" <<EOF
+{
+  "run_id": "${RUN_ID}",
+  "buffer_dir": "${BUFFER_DIR}",
+  "failed_dir": "${FAILED_RUN_DIR}",
+  "db_path": "${DB_PATH}",
+  "processed": ${processed},
+  "created": ${created},
+  "deduplicated": ${deduplicated},
+  "failed": ${failed},
+  "relocated": ${relocated},
+  "json_cleaned": ${json_cleaned},
+  "remaining_buffer_pdfs": ${remaining_pdf_count},
+  "remaining_buffer_scan_json": ${remaining_json_count}
+}
+EOF
+
+log "FERTIG processed=${processed} created=${created} deduplicated=${deduplicated} failed=${failed} relocated=${relocated}"
+log "Buffer-Rest: pdf=${remaining_pdf_count} scan_json=${remaining_json_count}"
+log "Summary: ${SUMMARY_JSON}"
+
+if [[ "$failed" -gt 0 || "$remaining_pdf_count" -gt 0 ]]; then
   exit 1
 fi
 
