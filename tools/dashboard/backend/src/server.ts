@@ -1,6 +1,7 @@
 import cors from "cors";
 import express from "express";
 import apiRouter from "./routes/api.js";
+import mobileScansRouter from "./routes/mobile-scans.js";
 import taxRouter from "./routes/tax.js";
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(
 app.use(express.json());
 
 app.use("/api", apiRouter);
+app.use("/api", mobileScansRouter);
 app.use("/api/tax", taxRouter);
 
 app.use((error: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
