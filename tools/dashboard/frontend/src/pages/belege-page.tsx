@@ -10,9 +10,23 @@ import { apiGet } from "@/lib/api";
 import type { DocumentListItem, DocumentsResponse } from "@/lib/types";
 import { formatEuro, formatInt } from "@/lib/utils";
 
-function formatDateTime(value: string | null): string {
+type DocumentDirection = "Eingehend" | "Ausgehend" | "Gemischt" | "Unklar";
+
+function formatDate(value: string | null): string {
   if (!value) {
     return "-";
+  }
+  const dateOnlyMatch = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (dateOnlyMatch) {
+    const year = Number.parseInt(dateOnlyMatch[1], 10);
+    const month = Number.parseInt(dateOnlyMatch[2], 10) - 1;
+    const day = Number.parseInt(dateOnlyMatch[3], 10);
+    const parsed = new Date(year, month, day);
+    if (!Number.isNaN(parsed.getTime())) {
+      return new Intl.DateTimeFormat("de-DE", {
+        dateStyle: "medium",
+      }).format(parsed);
+    }
   }
   const parsed = new Date(value);
   if (Number.isNaN(parsed.getTime())) {
@@ -20,25 +34,54 @@ function formatDateTime(value: string | null): string {
   }
   return new Intl.DateTimeFormat("de-DE", {
     dateStyle: "medium",
-    timeStyle: "short",
   }).format(parsed);
 }
 
-function resolveVatTreatment(row: DocumentListItem): string | null {
-  const fromMeta = row.metadata_json;
-  if (!fromMeta) {
+function parseMetadataJson(value: string | null | undefined): Record<string, unknown> | null {
+  if (!value) {
     return null;
   }
   try {
-    const parsed = JSON.parse(fromMeta) as Record<string, unknown>;
-    const value = parsed.vat_treatment;
-    if (typeof value === "string" && value.trim().length > 0) {
-      return value.trim();
-    }
+    return JSON.parse(value) as Record<string, unknown>;
   } catch {
     return null;
   }
+}
+
+function resolveVatTreatment(metadata: Record<string, unknown> | null): string | null {
+  const value = metadata?.["vat_treatment"];
+  if (typeof value === "string" && value.trim().length > 0) {
+    return value.trim();
+  }
   return null;
+}
+
+function resolveDirection(row: DocumentListItem, metadata: Record<string, unknown> | null): DocumentDirection {
+  const inflowCount = row.linked_inflow_count ?? 0;
+  const outflowCount = row.linked_outflow_count ?? 0;
+
+  if (inflowCount > 0 && outflowCount === 0) {
+    return "Eingehend";
+  }
+  if (outflowCount > 0 && inflowCount === 0) {
+    return "Ausgehend";
+  }
+  if (inflowCount > 0 && outflowCount > 0) {
+    return "Gemischt";
+  }
+
+  const documentType = typeof metadata?.["document_type"] === "string" ? metadata["document_type"].trim().toLowerCase() : "";
+  if (documentType.includes("ausgang")) {
+    return "Eingehend";
+  }
+  if (documentType.includes("eingang")) {
+    return "Ausgehend";
+  }
+  return "Unklar";
+}
+
+function documentFileUrl(documentId: number): string {
+  return `/api/documents/${documentId}/file`;
 }
 
 export function BelegePage() {
@@ -133,23 +176,36 @@ export function BelegePage() {
             <TableHeader>
               <TableRow>
                 <TableHead>ID</TableHead>
-                <TableHead>Erstellt</TableHead>
+                <TableHead>Belegdatum</TableHead>
                 <TableHead>Beleg</TableHead>
                 <TableHead>Aussteller / Rechnungsnr</TableHead>
                 <TableHead>Betreff</TableHead>
+                <TableHead>Richtung</TableHead>
                 <TableHead>MwSt</TableHead>
+                <TableHead className="text-right">Netto</TableHead>
                 <TableHead className="text-right">Brutto</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {(data?.items ?? []).map((row) => {
-                const vatTreatment = resolveVatTreatment(row);
+                const metadata = parseMetadataJson(row.metadata_json);
+                const vatTreatment = resolveVatTreatment(metadata);
+                const direction = resolveDirection(row, metadata);
                 return (
                   <TableRow key={row.id}>
                     <TableCell className="font-mono text-xs">{row.id}</TableCell>
-                    <TableCell className="text-xs">{formatDateTime(row.created_at)}</TableCell>
+                    <TableCell className="text-xs">{formatDate(row.document_date)}</TableCell>
                     <TableCell className="max-w-[360px]">
-                      <p className="truncate font-medium">{row.original_filename ?? `Dokument ${row.id}`}</p>
+                      <p className="truncate font-medium">
+                        <a
+                          href={documentFileUrl(row.id)}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="underline decoration-dotted underline-offset-2 hover:no-underline"
+                        >
+                          {row.original_filename ?? `Dokument ${row.id}`}
+                        </a>
+                      </p>
                       <p className="truncate text-xs text-muted-foreground">{row.storage_rel_path}</p>
                     </TableCell>
                     <TableCell className="max-w-[260px]">
@@ -160,10 +216,16 @@ export function BelegePage() {
                       <p className="truncate">{row.subject ?? row.summary_short ?? "-"}</p>
                     </TableCell>
                     <TableCell>
+                      <Badge variant="outline">{direction}</Badge>
+                    </TableCell>
+                    <TableCell>
                       <div className="flex flex-wrap gap-1">
                         {vatTreatment ? <Badge variant="outline">{vatTreatment}</Badge> : <span className="text-xs text-muted-foreground">-</span>}
                         {typeof row.vat_rate_bps === "number" ? <Badge variant="secondary">{(row.vat_rate_bps / 100).toFixed(2)}%</Badge> : null}
                       </div>
+                    </TableCell>
+                    <TableCell className="text-right font-medium">
+                      {row.net_amount_cents === null || row.net_amount_cents === undefined ? "-" : formatEuro(row.net_amount_cents)}
                     </TableCell>
                     <TableCell className="text-right font-medium">
                       {row.gross_amount_cents === null ? "-" : formatEuro(row.gross_amount_cents)}

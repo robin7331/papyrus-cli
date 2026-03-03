@@ -1,0 +1,27 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/2023/belege/2023-02/raw_scan_2023-02-13_620947.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-02-13",
+    "issuer_name": "Dimitrij Nazarenus / LederZumBasteln.de",
+    "invoice_number": "620947",
+    "subject": "Rechnung 620947 - EPDM Schaum Schwarz (OrderID 028-6123780-5107562)",
+    "summary_short": "Materialkauf EPDM-Schaum inkl. Versand",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 7575,
+    "net_amount_cents": 6366,
+    "vat_amount_cents": 1209,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.84,
+    "ai_confidence": 0.93,
+    "ocr_text": "Rechnungsdatum: 13.02.2023; Lieferdatum: 13.02.2023; Rechnungs-Nr.: 620947; OrderID: 028-6123780-5107562; Zwischensumme 71,80 EUR; Versandkosten 3,95 EUR; 19% MWSt 12,09 EUR; Gesamt netto 63,66 EUR; Gesamt brutto 75,75 EUR; Verkaeufer: Dimitrij Nazarenus (LederZumBasteln.de), USt-IdNr. DE280019459.",
+    "notes": [
+      "OrderID: 028-6123780-5107562",
+      "Lieferdatum: 2023-02-13",
+      "USt-IdNr. Aussteller: DE280019459",
+      "Zahlungsart laut Beleg: Amazon (Betrag bereits erhalten)"
+    ]
+  }
+}

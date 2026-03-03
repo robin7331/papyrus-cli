@@ -1,0 +1,12 @@
+[2026-03-03 12:05:05] Inbox-Batch gestartet (BUFFER_DIR=/Users/robin/Documents/Projects/buchhaltung/scanned_belege)
+[2026-03-03 12:05:05] Logs: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_120505_1-1_28010
+[2026-03-03 12:05:05] Failed-Ordner: /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_120505_1-1_28010
+[2026-03-03 12:05:05] Gefundene PDFs: 1
+[2026-03-03 12:05:05] Verarbeite Bereich: 1-1 (Anzahl: 1)
+[2026-03-03 12:05:05] Codex Optionen: model=gpt-5.3-codex reasoning=low
+[2026-03-03 12:05:05] START [1/1] scanned_belege/Scanned Document 3.pdf
+[2026-03-03 12:05:05] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_120505_1-1_28010/Scanned Document 3.log
+[2026-03-03 12:05:55] OK scanned_belege/Scanned Document 3.pdf (JSON aufgeraeumt, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_120505_1-1_28010/Scanned Document 3.log)
+[2026-03-03 12:05:55] FERTIG processed=1 created=1 deduplicated=0 failed=0 relocated=1
+[2026-03-03 12:05:55] Buffer-Rest: pdf=0 scan_json=0
+[2026-03-03 12:05:55] Summary: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_120505_1-1_28010/summary.json

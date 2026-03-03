@@ -214,6 +214,8 @@ export type DocumentListItem = {
   created_at: string;
   updated_at: string;
   linked_transactions_count: number;
+  linked_inflow_count?: number;
+  linked_outflow_count?: number;
 };
 
 export type DocumentsResponse = {

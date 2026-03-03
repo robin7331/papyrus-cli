@@ -1909,13 +1909,20 @@ router.get("/documents", (req, res) => {
       .prepare(
         `SELECT
            d.*,
-           COALESCE(link_counts.link_count, 0) AS linked_transactions_count
+           COALESCE(link_counts.link_count, 0) AS linked_transactions_count,
+           COALESCE(link_counts.inflow_count, 0) AS linked_inflow_count,
+           COALESCE(link_counts.outflow_count, 0) AS linked_outflow_count
          FROM documents d
          LEFT JOIN (
-           SELECT document_id, COUNT(*) AS link_count
-           FROM transaction_document_links
-           WHERE is_active = 1
-           GROUP BY document_id
+           SELECT
+             l.document_id,
+             COUNT(*) AS link_count,
+             SUM(CASE WHEN t.amount_cents > 0 THEN 1 ELSE 0 END) AS inflow_count,
+             SUM(CASE WHEN t.amount_cents < 0 THEN 1 ELSE 0 END) AS outflow_count
+           FROM transaction_document_links l
+           JOIN bank_transactions t ON t.id = l.bank_transaction_id
+           WHERE l.is_active = 1
+           GROUP BY l.document_id
          ) link_counts ON link_counts.document_id = d.id
          ${whereSql}
          ORDER BY d.id DESC
