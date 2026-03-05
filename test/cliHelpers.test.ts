@@ -17,10 +17,16 @@ import {
 test("parseFormat accepts valid values", () => {
   assert.equal(parseFormat("md"), "md");
   assert.equal(parseFormat("txt"), "txt");
+  assert.equal(parseFormat("csv"), "csv");
+  assert.equal(parseFormat(".json"), "json");
+  assert.equal(parseFormat("tar.gz"), "tar.gz");
 });
 
 test("parseFormat rejects invalid values", () => {
-  assert.throws(() => parseFormat("json"), InvalidArgumentError);
+  assert.throws(() => parseFormat(""), InvalidArgumentError);
+  assert.throws(() => parseFormat("   "), InvalidArgumentError);
+  assert.throws(() => parseFormat("../json"), InvalidArgumentError);
+  assert.throws(() => parseFormat("a/b"), InvalidArgumentError);
 });
 
 test("parseConcurrency accepts in-range integers", () => {
@@ -75,6 +81,7 @@ test("validateOptionCombination rejects --instructions with prompt flags", () =>
 test("defaultOutputPath replaces .pdf extension and appends for other files", () => {
   assert.equal(defaultOutputPath("/tmp/input.pdf", "md"), "/tmp/input.md");
   assert.equal(defaultOutputPath("/tmp/input.PDF", "txt"), "/tmp/input.txt");
+  assert.equal(defaultOutputPath("/tmp/input.pdf", ".csv"), "/tmp/input.csv");
   assert.equal(defaultOutputPath("/tmp/input", "md"), "/tmp/input.md");
 });
 
@@ -92,6 +99,11 @@ test("resolveFolderOutputPath preserves nested structure when output root is set
   assert.equal(
     resolveFolderOutputPath("/data/invoices/file.pdf", "/data/invoices", "/exports", "txt"),
     "/exports/file.txt"
+  );
+
+  assert.equal(
+    resolveFolderOutputPath("/data/invoices/file.pdf", "/data/invoices", "/exports", ".csv"),
+    "/exports/file.csv"
   );
 });
 

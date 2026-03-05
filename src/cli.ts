@@ -52,7 +52,7 @@ program
     parseConcurrency
   )
   .option("-y, --yes", "Skip confirmation prompt in folder mode")
-  .option("--format <format>", "Output format override: md or txt", parseFormat)
+  .option("--format <format>", "Output file extension override (for example: md, txt, csv, json)", parseFormat)
   .option(
     "--instructions <text>",
     "Additional conversion instructions (only when not using --prompt/--prompt-file)"
@@ -182,12 +182,13 @@ async function processSingleFile(
       inputPath,
       model: options.model,
       mode,
-      format: options.format,
       instructions: options.instructions,
-      promptText
+      promptText,
+      outputExtensionHint: options.format
     });
 
-    const outputPath = resolve(options.output ?? defaultOutputPath(inputPath, result.format));
+    const outputExtension = options.format ?? result.format;
+    const outputPath = resolve(options.output ?? defaultOutputPath(inputPath, outputExtension));
     await mkdir(dirname(outputPath), { recursive: true });
     await writeFile(outputPath, result.content, "utf8");
 
@@ -195,16 +196,16 @@ async function processSingleFile(
       workerDashboard.setWorkerDone(
         0,
         displayInput,
-        `${result.format} in ${formatDurationMs(Date.now() - startedAt)}`
+        `${outputExtension} in ${formatDurationMs(Date.now() - startedAt)}`
       );
       workerDashboard.setSummary(1, 0);
     } else {
       console.log(
-        `[worker-1] Done ${displayInput} -> ${outputPath} (${result.format}, ${formatDurationMs(Date.now() - startedAt)})`
+        `[worker-1] Done ${displayInput} -> ${outputPath} (${outputExtension}, ${formatDurationMs(Date.now() - startedAt)})`
       );
     }
 
-    console.log(`Output (${result.format}) written to: ${outputPath}`);
+    console.log(`Output (.${outputExtension}) written to: ${outputPath}`);
     return result.usage;
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
@@ -242,9 +243,7 @@ async function processFolder(
   promptText?: string
 ): Promise<FolderSummary> {
   if (options.output && looksLikeFileOutput(options.output)) {
-    throw new Error(
-      "In folder mode, --output must be a directory path (not a .md/.txt file path)."
-    );
+    throw new Error("In folder mode, --output must be a directory path.");
   }
 
   const files = await collectPdfFiles(inputDir);
@@ -285,12 +284,13 @@ async function processFolder(
           inputPath: filePath,
           model: options.model,
           mode,
-          format: options.format,
           instructions: options.instructions,
-          promptText
+          promptText,
+          outputExtensionHint: options.format
         });
 
-        const outputPath = resolveFolderOutputPath(filePath, inputDir, outputRoot, result.format);
+        const outputExtension = options.format ?? result.format;
+        const outputPath = resolveFolderOutputPath(filePath, inputDir, outputRoot, outputExtension);
         await mkdir(dirname(outputPath), { recursive: true });
         await writeFile(outputPath, result.content, "utf8");
         succeeded += 1;
@@ -300,11 +300,11 @@ async function processFolder(
           workerDashboard.setWorkerDone(
             workerId,
             relativeInput,
-            `${result.format} in ${formatDurationMs(Date.now() - startedAt)}`
+            `${outputExtension} in ${formatDurationMs(Date.now() - startedAt)}`
           );
         } else {
           console.log(
-            `[worker-${workerId + 1}] Done ${relativeInput} -> ${outputPath} (${result.format}, ${formatDurationMs(Date.now() - startedAt)})`
+            `[worker-${workerId + 1}] Done ${relativeInput} -> ${outputPath} (${outputExtension}, ${formatDurationMs(Date.now() - startedAt)})`
           );
         }
       } catch (error) {

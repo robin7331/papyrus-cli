@@ -9,9 +9,9 @@ export type ConvertOptions = {
   inputPath: string;
   model: string;
   mode: ConversionMode;
-  format?: OutputFormat;
   instructions?: string;
   promptText?: string;
+  outputExtensionHint?: string;
 };
 
 export type ConversionMode = "auto" | "prompt";
@@ -94,63 +94,40 @@ export async function convertPdf(options: ConvertOptions): Promise<ConvertResult
     totalTokens: result.state.usage.totalTokens
   };
 
-  if (options.mode === "auto" && !options.format) {
+  if (options.mode === "auto") {
     return { ...parseAutoResponse(rawOutput), usage };
   }
 
-  const format = options.format ?? "txt";
-  return { format, content: rawOutput, usage };
+  return { format: "txt", content: rawOutput, usage };
 }
 
 function buildPromptText(options: ConvertOptions): string {
+  const outputExtensionHint = normalizeExtensionHint(options.outputExtensionHint);
   if (options.mode === "prompt") {
     if (!options.promptText) {
       throw new Error("promptText is required when mode is 'prompt'.");
     }
 
-    const promptModeParts = [
+    const promptModeParts: string[] = [
       "Apply the following user prompt to the PDF.",
       "Return only the final converted content.",
       `User prompt:\n${options.promptText}`
     ];
 
-    if (options.format === "md") {
-      promptModeParts.push("Output format requirement: Return only GitHub-flavored Markdown.");
-    } else if (options.format === "txt") {
-      promptModeParts.push("Output format requirement: Return plain text only and do not use Markdown syntax.");
-    } else {
-      promptModeParts.push("If the prompt does not enforce a format, prefer plain text without Markdown syntax.");
+    if (outputExtensionHint) {
+      promptModeParts.push(
+        [
+          `Output file extension hint: .${outputExtensionHint}.`,
+          "Prefer content that is practical for saving under this extension.",
+          "Treat this as guidance and still follow the user prompt exactly."
+        ].join(" ")
+      );
     }
 
     return promptModeParts.join("\n\n");
   }
 
-  if (options.format === "md") {
-    return withAdditionalInstructions(
-      [
-        "Convert this PDF into clean GitHub-flavored Markdown.",
-        "Preserve headings, paragraphs, lists, and tables.",
-        "Render tables as Markdown pipe tables with header separators.",
-        "If cells are empty due to merged cells, keep the table readable and consistent.",
-        "Return only Markdown without code fences."
-      ].join(" "),
-      options.instructions
-    );
-  }
-
-  if (options.format === "txt") {
-    return withAdditionalInstructions(
-      [
-        "Convert this PDF into clean plain text.",
-        "Preserve reading order and paragraph boundaries.",
-        "Represent tables in readable plain text (no Markdown syntax).",
-        "Return plain text only and do not use Markdown syntax or code fences."
-      ].join(" "),
-      options.instructions
-    );
-  }
-
-  return withAdditionalInstructions(
+  let autoPrompt = withAdditionalInstructions(
     [
       "Decide the best output format for this PDF: Markdown ('md') or plain text ('txt').",
       "Choose 'md' for documents with meaningful headings, lists, and tables that benefit from Markdown.",
@@ -163,6 +140,18 @@ function buildPromptText(options: ConvertOptions): string {
     ].join("\n"),
     options.instructions
   );
+
+  if (outputExtensionHint) {
+    autoPrompt = `${autoPrompt}\n\n${
+      [
+        `Output file extension hint: .${outputExtensionHint}.`,
+        "Prefer content that is practical for that extension while still returning JSON with format='md' or 'txt'.",
+        "This is guidance only and should not break the required JSON schema."
+      ].join(" ")
+    }`;
+  }
+
+  return autoPrompt;
 }
 
 function withAdditionalInstructions(base: string, additional?: string): string {
@@ -171,6 +160,15 @@ function withAdditionalInstructions(base: string, additional?: string): string {
   }
 
   return `${base}\n\nAdditional user instructions:\n${additional}`;
+}
+
+function normalizeExtensionHint(extension: string | undefined): string | undefined {
+  if (!extension) {
+    return undefined;
+  }
+
+  const normalized = extension.trim().replace(/^\.+/, "");
+  return normalized || undefined;
 }
 
 function parseAutoResponse(rawOutput: string): Omit<ConvertResult, "usage"> {

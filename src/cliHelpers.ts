@@ -1,24 +1,28 @@
 import { InvalidArgumentError } from "commander";
 import { basename, dirname, extname, join, relative } from "node:path";
-import { type OutputFormat } from "./openaiPdfToMarkdown.js";
 
 export type CliOptions = {
   output?: string;
   model: string;
   concurrency?: number;
   yes?: boolean;
-  format?: OutputFormat;
+  format?: string;
   instructions?: string;
   prompt?: string;
   promptFile?: string;
 };
 
-export function parseFormat(value: string): OutputFormat {
-  if (value === "md" || value === "txt") {
-    return value;
+export function parseFormat(value: string): string {
+  const normalized = value.trim().replace(/^\.+/, "");
+  if (!normalized) {
+    throw new InvalidArgumentError("Format must be a non-empty file extension.");
   }
 
-  throw new InvalidArgumentError("Format must be either 'md' or 'txt'.");
+  if (normalized.includes("/") || normalized.includes("\\")) {
+    throw new InvalidArgumentError("Format must be a file extension, not a path.");
+  }
+
+  return normalized;
 }
 
 export function parseConcurrency(value: string): number {
@@ -41,30 +45,31 @@ export function validateOptionCombination(options: CliOptions): void {
   }
 }
 
-export function defaultOutputPath(inputPath: string, format: OutputFormat): string {
-  const extension = format === "md" ? ".md" : ".txt";
+export function defaultOutputPath(inputPath: string, extension: string): string {
+  const normalizedExtension = extension.startsWith(".") ? extension : `.${extension}`;
 
   if (extname(inputPath).toLowerCase() === ".pdf") {
-    return inputPath.slice(0, -4) + extension;
+    return inputPath.slice(0, -4) + normalizedExtension;
   }
 
-  return inputPath + extension;
+  return inputPath + normalizedExtension;
 }
 
 export function resolveFolderOutputPath(
   inputPath: string,
   inputRoot: string,
   outputRoot: string | undefined,
-  format: OutputFormat
+  extension: string
 ): string {
   if (!outputRoot) {
-    return defaultOutputPath(inputPath, format);
+    return defaultOutputPath(inputPath, extension);
   }
 
   const relativePath = relative(inputRoot, inputPath);
   const relativeDir = dirname(relativePath);
   const base = basename(relativePath, extname(relativePath));
-  const filename = `${base}.${format}`;
+  const normalizedExtension = extension.startsWith(".") ? extension.slice(1) : extension;
+  const filename = `${base}.${normalizedExtension}`;
 
   if (relativeDir === ".") {
     return join(outputRoot, filename);

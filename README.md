@@ -30,7 +30,7 @@ papyrus --version
 # Single file (default behavior; if no API key is found, Papyrus prompts you to paste one)
 papyrus ./path/to/input.pdf
 
-# Single file with explicit format/output/model
+# Single file with explicit output extension/output/model
 papyrus ./path/to/input.pdf --format md --output ./out/result.md --model gpt-4o-mini
 
 # Default conversion with extra instructions
@@ -110,14 +110,14 @@ papyrus --version
 
 ### `--format <format>`
 
-Output format override:
-- `md` for GitHub-flavored Markdown
-- `txt` for plain text
+Output file extension override. Any extension is allowed (for example `md`, `txt`, `csv`, `json`).
+This flag controls the output filename extension only.
+When provided, Papyrus also passes the extension as a guidance hint to the model.
 
 Example:
 
 ```bash
-papyrus ./docs/invoice.pdf --format md
+papyrus ./docs/invoice.pdf --format csv
 ```
 
 ### `-o, --output <path>`
@@ -194,7 +194,9 @@ papyrus ./docs --yes
 
 ## Notes
 
-- In default conversion (without `--prompt`/`--prompt-file`) and without `--format`, the model returns structured JSON with `format` + `content`.
+- In default conversion (without `--prompt`/`--prompt-file`), the model returns structured JSON with `format` + `content`.
+- Without `--format`, output extension follows model-selected content format (`.md` or `.txt`).
+- With `--format`, only the output extension changes.
 - Single-file input now also shows a live worker lane (spinner in TTY) while conversion is running.
 - Folder input is scanned recursively for `.pdf` files and processed in parallel.
 - In folder mode, `--output` must be a directory path and mirrored subfolders are preserved.
