@@ -1,0 +1,27 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned Document 11.pdf",
+  "year": 2025,
+  "extracted": {
+    "document_date": "2025-05-30",
+    "issuer_name": "Unklar (Bankdokument mit BIC/IBAN-Listen)",
+    "invoice_number": "unknown_number",
+    "subject": "Bankdokument/Konditionenblatt mit BIC/IBAN-Angaben (OCR unsicher)",
+    "summary_short": "Stark verrauschter Scan; mutmaßlich Bankbeleg mit Entgeltangabe 39,00 EUR.",
+    "document_type": "Bankbeleg",
+    "gross_amount_cents": 3900,
+    "net_amount_cents": 3900,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "ocr_confidence": 0.22,
+    "ai_confidence": 0.42,
+    "ocr_text": "===== PAGE 1 =====\nBIC bBUKDEEEL\n\nIBWU DEO8 €00) OO\\O 0103 Yea\\ 0d\nbO2IpsuK ornpyasy\n\nBIC ecOryYDEe@JKAB\n\nIBVU DE2ld C202 0110 0000 S38\\ 83\nNiGleebsixsees KSAGUepMa\n\nBIC cOrvDEel\n\nIBVU DEOd C002 0101 OO0Y 2433 \\Y¥\nBIGSU-MOLSWpELa2cys QaUK\n\nBIC CEVODEe2ITEN\n\nIBYU DEAO @208 JOY0 OJ4/ 3300 00\nAoiK2pauK y}|Agn-OpseLecpymgpsu 6e\n\nBIC CENVODE2IBBA\n\nIBVU DEJ C208 S24\\ 00/2 2400 00\nAB B9UK B9AGUepnLa-pasiudsLysu 6a\nBIC HAAEDEWWYA3\n\nIBVU DE3J €005 05900 S¥\\0 JSAJ J2\nHAbDOAGLEIU2pSUK\n\n- ofsneheigye -\n\nWIE uSNUICURY @LaReU\n\nKSAsuepntd’ CONVDECIBAB SNW ESIIIGKSY2I98 J )'025053 spaspncpy\nCISNPIASL-|D DEY2SSN00000J AVS AOU [PLL KOUJO DEJ2020201J00101IXXXXX PE! GEL KL 2bK\nbSt CEbV-TSefecuuiyy MILq qe KECUUNUdepesLsd AOU ee'tO ENK SNW WSUGS{ ¥4adS50000005 $1 Gel\n\nKeCuUnudepersa ee't0 ENB\nNwWesfsefencipesigsa 39°00 3 10’e0 ENB\nenwwe yefopes.sae 22°80 ENK\n2 It SIBAA SOSS\n\nVPMICKINUG\\YLCVIAIGLNUG | ONSLASOS3 000 ENB\n2 34 VP2 S SIBAA SOSS\n\nVWuLSsyldnud qe. FoyuspLecuuNnuUa\n\nLNVLAUG AOU POLUKOU{EU Nu | ONSLASOS3 3VWU 12°e0 ENB ve's80 ENK\nefBAA (2° vp2e” Vt)\n\nBese6icuunua S6NLINW ec6cdcevefsuqemselt ess jsp’ Bermsa\n\nLOL Gis jo|ASUqEU FElesnuUGeU ELISNpEU MIL NUE ISNf SIBAA (2 Q) SM peLecuUEU:\n\nKBECHUNUC\n\n88/42 HSLdgyfs\nPIUQELPOLeLSVE $3\nBUINSCUSUICe CWPH\nLILIWS\n\nLLSUS-/[SICUUGL-OfLsR6 | 3° 88530 MagUGeU IW yI|Ggn\nPFEOUHVKDL ¥ CbOKI SISNGIpELSEl’ LJeiK\n\nNerlqQUle: DEITA3YSYTA\nrelejnudeqsinw: SO OWS053\n\nWHSLPSGYGLUNWWEL: 10e\n\nKSecuunudeqsinW: SOQ'Ot'S053\nWSUQSU{SUUNWWEL: I99S\nKecuunudeunWwweé-: 30\\2\n\nMMM 2e{6NGLKSUS|GIF-MSUG6U gs\nIULOWefensixsusjsi-msudeu qe\nISIS{SX — (OASS) SS TAO\n16|S,OU (O\\255) 84 03 0\n\nsudsejei|{ uscy 2 2g 21g6Le\nCISNELPELS{SLIU\n\nLEBEevV TEQUHVKDL\n\nDEAS A\nNujeLuSspweveuscyjojae\nLSCUPGELS{EL nL\nD'bjow-LivsusSMIY EH\nCISNELPELOISL\n\nCHBICLObH @bQb!\n\nPsuq- Nuq LoLejmiyecysy\nLSCUPELS{EL INL\n|U{SLUS{IOUS|Ge QfencLLEcps\nLSCUPGELSJEL {AL\nO{ENGLPSLS{EL\n\nVYDOTE TEQUVHVBDL\n\nCLENEBBEBVLEBCONIELVI\n\nLEOUEVE DI SY  ébOrl\n",
+    "notes": [
+      "OCR-Qualitaet sehr niedrig; viele Tokens unleserlich.",
+      "Dokument wirkt wie Bankunterlage mit mehreren BIC/IBAN-Eintraegen.",
+      "Betrag 39,00 EUR aus OCR-Fragment entnommen; fachliche Nachpruefung empfohlen.",
+      "Datum 2025-05-30 aus OCR-Muster SO OWS053 angenaehert."
+    ]
+  }
+}

@@ -149,6 +149,7 @@ export type TransactionDetail = {
   closing_balance_cents: number | null;
   file_path: string | null;
   statement_file_url: string | null;
+  account_iban: string | null;
   year: number | null;
   file_sha256: string | null;
 };
@@ -161,6 +162,42 @@ export type TransactionDetailResponse = {
   match_suggestions: MatchSuggestion[];
   document_status_history: DocumentStatusHistoryRow[];
   tax_determination: TaxDetermination | null;
+};
+
+export type DocumentDetailResponse = {
+  document: DocumentListItem;
+};
+
+export type StatementDetailTransactionRow = {
+  id: number;
+  booking_date: string;
+  valuta_date: string | null;
+  amount_cents: number;
+  currency: string;
+  purpose: string | null;
+  counterparty_name: string | null;
+  reference: string | null;
+  tx_type: string | null;
+  document_status: DocumentStatus;
+  missing_invoice_flag: 0 | 1;
+  linked_documents_count: number;
+};
+
+export type StatementDetailResponse = {
+  statement: {
+    id: number;
+    statement_no: string | null;
+    period_from: string | null;
+    period_to: string | null;
+    opening_balance_cents: number | null;
+    closing_balance_cents: number | null;
+    account_iban: string | null;
+    file_sha256: string | null;
+    file_path: string | null;
+    statement_file_url: string | null;
+    transaction_count: number;
+  };
+  transactions: StatementDetailTransactionRow[];
 };
 
 export type UploadDocumentResponse = {
@@ -268,6 +305,7 @@ export type DocumentLinkedTransaction = {
   reference: string | null;
   tx_type: string | null;
   document_status: DocumentStatus;
+  statement_doc_id: number | null;
   missing_invoice_flag: 0 | 1;
 };
 

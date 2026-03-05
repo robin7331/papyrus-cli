@@ -1,0 +1,27 @@
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/2023-02-0002_2023-04-05_VNMF_1013.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-04-05",
+    "issuer_name": "BILLINGSERVICE GMBH",
+    "invoice_number": "1013",
+    "subject": "Rechnung 1013",
+    "summary_short": "OCR-Scan, Beleg VNMF 1013",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 973181,
+    "net_amount_cents": 973181,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "ocr_confidence": 0.43,
+    "ai_confidence": 0.36,
+    "ocr_text": "===== PAGE 1 =====\neMIEL\\BIC 2COrVDE2) BAB\n\nIBV DEJ2 e202 0410 0101 1430 12\n\nBIS €2020110 Neflave DE3004 JSSA\\a\nE-WSI|: Loplu@Lopive-fooje\"cow KOUJO-VIL’ 0101 143012 HBB: HBB JS\\8\\\nLey: +¥4 441483080 ebsixseee Ysasuepmd Kewbyeu (ylagn)\nKOUESKE BSUKAGLpIUqnUa Gelicpieessuq\neste J AOU 5\nEuqenwwe 9°\\s3'8! €\nSSO/' 0'000° WMT {01 bOzIOU(EU) \\ 0°00 €\nSSO] 49'00d° WEF {Mh bOzIfou(eu) | - @ 1e80'S\\ €\nWMlecueuenwWiws NOY Ot €\nKIM Egigeinua 101 MsII|POXeU 100 Jer -1'800'00 € | -1°800°00 €\nbA EISKLO [vefs||sfovewssens] 1'00 | elk YOO'TS € TOO'CS €\n[vefS||Sfouews{eUy|\n2 3X WMO MSIIPOX IUK]\" EIEKILO- 1'00 | elk 3°13e'01 € 3°413e'01 €\n(Dscpsigden’ ec)\nt [Vefs||sfovewsfeys| bA WOgnis 1'00 | elk Aov'20 € AOv'20 €\n20|S4Wogn|\nbA Woanie: ¢40M Let BLO 2tHC 48°00 | elk 128°85 € S'828'e €\nMB eWSU Welel: DLeneee-H 1'00 | elk SIVIZE SIVIZE\n4 MECH2E|LICHIEL: HNSME! SN SOOO BKLT 1'00 | elk 12582 € 1'258'2\\ €\nUGO Ueto\nboe |yuryk | BeecpLeipnua WeuGe | Elwell | ElWsejbieie | Geeswybielre\n\nMil GLISNPEU Ne {NL NU2ELS BEWNHYNAEY Jo|Aeuqe LoeioUSU IU YECUUNNG sn efel|eu\"\n\nGUL Aeepyel HELL AS|SUMIU LIecuel’\n\nPelesnudeseyisnw: O2'O¢'S053\n\nKfuqeu-yk\": 1013\nBecpunua Yl’ $053-05-0005\n\n88530 Msudeu IW yIIdgn\nBsipeumed \\\nSHO’ HEM ASIGUsIV LIecueL\nAW E!2cyel GPK\n\nBHWSCpsUICce GWPH | TIUqeupOlesL” 53 | SB1v2 HELASS\n\nYspiNudesie|: |S‘Ot'SOSS\nDSINW: O2\"OT'SOS3\n\nseiy2 HeLasrs\nTluqeupoyen.” $3\n\nBop BelfeL\n\nBHINGCHSUICe GWPH\n\n\n===== PAGE 2 =====\nE-WSI|: Loplu@topive-sooje*cow\nSl: +¥8 444 41830e380\nKOUSSKE\n\neMIEL\\BIC 2COrVDE2) BAB\n\nIBV DEJ2 e202 0410 0101 1430 12\nBIS €2020110\n\nKOUJO-Yk’ 0104 JA30I2\n\nebsixsees Ysasuvepm.d\nBSUKAGLpIUqnUa\n\nese SAOU 5\n\nN2FIVL DE3O0L 15548\nHBB: HEB 1S\\8\\\nKewbyeu (yidgn)\nGsiicpreessuq\n",
+    "notes": [
+      "OCR stark verrauscht; Werte manuell aus Volltext interpretiert.",
+      "Bruttobetrag aus OCR-Zeile 'Euqenwwe 9°\\s3'8! €' als 9.731,81 EUR abgeleitet.",
+      "USt als 0 EUR / VAT_0 gesetzt wegen mehrfacher OCR-Hinweise auf '0,00'.",
+      "Bitte fachlich nachpruefen (issuer_name und Betraege sind unsicher)."
+    ]
+  }
+}

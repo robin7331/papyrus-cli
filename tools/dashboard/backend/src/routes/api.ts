@@ -886,6 +886,7 @@ type DocumentLinkedTransactionRow = {
   reference: string | null;
   tx_type: string | null;
   document_status: "offen" | "zugeordnet" | "nicht_erforderlich" | "in_klaerung";
+  statement_doc_id: number | null;
   missing_invoice_flag: 0 | 1;
 };
 
@@ -2164,12 +2165,13 @@ router.get("/documents/:id/linked-transactions", (req, res) => {
            bt.reference,
            bt.tx_type,
            bt.document_status,
+           bt.statement_doc_id,
            bt.missing_invoice_flag
          FROM transaction_document_links l
-         JOIN bank_transactions bt ON bt.id = l.bank_transaction_id
-         WHERE l.document_id = ?
-           AND l.is_active = 1
-         ORDER BY bt.booking_date DESC, bt.id DESC`,
+        JOIN bank_transactions bt ON bt.id = l.bank_transaction_id
+        WHERE l.document_id = ?
+          AND l.is_active = 1
+        ORDER BY bt.booking_date DESC, bt.id DESC`,
       )
       .all(documentId) as DocumentLinkedTransactionRow[];
 
@@ -2177,6 +2179,131 @@ router.get("/documents/:id/linked-transactions", (req, res) => {
       document_id: documentId,
       total: items.length,
       items,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.get("/documents/:id", (req, res) => {
+  try {
+    const documentId = Number(req.params.id);
+    if (!Number.isInteger(documentId) || documentId <= 0) {
+      throw new ValidationError("Ungültige Dokument-ID");
+    }
+
+    const db = getDb();
+    const document = db
+      .prepare(
+        `SELECT
+           d.*,
+           COALESCE(link_counts.link_count, 0) AS linked_transactions_count,
+           COALESCE(link_counts.inflow_count, 0) AS linked_inflow_count,
+           COALESCE(link_counts.outflow_count, 0) AS linked_outflow_count
+         FROM documents d
+         LEFT JOIN (
+           SELECT
+             l.document_id,
+             COUNT(*) AS link_count,
+             SUM(CASE WHEN t.amount_cents > 0 THEN 1 ELSE 0 END) AS inflow_count,
+             SUM(CASE WHEN t.amount_cents < 0 THEN 1 ELSE 0 END) AS outflow_count
+           FROM transaction_document_links l
+           JOIN bank_transactions t ON t.id = l.bank_transaction_id
+           WHERE l.is_active = 1
+           GROUP BY l.document_id
+         ) link_counts ON link_counts.document_id = d.id
+         WHERE d.id = ?`,
+      )
+      .get(documentId) as Record<string, unknown> | undefined;
+
+    if (!document) {
+      res.status(404).json({
+        error: {
+          code: "not_found",
+          message: "Dokument nicht gefunden",
+        },
+      });
+      return;
+    }
+
+    res.json({ document });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.delete("/documents/:id", (req, res) => {
+  try {
+    const documentId = Number(req.params.id);
+    if (!Number.isInteger(documentId) || documentId <= 0) {
+      throw new ValidationError("Ungültige Dokument-ID");
+    }
+
+    const db = getDb();
+    const document = db
+      .prepare("SELECT id, storage_rel_path, metadata_json FROM documents WHERE id = ?")
+      .get(documentId) as { id: number; storage_rel_path: string; metadata_json: string | null } | undefined;
+
+    if (!document) {
+      res.status(404).json({
+        error: {
+          code: "not_found",
+          message: "Dokument nicht gefunden",
+        },
+      });
+      return;
+    }
+
+    const linkedTransactionIds = db
+      .prepare("SELECT bank_transaction_id FROM transaction_document_links WHERE document_id = ? AND is_active = 1")
+      .all(documentId) as Array<{ bank_transaction_id: number }>;
+
+    const uniqueTransactionIds = [...new Set(linkedTransactionIds.map((row) => row.bank_transaction_id))];
+
+    db.prepare("UPDATE transaction_document_links SET is_active = 0 WHERE document_id = ?").run(documentId);
+    db.prepare("DELETE FROM transaction_document_match_suggestions WHERE document_id = ?").run(documentId);
+    db.prepare("DELETE FROM document_change_history WHERE document_id = ?").run(documentId);
+    db.prepare("DELETE FROM documents WHERE id = ?").run(documentId);
+
+    const projectRootAbs = path.resolve(projectRoot);
+    const deletedFiles: string[] = [];
+    const metadata = parseMetadataJsonObject(document.metadata_json);
+    const metadataJsonPath = typeof metadata["archived_json_rel_path"] === "string" ? metadata["archived_json_rel_path"] : null;
+    const storageExt = path.extname(document.storage_rel_path);
+    const storageDir = path.dirname(document.storage_rel_path);
+    const storageBase = path.basename(document.storage_rel_path, storageExt);
+
+    const candidatePaths = Array.from(
+      new Set([
+        path.resolve(projectRootAbs, document.storage_rel_path),
+        metadataJsonPath ? path.resolve(projectRootAbs, metadataJsonPath) : null,
+        path.resolve(projectRootAbs, path.join(storageDir, `${storageBase}.scan.json`)),
+        path.resolve(projectRootAbs, path.join(storageDir, `${storageBase}.json`)),
+      ]),
+    ).filter(Boolean) as string[];
+
+    for (const absPath of candidatePaths) {
+      if (absPath === projectRootAbs || !absPath.startsWith(`${projectRootAbs}${path.sep}`) || !fs.existsSync(absPath)) {
+        continue;
+      }
+      fs.rmSync(absPath, { force: true });
+      deletedFiles.push(absPath);
+    }
+
+    for (const txId of uniqueTransactionIds) {
+      try {
+        recomputeTransactionDocumentStatus(db, txId, "Beleg gelöscht", "dashboard");
+      } catch {
+        // Kein hartes Failure, falls Transaktion in der Zwischenzeit entfernt wurde.
+      }
+    }
+
+    res.json({
+      ok: true,
+      document_id: documentId,
+      deleted_file: document.storage_rel_path,
+      deleted_files: deletedFiles,
+      unlinked_transactions: uniqueTransactionIds,
     });
   } catch (error) {
     sendError(res, error);
@@ -2617,6 +2744,170 @@ router.get("/documents/:id/file", (req, res) => {
     const fileName = row.original_filename?.trim() || path.basename(absPath);
     const encoded = encodeURIComponent(fileName);
     res.sendFile(absPath, {
+      headers: {
+        "Content-Disposition": `inline; filename*=UTF-8''${encoded}`,
+      },
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.get("/statement-docs/:id", (req, res) => {
+  try {
+    const statementDocId = Number(req.params.id);
+    if (!Number.isInteger(statementDocId) || statementDocId <= 0) {
+      throw new ValidationError("Ungültige Auszugs-ID");
+    }
+
+    const db = getDb();
+    const statement = db
+      .prepare(
+        `SELECT
+           sd.id,
+           sd.statement_no,
+           sd.period_from,
+           sd.period_to,
+           sd.opening_balance_cents,
+           sd.closing_balance_cents,
+           ba.iban AS account_iban,
+           sf.year,
+           sf.file_path,
+           sf.file_sha256
+         FROM statement_docs sd
+         JOIN source_files sf ON sf.id = sd.source_file_id
+         LEFT JOIN bank_accounts ba ON ba.id = sf.account_id
+         WHERE sd.id = ?`,
+      )
+      .get(statementDocId) as
+      | {
+          id: number;
+          statement_no: string | null;
+          period_from: string | null;
+          period_to: string | null;
+          opening_balance_cents: number | null;
+          closing_balance_cents: number | null;
+          account_iban: string | null;
+          year: number;
+          file_path: string | null;
+          file_sha256: string | null;
+        }
+      | undefined;
+
+    if (!statement) {
+      res.status(404).json({
+        error: {
+          code: "not_found",
+          message: "Auszug nicht gefunden",
+        },
+      });
+      return;
+    }
+
+    const statementFilePath = resolveStatementFilePath({
+      filePathRaw: statement.file_path,
+      statementNoRaw: statement.statement_no,
+      sourceFileYear: statement.year,
+      accountIban: statement.account_iban,
+    });
+    const transactions = db
+      .prepare(
+        `SELECT
+           bt.id,
+           bt.booking_date,
+           bt.valuta_date,
+           bt.amount_cents,
+           bt.currency,
+           bt.purpose,
+           bt.counterparty_name,
+           bt.reference,
+           bt.tx_type,
+           bt.document_status,
+           bt.missing_invoice_flag,
+           COALESCE(ld.linked_documents_count, 0) AS linked_documents_count
+         FROM bank_transactions bt
+         LEFT JOIN (
+           SELECT bank_transaction_id, COUNT(*) AS linked_documents_count
+           FROM transaction_document_links
+           WHERE is_active = 1
+           GROUP BY bank_transaction_id
+         ) ld ON ld.bank_transaction_id = bt.id
+         WHERE bt.statement_doc_id = ?
+         ORDER BY bt.booking_date DESC, bt.id DESC`,
+      )
+      .all(statementDocId);
+
+    res.json({
+      statement: {
+        ...statement,
+        statement_file_url: statementFilePath ? `/api/statement-docs/${statementDocId}/file` : null,
+        transaction_count: transactions.length,
+      },
+      transactions,
+    });
+  } catch (error) {
+    sendError(res, error);
+  }
+});
+
+router.get("/statement-docs/:id/file", (req, res) => {
+  try {
+    const statementDocId = Number(req.params.id);
+    if (!Number.isInteger(statementDocId) || statementDocId <= 0) {
+      throw new ValidationError("Ungültige Auszugs-ID");
+    }
+
+    const db = getDb();
+    const row = db
+      .prepare(
+        `SELECT
+           sd.statement_no,
+           sf.year,
+           sf.file_path,
+           ba.iban AS account_iban
+         FROM statement_docs sd
+         JOIN source_files sf ON sf.id = sd.source_file_id
+         LEFT JOIN bank_accounts ba ON ba.id = sf.account_id
+         WHERE sd.id = ?`,
+      )
+      .get(statementDocId) as
+      | {
+          statement_no: string | null;
+          year: number | null;
+          file_path: string | null;
+          account_iban: string | null;
+        }
+      | undefined;
+
+    if (!row) {
+      res.status(404).json({
+        error: {
+          code: "not_found",
+          message: "Auszug nicht gefunden",
+        },
+      });
+      return;
+    }
+
+    const statementFilePath = resolveStatementFilePath({
+      filePathRaw: row.file_path,
+      statementNoRaw: row.statement_no,
+      sourceFileYear: row.year,
+      accountIban: row.account_iban,
+    });
+    if (!statementFilePath) {
+      res.status(404).json({
+        error: {
+          code: "statement_file_not_found",
+          message: "Kein oeffenbarer Kontoauszug fuer diesen Auszug gefunden.",
+        },
+      });
+      return;
+    }
+
+    const fileName = path.basename(statementFilePath);
+    const encoded = encodeURIComponent(fileName);
+    res.sendFile(statementFilePath, {
       headers: {
         "Content-Disposition": `inline; filename*=UTF-8''${encoded}`,
       },

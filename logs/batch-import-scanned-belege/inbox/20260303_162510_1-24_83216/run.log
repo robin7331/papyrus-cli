@@ -1,0 +1,81 @@
+[2026-03-03 16:25:10] Inbox-Batch gestartet (BUFFER_DIR=/Users/robin/Documents/Projects/buchhaltung/scanned_belege)
+[2026-03-03 16:25:10] Logs: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216
+[2026-03-03 16:25:10] Failed-Ordner: /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:25:10] Gefundene PDFs: 24
+[2026-03-03 16:25:10] Verarbeite Bereich: 1-24 (Anzahl: 24)
+[2026-03-03 16:25:10] Codex Optionen: model=gpt-5.3-codex reasoning=low
+[2026-03-03 16:25:10] START [1/24] scanned_belege/2023-02-0002_2023-04-05_VNMF_1013.pdf
+[2026-03-03 16:25:10] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/2023-02-0002_2023-04-05_VNMF_1013.log
+[2026-03-03 16:26:48] OK scanned_belege/2023-02-0002_2023-04-05_VNMF_1013.pdf (JSON aufgeraeumt, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/2023-02-0002_2023-04-05_VNMF_1013.log)
+[2026-03-03 16:26:48] START [2/24] scanned_belege/Scanned Document 10.pdf
+[2026-03-03 16:26:48] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 10.log
+[2026-03-03 16:28:01] OK scanned_belege/Scanned Document 10.pdf (JSON aufgeraeumt, Log: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 10.log)
+[2026-03-03 16:28:01] START [3/24] scanned_belege/Scanned Document 11.pdf
+[2026-03-03 16:28:01] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 11.log
+[2026-03-03 16:29:02] WARN scanned_belege/Scanned Document 11.pdf: Codex Exit 101, Datei wurde aber aus Buffer entfernt.
+[2026-03-03 16:29:02] START [4/24] scanned_belege/Scanned Document 12.pdf
+[2026-03-03 16:29:02] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 12.log
+[2026-03-03 16:29:03] FEHLER scanned_belege/Scanned Document 12.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:03] START [5/24] scanned_belege/Scanned Document 13.pdf
+[2026-03-03 16:29:03] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 13.log
+[2026-03-03 16:29:03] FEHLER scanned_belege/Scanned Document 13.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:03] START [6/24] scanned_belege/Scanned Document 14.pdf
+[2026-03-03 16:29:03] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 14.log
+[2026-03-03 16:29:03] FEHLER scanned_belege/Scanned Document 14.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:03] START [7/24] scanned_belege/Scanned Document 15.pdf
+[2026-03-03 16:29:03] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 15.log
+[2026-03-03 16:29:04] FEHLER scanned_belege/Scanned Document 15.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:04] START [8/24] scanned_belege/Scanned Document 16.pdf
+[2026-03-03 16:29:04] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 16.log
+[2026-03-03 16:29:04] FEHLER scanned_belege/Scanned Document 16.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:04] START [9/24] scanned_belege/Scanned Document 17.pdf
+[2026-03-03 16:29:04] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 17.log
+[2026-03-03 16:29:04] FEHLER scanned_belege/Scanned Document 17.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:04] START [10/24] scanned_belege/Scanned Document 18.pdf
+[2026-03-03 16:29:04] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 18.log
+[2026-03-03 16:29:04] FEHLER scanned_belege/Scanned Document 18.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:04] START [11/24] scanned_belege/Scanned Document 19.pdf
+[2026-03-03 16:29:04] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 19.log
+[2026-03-03 16:29:05] FEHLER scanned_belege/Scanned Document 19.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:05] START [12/24] scanned_belege/Scanned Document 2.pdf
+[2026-03-03 16:29:05] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 2.log
+[2026-03-03 16:29:05] FEHLER scanned_belege/Scanned Document 2.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:05] START [13/24] scanned_belege/Scanned Document 20.pdf
+[2026-03-03 16:29:05] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 20.log
+[2026-03-03 16:29:05] FEHLER scanned_belege/Scanned Document 20.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:05] START [14/24] scanned_belege/Scanned Document 21.pdf
+[2026-03-03 16:29:05] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 21.log
+[2026-03-03 16:29:05] FEHLER scanned_belege/Scanned Document 21.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:05] START [15/24] scanned_belege/Scanned Document 22.pdf
+[2026-03-03 16:29:05] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 22.log
+[2026-03-03 16:29:05] FEHLER scanned_belege/Scanned Document 22.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:06] START [16/24] scanned_belege/Scanned Document 23.pdf
+[2026-03-03 16:29:06] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 23.log
+[2026-03-03 16:29:06] FEHLER scanned_belege/Scanned Document 23.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:06] START [17/24] scanned_belege/Scanned Document 3.pdf
+[2026-03-03 16:29:06] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 3.log
+[2026-03-03 16:29:06] FEHLER scanned_belege/Scanned Document 3.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:06] START [18/24] scanned_belege/Scanned Document 4.pdf
+[2026-03-03 16:29:06] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 4.log
+[2026-03-03 16:29:06] FEHLER scanned_belege/Scanned Document 4.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:06] START [19/24] scanned_belege/Scanned Document 5.pdf
+[2026-03-03 16:29:06] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 5.log
+[2026-03-03 16:29:06] FEHLER scanned_belege/Scanned Document 5.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:06] START [20/24] scanned_belege/Scanned Document 6.pdf
+[2026-03-03 16:29:06] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 6.log
+[2026-03-03 16:29:06] FEHLER scanned_belege/Scanned Document 6.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:06] START [21/24] scanned_belege/Scanned Document 7.pdf
+[2026-03-03 16:29:06] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 7.log
+[2026-03-03 16:29:13] FEHLER scanned_belege/Scanned Document 7.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:13] START [22/24] scanned_belege/Scanned Document 8.pdf
+[2026-03-03 16:29:13] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 8.log
+[2026-03-03 16:29:14] FEHLER scanned_belege/Scanned Document 8.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:14] START [23/24] scanned_belege/Scanned Document 9.pdf
+[2026-03-03 16:29:14] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document 9.log
+[2026-03-03 16:29:14] FEHLER scanned_belege/Scanned Document 9.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:14] START [24/24] scanned_belege/Scanned Document.pdf
+[2026-03-03 16:29:14] LIVE-OUTPUT -> /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/Scanned Document.log
+[2026-03-03 16:29:14] FEHLER scanned_belege/Scanned Document.pdf: Datei blieb im Buffer (Codex Exit 101). Verschiebe nach /Users/robin/Documents/Projects/buchhaltung/scanned_belege_failed/20260303_162510_1-24_83216
+[2026-03-03 16:29:14] FERTIG processed=24 created=3 deduplicated=0 failed=21 relocated=3
+[2026-03-03 16:29:14] Buffer-Rest: pdf=0 scan_json=0
+[2026-03-03 16:29:14] Summary: /Users/robin/Documents/Projects/buchhaltung/logs/batch-import-scanned-belege/inbox/20260303_162510_1-24_83216/summary.json
