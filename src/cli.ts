@@ -14,6 +14,7 @@ import {
 } from "./config.js";
 import {
   convertPdf,
+  type ConversionMode,
   type ConvertUsage
 } from "./openaiPdfToMarkdown.js";
 import {
@@ -23,7 +24,6 @@ import {
   looksLikeFileOutput,
   parseConcurrency,
   parseFormat,
-  parseMode,
   resolveFolderOutputPath,
   truncate,
   type CliOptions,
@@ -52,14 +52,13 @@ program
     parseConcurrency
   )
   .option("-y, --yes", "Skip confirmation prompt in folder mode")
-  .option("--mode <mode>", "Conversion mode: auto or prompt", parseMode, "auto")
   .option("--format <format>", "Output format override: md or txt", parseFormat)
   .option(
     "--instructions <text>",
-    "Additional conversion instructions for auto mode"
+    "Additional conversion instructions (only when not using --prompt/--prompt-file)"
   )
-  .option("--prompt <text>", "Custom prompt text for prompt mode")
-  .option("--prompt-file <path>", "Path to file containing prompt text for prompt mode")
+  .option("--prompt <text>", "Custom prompt text (enables prompt mode)")
+  .option("--prompt-file <path>", "Path to file containing prompt text (enables prompt mode)")
   .action(async (input: string, options: CliOptions) => {
     const inputPath = resolve(input);
     const startedAt = Date.now();
@@ -68,13 +67,14 @@ program
       validateOptionCombination(options);
 
       const promptText = await resolvePromptText(options);
+      const conversionMode = resolveConversionMode(promptText);
       const inputKind = await detectInputKind(inputPath);
       let usageTotals: ConvertUsage = emptyUsage();
 
       if (inputKind === "file") {
-        usageTotals = await processSingleFile(inputPath, options, promptText);
+        usageTotals = await processSingleFile(inputPath, options, conversionMode, promptText);
       } else {
-        const summary = await processFolder(inputPath, options, promptText);
+        const summary = await processFolder(inputPath, options, conversionMode, promptText);
         usageTotals = summary.usage;
         if (!summary.cancelled && summary.failed > 0) {
           process.exitCode = 1;
@@ -157,6 +157,7 @@ program.parseAsync(process.argv).catch((error: unknown) => {
 async function processSingleFile(
   inputPath: string,
   options: CliOptions,
+  mode: ConversionMode,
   promptText?: string
 ): Promise<ConvertUsage> {
   if (!isPdfPath(inputPath)) {
@@ -180,7 +181,7 @@ async function processSingleFile(
     const result = await convertPdf({
       inputPath,
       model: options.model,
-      mode: options.mode,
+      mode,
       format: options.format,
       instructions: options.instructions,
       promptText
@@ -237,6 +238,7 @@ type FolderSummary = {
 async function processFolder(
   inputDir: string,
   options: CliOptions,
+  mode: ConversionMode,
   promptText?: string
 ): Promise<FolderSummary> {
   if (options.output && looksLikeFileOutput(options.output)) {
@@ -282,7 +284,7 @@ async function processFolder(
         const result = await convertPdf({
           inputPath: filePath,
           model: options.model,
-          mode: options.mode,
+          mode,
           format: options.format,
           instructions: options.instructions,
           promptText
@@ -347,10 +349,6 @@ async function processFolder(
 }
 
 async function resolvePromptText(options: CliOptions): Promise<string | undefined> {
-  if (options.mode !== "prompt") {
-    return undefined;
-  }
-
   if (options.prompt) {
     const prompt = options.prompt.trim();
     if (!prompt) {
@@ -371,6 +369,10 @@ async function resolvePromptText(options: CliOptions): Promise<string | undefine
   }
 
   return promptFromFile;
+}
+
+function resolveConversionMode(promptText: string | undefined): ConversionMode {
+  return promptText ? "prompt" : "auto";
 }
 
 async function handleConfigInit(options: ConfigInitOptions): Promise<void> {

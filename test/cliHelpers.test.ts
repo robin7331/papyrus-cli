@@ -8,21 +8,11 @@ import {
   looksLikeFileOutput,
   parseConcurrency,
   parseFormat,
-  parseMode,
   resolveFolderOutputPath,
   truncate,
   validateOptionCombination,
   type CliOptions
 } from "../src/cliHelpers.js";
-
-test("parseMode accepts valid values", () => {
-  assert.equal(parseMode("auto"), "auto");
-  assert.equal(parseMode("prompt"), "prompt");
-});
-
-test("parseMode rejects invalid values", () => {
-  assert.throws(() => parseMode("invalid"), InvalidArgumentError);
-});
 
 test("parseFormat accepts valid values", () => {
   assert.equal(parseFormat("md"), "md");
@@ -45,42 +35,40 @@ test("parseConcurrency rejects invalid values", () => {
   assert.throws(() => parseConcurrency("abc"), InvalidArgumentError);
 });
 
-test("validateOptionCombination enforces prompt mode requirements", () => {
+test("validateOptionCombination allows default auto behavior without prompt flags", () => {
   const base: CliOptions = {
-    model: "gpt-4o-mini",
-    mode: "prompt"
-  };
-
-  assert.throws(
-    () => validateOptionCombination(base),
-    /Prompt mode requires exactly one of --prompt or --prompt-file\./
-  );
-  assert.doesNotThrow(() => validateOptionCombination({ ...base, prompt: "Convert this" }));
-  assert.doesNotThrow(() => validateOptionCombination({ ...base, promptFile: "./prompt.txt" }));
-  assert.throws(
-    () => validateOptionCombination({ ...base, prompt: "x", promptFile: "./prompt.txt" }),
-    /Prompt mode requires exactly one of --prompt or --prompt-file\./
-  );
-  assert.throws(
-    () => validateOptionCombination({ ...base, prompt: "x", instructions: "Extra" }),
-    /--instructions is only supported in auto mode\./
-  );
-});
-
-test("validateOptionCombination rejects prompt flags in auto mode", () => {
-  const base: CliOptions = {
-    model: "gpt-4o-mini",
-    mode: "auto"
+    model: "gpt-4o-mini"
   };
 
   assert.doesNotThrow(() => validateOptionCombination(base));
+  assert.doesNotThrow(() => validateOptionCombination({ ...base, instructions: "Extra formatting rules" }));
+});
+
+test("validateOptionCombination treats --prompt and --prompt-file as mutually exclusive", () => {
+  const base: CliOptions = {
+    model: "gpt-4o-mini"
+  };
+
+  assert.doesNotThrow(() => validateOptionCombination({ ...base, prompt: "Convert" }));
+  assert.doesNotThrow(() => validateOptionCombination({ ...base, promptFile: "./prompt.txt" }));
   assert.throws(
-    () => validateOptionCombination({ ...base, prompt: "Convert" }),
-    /--prompt and --prompt-file are only supported in prompt mode\./
+    () => validateOptionCombination({ ...base, prompt: "x", promptFile: "./prompt.txt" }),
+    /Use exactly one of --prompt or --prompt-file\./
+  );
+});
+
+test("validateOptionCombination rejects --instructions with prompt flags", () => {
+  const base: CliOptions = {
+    model: "gpt-4o-mini"
+  };
+
+  assert.throws(
+    () => validateOptionCombination({ ...base, prompt: "x", instructions: "Extra" }),
+    /--instructions cannot be combined with --prompt or --prompt-file\./
   );
   assert.throws(
-    () => validateOptionCombination({ ...base, promptFile: "./prompt.txt" }),
-    /--prompt and --prompt-file are only supported in prompt mode\./
+    () => validateOptionCombination({ ...base, promptFile: "./prompt.txt", instructions: "Extra" }),
+    /--instructions cannot be combined with --prompt or --prompt-file\./
   );
 });
 

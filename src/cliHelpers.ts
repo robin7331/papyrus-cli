@@ -1,26 +1,17 @@
 import { InvalidArgumentError } from "commander";
 import { basename, dirname, extname, join, relative } from "node:path";
-import { type ConversionMode, type OutputFormat } from "./openaiPdfToMarkdown.js";
+import { type OutputFormat } from "./openaiPdfToMarkdown.js";
 
 export type CliOptions = {
   output?: string;
   model: string;
   concurrency?: number;
   yes?: boolean;
-  mode: ConversionMode;
   format?: OutputFormat;
   instructions?: string;
   prompt?: string;
   promptFile?: string;
 };
-
-export function parseMode(value: string): ConversionMode {
-  if (value === "auto" || value === "prompt") {
-    return value;
-  }
-
-  throw new InvalidArgumentError("Mode must be either 'auto' or 'prompt'.");
-}
 
 export function parseFormat(value: string): OutputFormat {
   if (value === "md" || value === "txt") {
@@ -40,21 +31,13 @@ export function parseConcurrency(value: string): number {
 }
 
 export function validateOptionCombination(options: CliOptions): void {
-  if (options.mode === "prompt") {
-    const promptSourceCount = Number(Boolean(options.prompt)) + Number(Boolean(options.promptFile));
-    if (promptSourceCount !== 1) {
-      throw new Error("Prompt mode requires exactly one of --prompt or --prompt-file.");
-    }
-
-    if (options.instructions) {
-      throw new Error("--instructions is only supported in auto mode.");
-    }
-
-    return;
+  const promptSourceCount = Number(Boolean(options.prompt)) + Number(Boolean(options.promptFile));
+  if (promptSourceCount > 1) {
+    throw new Error("Use exactly one of --prompt or --prompt-file.");
   }
 
-  if (options.prompt || options.promptFile) {
-    throw new Error("--prompt and --prompt-file are only supported in prompt mode.");
+  if (promptSourceCount === 1 && options.instructions) {
+    throw new Error("--instructions cannot be combined with --prompt or --prompt-file.");
   }
 }
 

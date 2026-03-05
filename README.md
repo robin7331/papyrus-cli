@@ -27,20 +27,20 @@ papyrus --help
 # Show installed CLI version
 papyrus --version
 
-# Single file (auto mode; if no API key is found, Papyrus prompts you to paste one)
+# Single file (default behavior; if no API key is found, Papyrus prompts you to paste one)
 papyrus ./path/to/input.pdf
 
 # Single file with explicit format/output/model
 papyrus ./path/to/input.pdf --format md --output ./out/result.md --model gpt-4o-mini
 
-# Auto mode with extra instructions
+# Default conversion with extra instructions
 papyrus ./path/to/input.pdf --instructions "Prioritize table accuracy." --format txt
 
-# Prompt mode (inline prompt)
-papyrus ./path/to/input.pdf --mode prompt --prompt "Extract all invoice line items as bullet points." --format md
+# Prompt conversion (inline prompt)
+papyrus ./path/to/input.pdf --prompt "Extract all invoice line items as bullet points." --format md
 
-# Prompt mode (prompt file)
-papyrus ./path/to/input.pdf --mode prompt --prompt-file ./my-prompt.txt --format txt
+# Prompt conversion (prompt file)
+papyrus ./path/to/input.pdf --prompt-file ./my-prompt.txt --format txt
 
 # Folder mode (recursive scan, asks for confirmation)
 papyrus ./path/to/folder
@@ -132,46 +132,34 @@ Example:
 papyrus ./docs --output ./converted
 ```
 
-### `--mode <mode>`
-
-Conversion mode:
-- `auto` (default): built-in conversion behavior.
-- `prompt`: use your own prompt via `--prompt` or `--prompt-file`.
-
-Example:
-
-```bash
-papyrus ./docs/invoice.pdf --mode prompt --prompt "Extract all line items."
-```
-
 ### `--instructions <text>`
 
-Additional conversion instructions in `auto` mode only.
+Additional conversion instructions for default conversion behavior. Cannot be combined with `--prompt` or `--prompt-file`.
 
 Example:
 
 ```bash
-papyrus ./docs/invoice.pdf --mode auto --instructions "Keep table columns aligned."
+papyrus ./docs/invoice.pdf --instructions "Keep table columns aligned."
 ```
 
 ### `--prompt <text>`
 
-Inline prompt text for `prompt` mode. Must be non-empty. In `prompt` mode, use exactly one of `--prompt` or `--prompt-file`.
+Inline prompt text for prompt-based conversion. Must be non-empty. Use exactly one of `--prompt` or `--prompt-file`.
 
 Example:
 
 ```bash
-papyrus ./docs/invoice.pdf --mode prompt --prompt "Summarize payment terms."
+papyrus ./docs/invoice.pdf --prompt "Summarize payment terms."
 ```
 
 ### `--prompt-file <path>`
 
-Path to a text file containing the prompt for `prompt` mode. File must contain non-empty text. In `prompt` mode, use exactly one of `--prompt` or `--prompt-file`.
+Path to a text file containing the prompt for prompt-based conversion. File must contain non-empty text. Use exactly one of `--prompt` or `--prompt-file`.
 
 Example:
 
 ```bash
-papyrus ./docs/invoice.pdf --mode prompt --prompt-file ./my-prompt.txt
+papyrus ./docs/invoice.pdf --prompt-file ./my-prompt.txt
 ```
 
 ### `-m, --model <model>`
@@ -206,7 +194,7 @@ papyrus ./docs --yes
 
 ## Notes
 
-- In `auto` mode without `--format`, the model returns structured JSON with `format` + `content`.
+- In default conversion (without `--prompt`/`--prompt-file`) and without `--format`, the model returns structured JSON with `format` + `content`.
 - Single-file input now also shows a live worker lane (spinner in TTY) while conversion is running.
 - Folder input is scanned recursively for `.pdf` files and processed in parallel.
 - In folder mode, `--output` must be a directory path and mirrored subfolders are preserved.
