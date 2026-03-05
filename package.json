@@ -3,6 +3,22 @@
   "version": "0.1.1",
   "private": false,
   "description": "Convert PDF to markdown or text with the OpenAI Agents SDK",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robin7331/papyrus-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robin7331/papyrus-cli/issues"
+  },
+  "keywords": [
+    "pdf",
+    "markdown",
+    "text",
+    "openai",
+    "cli",
+    "ocr",
+    "document-conversion"
+  ],
   "type": "module",
   "bin": {
     "papyrus": "./dist/cli.js",
