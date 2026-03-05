@@ -10,6 +10,7 @@
   "bugs": {
     "url": "https://github.com/robin7331/papyrus-cli/issues"
   },
+  "license": "MIT",
   "keywords": [
     "pdf",
     "markdown",

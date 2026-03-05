@@ -232,3 +232,7 @@ npm run build
 npm run dev -- ./path/to/input.pdf
 npm test
 ```
+
+## License
+
+MIT
