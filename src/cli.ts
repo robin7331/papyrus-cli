@@ -2,28 +2,27 @@
 
 import "dotenv/config";
 import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
-import { basename, dirname, extname, join, relative, resolve } from "node:path";
-import { Command, InvalidArgumentError } from "commander";
+import { dirname, join, relative, resolve } from "node:path";
+import { Command } from "commander";
 import {
   convertPdf,
-  type ConversionMode,
-  type ConvertUsage,
-  type OutputFormat
+  type ConvertUsage
 } from "./openaiPdfToMarkdown.js";
+import {
+  defaultOutputPath,
+  formatDurationMs,
+  isPdfPath,
+  looksLikeFileOutput,
+  parseConcurrency,
+  parseFormat,
+  parseMode,
+  resolveFolderOutputPath,
+  truncate,
+  type CliOptions,
+  validateOptionCombination
+} from "./cliHelpers.js";
 
 const program = new Command();
-
-type CliOptions = {
-  output?: string;
-  model: string;
-  concurrency?: number;
-  yes?: boolean;
-  mode: ConversionMode;
-  format?: OutputFormat;
-  instructions?: string;
-  prompt?: string;
-  promptFile?: string;
-};
 
 program
   .name("papyrus-cli")
@@ -77,50 +76,6 @@ program
   });
 
 program.parseAsync(process.argv);
-
-function parseMode(value: string): ConversionMode {
-  if (value === "auto" || value === "prompt") {
-    return value;
-  }
-
-  throw new InvalidArgumentError("Mode must be either 'auto' or 'prompt'.");
-}
-
-function parseFormat(value: string): OutputFormat {
-  if (value === "md" || value === "txt") {
-    return value;
-  }
-
-  throw new InvalidArgumentError("Format must be either 'md' or 'txt'.");
-}
-
-function parseConcurrency(value: string): number {
-  const parsed = Number(value);
-  if (!Number.isInteger(parsed) || parsed < 1 || parsed > 100) {
-    throw new InvalidArgumentError("Concurrency must be an integer between 1 and 100.");
-  }
-
-  return parsed;
-}
-
-function validateOptionCombination(options: CliOptions): void {
-  if (options.mode === "prompt") {
-    const promptSourceCount = Number(Boolean(options.prompt)) + Number(Boolean(options.promptFile));
-    if (promptSourceCount !== 1) {
-      throw new Error("Prompt mode requires exactly one of --prompt or --prompt-file.");
-    }
-
-    if (options.instructions) {
-      throw new Error("--instructions is only supported in auto mode.");
-    }
-
-    return;
-  }
-
-  if (options.prompt || options.promptFile) {
-    throw new Error("--prompt and --prompt-file are only supported in prompt mode.");
-  }
-}
 
 async function processSingleFile(
   inputPath: string,
@@ -293,38 +248,6 @@ async function resolvePromptText(options: CliOptions): Promise<string | undefine
   return promptFromFile;
 }
 
-function defaultOutputPath(inputPath: string, format: OutputFormat): string {
-  const extension = format === "md" ? ".md" : ".txt";
-
-  if (extname(inputPath).toLowerCase() === ".pdf") {
-    return inputPath.slice(0, -4) + extension;
-  }
-
-  return inputPath + extension;
-}
-
-function resolveFolderOutputPath(
-  inputPath: string,
-  inputRoot: string,
-  outputRoot: string | undefined,
-  format: OutputFormat
-): string {
-  if (!outputRoot) {
-    return defaultOutputPath(inputPath, format);
-  }
-
-  const relativePath = relative(inputRoot, inputPath);
-  const relativeDir = dirname(relativePath);
-  const base = basename(relativePath, extname(relativePath));
-  const filename = `${base}.${format}`;
-
-  if (relativeDir === ".") {
-    return join(outputRoot, filename);
-  }
-
-  return join(outputRoot, relativeDir, filename);
-}
-
 async function detectInputKind(inputPath: string): Promise<"file" | "directory"> {
   const metadata = await stat(inputPath);
   if (metadata.isFile()) {
@@ -336,15 +259,6 @@ async function detectInputKind(inputPath: string): Promise<"file" | "directory">
   }
 
   throw new Error("Input path must be a PDF file or directory.");
-}
-
-function isPdfPath(inputPath: string): boolean {
-  return extname(inputPath).toLowerCase() === ".pdf";
-}
-
-function looksLikeFileOutput(outputPath: string): boolean {
-  const outputExt = extname(outputPath).toLowerCase();
-  return outputExt === ".md" || outputExt === ".txt";
 }
 
 async function collectPdfFiles(rootDir: string): Promise<string[]> {
@@ -536,22 +450,6 @@ class AsciiWorkerDashboard {
 
     return "..";
   }
-}
-
-function truncate(value: string, maxLength: number): string {
-  if (value.length <= maxLength) {
-    return value;
-  }
-
-  if (maxLength <= 3) {
-    return value.slice(0, maxLength);
-  }
-
-  return `${value.slice(0, maxLength - 3)}...`;
-}
-
-function formatDurationMs(durationMs: number): string {
-  return `${(durationMs / 1000).toFixed(2)}s`;
 }
 
 async function confirmFolderProcessing(
