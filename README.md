@@ -105,7 +105,6 @@ node dist/cli.js ./path/to/input.pdf
 - In `auto` mode without `--format`, the model returns structured JSON with `format` + `content`.
 - Folder input is scanned recursively for `.pdf` files and processed in parallel.
 - In folder mode, the CLI asks for confirmation (unless `--yes` is provided).
-- Folder mode shows a live subagent-style dashboard with worker lanes/spinners and done/remaining/active/failed counts.
-- The UI tries OpenTUI first and falls back to an ANSI dashboard when OpenTUI cannot load in the current runtime.
+- Folder mode shows a live TTY dashboard with one line per worker (`concurrency`) plus a progress summary.
 - In folder mode, `--output` must be a directory path and mirrored subfolders are preserved.
 - For scanned PDFs, output quality depends on OCR quality done by the model.

@@ -30,7 +30,7 @@ program
   .description("Convert PDF files to Markdown or text using the OpenAI Agents SDK")
   .argument("<input>", "Path to input PDF file or folder")
   .option("-o, --output <path>", "Path to output file (single input) or output directory (folder input)")
-  .option("-m, --model <model>", "OpenAI model to use", "gpt-5")
+  .option("-m, --model <model>", "OpenAI model to use", "gpt-4o-mini")
   .option(
     "--concurrency <n>",
     "Max parallel workers for folder input (default: 10)",
@@ -184,18 +184,20 @@ async function processFolder(
   let completed = 0;
   const usage = emptyUsage();
   const failures: Array<{ file: string; message: string }> = [];
-  const dashboard = process.stdin.isTTY && process.stdout.isTTY
-    ? await createSubagentDashboard(files.length, concurrency)
-    : null;
+  const workerCount = Math.min(concurrency, files.length);
 
   console.log(`Found ${files.length} PDF file(s). Using concurrency: ${concurrency}`);
-  dashboard?.setSummary(completed, failed, "starting");
+  const workerDashboard = process.stdout.isTTY
+    ? new AsciiWorkerDashboard(files.length, workerCount)
+    : null;
+  workerDashboard?.setSummary(completed, failed);
 
   try {
     await runWithConcurrency(files, concurrency, async (filePath, _index, workerId) => {
       const relativeInput = relative(inputDir, filePath);
       const startedAt = Date.now();
-      dashboard?.setWorkerRunning(workerId, relativeInput);
+      workerDashboard?.setWorkerRunning(workerId, relativeInput);
+
       try {
         const result = await convertPdf({
           inputPath: filePath,
@@ -211,7 +213,18 @@ async function processFolder(
         await writeFile(outputPath, result.content, "utf8");
         succeeded += 1;
         mergeUsage(usage, result.usage);
-        dashboard?.setWorkerDone(workerId, relativeInput, result.format, Date.now() - startedAt);
+
+        if (workerDashboard) {
+          workerDashboard.setWorkerDone(
+            workerId,
+            relativeInput,
+            `${result.format} in ${formatDurationMs(Date.now() - startedAt)}`
+          );
+        } else {
+          console.log(
+            `[worker-${workerId + 1}] Done ${relativeInput} -> ${outputPath} (${result.format}, ${formatDurationMs(Date.now() - startedAt)})`
+          );
+        }
       } catch (error) {
         failed += 1;
         const message = error instanceof Error ? error.message : String(error);
@@ -219,14 +232,25 @@ async function processFolder(
           file: relativeInput,
           message
         });
-        dashboard?.setWorkerFailed(workerId, relativeInput, message, Date.now() - startedAt);
+
+        if (workerDashboard) {
+          workerDashboard.setWorkerFailed(
+            workerId,
+            relativeInput,
+            `${truncate(message, 42)} (${formatDurationMs(Date.now() - startedAt)})`
+          );
+        } else {
+          console.error(
+            `[worker-${workerId + 1}] Failed ${relativeInput}: ${message} (${formatDurationMs(Date.now() - startedAt)})`
+          );
+        }
       } finally {
         completed += 1;
-        dashboard?.setSummary(completed, failed);
+        workerDashboard?.setSummary(completed, failed);
       }
     });
   } finally {
-    dashboard?.stop();
+    workerDashboard?.stop();
   }
 
   console.log(
@@ -374,48 +398,7 @@ async function runWithConcurrency<T>(
   await Promise.all(workers);
 }
 
-function formatDurationMs(durationMs: number): string {
-  return `${(durationMs / 1000).toFixed(2)}s`;
-}
-
-async function confirmFolderProcessing(
-  totalFiles: number,
-  concurrency: number,
-  skipPrompt: boolean
-): Promise<boolean> {
-  if (skipPrompt) {
-    return true;
-  }
-
-  if (!process.stdin.isTTY || !process.stdout.isTTY) {
-    throw new Error(
-      "Folder mode requires an interactive terminal confirmation. Use --yes to skip the prompt."
-    );
-  }
-
-  const opentuiAnswer = await confirmWithOpenTui(totalFiles, concurrency);
-  if (opentuiAnswer !== null) {
-    return opentuiAnswer;
-  }
-
-  const { createInterface } = await import("node:readline/promises");
-  const rl = createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-
-  try {
-    const answer = (await rl.question(
-      `Process ${totalFiles} PDF file(s) with concurrency ${concurrency}? [Y/n] `
-    )).trim().toLowerCase();
-
-    return answer === "" || answer === "y" || answer === "yes";
-  } finally {
-    rl.close();
-  }
-}
-
-const SPINNER_FRAMES = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"];
+const SPINNER_FRAMES = ["-", "\\", "|", "/"];
 
 type WorkerLane = {
   state: "idle" | "running" | "done" | "failed";
@@ -424,218 +407,19 @@ type WorkerLane = {
   spinnerFrame: number;
 };
 
-type SubagentDashboard = {
-  setSummary: (completed: number, failed: number, phase?: string) => void;
-  setWorkerRunning: (workerId: number, file: string) => void;
-  setWorkerDone: (workerId: number, file: string, format: OutputFormat, durationMs: number) => void;
-  setWorkerFailed: (workerId: number, file: string, message: string, durationMs: number) => void;
-  stop: () => void;
-};
-
-type OpenTuiModule = {
-  createCliRenderer: (config?: Record<string, unknown>) => Promise<any>;
-  BoxRenderable: new (renderer: any, options: Record<string, unknown>) => any;
-  TextRenderable: new (renderer: any, options: Record<string, unknown>) => any;
-};
-
-class OpenTuiSubagentDashboard implements SubagentDashboard {
-  private readonly renderer: any;
-  private readonly lanes: WorkerLane[];
-  private readonly laneTextNodes: any[];
-  private readonly summaryText: any;
-  private readonly phaseText: any;
-  private readonly total: number;
-  private readonly concurrency: number;
-  private readonly spinnerTimer: NodeJS.Timeout;
-
-  private completed = 0;
-  private failed = 0;
-  private phase = "running";
-
-  private constructor(
-    openTui: OpenTuiModule,
-    renderer: any,
-    total: number,
-    concurrency: number
-  ) {
-    this.renderer = renderer;
-    this.total = total;
-    this.concurrency = concurrency;
-    this.lanes = Array.from({ length: concurrency }, () => ({
-      state: "idle",
-      spinnerFrame: 0
-    }));
-
-    const container = new openTui.BoxRenderable(renderer, {
-      width: "100%",
-      height: "100%",
-      padding: 1,
-      flexDirection: "column",
-      gap: 1
-    });
-    renderer.root.add(container);
-
-    container.add(new openTui.TextRenderable(renderer, { content: "Papyrus Subagents Dashboard" }));
-    this.phaseText = new openTui.TextRenderable(renderer, {
-      content: `Phase: running | Subagents: ${concurrency}`
-    });
-    container.add(this.phaseText);
-
-    this.summaryText = new openTui.TextRenderable(renderer, { content: "" });
-    container.add(this.summaryText);
-
-    this.laneTextNodes = this.lanes.map((_, index) => {
-      const node = new openTui.TextRenderable(renderer, {
-        content: this.renderLaneLine(index)
-      });
-      container.add(node);
-      return node;
-    });
-
-    this.updateSummary();
-    this.spinnerTimer = setInterval(() => {
-      this.tickSpinners();
-    }, 90);
-  }
-
-  static async create(total: number, concurrency: number): Promise<SubagentDashboard> {
-    const openTui = await loadOpenTui();
-    const renderer = await openTui.createCliRenderer({
-      useConsole: false,
-      exitOnCtrlC: false,
-      autoFocus: false,
-      useAlternateScreen: true
-    });
-
-    return new OpenTuiSubagentDashboard(openTui, renderer, total, concurrency);
-  }
-
-  setSummary(completed: number, failed: number, phase?: string): void {
-    this.completed = completed;
-    this.failed = failed;
-    if (phase) {
-      this.phase = phase;
-    }
-
-    this.phaseText.content = `Phase: ${this.phase} | Subagents: ${this.concurrency}`;
-    this.updateSummary();
-  }
-
-  setWorkerRunning(workerId: number, file: string): void {
-    const lane = this.lanes[workerId];
-    if (!lane) {
-      return;
-    }
-
-    lane.state = "running";
-    lane.file = file;
-    lane.message = "processing";
-    this.updateLane(workerId);
-    this.updateSummary();
-  }
-
-  setWorkerDone(workerId: number, file: string, format: OutputFormat, durationMs: number): void {
-    const lane = this.lanes[workerId];
-    if (!lane) {
-      return;
-    }
-
-    lane.state = "done";
-    lane.file = file;
-    lane.message = `${format} in ${formatDurationMs(durationMs)}`;
-    this.updateLane(workerId);
-    this.updateSummary();
-  }
-
-  setWorkerFailed(workerId: number, file: string, message: string, durationMs: number): void {
-    const lane = this.lanes[workerId];
-    if (!lane) {
-      return;
-    }
-
-    lane.state = "failed";
-    lane.file = file;
-    lane.message = `${truncate(message, 40)} (${formatDurationMs(durationMs)})`;
-    this.updateLane(workerId);
-    this.updateSummary();
-  }
-
-  stop(): void {
-    clearInterval(this.spinnerTimer);
-    this.phase = "finished";
-    this.phaseText.content = `Phase: ${this.phase} | Subagents: ${this.concurrency}`;
-    this.updateSummary();
-    this.renderer.destroy();
-  }
-
-  private updateSummary(): void {
-    const active = this.lanes.filter((lane) => lane.state === "running").length;
-    const remaining = this.total - this.completed;
-    this.summaryText.content =
-      `Progress: done ${this.completed}/${this.total} | remaining ${remaining} | active ${active}/${this.concurrency} | failed ${this.failed}`;
-  }
-
-  private tickSpinners(): void {
-    for (let index = 0; index < this.lanes.length; index += 1) {
-      const lane = this.lanes[index];
-      if (lane.state !== "running") {
-        continue;
-      }
-
-      lane.spinnerFrame = (lane.spinnerFrame + 1) % SPINNER_FRAMES.length;
-      this.updateLane(index);
-    }
-  }
-
-  private updateLane(workerId: number): void {
-    const node = this.laneTextNodes[workerId];
-    if (!node) {
-      return;
-    }
-
-    node.content = this.renderLaneLine(workerId);
-  }
-
-  private renderLaneLine(workerId: number): string {
-    const lane = this.lanes[workerId];
-    const label = `subagent-${String(workerId + 1).padStart(2, "0")}`;
-    const icon = this.renderIcon(lane);
-    const file = truncate(lane.file ?? "idle", 68);
-    const message = lane.message ? ` | ${lane.message}` : "";
-    return `${icon} ${label} | ${file}${message}`;
-  }
-
-  private renderIcon(lane: WorkerLane): string {
-    if (lane.state === "running") {
-      return SPINNER_FRAMES[lane.spinnerFrame];
-    }
-
-    if (lane.state === "done") {
-      return "✔";
-    }
-
-    if (lane.state === "failed") {
-      return "✖";
-    }
-
-    return "○";
-  }
-}
-
-class AsciiSubagentDashboard implements SubagentDashboard {
+class AsciiWorkerDashboard {
   private readonly lanes: WorkerLane[];
   private readonly total: number;
-  private readonly concurrency: number;
+  private readonly workerCount: number;
   private readonly spinnerTimer: NodeJS.Timeout;
   private completed = 0;
   private failed = 0;
-  private phase = "running";
   private renderedLineCount = 0;
 
-  constructor(total: number, concurrency: number) {
+  constructor(total: number, workerCount: number) {
     this.total = total;
-    this.concurrency = concurrency;
-    this.lanes = Array.from({ length: concurrency }, () => ({
+    this.workerCount = workerCount;
+    this.lanes = Array.from({ length: workerCount }, () => ({
       state: "idle",
       spinnerFrame: 0
     }));
@@ -645,16 +429,12 @@ class AsciiSubagentDashboard implements SubagentDashboard {
     this.spinnerTimer = setInterval(() => {
       this.tickSpinners();
       this.render();
-    }, 90);
+    }, 100);
   }
 
-  setSummary(completed: number, failed: number, phase?: string): void {
+  setSummary(completed: number, failed: number): void {
     this.completed = completed;
     this.failed = failed;
-    if (phase) {
-      this.phase = phase;
-    }
-
     this.render();
   }
 
@@ -670,7 +450,7 @@ class AsciiSubagentDashboard implements SubagentDashboard {
     this.render();
   }
 
-  setWorkerDone(workerId: number, file: string, format: OutputFormat, durationMs: number): void {
+  setWorkerDone(workerId: number, file: string, message: string): void {
     const lane = this.lanes[workerId];
     if (!lane) {
       return;
@@ -678,11 +458,11 @@ class AsciiSubagentDashboard implements SubagentDashboard {
 
     lane.state = "done";
     lane.file = file;
-    lane.message = `${format} in ${formatDurationMs(durationMs)}`;
+    lane.message = message;
     this.render();
   }
 
-  setWorkerFailed(workerId: number, file: string, message: string, durationMs: number): void {
+  setWorkerFailed(workerId: number, file: string, message: string): void {
     const lane = this.lanes[workerId];
     if (!lane) {
       return;
@@ -690,13 +470,12 @@ class AsciiSubagentDashboard implements SubagentDashboard {
 
     lane.state = "failed";
     lane.file = file;
-    lane.message = `${truncate(message, 40)} (${formatDurationMs(durationMs)})`;
+    lane.message = message;
     this.render();
   }
 
   stop(): void {
     clearInterval(this.spinnerTimer);
-    this.phase = "finished";
     this.render();
     process.stdout.write("\x1b[?25h");
   }
@@ -716,18 +495,15 @@ class AsciiSubagentDashboard implements SubagentDashboard {
 
   private composeLines(): string[] {
     const active = this.lanes.filter((lane) => lane.state === "running").length;
-    const remaining = this.total - this.completed;
     const lines = [
-      "Papyrus Subagents Dashboard",
-      `Phase: ${this.phase} | Subagents: ${this.concurrency}`,
-      `Progress: done ${this.completed}/${this.total} | remaining ${remaining} | active ${active}/${this.concurrency} | failed ${this.failed}`
+      `Progress: ${this.completed}/${this.total} complete | active ${active}/${this.workerCount} | failed ${this.failed}`
     ];
 
     for (let index = 0; index < this.lanes.length; index += 1) {
       const lane = this.lanes[index];
-      const label = `subagent-${String(index + 1).padStart(2, "0")}`;
+      const label = `worker-${String(index + 1).padStart(2, "0")}`;
       const icon = this.renderIcon(lane);
-      const file = truncate(lane.file ?? "idle", 68);
+      const file = truncate(lane.file ?? "idle", 64);
       const message = lane.message ? ` | ${lane.message}` : "";
       lines.push(`${icon} ${label} | ${file}${message}`);
     }
@@ -751,105 +527,14 @@ class AsciiSubagentDashboard implements SubagentDashboard {
     }
 
     if (lane.state === "done") {
-      return "✔";
+      return "OK";
     }
 
     if (lane.state === "failed") {
-      return "✖";
+      return "!!";
     }
 
-    return "○";
-  }
-}
-
-async function createSubagentDashboard(total: number, concurrency: number): Promise<SubagentDashboard> {
-  try {
-    return await OpenTuiSubagentDashboard.create(total, concurrency);
-  } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    console.warn(`OpenTUI unavailable (${message}). Falling back to ANSI dashboard.`);
-    return new AsciiSubagentDashboard(total, concurrency);
-  }
-}
-
-async function confirmWithOpenTui(totalFiles: number, concurrency: number): Promise<boolean | null> {
-  try {
-    const openTui = await loadOpenTui();
-    const renderer = await openTui.createCliRenderer({
-      useConsole: false,
-      exitOnCtrlC: false,
-      autoFocus: false,
-      useAlternateScreen: true
-    });
-
-    const container = new openTui.BoxRenderable(renderer, {
-      width: "100%",
-      height: "100%",
-      padding: 1,
-      flexDirection: "column",
-      gap: 1
-    });
-    renderer.root.add(container);
-
-    container.add(new openTui.TextRenderable(renderer, { content: "Papyrus: Folder Processing" }));
-    container.add(
-      new openTui.TextRenderable(renderer, {
-        content: `Found ${totalFiles} PDF(s). Planned concurrency: ${concurrency} subagents.`
-      })
-    );
-    container.add(
-      new openTui.TextRenderable(renderer, {
-        content: "Proceed? (y/enter = yes, n/esc = no)"
-      })
-    );
-
-    return await new Promise<boolean>((resolvePromise) => {
-      let finished = false;
-
-      const done = (result: boolean): void => {
-        if (finished) {
-          return;
-        }
-
-        finished = true;
-        renderer.keyInput.off("keypress", onKeyPress);
-        renderer.destroy();
-        resolvePromise(result);
-      };
-
-      const onKeyPress = (key: { name?: string; ctrl?: boolean }): void => {
-        const name = key.name?.toLowerCase();
-        if (key.ctrl && name === "c") {
-          done(false);
-          return;
-        }
-
-        if (name === "y" || name === "return" || name === "enter") {
-          done(true);
-          return;
-        }
-
-        if (name === "n" || name === "escape") {
-          done(false);
-        }
-      };
-
-      renderer.keyInput.on("keypress", onKeyPress);
-    });
-  } catch {
-    return null;
-  }
-}
-
-async function loadOpenTui(): Promise<OpenTuiModule> {
-  try {
-    const mod = await import("@opentui/core");
-    return mod as unknown as OpenTuiModule;
-  } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
-    throw new Error(
-      `OpenTUI failed to load in this runtime. ${message}. OpenTUI currently targets Bun-first environments.`
-    );
+    return "..";
   }
 }
 
@@ -863,6 +548,42 @@ function truncate(value: string, maxLength: number): string {
   }
 
   return `${value.slice(0, maxLength - 3)}...`;
+}
+
+function formatDurationMs(durationMs: number): string {
+  return `${(durationMs / 1000).toFixed(2)}s`;
+}
+
+async function confirmFolderProcessing(
+  totalFiles: number,
+  concurrency: number,
+  skipPrompt: boolean
+): Promise<boolean> {
+  if (skipPrompt) {
+    return true;
+  }
+
+  if (!process.stdin.isTTY || !process.stdout.isTTY) {
+    throw new Error(
+      "Folder mode requires an interactive terminal confirmation. Use --yes to skip the prompt."
+    );
+  }
+
+  const { createInterface } = await import("node:readline/promises");
+  const rl = createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  try {
+    const answer = (await rl.question(
+      `Process ${totalFiles} PDF file(s) with concurrency ${concurrency}? [Y/n] `
+    )).trim().toLowerCase();
+
+    return answer === "" || answer === "y" || answer === "yes";
+  } finally {
+    rl.close();
+  }
 }
 
 function emptyUsage(): ConvertUsage {
