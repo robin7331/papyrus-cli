@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import "dotenv/config";
+import { readFileSync } from "node:fs";
 import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
 import { Command } from "commander";
@@ -32,6 +33,7 @@ import {
 const program = new Command();
 const configFilePath = getConfigFilePath();
 const OPENAI_API_KEYS_URL = "https://platform.openai.com/settings/organization/api-keys";
+const cliVersion = getCliVersion();
 
 type ConfigInitOptions = {
   force?: boolean;
@@ -39,6 +41,7 @@ type ConfigInitOptions = {
 
 program
   .name("papyrus")
+  .version(cliVersion, "-v, --version", "display version number")
   .description("Convert PDF files to Markdown or text using the OpenAI Agents SDK")
   .argument("<input>", "Path to input PDF file or folder")
   .option("-o, --output <path>", "Path to output file (single input) or output directory (folder input)")
@@ -732,4 +735,19 @@ function printUsageTotals(usage: ConvertUsage): void {
   console.log(
     `Token usage: input=${usage.inputTokens}, output=${usage.outputTokens}, total=${usage.totalTokens}, requests=${usage.requests}`
   );
+}
+
+function getCliVersion(): string {
+  try {
+    const packageJsonPath = new URL("../package.json", import.meta.url);
+    const raw = readFileSync(packageJsonPath, "utf8");
+    const parsed = JSON.parse(raw) as { version?: unknown };
+    if (typeof parsed.version === "string" && parsed.version.trim().length > 0) {
+      return parsed.version;
+    }
+  } catch {
+    // ignore and use fallback
+  }
+
+  return "0.0.0";
 }

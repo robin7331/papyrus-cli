@@ -24,6 +24,9 @@ papyrus --help
 ## Usage
 
 ```bash
+# Show installed CLI version
+papyrus --version
+
 # Single file (auto mode; if no API key is found, Papyrus prompts you to paste one)
 papyrus ./path/to/input.pdf
 
@@ -93,6 +96,16 @@ Example:
 
 ```bash
 papyrus ./docs/invoice.pdf
+```
+
+### `-v, --version`
+
+Print the installed Papyrus CLI version.
+
+Example:
+
+```bash
+papyrus --version
 ```
 
 ### `--format <format>`
