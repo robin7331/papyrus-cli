@@ -109,6 +109,114 @@ papyrus ./path/to/folder --yes
 npx @robin7331/papyrus-cli ./path/to/input.pdf --mode auto
 ```
 
+## Arguments Reference
+
+### `<input>`
+
+Path to a single PDF file or a folder containing PDFs (processed recursively).
+
+Example:
+
+```bash
+papyrus ./docs/invoice.pdf
+```
+
+### `--format <format>`
+
+Output format override:
+- `md` for GitHub-flavored Markdown
+- `txt` for plain text
+
+Example:
+
+```bash
+papyrus ./docs/invoice.pdf --format md
+```
+
+### `-o, --output <path>`
+
+Output destination.
+- Single file input: output file path.
+- Folder input: output directory path (folder structure is mirrored).
+
+Example:
+
+```bash
+papyrus ./docs --output ./converted
+```
+
+### `--mode <mode>`
+
+Conversion mode:
+- `auto` (default): built-in conversion behavior.
+- `prompt`: use your own prompt via `--prompt` or `--prompt-file`.
+
+Example:
+
+```bash
+papyrus ./docs/invoice.pdf --mode prompt --prompt "Extract all line items."
+```
+
+### `--instructions <text>`
+
+Additional conversion instructions in `auto` mode only.
+
+Example:
+
+```bash
+papyrus ./docs/invoice.pdf --mode auto --instructions "Keep table columns aligned."
+```
+
+### `--prompt <text>`
+
+Inline prompt text for `prompt` mode. Must be non-empty. In `prompt` mode, use exactly one of `--prompt` or `--prompt-file`.
+
+Example:
+
+```bash
+papyrus ./docs/invoice.pdf --mode prompt --prompt "Summarize payment terms."
+```
+
+### `--prompt-file <path>`
+
+Path to a text file containing the prompt for `prompt` mode. File must contain non-empty text. In `prompt` mode, use exactly one of `--prompt` or `--prompt-file`.
+
+Example:
+
+```bash
+papyrus ./docs/invoice.pdf --mode prompt --prompt-file ./my-prompt.txt
+```
+
+### `-m, --model <model>`
+
+OpenAI model name used for conversion. Default is `gpt-4o-mini`.
+
+Example:
+
+```bash
+papyrus ./docs/invoice.pdf --model gpt-4.1-mini
+```
+
+### `--concurrency <n>`
+
+Maximum parallel workers for folder input. Must be an integer between `1` and `100`. Default is `10`.
+
+Example:
+
+```bash
+papyrus ./docs --concurrency 4
+```
+
+### `-y, --yes`
+
+Skips the interactive folder confirmation prompt.
+
+Example:
+
+```bash
+papyrus ./docs --yes
+```
+
 ## Notes
 
 - In `auto` mode without `--format`, the model returns structured JSON with `format` + `content`.
