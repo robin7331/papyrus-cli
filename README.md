@@ -14,13 +14,7 @@
 
 ## Installation
 
-Run directly with `npx`:
-
-```bash
-npx @robin7331/papyrus-cli --help
-```
-
-Or install globally:
+Install globally:
 
 ```bash
 npm i -g @robin7331/papyrus-cli
@@ -48,7 +42,7 @@ setx OPENAI_API_KEY "your_api_key_here"
 One-off execution:
 
 ```bash
-OPENAI_API_KEY="your_api_key_here" npx @robin7331/papyrus-cli ./path/to/input.pdf
+OPENAI_API_KEY="your_api_key_here" papyrus ./path/to/input.pdf
 ```
 
 Security note: Papyrus intentionally does not provide an `--api-key` flag to avoid leaking keys via shell history or process lists.
@@ -101,12 +95,6 @@ Folder mode without confirmation prompt:
 
 ```bash
 papyrus ./path/to/folder --yes
-```
-
-`npx` alternative for any command:
-
-```bash
-npx @robin7331/papyrus-cli ./path/to/input.pdf --mode auto
 ```
 
 ## Arguments Reference
