@@ -197,7 +197,7 @@ papyrus ./docs --yes
 - In default conversion (without `--prompt`/`--prompt-file`), the model returns structured JSON with `format` + `content`.
 - Without `--format`, output extension follows model-selected content format (`.md` or `.txt`).
 - With `--format`, only the output extension changes.
-- Single-file input now also shows a live worker lane (spinner in TTY) while conversion is running.
+- Single-file input now also shows a live worker lane in TTY while conversion is running.
 - Folder input is scanned recursively for `.pdf` files and processed in parallel.
 - In folder mode, `--output` must be a directory path and mirrored subfolders are preserved.
 - OpenAI rate-limit (`429`) responses are retried automatically using `Retry-After` (when present) plus exponential backoff.

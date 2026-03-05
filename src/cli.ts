@@ -583,20 +583,16 @@ async function runWithConcurrency<T>(
   await Promise.all(workers);
 }
 
-const SPINNER_FRAMES = ["-", "\\", "|", "/"];
-
 type WorkerLane = {
   state: "idle" | "running" | "done" | "failed";
   file?: string;
   message?: string;
-  spinnerFrame: number;
 };
 
 class AsciiWorkerDashboard {
   private readonly lanes: WorkerLane[];
   private readonly total: number;
   private readonly workerCount: number;
-  private readonly spinnerTimer: NodeJS.Timeout;
   private completed = 0;
   private failed = 0;
   private renderedLineCount = 0;
@@ -605,16 +601,11 @@ class AsciiWorkerDashboard {
     this.total = total;
     this.workerCount = workerCount;
     this.lanes = Array.from({ length: workerCount }, () => ({
-      state: "idle",
-      spinnerFrame: 0
+      state: "idle"
     }));
 
     process.stdout.write("\x1b[?25l");
     this.render();
-    this.spinnerTimer = setInterval(() => {
-      this.tickSpinners();
-      this.render();
-    }, 100);
   }
 
   setSummary(completed: number, failed: number): void {
@@ -631,7 +622,7 @@ class AsciiWorkerDashboard {
 
     lane.state = "running";
     lane.file = file;
-    lane.message = "processing";
+    lane.message = "processing...";
     this.render();
   }
 
@@ -660,7 +651,6 @@ class AsciiWorkerDashboard {
   }
 
   stop(): void {
-    clearInterval(this.spinnerTimer);
     this.render();
     process.stdout.write("\x1b[?25h");
   }
@@ -696,19 +686,9 @@ class AsciiWorkerDashboard {
     return lines;
   }
 
-  private tickSpinners(): void {
-    for (const lane of this.lanes) {
-      if (lane.state !== "running") {
-        continue;
-      }
-
-      lane.spinnerFrame = (lane.spinnerFrame + 1) % SPINNER_FRAMES.length;
-    }
-  }
-
   private renderIcon(lane: WorkerLane): string {
     if (lane.state === "running") {
-      return SPINNER_FRAMES[lane.spinnerFrame];
+      return ">>";
     }
 
     if (lane.state === "done") {
