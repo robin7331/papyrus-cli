@@ -1,5 +1,3 @@
-![alt text](https://github.com/robin7331/papyrus-cli/blob/main/assets/header.jpeg?raw=true)
-
 # pdf-parser
 
 TypeScript CLI PoC that converts PDFs into Markdown or text using the OpenAI Agents SDK.
