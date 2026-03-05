@@ -164,20 +164,66 @@ async function processSingleFile(
   }
 
   await ensureApiKey();
-  const result = await convertPdf({
-    inputPath,
-    model: options.model,
-    mode: options.mode,
-    format: options.format,
-    instructions: options.instructions,
-    promptText
-  });
+  const startedAt = Date.now();
+  const displayInput = relative(process.cwd(), inputPath) || inputPath;
+  const workerDashboard = process.stdout.isTTY
+    ? new AsciiWorkerDashboard(1, 1)
+    : null;
+  workerDashboard?.setSummary(0, 0);
+  workerDashboard?.setWorkerRunning(0, displayInput);
 
-  const outputPath = resolve(options.output ?? defaultOutputPath(inputPath, result.format));
-  await mkdir(dirname(outputPath), { recursive: true });
-  await writeFile(outputPath, result.content, "utf8");
-  console.log(`Output (${result.format}) written to: ${outputPath}`);
-  return result.usage;
+  if (!workerDashboard) {
+    console.log(`[worker-1] Running ${displayInput}`);
+  }
+
+  try {
+    const result = await convertPdf({
+      inputPath,
+      model: options.model,
+      mode: options.mode,
+      format: options.format,
+      instructions: options.instructions,
+      promptText
+    });
+
+    const outputPath = resolve(options.output ?? defaultOutputPath(inputPath, result.format));
+    await mkdir(dirname(outputPath), { recursive: true });
+    await writeFile(outputPath, result.content, "utf8");
+
+    if (workerDashboard) {
+      workerDashboard.setWorkerDone(
+        0,
+        displayInput,
+        `${result.format} in ${formatDurationMs(Date.now() - startedAt)}`
+      );
+      workerDashboard.setSummary(1, 0);
+    } else {
+      console.log(
+        `[worker-1] Done ${displayInput} -> ${outputPath} (${result.format}, ${formatDurationMs(Date.now() - startedAt)})`
+      );
+    }
+
+    console.log(`Output (${result.format}) written to: ${outputPath}`);
+    return result.usage;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    if (workerDashboard) {
+      workerDashboard.setWorkerFailed(
+        0,
+        displayInput,
+        `${truncate(message, 42)} (${formatDurationMs(Date.now() - startedAt)})`
+      );
+      workerDashboard.setSummary(1, 1);
+    } else {
+      console.error(
+        `[worker-1] Failed ${displayInput}: ${message} (${formatDurationMs(Date.now() - startedAt)})`
+      );
+    }
+
+    throw error;
+  } finally {
+    workerDashboard?.stop();
+  }
 }
 
 type FolderSummary = {

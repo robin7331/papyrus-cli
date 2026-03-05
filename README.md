@@ -207,8 +207,14 @@ papyrus ./docs --yes
 ## Notes
 
 - In `auto` mode without `--format`, the model returns structured JSON with `format` + `content`.
+- Single-file input now also shows a live worker lane (spinner in TTY) while conversion is running.
 - Folder input is scanned recursively for `.pdf` files and processed in parallel.
 - In folder mode, `--output` must be a directory path and mirrored subfolders are preserved.
+- OpenAI rate-limit (`429`) responses are retried automatically using `Retry-After` (when present) plus exponential backoff.
+- Rate-limit retry tuning is available via environment variables:
+  - `PAPYRUS_RATE_LIMIT_MAX_RETRIES` (default `8`)
+  - `PAPYRUS_RATE_LIMIT_BASE_DELAY_MS` (default `2000`)
+  - `PAPYRUS_RATE_LIMIT_MAX_DELAY_MS` (default `120000`)
 - For scanned PDFs, output quality depends on OCR quality from the model.
 
 ## Development
