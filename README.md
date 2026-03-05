@@ -21,9 +21,39 @@ npm i -g @robin7331/papyrus-cli
 papyrus --help
 ```
 
+## Usage
+
+```bash
+# Single file (auto mode; if no API key is found, Papyrus prompts you to paste one)
+papyrus ./path/to/input.pdf
+
+# Single file with explicit format/output/model
+papyrus ./path/to/input.pdf --format md --output ./out/result.md --model gpt-4o-mini
+
+# Auto mode with extra instructions
+papyrus ./path/to/input.pdf --instructions "Prioritize table accuracy." --format txt
+
+# Prompt mode (inline prompt)
+papyrus ./path/to/input.pdf --mode prompt --prompt "Extract all invoice line items as bullet points." --format md
+
+# Prompt mode (prompt file)
+papyrus ./path/to/input.pdf --mode prompt --prompt-file ./my-prompt.txt --format txt
+
+# Folder mode (recursive scan, asks for confirmation)
+papyrus ./path/to/folder
+
+# Folder mode with explicit concurrency and output directory
+papyrus ./path/to/folder --concurrency 4 --output ./out
+
+# Folder mode without confirmation prompt
+papyrus ./path/to/folder --yes
+```
+
 ## API Key Setup
 
 Papyrus requires `OPENAI_API_KEY`.
+
+If no API key is found in your environment or local config, Papyrus will prompt you interactively to paste one, and can save it for future runs.
 
 macOS/Linux (persistent):
 
@@ -45,56 +75,12 @@ One-off execution:
 OPENAI_API_KEY="your_api_key_here" papyrus ./path/to/input.pdf
 ```
 
-Security note: Papyrus intentionally does not provide an `--api-key` flag to avoid leaking keys via shell history or process lists.
-
-## Usage
-
-Single file (auto mode):
+Papyrus config commands (optional, local persistent storage in `~/.config/papyrus/config.json`):
 
 ```bash
-papyrus ./path/to/input.pdf
-```
-
-Single file with explicit format/output/model:
-
-```bash
-papyrus ./path/to/input.pdf --format md --output ./out/result.md --model gpt-4o-mini
-```
-
-Auto mode with extra instructions:
-
-```bash
-papyrus ./path/to/input.pdf --instructions "Prioritize table accuracy." --format txt
-```
-
-Prompt mode (inline prompt):
-
-```bash
-papyrus ./path/to/input.pdf --mode prompt --prompt "Extract all invoice line items as bullet points." --format md
-```
-
-Prompt mode (prompt file):
-
-```bash
-papyrus ./path/to/input.pdf --mode prompt --prompt-file ./my-prompt.txt --format txt
-```
-
-Folder mode (recursive scan, asks for confirmation):
-
-```bash
-papyrus ./path/to/folder
-```
-
-Folder mode with explicit concurrency and output directory:
-
-```bash
-papyrus ./path/to/folder --concurrency 4 --output ./out
-```
-
-Folder mode without confirmation prompt:
-
-```bash
-papyrus ./path/to/folder --yes
+papyrus config init
+papyrus config show
+papyrus config clear
 ```
 
 ## Arguments Reference

@@ -5,6 +5,13 @@ import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
 import { Command } from "commander";
 import {
+  clearStoredApiKey,
+  getConfigFilePath,
+  getStoredApiKey,
+  maskApiKey,
+  setStoredApiKey
+} from "./config.js";
+import {
   convertPdf,
   type ConvertUsage
 } from "./openaiPdfToMarkdown.js";
@@ -23,6 +30,12 @@ import {
 } from "./cliHelpers.js";
 
 const program = new Command();
+const configFilePath = getConfigFilePath();
+const OPENAI_API_KEYS_URL = "https://platform.openai.com/settings/organization/api-keys";
+
+type ConfigInitOptions = {
+  force?: boolean;
+};
 
 program
   .name("papyrus")
@@ -75,7 +88,68 @@ program
     }
   });
 
-program.parseAsync(process.argv);
+const configCommand = program
+  .command("config")
+  .description("Manage persistent configuration");
+
+configCommand
+  .command("init")
+  .description("Interactively save an OpenAI API key to the local Papyrus config file")
+  .option("-f, --force", "Overwrite an existing saved API key without confirmation")
+  .action(async (options: ConfigInitOptions) => {
+    try {
+      await handleConfigInit(options);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error(`Config init failed: ${message}`);
+      process.exitCode = 1;
+    }
+  });
+
+configCommand
+  .command("show")
+  .description("Show the saved API key in masked form")
+  .action(async () => {
+    try {
+      const storedApiKey = await getStoredApiKey();
+      console.log(`Config file: ${configFilePath}`);
+      if (!storedApiKey) {
+        console.log("OpenAI API key: not set");
+        return;
+      }
+
+      console.log(`OpenAI API key: ${maskApiKey(storedApiKey)}`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error(`Config show failed: ${message}`);
+      process.exitCode = 1;
+    }
+  });
+
+configCommand
+  .command("clear")
+  .description("Remove the saved API key from local config")
+  .action(async () => {
+    try {
+      const didClear = await clearStoredApiKey();
+      if (!didClear) {
+        console.log(`No saved API key found in ${configFilePath}.`);
+        return;
+      }
+
+      console.log(`Removed saved API key from ${configFilePath}.`);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error(`Config clear failed: ${message}`);
+      process.exitCode = 1;
+    }
+  });
+
+program.parseAsync(process.argv).catch((error: unknown) => {
+  const message = error instanceof Error ? error.message : String(error);
+  console.error(`Command failed: ${message}`);
+  process.exitCode = 1;
+});
 
 async function processSingleFile(
   inputPath: string,
@@ -86,6 +160,7 @@ async function processSingleFile(
     throw new Error("Input file must have a .pdf extension.");
   }
 
+  await ensureApiKey();
   const result = await convertPdf({
     inputPath,
     model: options.model,
@@ -133,6 +208,7 @@ async function processFolder(
     return { total: files.length, succeeded: 0, failed: 0, cancelled: true, usage: emptyUsage() };
   }
 
+  await ensureApiKey();
   const outputRoot = options.output ? resolve(options.output) : undefined;
   let succeeded = 0;
   let failed = 0;
@@ -246,6 +322,150 @@ async function resolvePromptText(options: CliOptions): Promise<string | undefine
   }
 
   return promptFromFile;
+}
+
+async function handleConfigInit(options: ConfigInitOptions): Promise<void> {
+  const existingKey = await getStoredApiKey();
+  if (existingKey && !options.force) {
+    const overwrite = await askYesNo("An API key is already stored. Overwrite it? [y/N] ", false);
+    if (!overwrite) {
+      console.log("No changes made.");
+      return;
+    }
+  }
+
+  const apiKey = await promptForApiKey();
+  await setStoredApiKey(apiKey);
+  console.log(`Saved OpenAI API key to ${configFilePath}`);
+}
+
+async function ensureApiKey(): Promise<void> {
+  const envApiKey = normalizeApiKey(process.env.OPENAI_API_KEY);
+  if (envApiKey) {
+    process.env.OPENAI_API_KEY = envApiKey;
+    return;
+  }
+
+  const storedApiKey = await getStoredApiKey();
+  if (storedApiKey) {
+    process.env.OPENAI_API_KEY = storedApiKey;
+    return;
+  }
+
+  if (!process.stdin.isTTY || !process.stdout.isTTY) {
+    throw new Error(
+      [
+        "OPENAI_API_KEY is not set.",
+        `Run "papyrus config init" to store one in ${configFilePath},`,
+        "or set OPENAI_API_KEY in your environment."
+      ].join(" ")
+    );
+  }
+
+  console.log(`No OpenAI API key found in environment or ${configFilePath}.`);
+  const apiKey = await promptForApiKey();
+  const shouldSave = await askYesNo(
+    `Save this key to ${configFilePath} for future runs? [Y/n] `,
+    true
+  );
+
+  if (shouldSave) {
+    await setStoredApiKey(apiKey);
+    console.log(`Saved OpenAI API key to ${configFilePath}`);
+  }
+
+  process.env.OPENAI_API_KEY = apiKey;
+}
+
+async function promptForApiKey(): Promise<string> {
+  console.log(`Create a new API key at: ${OPENAI_API_KEYS_URL}`);
+  const apiKey = normalizeApiKey(await promptHidden("Paste OpenAI API key: "));
+  if (!apiKey) {
+    throw new Error("API key cannot be empty.");
+  }
+
+  return apiKey;
+}
+
+async function promptHidden(question: string): Promise<string> {
+  if (!process.stdin.isTTY || !process.stdout.isTTY) {
+    throw new Error("This prompt requires an interactive terminal.");
+  }
+
+  return new Promise((resolve, reject) => {
+    const stdin = process.stdin;
+    let value = "";
+    let consumeEscapeSequence = false;
+    const wasRaw = stdin.isRaw ?? false;
+    process.stdout.write(question);
+
+    const cleanup = (): void => {
+      stdin.off("data", onData);
+      if (stdin.isTTY) {
+        stdin.setRawMode(wasRaw);
+      }
+
+      stdin.pause();
+      process.stdout.write("\n");
+    };
+
+    const onData = (chunk: string | Buffer): void => {
+      const content = typeof chunk === "string" ? chunk : chunk.toString("utf8");
+      for (const character of content) {
+        if (consumeEscapeSequence) {
+          if (/[A-Za-z~]/.test(character)) {
+            consumeEscapeSequence = false;
+          }
+          continue;
+        }
+
+        if (character === "\u001b") {
+          consumeEscapeSequence = true;
+          continue;
+        }
+
+        if (character === "\u0003") {
+          cleanup();
+          reject(new Error("Cancelled by user."));
+          return;
+        }
+
+        if (character === "\r" || character === "\n") {
+          cleanup();
+          resolve(value);
+          return;
+        }
+
+        if (character === "\u007f" || character === "\b") {
+          value = value.slice(0, -1);
+          continue;
+        }
+
+        if (character < " ") {
+          continue;
+        }
+
+        value += character;
+      }
+    };
+
+    stdin.setRawMode(true);
+    stdin.resume();
+    stdin.on("data", onData);
+  });
+}
+
+function normalizeApiKey(value: string | undefined): string | undefined {
+  if (!value) {
+    return undefined;
+  }
+
+  const trimmed = value.trim();
+  if (!trimmed) {
+    return undefined;
+  }
+
+  return trimmed;
 }
 
 async function detectInputKind(inputPath: string): Promise<"file" | "directory"> {
@@ -467,6 +687,13 @@ async function confirmFolderProcessing(
     );
   }
 
+  return askYesNo(
+    `Process ${totalFiles} PDF file(s) with concurrency ${concurrency}? [Y/n] `,
+    true
+  );
+}
+
+async function askYesNo(question: string, defaultYes: boolean): Promise<boolean> {
   const { createInterface } = await import("node:readline/promises");
   const rl = createInterface({
     input: process.stdin,
@@ -474,11 +701,12 @@ async function confirmFolderProcessing(
   });
 
   try {
-    const answer = (await rl.question(
-      `Process ${totalFiles} PDF file(s) with concurrency ${concurrency}? [Y/n] `
-    )).trim().toLowerCase();
+    const answer = (await rl.question(question)).trim().toLowerCase();
+    if (answer === "") {
+      return defaultYes;
+    }
 
-    return answer === "" || answer === "y" || answer === "yes";
+    return answer === "y" || answer === "yes";
   } finally {
     rl.close();
   }
