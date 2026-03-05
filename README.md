@@ -1,112 +1,126 @@
-![alt text](https://github.com/robin7331/papyrus-cli/blob/main/assets/header.jpeg?raw=true)
+<p align="center">
+  <img src="./assets/header.png" alt="Papyrus CLI logo" width="180" />
+</p>
 
-# pdf-parser
+<h1 align="center">Papyrus CLI</h1>
 
-TypeScript CLI PoC that converts PDFs into Markdown or text using the OpenAI Agents SDK.
+<p align="center">Convert PDFs into Markdown or plain text with the OpenAI Agents SDK.</p>
 
-## Requirements
+<p align="center">
+  <a href="https://www.npmjs.com/package/@robin7331/papyrus-cli"><img src="https://img.shields.io/npm/v/%40robin7331%2Fpapyrus-cli?logo=npm&label=npm" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@robin7331/papyrus-cli"><img src="https://img.shields.io/npm/dm/%40robin7331%2Fpapyrus-cli?logo=npm&label=downloads" alt="npm downloads"></a>
+  <img src="https://img.shields.io/badge/node-%3E%3D22-339933?logo=node.js&logoColor=white" alt="node >= 22">
+</p>
 
-- Node.js 22+
-- `OPENAI_API_KEY` environment variable
+## Installation
 
-## Setup
-
-```bash
-npm install
-```
-
-```bash
-export OPENAI_API_KEY="your_api_key_here"
-```
-
-Or place it in a local `.env` file:
+Run directly with `npx`:
 
 ```bash
-OPENAI_API_KEY=your_api_key_here
+npx @robin7331/papyrus-cli --help
 ```
 
-## Build
+Or install globally:
 
 ```bash
-npm run build
+npm i -g @robin7331/papyrus-cli
+papyrus --help
 ```
+
+## API Key Setup
+
+Papyrus requires `OPENAI_API_KEY`.
+
+macOS/Linux (persistent):
+
+```bash
+echo 'export OPENAI_API_KEY="your_api_key_here"' >> ~/.zshrc
+source ~/.zshrc
+```
+
+PowerShell (persistent):
+
+```powershell
+setx OPENAI_API_KEY "your_api_key_here"
+# restart PowerShell after running setx
+```
+
+One-off execution:
+
+```bash
+OPENAI_API_KEY="your_api_key_here" npx @robin7331/papyrus-cli ./path/to/input.pdf
+```
+
+Security note: Papyrus intentionally does not provide an `--api-key` flag to avoid leaking keys via shell history or process lists.
 
 ## Usage
 
+Single file (auto mode):
+
 ```bash
-npm run dev -- ./path/to/input.pdf
+papyrus ./path/to/input.pdf
 ```
 
-This runs in `auto` mode by default and lets the model choose between Markdown (`.md`) and plain text (`.txt`).
-
-Auto mode with output format override:
+Single file with explicit format/output/model:
 
 ```bash
-npm run dev -- ./path/to/input.pdf --format md --output ./out/result.md --model gpt-5
+papyrus ./path/to/input.pdf --format md --output ./out/result.md --model gpt-4o-mini
 ```
 
-Auto mode with additional instructions:
+Auto mode with extra instructions:
 
 ```bash
-npm run dev -- ./path/to/input.pdf --instructions "Prioritize table accuracy." --format txt
+papyrus ./path/to/input.pdf --instructions "Prioritize table accuracy." --format txt
 ```
 
-Prompt mode with inline prompt:
+Prompt mode (inline prompt):
 
 ```bash
-npm run dev -- ./path/to/input.pdf --mode prompt --prompt "Extract all invoice line items as bullet points." --format md
+papyrus ./path/to/input.pdf --mode prompt --prompt "Extract all invoice line items as bullet points." --format md
 ```
 
-Prompt mode with prompt file:
+Prompt mode (prompt file):
 
 ```bash
-npm run dev -- ./path/to/input.pdf --mode prompt --prompt-file ./my-prompt.txt
+papyrus ./path/to/input.pdf --mode prompt --prompt-file ./my-prompt.txt --format txt
 ```
 
-Folder mode (recursive scan, default concurrency `10`):
+Folder mode (recursive scan, asks for confirmation):
 
 ```bash
-npm run dev -- ./path/to/folder
+papyrus ./path/to/folder
 ```
 
-This asks for confirmation before processing starts.
-
-Folder mode with explicit concurrency:
+Folder mode with explicit concurrency and output directory:
 
 ```bash
-npm run dev -- ./path/to/folder --concurrency 4
+papyrus ./path/to/folder --concurrency 4 --output ./out
 ```
 
-Folder mode with output directory mirroring input structure:
+Folder mode without confirmation prompt:
 
 ```bash
-npm run dev -- ./path/to/folder --output ./out
+papyrus ./path/to/folder --yes
 ```
 
-Skip folder confirmation prompt (useful in scripts):
+`npx` alternative for any command:
 
 ```bash
-npm run dev -- ./path/to/folder --yes
-```
-
-After build:
-
-```bash
-papyrus-cli ./path/to/input.pdf --mode auto
-```
-
-Or directly:
-
-```bash
-node dist/cli.js ./path/to/input.pdf
+npx @robin7331/papyrus-cli ./path/to/input.pdf --mode auto
 ```
 
 ## Notes
 
-- The PoC uploads the PDF via OpenAI Files API and runs an `Agent + run()` flow from `@openai/agents`.
 - In `auto` mode without `--format`, the model returns structured JSON with `format` + `content`.
 - Folder input is scanned recursively for `.pdf` files and processed in parallel.
-- In folder mode, the CLI asks for confirmation (unless `--yes` is provided).
-- Folder mode shows a live TTY dashboard with one line per worker (`concurrency`) plus a progress summary.
 - In folder mode, `--output` must be a directory path and mirrored subfolders are preserved.
-- For scanned PDFs, output quality depends on OCR quality done by the model.
+- For scanned PDFs, output quality depends on OCR quality from the model.
+
+## Development
+
+```bash
+npm install
+npm run build
+npm run dev -- ./path/to/input.pdf
+npm test
+```

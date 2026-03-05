@@ -25,7 +25,7 @@ import {
 const program = new Command();
 
 program
-  .name("papyrus-cli")
+  .name("papyrus")
   .description("Convert PDF files to Markdown or text using the OpenAI Agents SDK")
   .argument("<input>", "Path to input PDF file or folder")
   .option("-o, --output <path>", "Path to output file (single input) or output directory (folder input)")

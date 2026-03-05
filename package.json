@@ -1,10 +1,11 @@
 {
-  "name": "pdf-parser",
+  "name": "@robin7331/papyrus-cli",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "description": "CLI PoC: convert PDF to markdown or text with the OpenAI Agents SDK",
   "type": "module",
   "bin": {
+    "papyrus": "./dist/cli.js",
     "papyrus-cli": "./dist/cli.js"
   },
   "scripts": {
