@@ -14,8 +14,8 @@
       "datum": "21.07.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "STRIPE STRIPE AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 STRIPE-DLTAWV69X79ATEFT5RBICMNP2INC BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
-      "soll_eur": "703,96",
-      "haben_eur": null
+      "soll_eur": null,
+      "haben_eur": "703,96"
     },
     {
       "datum": "21.07.2023",

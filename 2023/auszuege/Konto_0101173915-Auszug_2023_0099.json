@@ -13,56 +13,56 @@
     {
       "datum": "10.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028689011826 . , Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028689011826 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028689011826, Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": "15,96",
       "haben_eur": null
     },
     {
       "datum": "10.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028689082089 . , Ihr Einkauf bei 1028689082089 PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028689082089, Ihr Einkauf bei PAYPAL",
       "soll_eur": "71,96",
       "haben_eur": null
     },
     {
       "datum": "10.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028689046507 . , Ihr Einkauf bei 1028689046507 PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028689046507, Ihr Einkauf bei PAYPAL",
       "soll_eur": "7,90",
       "haben_eur": null
     },
     {
       "datum": "10.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028688993069 . , Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028688993069 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028688993069, Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": "7,90",
       "haben_eur": null
     },
     {
       "datum": "10.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028689088950 . , Ihr Einkauf bei 1028689088950 PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028689088950, Ihr Einkauf bei PAYPAL",
       "soll_eur": "107,80",
       "haben_eur": null
     },
     {
       "datum": "10.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028689089334 . , Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028689089334 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028689089334, Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": "71,96",
       "haben_eur": null
     },
     {
       "datum": "10.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028689089696 . , Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028689089696 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028689089696, Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": "71,96",
       "haben_eur": null
     },
     {
       "datum": "10.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028689084878 . , Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028689084878 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028689084878, Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": "7,90",
       "haben_eur": null
     },

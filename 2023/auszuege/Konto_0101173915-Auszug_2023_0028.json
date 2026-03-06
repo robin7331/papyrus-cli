@@ -13,21 +13,21 @@
     {
       "datum": "27.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG D EUTSCHLAND 303-8444821-9691525 Amazon.de 29UQ9 E5G04UTTEXW BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND; 303-8444821-9691525 Amazon.de 29UQ9 E5G04UTTEXW; BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
       "soll_eur": "22,09",
       "haben_eur": null
     },
     {
       "datum": "27.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025444067822 PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc. 1025444067822 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A; 1025444067822 PP.9577.PP; GitHub, Inc., Ihr Einkauf bei GitHub, Inc.; 1025444067822 PP.9577.PP; PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "9,83",
       "haben_eur": null
     },
     {
       "datum": "27.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025445032996 PP.9577.PP . Printgroup GmbH + Co. KG, Ihr Einkauf bei Printgroup GmbH + Co. KG 1025445032996 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A; 1025445032996 PP.9577.PP; Printgroup GmbH + Co. KG, Ihr Einkauf bei Printgroup GmbH + Co. KG; 1025445032996 PP.9577.PP; PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "20,00",
       "haben_eur": null
     },

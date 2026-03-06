@@ -13,14 +13,14 @@
     {
       "datum": "24.04.2023",
       "typ": "Überweisung",
-      "buchungstext": "IP / Wert: 22.04.2023; Robin Reiter Privat DATUM 22.04.2023, 07.28 UHR; BIC/IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "buchungstext": "Robin Reiter Privat DATUM 22.04.2023, 07.28 UHR; BIC/IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "500,00",
       "haben_eur": null
     },
     {
       "datum": "24.04.2023",
-      "typ": "Überweisung",
-      "buchungstext": "online; Valentin Fischer Storno-Rechnung 2023-02-0002-ST-1 DATUM 24.04.2023, 10.46 UHR; BIC/IBAN: SOLADES1RVB DE53 6505 0110 0000 9201 42",
+      "typ": "Überweisung online",
+      "buchungstext": "Valentin Fischer Storno-Rechnung 2023-02-0002-ST-1 DATUM 24.04.2023, 10.46 UHR; BIC/IBAN: SOLADES1RVB DE53 6505 0110 0000 9201 42",
       "soll_eur": "8.723,81",
       "haben_eur": null
     },

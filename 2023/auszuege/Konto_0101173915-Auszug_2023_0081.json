@@ -13,14 +13,14 @@
     {
       "datum": "05.07.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1027971949483 PP.9577.PP . RAJAPACK GmbH, Ihr Einkauf bei RAJAPACK GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1027971949483 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1027971949483; PP.9577.PP . RAJAPACK GmbH, Ihr Einkauf bei RAJAPACK GmbH; AWV-MELDEPFLICHT BEACHTEN; HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": "641,65",
       "haben_eur": null
     },
     {
       "datum": "05.07.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1027969730000 PP.9577.PP . WIRmache nDRUCK GmbH, Ihr Einkauf bei WIRmachenDRUCK GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1027969730000 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1027969730000; PP.9577.PP . WIRmachenDRUCK GmbH, Ihr Einkauf bei WIRmachenDRUCK GmbH; AWV-MELDEPFLICHT BEACHTEN; HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": "196,09",
       "haben_eur": null
     },

@@ -13,21 +13,21 @@
     {
       "datum": "09.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Leonhardt, Adolf, Spöri, Christoph GbR; Steuerberatungskanzlei LEONHARDT & SPÖRI; Gläubiger-ID: DE45ZZZ00000174923; Mandatsreferenz:449920000002; RNr: 6 918/20.07.23; Deb:44992 2308040815-0000009; BIC / IBAN: SOLADES1RVB DE51 6505 0110 0000 2397 23",
-      "soll_eur": "66,40",
+      "buchungstext": "Leonhardt, Adolf, Spöri, Christoph GbR Steuerberatungskanzlei LEONHARDT & SPÖRI Gläubiger-ID: DE45ZZZ00000174923 Mandatsreferenz:449920000002 RNr: 6 918/20.07.23 Deb:44992 2308040815-0000009",
+      "soll_eur": "-66,40",
       "haben_eur": null
     },
     {
       "datum": "09.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A.; 1028671727893; PP.9577.PP; Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB; 1028671727893; PP.9577.PP PAYPAL; BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
-      "soll_eur": "12,99",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028671727893 PP.9577.PP. Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB",
+      "soll_eur": "-12,99",
       "haben_eur": null
     },
     {
       "datum": "09.08.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "ELEKTOR INT MEDIA BV; PO230368; Rechnung 2023-02-0006; Lev 12472; AWV-MELDEPFLICHT BEACHTEN; HOTLINE BUNDESBANK: (0800) 1234-111; Elektor; BIC / IBAN: ABNANL2A NL61 ABNA 0578 3418 83",
+      "buchungstext": "ELEKTOR INT MEDIA BV PO230368 Rechnung 2023-02-0006 Lev 12472 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 Elektor",
       "soll_eur": null,
       "haben_eur": "5.630,00"
     },

@@ -20,42 +20,42 @@
     {
       "datum": "02.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 PDKHRRDDXNL4Z2C32P",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 PDKHRRDDXNL4Z2C32P BIC / IBAN: DEUTNL2A NL24 DEUT 0265 1950 47",
       "soll_eur": "49,34",
       "haben_eur": null
     },
     {
       "datum": "02.11.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-0DE3DEZ6AGX6BQOKUTUZYUKNNWY BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
       "soll_eur": null,
       "haben_eur": "621,30"
     },
     {
       "datum": "02.11.2023",
       "typ": "Überweisung online",
-      "buchungstext": "Bft Station Klaus Sohler Beleg Nr. 4654 DATUM 02.11.2023, 08.02 UHR",
+      "buchungstext": "Bft Station Klaus Sohler Beleg Nr. 4654 DATUM 02.11.2023, 08.02 UHR BIC / IBAN: GENODEF1WWA DE13 7336 9823 0006 4491 23",
       "soll_eur": "104,97",
       "haben_eur": null
     },
     {
       "datum": "02.11.2023",
       "typ": "Überweisung online",
-      "buchungstext": "DHL Express Germany GmbH Rechn. Nr: ZIT5305656 DATUM 02.11.2023, 08.06 UHR",
+      "buchungstext": "DHL Express Germany GmbH Rechn. Nr: ZIT5305656 DATUM 02.11.2023, 08.06 UHR BIC / IBAN: PBNKDEFFXXX DE51 3701 0050 0474 8495 09",
       "soll_eur": "158,60",
       "haben_eur": null
     },
     {
       "datum": "02.11.2023",
       "typ": "Überweisung online",
-      "buchungstext": "United Parcel Service Rechnung 321889849 DATUM 02.11.2023, 08.45 UHR",
+      "buchungstext": "United Parcel Service Rechnung 321889849 DATUM 02.11.2023, 08.45 UHR BIC / IBAN: BNPADEFFXXX DE30 5121 0600 3223 3350 21",
       "soll_eur": "154,21",
       "haben_eur": null
     },
     {
       "datum": "02.11.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-ZA4GTU2FYDVYGI3A4Y34WOFGXGD BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
       "soll_eur": null,
       "haben_eur": "864,85"
     },

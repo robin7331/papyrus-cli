@@ -13,15 +13,15 @@
     {
       "datum": "13.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026352952648 PP.9577.PP . RAJAPACK GmbH, Ihr Einkauf bei RAJAPACK Gmb H AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
-      "soll_eur": "-346,81",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026352952648; PP.9577.PP . RAJAPACK GmbH, Ihr Einkauf bei RAJAPACK GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1026352952648 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "346,81",
       "haben_eur": null
     },
     {
       "datum": "13.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
-      "soll_eur": "-32,34",
+      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001842678 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
+      "soll_eur": "32,34",
       "haben_eur": null
     },
     {

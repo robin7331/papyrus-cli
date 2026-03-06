@@ -13,14 +13,14 @@
     {
       "datum": "02.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028525737365 PP.9577.PP . DigitalOceam, Ihr Einkauf bei DigitalOcean 1028525737365 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028525737365 PP.9577.PP . DigitalOcean, Ihr Einkauf bei DigitalOcean 1028525737365 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "23,69",
       "haben_eur": null
     },
     {
       "datum": "02.08.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN Hotline Bundesbank: (0800) 1234-111 YYW1028545816705 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1028545816705 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200",
       "soll_eur": null,
       "haben_eur": "674,02"
     },

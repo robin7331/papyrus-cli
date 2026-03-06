@@ -20,14 +20,14 @@
     {
       "datum": "23.11.2023",
       "typ": "Scheckeinzug",
-      "buchungstext": "Wert: 24.11.2023 SCHECKAUSSTELLER SCHECK-NR. 0112061340486 1332756000020 BIC / IBAN: GENODEFFXXX DE09 5006 0400 0016 0122 47",
+      "buchungstext": "SCHECKAUSSTELLER SCHECK-NR. 0112061340486 1332756000020 BIC / IBAN: GENODEFFXXX DE09 5006 0400 0016 0122 47",
       "soll_eur": null,
       "haben_eur": "1.295,92"
     },
     {
       "datum": "23.11.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP/ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1030798150454 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP/ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN Hotline Bundesbank: (0800) 1234-111 YYW1030798150454 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "644,61"
     },

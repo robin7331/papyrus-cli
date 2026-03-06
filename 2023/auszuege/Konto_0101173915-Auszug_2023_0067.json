@@ -20,7 +20,7 @@
     {
       "datum": "01.06.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1027322111147; PP.9577.PP . wirelex GmbH, Ihr Einkauf bei wirelex GmbH 1027322111147 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1027322111147 PP.9577.PP . wirelex GmbH, Ihr Einkauf bei wirelex GmbH 1027322111147 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "172,50",
       "haben_eur": null
     },

@@ -3,9 +3,9 @@
   "statement_no": "45/2023",
   "rows": [
     {
-      "datum": "04.04.2023",
+      "datum": "03.04.2023",
       "typ": "Eröffnungssaldo",
-      "buchungstext": "Kontostand am 04.04.2023, Auszug Nr. 44",
+      "buchungstext": "Kontostand am 03.04.2023, Auszug Nr. 44",
       "soll_eur": null,
       "haben_eur": null,
       "saldo_eur": "7.488,64"

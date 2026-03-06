@@ -13,7 +13,7 @@
     {
       "datum": "20.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 PSXBQMVD9DMTCPK52P BIC / IBAN: DEUTNL2A NL24 DEUT 0265 1950 47",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": "-0,02",
       "haben_eur": null
     },

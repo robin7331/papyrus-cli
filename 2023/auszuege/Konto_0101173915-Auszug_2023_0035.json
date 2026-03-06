@@ -13,7 +13,7 @@
     {
       "datum": "13.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "HISCOX SA Versicherungsnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001820366 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
+      "buchungstext": "HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001820366 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
       "soll_eur": "32,34",
       "haben_eur": null
     },
@@ -27,7 +27,7 @@
     {
       "datum": "13.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025719843145 PP.9577.PP BoxesNBoxes Limited, Ihr Einkauf bei BoxesNBoxes Limited 1025719843145 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025719843145 PP.9577.PP . BoxesNBoxes Limited, Ihr Einkauf bei BoxesNBoxes Limited 1025719843145 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "26,00",
       "haben_eur": null
     },

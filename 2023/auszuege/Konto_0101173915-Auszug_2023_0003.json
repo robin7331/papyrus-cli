@@ -13,84 +13,112 @@
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND; 028-0519544-3789925 Amazon.de 30PYBIOKZZ5YDUOR; BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 028-0519544-3789925 Amazon.de 30PYB IOKZZ5YDUOR BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
       "soll_eur": "132,67",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A.; 028-6423233-0077956 AMZN Mktp DE QL69M3D40QCWM9H1; BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-6423233-0077956 AMZN Mktp DE QL 69M3D40QCWM9H1 BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "115,98",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND; 028-5401409-3630722 Amazon.de 3ZAAKATAUJZWKV40; BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 028-5401409-3630722 Amazon.de 3ZAAK ATAUJZWKV40 BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
       "soll_eur": "50,47",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A.; 028-3574587-9301129 AMZN Mktp DE 1D0S6PQ4JP589HHS; BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-3574587-9301129 AMZN Mktp DE 1D 0S6PQ4JP589HHS BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "259,91",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024501763944; PP.9577.PP . Ihr Einkauf bei Ecwid Inc.; BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024501763944 PP.9577.PP . Ecwid Inc., Ihr Einkauf bei Ecwid Inc. BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
       "soll_eur": "41,65",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024515691784; PP.9577.PP . Ihr Einkauf bei Paddle.com Market Limited; BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024515691784 PP.9577.PP . Paddle.com Market Limited, Ihr Einkauf bei Paddle.com Market Limited BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
       "soll_eur": "70,21",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1024525398013; PP.9577.PP . Ihr Einkauf bei Packlink - Auctane SL; BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a.r.l. et Cie, S.C.A. 1024525398013 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "4,72",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024525552381; PP.9577.PP . Ihr Einkauf bei Packlink - Auctane SL; BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024525552381 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
       "soll_eur": "4,26",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024525489516; PP.9577.PP . Ihr Einkauf bei Packlink - Auctane SL; BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024525489516 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
       "soll_eur": "4,72",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A.; 028-2947245-5424347 AMZN Mktp DE 65 FZV3QUG9AELM2H; BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024525444177 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "soll_eur": "4,72",
+      "haben_eur": null
+    },
+    {
+      "datum": "09.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal (Europe) S.a.r.l. et Cie, S.C.A. 1024525195512 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "63,50",
+      "haben_eur": null
+    },
+    {
+      "datum": "09.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024525535291 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "soll_eur": "14,50",
+      "haben_eur": null
+    },
+    {
+      "datum": "09.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024525515459 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "soll_eur": "11,50",
+      "haben_eur": null
+    },
+    {
+      "datum": "09.01.2023",
+      "typ": "Lastschrift",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-2947245-5424347 AMZN Mktp DE 65 FZV3QUG9AELM2H BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "17,99",
       "haben_eur": null
     },
     {
       "datum": "09.01.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "RENE BERSCH; BIC / IBAN: BYLADEM1001 DE05 1203 0000 1066 5187 29",
+      "buchungstext": "RENE BERSCH BIC / IBAN: BYLADEM1001 DE05 1203 0000 1066 5187 29",
       "soll_eur": null,
       "haben_eur": "29,27"
     },
     {
       "datum": "09.01.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE; BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
+      "buchungstext": "STRIPE STRIPE AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 STRIPE-JTXFCWWJA1WIXMTVEUHFYVH3JZAF BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
       "soll_eur": null,
       "haben_eur": "321,43"
     },

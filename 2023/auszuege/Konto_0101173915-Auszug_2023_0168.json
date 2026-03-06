@@ -13,14 +13,14 @@
     {
       "datum": "20.12.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO YYW1031405632341 PP.9577.PP BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO YYW1031405632341 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263",
       "soll_eur": null,
       "haben_eur": "689,05"
     },
     {
       "datum": "20.12.2023",
-      "typ": "Überweisung",
-      "buchungstext": "Robin Reiter privat DATUM 20.12.2023, 16.34 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung IP Robin Reiter privat DATUM 20.12.2023, 16.34 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "500,00",
       "haben_eur": null
     },

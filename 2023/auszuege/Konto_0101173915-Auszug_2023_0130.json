@@ -27,14 +27,14 @@
     {
       "datum": "02.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1029718293866 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "77,11"
     },
     {
       "datum": "02.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-WNF2HIXBEYUJ37YEDPJEPBKJXVA BIC / IBAN: CITINL2 NL41 CITI 2032 3048 05",
       "soll_eur": null,
       "haben_eur": "121,92"
     },

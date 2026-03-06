@@ -13,8 +13,8 @@
     {
       "datum": "13.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001797853 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
-      "soll_eur": "-32,34",
+      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001797853 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
+      "soll_eur": "32,34",
       "haben_eur": null
     },
     {
@@ -28,14 +28,14 @@
       "datum": "13.02.2023",
       "typ": "Überweisung online",
       "buchungstext": "Digi-Key Electronics PRO FORMA Invoice 95534441 Robin Re iter BitMechanics GmbH DATUM 13.02.2023, 11.35 UHR BIC / IBAN: DRESDEFFXXX DE15 5008 0000 0975 1105 00",
-      "soll_eur": "-589,40",
+      "soll_eur": "589,40",
       "haben_eur": null
     },
     {
       "datum": "13.02.2023",
       "typ": "Überweisung online",
       "buchungstext": "IHK Schwaben 05575263 DATUM 13.02.2023, 11.41 UHR BIC / IBAN: BYLADEM1AUG DE38 7205 0101 0030 1313 87",
-      "soll_eur": "-140,00",
+      "soll_eur": "140,00",
       "haben_eur": null
     },
     {

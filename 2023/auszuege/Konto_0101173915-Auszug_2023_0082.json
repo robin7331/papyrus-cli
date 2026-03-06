@@ -13,7 +13,7 @@
     {
       "datum": "07.07.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028007739843 PP.9577.PP . Labelident GmbH, Ihr Einkauf bei Labelident GmbH 1028007739843 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1028007739843; PP.9577.PP . Labelident GmbH, Ihr Einkauf bei Labelident GmbH 1028007739843 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "99,91",
       "haben_eur": null
     },

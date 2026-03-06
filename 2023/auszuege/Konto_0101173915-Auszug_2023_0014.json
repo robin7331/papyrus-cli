@@ -20,7 +20,7 @@
     {
       "datum": "01.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Überweisung online; GS1 Germany GmbH RG-23-036153 DATUM 01.02.2023, 08.12 UHR; BIC / IBAN: COKSDE33XXX DE62 3705 0299 0000 4767 31",
+      "buchungstext": "Überweisung online; GS1 Germany GmbH RG-23-036153 DATUM 01.02.2023, 08.12 UHR BIC / IBAN: COKSDE33XXX DE62 3705 0299 0000 4767 31",
       "soll_eur": "65,45",
       "haben_eur": null
     },

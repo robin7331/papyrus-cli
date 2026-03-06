@@ -13,21 +13,21 @@
     {
       "datum": "25.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026590335603 PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc. 1026590335603 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
-      "soll_eur": "9,52",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026590335603 PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc.",
+      "soll_eur": "-9,52",
       "haben_eur": null
     },
     {
       "datum": "25.04.2023",
       "typ": "Überweisung online",
-      "buchungstext": "CustomPack Sp. z o.o. Pro Forma Invoice 002023/04/05/P DATUM 25.04.2023, 09.24 UHR BIC / IBAN: ALBPPLPWXXX PL87 2490 0005 0000 4600 3856 9940",
-      "soll_eur": "1.715,00",
+      "buchungstext": "CustomPack Sp. z o.o. Pro Forma Invoice 002023/04/05/P DATUM 25.04.2023, 09.24 UHR",
+      "soll_eur": "-1.715,00",
       "haben_eur": null
     },
     {
       "datum": "25.04.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE STRIPE AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 GRTY0RUMNLCOEJRXBO4AZ97IKESE6OH8S2B BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
+      "buchungstext": "STRIPE STRIPE AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": null,
       "haben_eur": "51,96"
     },

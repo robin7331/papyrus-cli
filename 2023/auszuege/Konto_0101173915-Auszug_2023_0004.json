@@ -13,49 +13,49 @@
     {
       "datum": "10.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-3999210-3417931 AMZN Mktp DE 1B FTS054VZJI1CZ2",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-3999210-3417931 AMZN Mktp DE 1B",
       "soll_eur": "139,99",
       "haben_eur": null
     },
     {
       "datum": "10.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 302-5388617-3029112 Amazon.de 74LWS IUT05BGSPNE",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 302-5388617-3029112 Amazon.de",
       "soll_eur": "66,13",
       "haben_eur": null
     },
     {
       "datum": "10.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 302-4949890-3457167 Amazon.de 5D3GD 2GZWNHC5F69",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 302-4949890-3457167 Amazon.de",
       "soll_eur": "20,16",
       "haben_eur": null
     },
     {
       "datum": "10.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024576241545 PP.9577.PP Epidemic Sound AB",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024576241545 Epidemic Sound AB",
       "soll_eur": "12,99",
       "haben_eur": null
     },
     {
       "datum": "10.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-3999210-3417931 AMZN Mktp DE 1V KZ1SF9K6PSVPCC",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-3999210-3417931 AMZN Mktp DE 1V",
       "soll_eur": "38,53",
       "haben_eur": null
     },
     {
       "datum": "10.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-0442985-2757124 AMZN Mktp DE 3D 8XOUPMP5T1WTBE",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-0442985-2757124 AMZN Mktp DE 3D",
       "soll_eur": "18,98",
       "haben_eur": null
     },
     {
       "datum": "10.01.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE STRIPE AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK",
+      "buchungstext": "STRIPE STRIPE",
       "soll_eur": null,
       "haben_eur": "52,79"
     },

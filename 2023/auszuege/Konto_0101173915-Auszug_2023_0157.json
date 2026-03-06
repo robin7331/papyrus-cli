@@ -13,35 +13,35 @@
     {
       "datum": "29.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 PGGT56NF6BGQH7XB2P BIC / IBAN: DEUTNL2A NL24 DEUT 0265 1950 47",
       "soll_eur": "187,96",
       "haben_eur": null
     },
     {
       "datum": "29.11.2023",
       "typ": "Überweisung online",
-      "buchungstext": "United Parcel Service Rechnung 833403346 DATUM 29.11.2023, 09.00 UHR",
+      "buchungstext": "United Parcel Service Rechnung 833403346 DATUM 29.11.2023, 09.00 UHR BIC / IBAN: BNPADEFFXXX DE30 5121 0600 3223 3350 21",
       "soll_eur": "100,18",
       "haben_eur": null
     },
     {
       "datum": "29.11.2023",
       "typ": "Überweisung online",
-      "buchungstext": "Ordnungs- und Sozialamt Wangen 505.37.607819.6 DATUM 29.11.2023, 09.02 UHR",
+      "buchungstext": "Ordnungs- und Sozialamt Wangen 505.37.607819.6 DATUM 29.11.2023, 09.02 UHR BIC / IBAN: SOLADES1RVB DE73 6505 0110 0000 2010 12",
       "soll_eur": "55,00",
       "haben_eur": null
     },
     {
       "datum": "29.11.2023",
       "typ": "Überweisung online",
-      "buchungstext": "United Parcel Service Rechnung 322097810 DATUM 29.11.2023, 09.08 UHR",
+      "buchungstext": "United Parcel Service Rechnung 322097810 DATUM 29.11.2023, 09.08 UHR BIC / IBAN: BNPADEFFXXX DE30 5121 0600 3223 3350 21",
       "soll_eur": "6,31",
       "haben_eur": null
     },
     {
       "datum": "29.11.2023",
       "typ": "Überweisung online",
-      "buchungstext": "Rajapack GmbH Belegnummer DE-5726350 DATUM 29.11.2023, 09.10 UHR",
+      "buchungstext": "Rajapack GmbH Belegnummer DE-5726350 DATUM 29.11.2023, 09.10 UHR BIC / IBAN: DEUTDESM660 DE70 6607 0004 0072 6810 00",
       "soll_eur": "70,15",
       "haben_eur": null
     },

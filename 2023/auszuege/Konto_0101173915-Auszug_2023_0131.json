@@ -13,28 +13,28 @@
     {
       "datum": "04.10.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029723094362; PP.9577.PP . DigitalO cean, Ihr Einkauf bei DigitalOcean; BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
-      "soll_eur": "24,67",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029723094362 PP.9577.PP . DigitalO cean, Ihr Einkauf bei DigitalOcean",
+      "soll_eur": "-24,67",
       "haben_eur": null
     },
     {
       "datum": "04.10.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029726213898; PP.9577.PP . Melia Ho tels International S.A., Ihr Einkauf bei Melia Hotels International S. A.; BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
-      "soll_eur": "108,00",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029726213898 PP.9577.PP . Melia Ho tels International S.A., Ihr Einkauf bei Melia Hotels International S. A.",
+      "soll_eur": "-108,00",
       "haben_eur": null
     },
     {
       "datum": "04.10.2023",
       "typ": "Lastschrift",
-      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud; BIC / IBAN: DEUTNL2A NL24 DEUT 0265 1950 47",
-      "soll_eur": "60,94",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud",
+      "soll_eur": "-60,94",
       "haben_eur": null
     },
     {
       "datum": "04.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE SHOPIFY; BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
+      "buchungstext": "STRIPE SHOPIFY",
       "soll_eur": null,
       "haben_eur": "560,97"
     },

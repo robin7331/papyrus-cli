@@ -20,7 +20,7 @@
     {
       "datum": "16.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-6837984-7258721 AMZN Mktp DE 4R TXZXS90F2TZN3L 4RTXZXS90F2TZN3L BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-6837984-7258721 AMZN Mktp DE 4RTXZXS90F2TZN3L BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "108,38",
       "haben_eur": null
     },
@@ -34,7 +34,7 @@
     {
       "datum": "16.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 302-1284645-3912350 AMZN Mktp DE 61 OIIH29E2IPG7J0 61OIIH29E2IPG7J0 BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 302-1284645-3912350 AMZN Mktp DE 61 OIIH29E2IPG7J0 BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "16,12",
       "haben_eur": null
     },
