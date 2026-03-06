@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "34/2023",
   "rows": [
@@ -14,16 +15,14 @@
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025688824691 PP.9577.PP . WiCo Wichmann, Otto & Cie GmbH + Co., Ihr Einkauf bei WiCo Wichmann, Otto & Cie GmbH + Co. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025688824691 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "167,25",
-      "haben_eur": null,
-      "saldo_eur": "6.230,30"
+      "haben_eur": null
     },
     {
       "datum": "09.03.2023",
       "typ": "Lastschrift",
       "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025697674996 PP.9577.PP . Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB 1025697674996 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "12,99",
-      "haben_eur": null,
-      "saldo_eur": "6.217,31"
+      "haben_eur": null
     },
     {
       "datum": "09.03.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

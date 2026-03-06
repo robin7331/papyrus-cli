@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "20/2023",
   "rows": [
@@ -12,18 +13,16 @@
     {
       "datum": "09.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025158177440 PP.9577.PP . Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025158177440 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025158177440; PP.9577.PP . Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "12,99",
-      "haben_eur": null,
-      "saldo_eur": "22.149,44"
+      "haben_eur": null
     },
     {
       "datum": "09.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025148205264 PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025148205264 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025148205264; PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc.; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "5,33",
-      "haben_eur": null,
-      "saldo_eur": "22.144,11"
+      "haben_eur": null
     },
     {
       "datum": "09.02.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

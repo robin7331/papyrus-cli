@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "74/2023",
   "rows": [
@@ -11,11 +12,10 @@
     },
     {
       "datum": "22.06.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online CustomPack Sp. z o.o. Pro Forma Invoice 002023/06/04/P DATUM 22.06.2023, 14.00 UHR BIC / IBAN: ALBPPLPWXXX PL87 2490 0005 0000 4600 3856 9940",
+      "typ": "Überweisung online",
+      "buchungstext": "CustomPack Sp. z o.o. Pro Forma Invoice 002023/06/04/P; DATUM 22.06.2023, 14.00 UHR; BIC / IBAN: ALBPPLPWXXX PL87 2490 0005 0000 4600 3856 9940",
       "soll_eur": "3.760,00",
-      "haben_eur": null,
-      "saldo_eur": "5.778,24"
+      "haben_eur": null
     },
     {
       "datum": "22.06.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

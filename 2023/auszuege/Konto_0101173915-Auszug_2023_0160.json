@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "160/2023",
   "rows": [
@@ -14,16 +15,14 @@
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1031018229399/PP.9577.PP/. Prusa Development a.s., Ihr Einkauf bei Prusa Development a.s. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1031018229399 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "40,73",
-      "haben_eur": null,
-      "saldo_eur": "1.825,06"
+      "haben_eur": null
     },
     {
       "datum": "05.12.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung IP Robin Reiter privat DATUM 05.12.2023, 14.04 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "typ": "Überweisung",
+      "buchungstext": "IP Robin Reiter privat DATUM 05.12.2023, 14.04 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "500,00",
-      "haben_eur": null,
-      "saldo_eur": "1.325,06"
+      "haben_eur": null
     },
     {
       "datum": "05.12.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

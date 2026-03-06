@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%2023.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-05-23",
+    "issuer_name": "Bundesamt für Justiz",
+    "invoice_number": null,
+    "subject": "Ordnungsgeldverfahren nach § 335 HGB gegen BitMechanics GmbH",
+    "summary_short": "Kostenentscheidung des Bundesamts für Justiz",
+    "document_type": "Bescheid",
+    "gross_amount_cents": 10350,
+    "net_amount_cents": 10350,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "notes": [
+      "BitMechanics GmbH in Hergatz, vertreten durch die Geschäftsführung",
+      "Aktenzeichen: EHUG - 00147303/2023 - 01/01",
+      "Kassenzahlung auf Konto 855647603255"
+    ]
+  }
+}
+```

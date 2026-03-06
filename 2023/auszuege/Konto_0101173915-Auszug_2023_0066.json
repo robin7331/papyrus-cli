@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "66/2023",
   "rows": [
@@ -11,19 +12,17 @@
     },
     {
       "datum": "30.05.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Dauerauftrag Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
+      "typ": "Dauerauftrag",
+      "buchungstext": "Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
       "soll_eur": "520,00",
-      "haben_eur": null,
-      "saldo_eur": "9.522,13"
+      "haben_eur": null
     },
     {
       "datum": "30.05.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "REGULATEURS GEORGIN facture Number 69 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 REGLT FRS ROBINS BIC / IBAN: CCFRFRPP FR76 3005 6007 8907 8948 6065 766",
+      "buchungstext": "REGULATEURS GEORGIN facture Number 69",
       "soll_eur": null,
-      "haben_eur": "672,90",
-      "saldo_eur": "10.195,03"
+      "haben_eur": "672,90"
     },
     {
       "datum": "30.05.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

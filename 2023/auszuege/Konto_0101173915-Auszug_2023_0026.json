@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "26/2023",
   "rows": [
     {
-      "datum": "20.02.2023",
+      "datum": "17.02.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 17.02.2023, Auszug Nr. 25",
       "soll_eur": null,
@@ -14,72 +15,56 @@
       "typ": "Lastschrift",
       "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 304-5164646-1096320 AMZN Mktp DE 6K AXOLXSAX5PF4K4 6KAXOLXSAX5PF4K4 BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "13,26",
-      "haben_eur": null,
-      "saldo_eur": "13.472,72"
+      "haben_eur": null
     },
     {
       "datum": "20.02.2023",
       "typ": "Lastschrift",
       "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31117512000691/06.02.2023 Zahlbeleg 307635697583 BIC / IBAN: DRESDEFF370 DE75 3708 0040 0232 1130 01",
       "soll_eur": "97,22",
-      "haben_eur": null,
-      "saldo_eur": "13.375,50"
+      "haben_eur": null
     },
     {
       "datum": "20.02.2023",
       "typ": "Lastschrift",
       "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 304-8294002-4886762 Amazon.de 6FBDT RHKX1Q9MIIM 6FBDTRHKX1Q9MIIM BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
       "soll_eur": "24,42",
-      "haben_eur": null,
-      "saldo_eur": "13.351,08"
+      "haben_eur": null
     },
     {
       "datum": "20.02.2023",
       "typ": "Lastschrift",
       "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-9288987-2567530 AMZN Mktp DE 4A FSJ91Y5GBZN05B 4AFSJ91Y5GBZN05B BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "5,99",
-      "haben_eur": null,
-      "saldo_eur": "13.345,09"
+      "haben_eur": null
     },
     {
       "datum": "20.02.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-6837984-7258721 AMZ SATECHI 3FC 6TIR80YF08Q74 3FC6TIR80YF08Q74 BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": null,
-      "haben_eur": "108,38",
-      "saldo_eur": "13.453,47"
+      "haben_eur": "108,38"
     },
     {
       "datum": "20.02.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-3999210-3417931 AMZ Thinlerain 1SOXV8XCOLHCOC0K 1SOXV8XCOLHCOC0K BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": null,
-      "haben_eur": "139,99",
-      "saldo_eur": "13.593,46"
+      "haben_eur": "139,99"
     },
     {
       "datum": "20.02.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online Elektro Herz GmbH Rechn. Nr.: 20230119 DATUM 20.02.2023, 14.52 UHR BIC / IBAN: GENODES1LEU DE64 6509 1040 0157 6540 01",
+      "typ": "Überweisung online",
+      "buchungstext": "Elektro Herz GmbH Rechn. Nr.: 20230119 DATUM 20.02.2023, 14.52 UHR BIC / IBAN: GENODES1LEU DE64 6509 1040 0157 6540 01",
       "soll_eur": "3.731,85",
-      "haben_eur": null,
-      "saldo_eur": "9.861,61"
+      "haben_eur": null
     },
     {
       "datum": "20.02.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online Elektro Herz GmbH Rechn. Nr.: 20230120 DATUM 20.02.2023, 14.53 UHR BIC / IBAN: GENODES1LEU DE64 6509 1040 0157 6540 01",
+      "typ": "Überweisung online",
+      "buchungstext": "Elektro Herz GmbH Rechn. Nr.: 20230120 DATUM 20.02.2023, 14.53 UHR BIC / IBAN: GENODES1LEU DE64 6509 1040 0157 6540 01",
       "soll_eur": "476,57",
-      "haben_eur": null,
-      "saldo_eur": "9.385,04"
-    },
-    {
-      "datum": "20.02.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online KRA-BOX P.P.H.U. ADAM KRASIENKO PRO FORMA - 107 DATUM 20.02.2023, 14.54 UHR BIC / IBAN: PKOPPLPWXXX PL50 1240 6218 1978 0000 4619 1816",
-      "soll_eur": "1.055,00",
-      "haben_eur": null,
-      "saldo_eur": "8.330,04"
+      "haben_eur": null
     },
     {
       "datum": "20.02.2023",
@@ -91,3 +76,4 @@
     }
   ]
 }
+```

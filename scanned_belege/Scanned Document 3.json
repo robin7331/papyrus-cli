@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%203.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-04-04",
+    "issuer_name": "ETRIS Bank GmbH",
+    "invoice_number": "440002952248",
+    "subject": "Mahnung für Rechnung 440002952248",
+    "summary_short": "Mahnung für Rechnung 440002952248",
+    "document_type": "Mahnung",
+    "gross_amount_cents": 1705,
+    "net_amount_cents": 1205,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_UNKNOWN",
+    "country_code": "DE",
+    "notes": [
+      "Kundenummer: 11006232329",
+      "Bestellnummer: 4200006262596",
+      "Zahlungsziel: 11.04.2023"
+    ]
+  }
+}
+```

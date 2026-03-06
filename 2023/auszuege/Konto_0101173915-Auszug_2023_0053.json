@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "53/2023",
   "rows": [
@@ -11,11 +12,10 @@
     },
     {
       "datum": "21.04.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung IP Robin Reiter Reisekostenabrechnung Hackaday Berlin 24.03-26.03.2023 DATUM 21.04.2023, 12.28 UHR BIC/IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "typ": "Überweisung",
+      "buchungstext": "IP Robin Reiter Reisekostenabrechnung Hackaday Berl in 24.03-26.03.2023 DATUM 21.04.2023, 12.28 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "504,30",
-      "haben_eur": null,
-      "saldo_eur": "16.680,32"
+      "haben_eur": null
     },
     {
       "datum": "21.04.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

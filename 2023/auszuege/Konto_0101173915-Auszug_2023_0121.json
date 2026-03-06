@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "121/2023",
   "rows": [
@@ -12,10 +13,9 @@
     {
       "datum": "15.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029377643559 PP.9577.PP . Shopify International Limited, Ihr Einkauf bei Shopify International Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029377643559 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029377643559 PP.9577.PP. Shopify International Limited, Ihr Einkauf bei Shopify International Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029377643559 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "36,00",
-      "haben_eur": null,
-      "saldo_eur": "3.832,12"
+      "haben_eur": null
     },
     {
       "datum": "15.09.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

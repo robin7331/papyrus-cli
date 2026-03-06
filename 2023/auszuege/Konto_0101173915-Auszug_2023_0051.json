@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "51/2023",
   "rows": [
     {
-      "datum": "17.04.2023",
+      "datum": "13.04.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 13.04.2023, Auszug Nr. 50",
       "soll_eur": null,
@@ -12,26 +13,23 @@
     {
       "datum": "17.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31338280000691/03.04.2023 Zahlbeleg 304336709437; BIC/IBAN: DRESDEFF370 DE75 3708 0040 0232 1130 01",
+      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31338280000691/03.04.2023 Zahlbeleg 304336709437 BIC / IBAN: DRESDEFF370 DE75 3708 0040 0232 1130 01",
       "soll_eur": "94,80",
-      "haben_eur": null,
-      "saldo_eur": "8.548,12"
+      "haben_eur": null
     },
     {
       "datum": "17.04.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online ETRIS BANK 440002969648 DATUM 17.04.2023, 08.45 UHR; BIC/IBAN: ETRIDE31XXX DE40 3003 0600 8201 8003 08",
+      "typ": "Überweisung online",
+      "buchungstext": "ETRIS BANK 440002969648 DATUM 17.04.2023, 08.45 UHR BIC / IBAN: ETRIDE31XXX DE40 3003 0600 8201 8003 08",
       "soll_eur": "10,19",
-      "haben_eur": null,
-      "saldo_eur": "8.537,93"
+      "haben_eur": null
     },
     {
       "datum": "17.04.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "VALENTIN FISCHER 2023-02-0002 / 1013; BIC/IBAN: SOLADES1RVB DE53 6505 0110 0000 9201 42",
+      "buchungstext": "VALENTIN FISCHER 2023-02-0002 / 1013 BIC / IBAN: SOLADES1RVB DE53 6505 0110 0000 9201 42",
       "soll_eur": null,
-      "haben_eur": "8.723,81",
-      "saldo_eur": "17.261,74"
+      "haben_eur": "8.723,81"
     },
     {
       "datum": "17.04.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

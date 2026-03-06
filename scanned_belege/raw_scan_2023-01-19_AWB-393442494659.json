@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "raw_scan_2023-01-19_AWB-393442494659.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-19",
+    "issuer_name": "FedEx Express Deutschland GmbH",
+    "invoice_number": "3934 4249 4659",
+    "subject": "FedEx Quittung für Zollgebühren",
+    "summary_short": "Zollgebühren für Sendung",
+    "document_type": "Quittung",
+    "gross_amount_cents": 13853,
+    "net_amount_cents": 12068,
+    "vat_amount_cents": 285,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.95,
+    "ai_confidence": 0.95,
+    "ocr_text": "Quittung für Zollgebühren vom 19.01.2023\nGesamtbetrag: 138.53 EUR\nUSt: 19%\n",
+    "notes": [
+      "Zahlung in bar oder Scheck erforderlich.",
+      "Referenz auf zollrechtliche Bedingungen."
+    ]
+  }
+}
+```

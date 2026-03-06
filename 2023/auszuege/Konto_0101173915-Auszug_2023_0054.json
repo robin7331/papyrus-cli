@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "54/2023",
   "rows": [
     {
-      "datum": "24.04.2023",
+      "datum": "21.04.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 21.04.2023, Auszug Nr. 53",
       "soll_eur": null,
@@ -11,19 +12,17 @@
     },
     {
       "datum": "24.04.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung IP / Wert: 22.04.2023 Robin Reiter Privat DATUM 22.04.2023, 07.28 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "typ": "Überweisung",
+      "buchungstext": "IP / Wert: 22.04.2023; Robin Reiter Privat DATUM 22.04.2023, 07.28 UHR; BIC/IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "500,00",
-      "haben_eur": null,
-      "saldo_eur": "16.180,32"
+      "haben_eur": null
     },
     {
       "datum": "24.04.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online Valentin Fischer Storno-Rechnung 2023-02-0002-ST-1 DATUM 24.04.2023, 10.46 UHR BIC / IBAN: SOLADES1RVB DE53 6505 0110 0000 9201 42",
+      "typ": "Überweisung",
+      "buchungstext": "online; Valentin Fischer Storno-Rechnung 2023-02-0002-ST-1 DATUM 24.04.2023, 10.46 UHR; BIC/IBAN: SOLADES1RVB DE53 6505 0110 0000 9201 42",
       "soll_eur": "8.723,81",
-      "haben_eur": null,
-      "saldo_eur": "7.456,51"
+      "haben_eur": null
     },
     {
       "datum": "24.04.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

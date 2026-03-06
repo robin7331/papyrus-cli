@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "48/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "EXCELLENT MOBILE TECHNOLOGIES GMBH Rnr. 2023-02-0001, Knr. 1001 CCB.101.UE.69593 BIC / IBAN: COBADEFF DE04 6704 0031 0373 5511 00",
       "soll_eur": null,
-      "haben_eur": "2.499,00",
-      "saldo_eur": "9.150,49"
+      "haben_eur": "2.499,00"
     },
     {
       "datum": "11.04.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

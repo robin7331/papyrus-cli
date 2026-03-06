@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "111/2023",
   "rows": [
     {
-      "datum": "30.08.2023",
+      "datum": "29.08.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 29.08.2023, Auszug Nr. 110",
       "soll_eur": null,
@@ -12,18 +13,16 @@
     {
       "datum": "30.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029072790461 . Vimeo.com, Inc., Ihr Einkauf bei Vimeo.com, Inc. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029072790461 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A; Vimeo.com, Inc., Ih r Einkauf bei Vimeo.com, Inc.; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "86,10",
-      "haben_eur": null,
-      "saldo_eur": "3.483,16"
+      "haben_eur": null
     },
     {
       "datum": "30.08.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Dauerauftrag Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
+      "typ": "Dauerauftrag",
+      "buchungstext": "Johann Reiter Lohn; BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
       "soll_eur": "520,00",
-      "haben_eur": null,
-      "saldo_eur": "2.963,16"
+      "haben_eur": null
     },
     {
       "datum": "30.08.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

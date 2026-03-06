@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "109/2023",
   "rows": [
@@ -12,10 +13,9 @@
     {
       "datum": "28.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 303-2996296-8128369 AMZN Mktp DE 62LHD9DPE5M5KMAT BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 303-2996296-8128369 AMZN Mktp DE 62 LHD9DPE5M5KMAT 62LHD9DPE5M5KMAT BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "13,89",
-      "haben_eur": null,
-      "saldo_eur": "3.732,54"
+      "haben_eur": null
     },
     {
       "datum": "28.08.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

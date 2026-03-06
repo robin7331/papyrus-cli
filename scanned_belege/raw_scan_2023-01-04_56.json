@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "/path/to/raw_scan_2023-01-04_56.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-04",
+    "issuer_name": "Robins Tools",
+    "invoice_number": "56",
+    "subject": "Rechnung über Warenlieferung",
+    "summary_short": "Auftrag über SMD Magazine Mega Pack",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 4944,
+    "net_amount_cents": 4150,
+    "vat_amount_cents": 824,
+    "vat_rate_bps": 2000,
+    "vat_treatment": "VAT_20",
+    "country_code": "DE",
+    "ocr_confidence": null,
+    "ai_confidence": null,
+    "ocr_text": "Rechnung 56 vom 04.01.2023\n48 x SMD Magazines Mega Pack 36,00 EUR\nUPS 13,44 EUR\nGesamtsumme 49,44 EUR",
+    "notes": [
+      "Versand an: Alexandre THOMAZO",
+      "Zahlungsmethode: Credit or debit card"
+    ]
+  }
+}
+```

@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "165/2023",
   "rows": [
     {
-      "datum": "14.12.2023",
+      "datum": "13.12.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 13.12.2023, Auszug Nr. 164",
       "soll_eur": null,
@@ -14,16 +15,14 @@
       "typ": "Lastschrift",
       "buchungstext": "Tesla Germany GmbH by Adyen Adyen N.V. Tesla Germany GmbH SBS7ZXGGV7N0KZHX 0 20231212 CDJSNKWLTD7XLH662C BIC / IBAN: DEUTDEFF DE50 1207 0070 0020 0011 62",
       "soll_eur": "9,99",
-      "haben_eur": null,
-      "saldo_eur": "1.380,36"
+      "haben_eur": null
     },
     {
       "datum": "14.12.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-HXGKLZCB35QVNXL548X79R2RHON BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
       "soll_eur": null,
-      "haben_eur": "561,13",
-      "saldo_eur": "1.941,49"
+      "haben_eur": "561,13"
     },
     {
       "datum": "14.12.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

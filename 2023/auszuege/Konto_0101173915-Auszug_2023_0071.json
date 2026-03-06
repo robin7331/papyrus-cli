@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "71/2023",
   "rows": [
     {
-      "datum": "12.06.2023",
+      "datum": "09.06.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 09.06.2023, Auszug Nr. 70",
       "soll_eur": null,
@@ -11,11 +12,10 @@
     },
     {
       "datum": "12.06.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung IP / Wert: 10.06.2023 Robin Reiter Privat DATUM 10.06.2023, 19.07 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "typ": "Überweisung",
+      "buchungstext": "IP / Wert: 10.06.2023 Robin Reiter Privat DATUM 10.06.2023, 19.07 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "500,00",
-      "haben_eur": null,
-      "saldo_eur": "9.669,78"
+      "haben_eur": null
     },
     {
       "datum": "12.06.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

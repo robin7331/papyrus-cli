@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "10/2023",
   "rows": [
@@ -12,18 +13,16 @@
     {
       "datum": "23.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A; 1024785230379 PP.9577.PP. DER Fuchs GmbH, Ihr Einkauf bei DER Fuchs GmbH; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111; 1024785230379; BIC/IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024785230379 PP.9577.PP . DER Fuchs GmbH, Ihr Einkauf bei DER Fuchs GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1024785230379 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "25,20",
-      "haben_eur": null,
-      "saldo_eur": "31.174,66"
+      "haben_eur": null
     },
     {
       "datum": "23.01.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online; Leonhardt & Spöri Rechnungs Nr 708 DATUM 23.01.2023, 14.08 UHR; BIC/IBAN: SOLADES1RVB DE51 6505 0110 0000 2397 23",
+      "typ": "Überweisung online",
+      "buchungstext": "Leonhardt & Spöri Rechnungs Nr 708 DATUM 23.01.2023, 14.08 UHR BIC / IBAN: SOLADES1RVB DE51 6505 0110 0000 2397 23",
       "soll_eur": "63,55",
-      "haben_eur": null,
-      "saldo_eur": "31.111,11"
+      "haben_eur": null
     },
     {
       "datum": "23.01.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

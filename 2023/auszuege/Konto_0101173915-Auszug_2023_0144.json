@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "144/2023",
   "rows": [
@@ -12,58 +13,51 @@
     {
       "datum": "02.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Abrechnung 31.10.2023 / Wert: 30.10.2023, siehe Anlage Nr. 1",
+      "buchungstext": "Abrechnung 31.10.2023 / Wert: 30.10.2023 siehe Anlage Nr. 1",
       "soll_eur": "18,80",
-      "haben_eur": null,
-      "saldo_eur": "1.631,67"
+      "haben_eur": null
     },
     {
       "datum": "02.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 PDKHRRDDXNL4Z2C32P",
       "soll_eur": "49,34",
-      "haben_eur": null,
-      "saldo_eur": "1.582,33"
+      "haben_eur": null
     },
     {
       "datum": "02.11.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE SHOPIFY SHOPIFY-0DE3DEZ6AGX6BQOKUTUZYUKNNWY",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": null,
-      "haben_eur": "621,30",
-      "saldo_eur": "2.203,63"
+      "haben_eur": "621,30"
     },
     {
       "datum": "02.11.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online Bft Station Klaus Sohler Beleg Nr. 4654",
+      "typ": "Überweisung online",
+      "buchungstext": "Bft Station Klaus Sohler Beleg Nr. 4654 DATUM 02.11.2023, 08.02 UHR",
       "soll_eur": "104,97",
-      "haben_eur": null,
-      "saldo_eur": "2.098,66"
+      "haben_eur": null
     },
     {
       "datum": "02.11.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online DHL Express Germany GmbH Rechn. Nr: ZIT5305656",
+      "typ": "Überweisung online",
+      "buchungstext": "DHL Express Germany GmbH Rechn. Nr: ZIT5305656 DATUM 02.11.2023, 08.06 UHR",
       "soll_eur": "158,60",
-      "haben_eur": null,
-      "saldo_eur": "1.940,06"
+      "haben_eur": null
     },
     {
       "datum": "02.11.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online United Parcel Service Rechnung 321889849",
+      "typ": "Überweisung online",
+      "buchungstext": "United Parcel Service Rechnung 321889849 DATUM 02.11.2023, 08.45 UHR",
       "soll_eur": "154,21",
-      "haben_eur": null,
-      "saldo_eur": "1.785,85"
+      "haben_eur": null
     },
     {
       "datum": "02.11.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE SHOPIFY SHOPIFY-ZA4GTU2FYDVYGI3A4Y34WOFGXGD",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
       "soll_eur": null,
-      "haben_eur": "864,85",
-      "saldo_eur": "2.650,70"
+      "haben_eur": "864,85"
     },
     {
       "datum": "02.11.2023",
@@ -75,3 +69,4 @@
     }
   ]
 }
+```

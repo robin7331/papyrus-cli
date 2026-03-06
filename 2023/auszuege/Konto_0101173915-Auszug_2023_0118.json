@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "118/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029276032331 PP.9577.PP . Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029276032331 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "12,99",
-      "haben_eur": null,
-      "saldo_eur": "4.000,22"
+      "haben_eur": null
     },
     {
       "datum": "11.09.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

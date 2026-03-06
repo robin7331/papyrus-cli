@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "135/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Lastschrift",
       "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001948877 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
       "soll_eur": "76,17",
-      "haben_eur": null,
-      "saldo_eur": "3.867,54"
+      "haben_eur": null
     },
     {
       "datum": "13.10.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

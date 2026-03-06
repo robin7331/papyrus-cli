@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "raw_scan_unknown_date_unknown_number.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-02-13",
+    "issuer_name": "P-Form, Thomas Pfeffer",
+    "invoice_number": "3901",
+    "subject": "SMD-Magazine Rechnung",
+    "summary_short": "Rechnung für SMD-Magazine",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 533120,
+    "net_amount_cents": 448000,
+    "vat_amount_cents": 85120,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Kundennummer: 765",
+      "Vorgangsnummer: 4361",
+      "Rechnungsdatum entspricht Lieferdatum"
+    ]
+  }
+}
+```

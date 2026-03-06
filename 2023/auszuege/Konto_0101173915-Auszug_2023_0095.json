@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "95/2023",
   "rows": [
     {
-      "datum": "04.08.2023",
+      "datum": "03.08.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 03.08.2023, Auszug Nr. 94",
       "soll_eur": null,
@@ -12,26 +13,23 @@
     {
       "datum": "04.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028556742164 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028556742164 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028556742164 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028556742164 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "29,07",
-      "haben_eur": null,
-      "saldo_eur": "665,42"
+      "haben_eur": null
     },
     {
       "datum": "04.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028553460616 PP.9577.PP . RAJAPACK GmbH, Ihr Einkauf bei RAJAPACK GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028553460616 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028553460616 PP.9577.PP . RAJAPACK GmbH, Ihr Einkauf bei RAJAPACK Gmb H AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028553460616 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "83,90",
-      "haben_eur": null,
-      "saldo_eur": "581,52"
+      "haben_eur": null
     },
     {
       "datum": "04.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 303-2638165-9821902 Amazon.de 782OPT8P44MY8CNC 782OPT8P44MY8CNC BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG D EUTSCHLAND 303-2638165-9821902 Amazon.de 782OP T8P44MY8CNC 782OPT8P44MY8CNC BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
       "soll_eur": "76,80",
-      "haben_eur": null,
-      "saldo_eur": "504,72"
+      "haben_eur": null
     },
     {
       "datum": "04.08.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

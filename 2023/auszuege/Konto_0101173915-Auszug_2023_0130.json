@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "130/2023",
   "rows": [
     {
-      "datum": "02.10.2023",
+      "datum": "28.09.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 28.09.2023, Auszug Nr. 129",
       "soll_eur": null,
@@ -14,32 +15,28 @@
       "typ": "Lastschrift",
       "buchungstext": "Abrechnung 29.09.2023 / Wert: 29.09.2023 siehe Anlage Nr. 1",
       "soll_eur": "21,30",
-      "haben_eur": null,
-      "saldo_eur": "2.817,94"
+      "haben_eur": null
     },
     {
       "datum": "02.10.2023",
       "typ": "Lastschrift",
       "buchungstext": "Dauerauftrag Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
       "soll_eur": "520,00",
-      "haben_eur": null,
-      "saldo_eur": "2.297,94"
+      "haben_eur": null
     },
     {
       "datum": "02.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1029718293866 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN",
       "soll_eur": null,
-      "haben_eur": "77,11",
-      "saldo_eur": "2.375,05"
+      "haben_eur": "77,11"
     },
     {
       "datum": "02.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-WNF2HIXBEYUJ37YEDPJEPBKJXVA BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN",
       "soll_eur": null,
-      "haben_eur": "121,92",
-      "saldo_eur": "2.496,97"
+      "haben_eur": "121,92"
     },
     {
       "datum": "02.10.2023",
@@ -51,3 +48,4 @@
     }
   ]
 }
+```

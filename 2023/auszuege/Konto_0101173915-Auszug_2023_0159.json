@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "159/2023",
   "rows": [
@@ -11,27 +12,24 @@
     },
     {
       "datum": "01.12.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Abrechnung 30.11.2023 / Wert: 30.11.2023, siehe Anlage Nr. 1",
+      "typ": "Abrechnung",
+      "buchungstext": "Abrechnung 30.11.2023 / Wert: 30.11.2023 siehe Anlage Nr. 1",
       "soll_eur": "21,90",
-      "haben_eur": null,
-      "saldo_eur": "1.923,03"
+      "haben_eur": null
     },
     {
       "datum": "01.12.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 304-8739420-1958733 AMZN Mktp DE 1A7J9AK5O718L6T6",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 304-8739420-1958733 AMZN Mktp DE 1A 7J9AK5O718L6T6 1A7J9AK5O718L6T6 BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "9,99",
-      "haben_eur": null,
-      "saldo_eur": "1.913,04"
+      "haben_eur": null
     },
     {
       "datum": "01.12.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 028-9153969-5702730 Amazon.de 3X50BUTL2421YHJG",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG D EUTSCHLAND 028-9153969-5702730 Amazon.de 3X50B UTL2421YHJG 3X50BUTL2421YHJG BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
       "soll_eur": "47,25",
-      "haben_eur": null,
-      "saldo_eur": "1.865,79"
+      "haben_eur": null
     },
     {
       "datum": "01.12.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

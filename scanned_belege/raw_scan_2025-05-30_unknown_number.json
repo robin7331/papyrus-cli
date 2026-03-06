@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "/path/to/raw_scan_2025-05-30_unknown_number.pdf",
+  "year": 2025,
+  "extracted": {
+    "document_date": "2023-04-20",
+    "issuer_name": "Leonhardt & Spöri",
+    "invoice_number": "3975",
+    "subject": "Rechnung für Steuerberatungsleistungen",
+    "summary_short": "Steuerberatungsleistungen für Q1 2023",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 6600,
+    "net_amount_cents": 5500,
+    "vat_amount_cents": 1100,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Leistungszeitraum: I. Quartal 2023",
+      "Zahlungsmethode: SEPA-Lastschrift"
+    ]
+  }
+}
+```

@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "122/2023",
   "rows": [
@@ -12,10 +13,9 @@
     {
       "datum": "18.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31889730000691/06.09.2023 RG 31889730000691/06.09.2023 Zahlbeleg 371657540098 BIC/IBAN: HYVEDEMM DE68 7002 0270 0667 3022 69",
+      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31889730000691/06.09.2023 RG 31889730000691/06.09.2023 Zahlbeleg 371657540098 BIC / IBAN: HYVEDEMM DE68 7002 0270 0667 3022 69",
       "soll_eur": "98,43",
-      "haben_eur": null,
-      "saldo_eur": "3.733,69"
+      "haben_eur": null
     },
     {
       "datum": "18.09.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

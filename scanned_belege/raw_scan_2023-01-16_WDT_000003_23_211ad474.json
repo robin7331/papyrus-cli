@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/path/to/raw_scan_2023-01-16_WDT_000003_23_211ad474.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-02-07",
+    "issuer_name": "United Parcel Service Deutschland S.a.r.l. & Co. OHG",
+    "invoice_number": "BDE025V701",
+    "subject": "Rechnung für Versandkosten",
+    "summary_short": "Rechnung für Importversand",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 10101,
+    "net_amount_cents": 8900,
+    "vat_amount_cents": 1201,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Versanddatum: 10. Februar 2023",
+      "Bereits gezahlt über PayPal",
+      "Kundennummer: 513013422"
+    ]
+  }
+}
+```

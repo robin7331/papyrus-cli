@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "23/2023",
   "rows": [
@@ -12,34 +13,30 @@
     {
       "datum": "14.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025247811478 . Digi-Key Corporation, Ihr Einkauf bei Digi-Key Corporation 1025247811478 PAYPAL",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025247811478. Digi-Key Corporation, Ihr Einkauf bei Digi-Key Corporation 1025247811478 PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "490,10",
-      "haben_eur": null,
-      "saldo_eur": "20.837,29"
+      "haben_eur": null
     },
     {
       "datum": "14.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025234287264 PP.9577.PP ..., Ihr Einkauf bei ... 1025234287264",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025234287264 PP.9577.PP, Ihr Einkauf bei ............ . AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025234287264 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "735,87",
-      "haben_eur": null,
-      "saldo_eur": "20.101,42"
+      "haben_eur": null
     },
     {
       "datum": "14.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025234306187 PP.9577.PP . Kab24 GmbH, Ihr Einkauf bei Kab24 GmbH 1025234306187 PP.9577.PP PAYPAL",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025234306187 PP.9577.PP, Kab24 GmbH, Ihr Einkauf bei Kab24 GmbH 1025234306187 PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "89,90",
-      "haben_eur": null,
-      "saldo_eur": "20.011,52"
+      "haben_eur": null
     },
     {
       "datum": "14.02.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online P-Form Thomas Pfeffer Rechnungs Nr 3901 DATUM 14.02.2023, 09.24 UHR",
+      "typ": "Überweisung online",
+      "buchungstext": "P-Form Thomas Pfeffer Rechnungs Nr 3901 DATUM 14.02.2023, 09.24 UHR BIC / IBAN: GENODES1TET DE66 6519 1500 0072 6940 09",
       "soll_eur": "5.331,20",
-      "haben_eur": null,
-      "saldo_eur": "14.680,32"
+      "haben_eur": null
     },
     {
       "datum": "14.02.2023",
@@ -51,3 +48,4 @@
     }
   ]
 }
+```

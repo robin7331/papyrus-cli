@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "65/2023",
   "rows": [
@@ -12,26 +13,23 @@
     {
       "datum": "26.05.2023",
       "typ": "Lastschrift",
-      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer: HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001862680 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
+      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001862680 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
       "soll_eur": "32,34",
-      "haben_eur": null,
-      "saldo_eur": "3.161,87"
+      "haben_eur": null
     },
     {
       "datum": "26.05.2023",
       "typ": "Lastschrift",
       "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 9505766302 OB-96957618 EUR 163,28. BEITRAG 0523 - 0523 9505766302 OB-96957618 BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
       "soll_eur": "163,28",
-      "haben_eur": null,
-      "saldo_eur": "2.998,59"
+      "haben_eur": null
     },
     {
       "datum": "26.05.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "VNM FISCHER GBR 2023-02-0002 / 1013 BIC / IBAN: SOLADES1RVB DE65 6505 0110 0112 1424 54",
       "soll_eur": null,
-      "haben_eur": "7.043,54",
-      "saldo_eur": "10.042,13"
+      "haben_eur": "7.043,54"
     },
     {
       "datum": "26.05.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

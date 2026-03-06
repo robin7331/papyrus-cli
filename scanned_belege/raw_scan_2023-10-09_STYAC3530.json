@@ -1,0 +1,26 @@
+```json
+{
+  "source_pdf": "raw_scan_2023-10-09_STYAC3530.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-09",
+    "issuer_name": "Soular GmbH & Co. KG",
+    "invoice_number": "740425599",
+    "subject": "Rechnung 740425599",
+    "summary_short": "Rechnung für Bestellung vom 07.01.2023",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 7999,
+    "net_amount_cents": 6722,
+    "vat_amount_cents": 1277,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Zahlungsart: bezahlt über Amazon",
+      "Lieferung: Frei Haus",
+      "Versandart: Standardpaket",
+      "Lieferzeitpunkt gem. § 31(4) UStDV: Januar 2023"
+    ]
+  }
+}
+```

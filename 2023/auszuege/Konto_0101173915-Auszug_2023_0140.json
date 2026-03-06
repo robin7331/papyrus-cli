@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "140/2023",
   "rows": [
@@ -12,10 +13,9 @@
     {
       "datum": "24.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "Bauhaus-Universitaet Weimar RE-01-52 1001 RE-01-52 BIC / IBAN: HELADEFF820 DE39 8205 0000 3004 4442 73",
+      "buchungstext": "Bauhaus-Universitaet Weimar RE-01-52 1001 RE-01-52; BIC / IBAN: HELADEFF820 DE39 8205 0000 3004 4442 73",
       "soll_eur": null,
-      "haben_eur": "159,79",
-      "saldo_eur": "2.333,73"
+      "haben_eur": "159,79"
     },
     {
       "datum": "24.10.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

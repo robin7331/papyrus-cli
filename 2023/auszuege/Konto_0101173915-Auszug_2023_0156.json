@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "156/2023",
   "rows": [
     {
-      "datum": "28.11.2023",
+      "datum": "27.11.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 27.11.2023, Auszug Nr. 155",
       "soll_eur": null,
@@ -12,34 +13,30 @@
     {
       "datum": "28.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 304-6721399-1707515 AMZN Mktp DE 3UDR9B59S747PPY2 3UDR9B59S747PPY2 BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 304-6721399-1707515 AMZN Mktp DE 3UDR9B59S747PPY2 BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "9,99",
-      "haben_eur": null,
-      "saldo_eur": "4.245,90"
+      "haben_eur": null
     },
     {
       "datum": "28.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 8506330979 OB-96957618 EUR 163,28 BEITRAG 1123 - 1123 8506330979 OB-96957618 BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
+      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 8506330979 OB-96957618 EUR 163,28. BEITRAG 1123 - 1123 8506330979 OB-96957618 BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
       "soll_eur": "163,28",
-      "haben_eur": null,
-      "saldo_eur": "4.082,62"
+      "haben_eur": null
     },
     {
       "datum": "28.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 304-1253340-4036302 Amazon.de 36RIF4PE6KS6UUJL 36RIF4PE6KS6UUJL BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND 304-1253340-4036302 Amazon.de 36RIF 4PE6KS6UUJL BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
       "soll_eur": "47,90",
-      "haben_eur": null,
-      "saldo_eur": "4.034,72"
+      "haben_eur": null
     },
     {
       "datum": "28.11.2023",
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1030833525219/PP.9577.PP/. Bambulab GmbH, Ihr Einkauf bei Bambulab GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1030833525219 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "637,58",
-      "haben_eur": null,
-      "saldo_eur": "3.397,14"
+      "haben_eur": null
     },
     {
       "datum": "28.11.2023",
@@ -51,3 +48,4 @@
     }
   ]
 }
+```

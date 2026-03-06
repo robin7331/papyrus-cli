@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "169/2023",
   "rows": [
@@ -14,16 +15,14 @@
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "'Loy Tec' electronics GmbH RE-01-82 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 0003670002225 BIC / IBAN: BKAUATWW AT89 1100 0086 4525 0500",
       "soll_eur": null,
-      "haben_eur": "559,65",
-      "saldo_eur": "1.939,48"
+      "haben_eur": "559,65"
     },
     {
       "datum": "21.12.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "ELEKTOR INT MEDIA BV RE-01-80 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 ID23001480 BIC / IBAN: ABNANL2A NL61 ABNA 0578 3418 83",
       "soll_eur": null,
-      "haben_eur": "2.021,00",
-      "saldo_eur": "3.960,48"
+      "haben_eur": "2.021,00"
     },
     {
       "datum": "21.12.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

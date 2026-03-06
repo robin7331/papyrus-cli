@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "44/2023",
   "rows": [
     {
-      "datum": "03.04.2023",
+      "datum": "31.03.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 31.03.2023, Auszug Nr. 43",
       "soll_eur": null,
@@ -14,32 +15,28 @@
       "typ": "Lastschrift",
       "buchungstext": "Abrechnung 31.03.2023 / Wert: 30.03.2023 siehe Anlage Nr. 1",
       "soll_eur": "18,50",
-      "haben_eur": null,
-      "saldo_eur": "6.979,38"
+      "haben_eur": null
     },
     {
       "datum": "03.04.2023",
       "typ": "Lastschrift",
       "buchungstext": "Überweisung online Beta LAYOUT GmbH RE-202303/07109 DATUM 01.04.2023, 09.01 UHR BIC / IBAN: NASSDE55XXX DE21 5105 0015 0119 0215 10",
       "soll_eur": "61,04",
-      "haben_eur": null,
-      "saldo_eur": "6.918,34"
+      "haben_eur": null
     },
     {
       "datum": "03.04.2023",
       "typ": "Lastschrift",
       "buchungstext": "Überweisung online rose plastic AG Rechnung 910295391 DATUM 01.04.2023, 09.02 UHR BIC / IBAN: BYLADEM1MLM DE38 7315 0000 0000 1308 31",
       "soll_eur": "99,01",
-      "haben_eur": null,
-      "saldo_eur": "6.819,33"
+      "haben_eur": null
     },
     {
       "datum": "03.04.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. PP.9577.PP ABBUCHUNG VOM PAYPAL-KON TO YYW1026150169529 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO YYW1026150169529 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": null,
-      "haben_eur": "669,31",
-      "saldo_eur": "7.488,64"
+      "haben_eur": "669,31"
     },
     {
       "datum": "03.04.2023",
@@ -51,3 +48,4 @@
     }
   ]
 }
+```

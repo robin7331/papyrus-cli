@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "Scanned Document 13.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-07-20",
+    "issuer_name": "Leonhardt & Spöri",
+    "invoice_number": "6918",
+    "subject": "Rechnung für SBV Leistungen II. Quartal 2023",
+    "summary_short": "Steuerberatung II. Quartal 2023",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 6680,
+    "net_amount_cents": 5600,
+    "vat_amount_cents": 1080,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Leistungszeitraum: II. Quartal 2023",
+      "Rechnungsnummer: 6918"
+    ]
+  }
+}
+```

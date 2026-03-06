@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/2023-11-08_UPS_Invoice.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-11-08",
+    "issuer_name": "United Parcel Service Deutschland S.à r.l. & Co. OHG",
+    "invoice_number": "833403346",
+    "subject": "Rechnung C51R39 für Robins Tools-BITMECHANICS GmbH",
+    "summary_short": "Versandrechnung für Robins Tools-BITMECHANICS GmbH",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 10018,
+    "net_amount_cents": 10018,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_UNKNOWN",
+    "country_code": "DE",
+    "ocr_confidence": 0.92,
+    "ai_confidence": 0.95,
+    "ocr_text": "Rechnung C51R39\nRechnungsdatum 08. November 2023\nFälliger Gesamtbetrag EUR 100,18",
+    "notes": [
+      "Kundenummer: C51R39",
+      "Zahlungsmethode: gemäß Rechnung"
+    ]
+  }
+}
+```

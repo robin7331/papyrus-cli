@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "76/2023",
   "rows": [
@@ -12,10 +13,9 @@
     {
       "datum": "27.06.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1027779869234 PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc.",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1027779869234; PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc.; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1027779869234 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "9,52",
-      "haben_eur": null,
-      "saldo_eur": "5.665,22"
+      "haben_eur": null
     },
     {
       "datum": "27.06.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "115/2023",
   "rows": [
@@ -14,16 +15,14 @@
       "typ": "Lastschrift",
       "buchungstext": "Billbee GmbH Billbee Rechnung 560723 560723 BIC / IBAN: HYVEDEMM300 DE52 2003 0000 0020 3522 11",
       "soll_eur": "6,02",
-      "haben_eur": null,
-      "saldo_eur": "4.108,74"
+      "haben_eur": null
     },
     {
       "datum": "06.09.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "STRIPE STRIPE AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 STRIPE-OEVSWVTOT7BFIGP32W9XKHAHMLCO BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
       "soll_eur": null,
-      "haben_eur": "550,16",
-      "saldo_eur": "4.658,90"
+      "haben_eur": "550,16"
     },
     {
       "datum": "06.09.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

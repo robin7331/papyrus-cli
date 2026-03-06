@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "75/2023",
   "rows": [
@@ -11,11 +12,10 @@
     },
     {
       "datum": "23.06.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online Bundesamt für Justiz Kassenzeichen 855647603255 DATUM 23.06.2023, 09.11 UHR BIC / IBAN: MARKDEF1590 DE81 5900 0000 0059 0010 20",
+      "typ": "Überweisung online",
+      "buchungstext": "Bundesamt für Justiz Kassenzeichen 855647603255; DATUM 23.06.2023, 09.11 UHR; BIC / IBAN: MARKDEF1590 DE81 5900 0000 0059 0010 20",
       "soll_eur": "103,50",
-      "haben_eur": null,
-      "saldo_eur": "5.674,74"
+      "haben_eur": null
     },
     {
       "datum": "23.06.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

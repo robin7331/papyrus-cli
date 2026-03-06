@@ -1,0 +1,28 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/raw_scan_2024-11-05_12422591.pdf",
+  "year": 2024,
+  "extracted": {
+    "document_date": "2024-11-05",
+    "issuer_name": "Kab24 GmbH",
+    "invoice_number": "12422591",
+    "subject": "Rechnung Kab24, BitMechanics GmbH",
+    "summary_short": "Rechnung für Telefonkabel und Zubehör",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 7398,
+    "net_amount_cents": 6217,
+    "vat_amount_cents": 1181,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.90,
+    "ai_confidence": 0.92,
+    "ocr_text": "Rechnung\nRechnungsnummer: 12422591\nRechnungsdatum: 05.11.2024\nGesamtbetrag: 73,98 EUR\nNettobetrag: 62,17 EUR\nUSt: 19% 11,81 EUR",
+    "notes": [
+      "Kundennummer: 499855",
+      "Zahlungsbedingungen: PayPal",
+      "Gesamtgewicht: 2.66 Kg"
+    ]
+  }
+}
+```

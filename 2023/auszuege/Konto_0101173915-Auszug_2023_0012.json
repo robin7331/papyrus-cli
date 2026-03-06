@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "12/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Lastschrift",
       "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 4173511765 OB-96957618 EUR 163,28. BEITRAG 0123 - 0123 4173511765 OB-96957618 BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
       "soll_eur": "163,28",
-      "haben_eur": null,
-      "saldo_eur": "30.808,83"
+      "haben_eur": null
     },
     {
       "datum": "27.01.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

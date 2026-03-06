@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "132/2023",
   "rows": [
@@ -14,16 +15,14 @@
       "typ": "Lastschrift",
       "buchungstext": "Billbee GmbH Billbee Rechnung 576993 576993 BIC / IBAN: HYVEDEMM300 DE52 2003 0000 0020 3522 11",
       "soll_eur": "2,17",
-      "haben_eur": null,
-      "saldo_eur": "2.862,16"
+      "haben_eur": null
     },
     {
       "datum": "06.10.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "DEKIMO LEUVEN NV INVOICE RE-01-56 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 202310061109246577ISABEL BIC / IBAN: KREDBEBB BE40 4312 6747 7163",
       "soll_eur": null,
-      "haben_eur": "1.354,67",
-      "saldo_eur": "4.216,83"
+      "haben_eur": "1.354,67"
     },
     {
       "datum": "06.10.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

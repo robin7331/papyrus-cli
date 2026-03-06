@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "89/2023",
   "rows": [
     {
-      "datum": "25.07.2023",
+      "datum": "21.07.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 21.07.2023, Auszug Nr. 88",
       "soll_eur": null,
@@ -12,18 +13,16 @@
     {
       "datum": "25.07.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028346933497 PP.9577.PP . JetBrains s.r.o., Ihr Einkauf bei JetBrains s.r.o. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028346933497 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028346933497 PP.9577.PP . JetBrain s s.r.o., Ihr Einkauf bei JetBrains s.r.o. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028346933497 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "70,21",
-      "haben_eur": null,
-      "saldo_eur": "5.009,76"
+      "haben_eur": null
     },
     {
       "datum": "25.07.2023",
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028359890545 PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028359890545 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "9,38",
-      "haben_eur": null,
-      "saldo_eur": "5.000,38"
+      "haben_eur": null
     },
     {
       "datum": "25.07.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "17/2023",
   "rows": [
@@ -12,26 +13,23 @@
     {
       "datum": "06.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025062809439 PP.9577.PP . Printgroup GmbH + Co. KG, Ihr Einkauf bei Printgroup GmbH + Co. KG 1025062809439 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025062809439 PP.9577.PP Printgroup GmbH + Co. KG, Ihr Einkauf bei Printgroup GmbH + Co. KG 1025062809439 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "20,00",
-      "haben_eur": null,
-      "saldo_eur": "22.190,86"
+      "haben_eur": null
     },
     {
       "datum": "06.02.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-3574587-9301129 AMZ Donghongmy 1U4NQP2MHABQP9LY 1U4NQP2MHABQP9LY BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": null,
-      "haben_eur": "138,99",
-      "saldo_eur": "22.329,85"
+      "haben_eur": "138,99"
     },
     {
       "datum": "06.02.2023",
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-3999210-3417931 AMZ Amazon.de 9 UHUPKBCB1RUS47W 9UHUPKBCB1RUS47W BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": null,
-      "haben_eur": "38,53",
-      "saldo_eur": "22.368,38"
+      "haben_eur": "38,53"
     },
     {
       "datum": "06.02.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

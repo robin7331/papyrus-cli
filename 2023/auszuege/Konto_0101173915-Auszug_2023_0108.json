@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "108/2023",
   "rows": [
     {
-      "datum": "25.08.2023",
+      "datum": "24.08.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 24.08.2023, Auszug Nr. 107",
       "soll_eur": null,
@@ -13,9 +14,8 @@
       "datum": "25.08.2023",
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1028965853700 PP.9577.PP . GitHub, Inc., Ihr Einkauf bei GitHub, Inc. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1028965853700 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
-      "soll_eur": "9,62",
-      "haben_eur": null,
-      "saldo_eur": "3.746,43"
+      "soll_eur": "-9,62",
+      "haben_eur": null
     },
     {
       "datum": "25.08.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

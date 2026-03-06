@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/path/to/Scanned Document 10.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-05-05",
+    "issuer_name": "Bft Station Klaus Sohler",
+    "invoice_number": "4314",
+    "subject": "Rechnung 4314",
+    "summary_short": "Rechnung für Montage und Räder",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 9996,
+    "net_amount_cents": 8400,
+    "vat_amount_cents": 1596,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Kundennummer: 0",
+      "Zahlung bitte Kunden- und Belegnummer angeben.",
+      "Leistungsdatum: 05.05.2023"
+    ]
+  }
+}
+```

@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "58/2023",
   "rows": [
@@ -12,18 +13,16 @@
     {
       "datum": "03.05.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Verband zur Rücknahme und Verwertung von Elektro- und Elektronik-Altgeräten VERE e.V. VER20233458 v. 06.04.23",
+      "buchungstext": "Verband zur Rücknahme und Verwertung von Elektro- und Elektronik-Altge VERE e.V. VER20233458 v. 06.04.23 29,75 ./. 0027850000ZV001069Z BIC / IBAN: NOLADE21HOL DE77 2135 2240 0134 9837 74",
       "soll_eur": "29,75",
-      "haben_eur": null,
-      "saldo_eur": "3.652,67"
+      "haben_eur": null
     },
     {
       "datum": "03.05.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S.C.A. 1026739994354 PP.9577.PP DigitalOcean, Ihr Einkauf bei DigitalOcean",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026739994354 PP.9577.PP. DigitalOcean, Ihr Einkauf bei DigitalOcean 1026739994354 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "19,96",
-      "haben_eur": null,
-      "saldo_eur": "3.632,71"
+      "haben_eur": null
     },
     {
       "datum": "03.05.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

@@ -1,0 +1,28 @@
+```json
+{
+  "source_pdf": "raw_scan_2025-02-28_unknown_number.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-03-23",
+    "issuer_name": "Beta LAYOUT GmbH",
+    "invoice_number": "RE-202303/07109",
+    "subject": "Rechnung zu Lieferschein LI-202303/05920 vom 22.03.2023",
+    "summary_short": "Rechnung über verschiedene Artikel",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 6104,
+    "net_amount_cents": 5197,
+    "vat_amount_cents": 907,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": null,
+    "ai_confidence": null,
+    "ocr_text": "Rechnung zu Lieferschein LI-202303/05920 vom 22.03.2023\nNetto-Betrag 51,97 EUR\nUSt 19% 9,07 EUR\nGesamtbetrag brutto in EUR: 61,04 EUR",
+    "notes": [
+      "Kundennummer: 44849",
+      "Zahlbar innerhalb von 14 Tagen",
+      "Bei Geschäften mit Unternehmen gelten allgemeine Geschäfts- und Lieferbedingungen."
+    ]
+  }
+}
+```

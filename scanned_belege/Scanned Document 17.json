@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "/path/to/Scanned%20Document%2017.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-10-03",
+    "issuer_name": "United Parcel Service Deutschland S.à r.l. & Co. OHG",
+    "invoice_number": "321889849",
+    "subject": "Frachtbrief - Außhalb der EU",
+    "summary_short": "Rechnung für Fracht- und Transportdienste",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 15421,
+    "net_amount_cents": 15421,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_UNKNOWN",
+    "country_code": "DE",
+    "ocr_confidence": 0.92,
+    "ai_confidence": 0.95,
+    "ocr_text": "Rechnung\nRechnungsdatum 03. Oktober 2023\nRechnungsnr.: 321889849\nFälliger Gesamtbetrag EUR 154,21\nMwSt.-frei\n",
+    "notes": []
+  }
+}
+```

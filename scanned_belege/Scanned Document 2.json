@@ -1,0 +1,28 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%202.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-03-21",
+    "issuer_name": "rose plastic AG",
+    "invoice_number": "910295391",
+    "subject": "Rechnung 910295391",
+    "summary_short": "Rechnung über Warenlieferung",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 9901,
+    "net_amount_cents": 8312,
+    "vat_amount_cents": 1589,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.85,
+    "ai_confidence": 0.90,
+    "ocr_text": "Rechnung 910295391\nBelegdaten: 21.03.2023\nNettobetrag 83,20 EUR\nUSt 19% 15,81 EUR\nGesamtbetrag 99,01 EUR",
+    "notes": [
+      "Leistungsdatum: 21.03.2023",
+      "Kundennummer: 450474",
+      "Zahlungsbedingungen: 30 Tage netto"
+    ]
+  }
+}
+```

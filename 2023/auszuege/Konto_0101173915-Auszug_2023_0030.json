@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "30/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Lastschrift",
       "buchungstext": "Abrechnung 28.02.2023 / Wert: 28.02.2023 siehe Anlage Nr. 1",
       "soll_eur": "24,55",
-      "haben_eur": null,
-      "saldo_eur": "6.563,22"
+      "haben_eur": null
     },
     {
       "datum": "01.03.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

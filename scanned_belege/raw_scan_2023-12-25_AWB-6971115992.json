@@ -1,0 +1,28 @@
+```json
+{
+  "source_pdf": "/path/to/raw_scan_2023-12-25_AWB-6971115992.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-12-25",
+    "issuer_name": "JOYFUL ABILITY INTERNATIONAL LTD",
+    "invoice_number": "6971115992",
+    "subject": "Commercial Invoice for BitMechanics GmbH",
+    "summary_short": "Commercial Invoice, total value 2052.00 USD",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 205200,
+    "net_amount_cents": 205200,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_UNKNOWN",
+    "country_code": "CN",
+    "ocr_confidence": null,
+    "ai_confidence": null,
+    "ocr_text": "Commercial Invoice\nAWB NO: 6971115992  Invoice Date: 2023-12-25  Invoice No:\nSHIP FROM: JOYFUL ABILITY INTERNATIONAL LTD\nKEN SUN-ZA...\nTotal Goods Value: 1,614.00 USD\nFreight Cost: 438.00 USD\nTotal Invoice Amount: 2,052.00 USD...",
+    "notes": [
+      "Total number of items: 4",
+      "Freight cost included",
+      "Payment method: Delivered Duty Unpaid"
+    ]
+  }
+}
+```

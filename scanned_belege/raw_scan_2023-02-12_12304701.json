@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/raw_scan_2023-02-12_12304701.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-02-12",
+    "issuer_name": "Kab24 GmbH",
+    "invoice_number": "12304071",
+    "subject": "Rechnung KAB24 Bestellung",
+    "summary_short": "Rechnung für Modulkabel Bestellung",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 8990,
+    "net_amount_cents": 7555,
+    "vat_amount_cents": 1435,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": null,
+    "ai_confidence": null,
+    "ocr_text": "Rechnung\nKab24 GmbH, Gutenbergstr. 8, 69214 Eppelheim\n...Warenwert netto Gesamt: 75,55 EUR\n...Rechnungsbetrag: 89,90 EUR",
+    "notes": [
+      "Lieferdatum 12.02.2023",
+      "Kundennummer: 499851"
+    ]
+  }
+}
+```

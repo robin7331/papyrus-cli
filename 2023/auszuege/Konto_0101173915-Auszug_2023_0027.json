@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "27/2023",
   "rows": [
@@ -12,10 +13,9 @@
     {
       "datum": "24.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 3173543341 OB-96957618 EUR 163,28. BEITRAG 0223 - 0223 3173543341 OB-96957618 BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
+      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 3173543341 OB-96957618 EUR 163,28. BEITRAG 0223 - 0223 3173543341 OB-96957618; BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
       "soll_eur": "163,28",
-      "haben_eur": null,
-      "saldo_eur": "8.166,76"
+      "haben_eur": null
     },
     {
       "datum": "24.02.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

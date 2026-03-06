@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "9/2023",
   "rows": [
@@ -12,26 +13,23 @@
     {
       "datum": "18.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A.; 028-6530992-1940313 AMZN Mktp DE 1STBAWJQ0UO7NRM1 1STBAWJQ0UO7NRM1; BIC/IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-6530992-1940313 AMZN Mktp DE 1S TBAWJQ0UO7NRM1 1STBAWJQ0U7NRM1 BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "79,99",
-      "haben_eur": null,
-      "saldo_eur": "31.447,81"
+      "haben_eur": null
     },
     {
       "datum": "18.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto; 0047745565 RG 30787244000691/06.01.2023 Zahlbeleg 328755339948; BIC/IBAN: PBNKDEFF DE08 2501 0030 0000 2893 04",
+      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 30787244000691/06.01.2023 Zahlbeleg 328755339948 BIC / IBAN: PBNKDEFF DE08 2501 0030 0000 2893 04",
       "soll_eur": "97,56",
-      "haben_eur": null,
-      "saldo_eur": "31.350,25"
+      "haben_eur": null
     },
     {
       "datum": "18.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A.; 028-1896347-0622713 AMZN Mktp DE 2X9CE2DV5NKXBSHW 2X9CE2DV5NKXBSHW; BIC/IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-1896347-0622713 AMZN Mktp DE 2X 9CE2DV5NKXBSHW 2X9CE2DV5NKXBSHW BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "150,39",
-      "haben_eur": null,
-      "saldo_eur": "31.199,86"
+      "haben_eur": null
     },
     {
       "datum": "18.01.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

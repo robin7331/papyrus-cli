@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "87/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Lastschrift",
       "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31668260000691/06.07.2023 Zahlbeleg 339976652890 BIC / IBAN: DRESDEFF370 DE75 3708 0040 0232 1130 01",
       "soll_eur": "96,34",
-      "haben_eur": null,
-      "saldo_eur": "4.376,01"
+      "haben_eur": null
     },
     {
       "datum": "18.07.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "139/2023",
   "rows": [
@@ -14,16 +15,14 @@
       "typ": "Lastschrift",
       "buchungstext": "Tesla Inc. by Adyen Adyen N.V. Tesla Germany GmbH (Super Charger) CSPMT1SR8TK 1697706953 CB9Q5M59FD7PH8HH2C BIC / IBAN: DEUTDEFF DE23 1207 0070 0020 0011 63",
       "soll_eur": "8,82",
-      "haben_eur": null,
-      "saldo_eur": "3.619,86"
+      "haben_eur": null
     },
     {
       "datum": "23.10.2023",
       "typ": "Lastschrift",
       "buchungstext": "Tesla-DE by Adyen Adyen N.V. Tesla DE SV014AB84D 435398968 CTDNSSH2GGM5DP4G2C BIC / IBAN: DEUTDEFF DE18 1207 0070 0020 0011 56",
       "soll_eur": "1.445,92",
-      "haben_eur": null,
-      "saldo_eur": "2.173,94"
+      "haben_eur": null
     },
     {
       "datum": "23.10.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

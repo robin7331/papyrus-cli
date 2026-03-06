@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "167/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Lastschrift",
       "buchungstext": "cleverbridge GmbH Mandat:125557628/ Glaubiger-ID:DE39 ZZZ00000342938/ Cleverbridge GmbH / Ref.-Nr:436052533/ FastBill GmbH 303397357 BIC / IBAN: DEUTDEDK DE04 3707 0060 0192 1444 05",
       "soll_eur": "154,70",
-      "haben_eur": null,
-      "saldo_eur": "1.190,78"
+      "haben_eur": null
     },
     {
       "datum": "19.12.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

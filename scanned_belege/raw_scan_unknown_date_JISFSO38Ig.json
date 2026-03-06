@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "raw_scan_unknown_date_JISFSO38Ig.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-03-30",
+    "issuer_name": "Welch Allyn GmbH",
+    "invoice_number": "9400231984",
+    "subject": "Rechnung 11203818",
+    "summary_short": "Rechnung über 26,94 EUR",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 2694,
+    "net_amount_cents": 2596,
+    "vat_amount_cents": 98,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Lieferbedingungen: CPT Hergatz, DE",
+      "Versandart: DHL CARRIER DHL STANDARD DELIVERY"
+    ]
+  }
+}
+```

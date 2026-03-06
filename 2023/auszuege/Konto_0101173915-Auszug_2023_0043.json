@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "43/2023",
   "rows": [
     {
-      "datum": "31.03.2023",
+      "datum": "30.03.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 30.03.2023, Auszug Nr. 42",
       "soll_eur": null,
@@ -12,26 +13,23 @@
     {
       "datum": "31.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026101615801 PP.9577.PP . BoxesNBo xes Limited, Ihr Einkauf bei BoxesN Boxes Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1026101615801 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026101615801 PP.9577.PP . BoxesNBoxes Limited, Ihr Einkauf bei BoxesNBoxes Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1026101615801 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "26,00",
-      "haben_eur": null,
-      "saldo_eur": "4.076,32"
+      "haben_eur": null
     },
     {
       "datum": "31.03.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KON TO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1026114658695 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1026114658695 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
-      "haben_eur": "2.328,17",
-      "saldo_eur": "6.404,49"
+      "haben_eur": "2.328,17"
     },
     {
       "datum": "31.03.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KON TO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1026129120654 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1026129120654 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
-      "haben_eur": "593,39",
-      "saldo_eur": "6.997,88"
+      "haben_eur": "593,39"
     },
     {
       "datum": "31.03.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

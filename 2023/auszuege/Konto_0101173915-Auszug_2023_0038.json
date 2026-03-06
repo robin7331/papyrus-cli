@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "38/2023",
   "rows": [
     {
-      "datum": "16.03.2023",
+      "datum": "15.03.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 15.03.2023, Auszug Nr. 37",
       "soll_eur": null,
@@ -11,19 +12,17 @@
     },
     {
       "datum": "16.03.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung IP TTI, Inc. Invoice 182446301 DATUM 16.03.2023, 13.27 UHR BIC / IBAN: DRESDEFF700 DE65 7008 0000 0358 0933 00",
+      "typ": "Überweisung",
+      "buchungstext": "IP TTI, Inc. Invoice 182446301 DATUM 16.03.2023, 13.27 UHR; BIC / IBAN: DRESDEFF700 DE65 7008 0000 0358 0933 00",
       "soll_eur": "685,44",
-      "haben_eur": null,
-      "saldo_eur": "4.784,01"
+      "haben_eur": null
     },
     {
       "datum": "16.03.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online KRA-BOX P.P.H.U. ADAM KRASIENKO PRO FORMA - 108 DATUM 16.03.2023, 14.52 UHR BIC / IBAN: PKOPPLPWXXX PL50 1240 6218 1978 0000 4619 1816",
+      "typ": "Überweisung",
+      "buchungstext": "online KRA-BOX P.P.H.U. ADAM KRASIENKO PRO FORMA - 108 DATUM 16.03.2023, 14.52 UHR; BIC / IBAN: PKOPPLPWXXX PL50 1240 6218 1978 0000 4619 1816",
       "soll_eur": "226,75",
-      "haben_eur": null,
-      "saldo_eur": "4.557,26"
+      "haben_eur": null
     },
     {
       "datum": "16.03.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

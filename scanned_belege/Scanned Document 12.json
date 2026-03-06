@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/path/to/Scanned Document 12.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-07-04",
+    "issuer_name": "LEONHARDT & SPÖRI",
+    "invoice_number": "6118",
+    "subject": "Rechnung für Steuerleistungen",
+    "summary_short": "Rechnung für Beratungsleistungen 2021 und 2022",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 4760,
+    "net_amount_cents": 4000,
+    "vat_amount_cents": 760,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Mandantennummer: 44992",
+      "Mitarbeiternummer: 70",
+      "IBAN Informationen und BIC für Zahlungen enthalten"
+    ]
+  }
+}
+```

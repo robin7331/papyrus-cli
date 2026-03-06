@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "raw_scan_2024-10-10_unknown_number.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-02-16",
+    "issuer_name": "DHL Express Germany GmbH",
+    "invoice_number": "2174744227",
+    "subject": "Rechnung für Dienstleistungen",
+    "summary_short": "DHL Express Rechnung 02/2023",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 14694,
+    "net_amount_cents": 14456,
+    "vat_amount_cents": 238,
+    "vat_rate_bps": 238,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.95,
+    "ai_confidence": 0.94,
+    "ocr_text": "Rechnung\nRechnungsnummer: 2174744227\nRechnungsdatum: 16.02.2023\nGesamtsumme: 146,94 EUR\nNettobetrag: 144,56 EUR\nMwSt.: 2,38 EUR\nFälligkeitsdatum: 23.02.2023",
+    "notes": [
+      "Zahlungsdetails: DHL Express Germany GmbH, Kontoverbindung Postbank Köln",
+      "IBAN: DE51 3701 0050 0474 8495 09"
+    ]
+  }
+}
+```

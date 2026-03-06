@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "39/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "STRIPE STRIPE AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 NMEEXIP24YVD2FP1MV54IJANHMUVQLJMUVB BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
       "soll_eur": null,
-      "haben_eur": "624,98",
-      "saldo_eur": "5.182,24"
+      "haben_eur": "624,98"
     },
     {
       "datum": "17.03.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

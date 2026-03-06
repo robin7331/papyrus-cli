@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "/path/to/raw_scan_2023-05-03_unknown_number.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-16",
+    "issuer_name": "LEONHARDT & SPÖRI Steuerberatungsgesellschaft",
+    "invoice_number": "708",
+    "subject": "Rechnung für StBV - IV. Quart/2022",
+    "summary_short": "Rechnung für Steuerberatung",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 6355,
+    "net_amount_cents": 5355,
+    "vat_amount_cents": 1000,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "ocr_confidence": 0.85,
+    "ai_confidence": 0.90,
+    "ocr_text": "Rechnungsnummer 708\nRechnungsdatum 16.01.2023\nNettobetrag 53,40 EUR\nUmsatzsteuerbetrag 10,15 EUR\nRechnungsbetrag 63,55 EUR",
+    "notes": [
+      "Leistungszeitraum: IV. Quartal 2022",
+      "Mandantennummer: 44992"
+    ]
+  }
+}
+```

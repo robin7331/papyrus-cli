@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "/path/to/raw_scan_2023-01-16_WDT_000003_23.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-16",
+    "issuer_name": "EURO MAGNESY GIGAURI GOCZA GIGAURI DAWID, SPÓŁKA JAWNA",
+    "invoice_number": "WDT/000003/23",
+    "subject": "Faktura WDT nr WDT/000003/23",
+    "summary_short": "Lieferung von Magneten",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 55962,
+    "net_amount_cents": 55962,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "PL",
+    "ocr_confidence": 0.85,
+    "ai_confidence": 0.90,
+    "ocr_text": "Faktura WDT nr WDT/000003/23\nSprzedawca: EURO MAGNESY GIGAURI GOCZA GIGAURI DAWID, SPÓŁKA JAWNA\n\nNabywca: BitMechanics GmbH\n\nData wystawienia: 16.01.2023\n\nKwota: 559,62 EUR",
+    "notes": [
+      "Zahlungsfrist: 16.01.2023",
+      "Kurs 1 EUR = 4,6915 PLN"
+    ]
+  }
+}
+```

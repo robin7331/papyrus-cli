@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "/path/to/your/document/raw_scan_unknown_date_730576.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-13",
+    "issuer_name": "Kab24 GmbH",
+    "invoice_number": "12301418",
+    "subject": "Rechnung Kab24 GmbH für BitMechanics GmbH",
+    "summary_short": "Rechnung über Telefonkabel",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 9230,
+    "net_amount_cents": 7756,
+    "vat_amount_cents": 1474,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Zahlungsbedingungen: PayPal, Betrag dankend per PayPal erhalten",
+      "Lieferadresse: BitMechanics GmbH, Lindenhofstr. 23, D-88145 Hergatz"
+    ]
+  }
+}
+```

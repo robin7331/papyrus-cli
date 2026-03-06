@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "/path/to/Scanned%20Document%2020.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-12-29",
+    "issuer_name": "DHL Express Germany GmbH",
+    "invoice_number": "ZIT5529490",
+    "subject": "Rechnung DHL Express für BitMechanics GmbH",
+    "summary_short": "DHL Express Rechnung für Zölle und Gebühren",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 41830,
+    "net_amount_cents": 41592,
+    "vat_amount_cents": 238,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Fälligkeitsdatum: 2024-01-05",
+      "Zahlungsmethode laut Beleg: Banküberweisung"
+    ]
+  }
+}
+```

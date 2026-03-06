@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "36/2023",
   "rows": [
@@ -12,42 +13,37 @@
     {
       "datum": "14.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025738496853 PP.9577.PP, Ihr Einkauf bei BoxesNBoxes Limited",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025738496853 PP.9577.PP . BoxesNBoxes Limited, Ihr Einkauf bei BoxesNBoxes Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025738496853 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "26,00",
-      "haben_eur": null,
-      "saldo_eur": "5.789,60"
+      "haben_eur": null
     },
     {
       "datum": "14.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025741577476 PP.9577.PP, Ihr Einkauf bei JLCPCB GmbH",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025741577476 PP.9577.PP . JLCPCB GmbH, Ihr Einkauf bei JLCPCB GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025741577476 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "7,91",
-      "haben_eur": null,
-      "saldo_eur": "5.781,69"
+      "haben_eur": null
     },
     {
       "datum": "14.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S.C.A. 1025792479500 PP.9577.PP, Ihr Einkauf bei Prusa Development a.s.",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025792479500 PP.9577.PP . Prusa Development a.s., Ihr Einkauf bei Prusa Development a.s. 1025792479500 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "30,24",
-      "haben_eur": null,
-      "saldo_eur": "5.751,45"
+      "haben_eur": null
     },
     {
       "datum": "14.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S.C.A. 1025768139598 PP.9577.PP, Ihr Einkauf bei Prusa Development a.s.",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025768139598 PP.9577.PP . Prusa Development a.s., Ihr Einkauf bei Prusa Development a.s. 1025768139598 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "82,32",
-      "haben_eur": null,
-      "saldo_eur": "5.669,13"
+      "haben_eur": null
     },
     {
       "datum": "14.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025740343166 PP.9577.PP, Ihr Einkauf bei JLCPCB GmbH",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025740343166 PP.9577.PP . JLCPCB GmbH, Ihr Einkauf bei JLCPCB GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025740343166 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "145,71",
-      "haben_eur": null,
-      "saldo_eur": "5.523,42"
+      "haben_eur": null
     },
     {
       "datum": "14.03.2023",
@@ -59,3 +55,4 @@
     }
   ]
 }
+```

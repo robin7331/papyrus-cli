@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "61/2023",
   "rows": [
@@ -14,16 +15,14 @@
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026885098000 PP.9577.PP . Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1026885098000 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "12,99",
-      "haben_eur": null,
-      "saldo_eur": "3.468,32"
+      "haben_eur": null
     },
     {
       "datum": "09.05.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online an Bft Station Klaus Sohler, Beleg Nr. 4314, Datum 09.05.2023, 08.42 Uhr, BIC / IBAN: GENODEF1WWA DE13 7336 9823 0006 4491 23",
+      "typ": "Überweisung online",
+      "buchungstext": "Bft Station Klaus Sohler Beleg Nr. 4314 DATUM 09.05.2023, 08.42 UHR BIC / IBAN: GENODEF1WWA DE13 7336 9823 0006 4491 23",
       "soll_eur": "99,96",
-      "haben_eur": null,
-      "saldo_eur": "3.368,36"
+      "haben_eur": null
     },
     {
       "datum": "09.05.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

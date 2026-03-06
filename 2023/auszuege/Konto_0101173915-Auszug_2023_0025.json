@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "25/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025309694055 PP.9577.PP . Bauer Produktkennzeichnung GmbH & Co. KG, Ihr Einkauf bei Bauer Produktkennzeichnung GmbH & Co. KG AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025309694055 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "505,16",
-      "haben_eur": null,
-      "saldo_eur": "13.485,98"
+      "haben_eur": null
     },
     {
       "datum": "17.02.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "102/2023",
   "rows": [
     {
-      "datum": "15.08.2023",
+      "datum": "14.08.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 14.08.2023, Auszug Nr. 101",
       "soll_eur": null,
@@ -12,10 +13,9 @@
     {
       "datum": "15.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND D01-4608981-5288657 Amazon.de 1K81YI6865SJ4AS4 BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG DEUTSCHLAND D01-4608981-5288657 Amazon.de 1K81Y I6865SJ4AS4 1K81YI6865SJ4AS4 BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
       "soll_eur": "83,30",
-      "haben_eur": null,
-      "saldo_eur": "4.553,33"
+      "haben_eur": null
     },
     {
       "datum": "15.08.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

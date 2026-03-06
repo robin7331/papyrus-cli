@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "47/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Lastschrift",
       "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026223020560 PP.9577.PP . Ecwid In c., Ihr Einkauf bei Ecwid Inc. 1026223020560 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "46,41",
-      "haben_eur": null,
-      "saldo_eur": "6.651,49"
+      "haben_eur": null
     },
     {
       "datum": "06.04.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

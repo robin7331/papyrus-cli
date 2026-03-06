@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "164/2023",
   "rows": [
     {
-      "datum": "13.12.2023",
+      "datum": "12.12.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 12.12.2023, Auszug Nr. 163",
       "soll_eur": null,
@@ -14,16 +15,14 @@
       "typ": "Lastschrift",
       "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 PSJ9QVQLXGMTCPK52P BIC / IBAN: DEUTNL2A NL24 DEUT 0265 1950 47",
       "soll_eur": "111,54",
-      "haben_eur": null,
-      "saldo_eur": "1.428,40"
+      "haben_eur": null
     },
     {
       "datum": "13.12.2023",
       "typ": "Lastschrift",
       "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001977067 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
       "soll_eur": "38,05",
-      "haben_eur": null,
-      "saldo_eur": "1.390,35"
+      "haben_eur": null
     },
     {
       "datum": "13.12.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

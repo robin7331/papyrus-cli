@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "40/2023",
   "rows": [
@@ -12,26 +13,23 @@
     {
       "datum": "20.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025854313290 PP.9577.PP . Printgroup GmbH & Co. KG, Ihr Einkauf bei Printgroup GmbH & Co. KG",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025854313290 PP.9577.PP . Printgroup GmbH & Co. KG, Ihr Einkauf bei Printgroup GmbH & Co. KG AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025854313290 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "209,77",
-      "haben_eur": null,
-      "saldo_eur": "4.972,47"
+      "haben_eur": null
     },
     {
       "datum": "20.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025854335867 PP.9577.PP . Labelident GmbH, Ihr Einkauf bei Labelident GmbH",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025854335867 PP.9577.PP . Labelident GmbH, Ihr Einkauf bei Labelident GmbH 1025854335867 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "58,17",
-      "haben_eur": null,
-      "saldo_eur": "4.914,30"
+      "haben_eur": null
     },
     {
       "datum": "20.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31227603000691/06.03.2023 Zahlbeleg 334035621204",
+      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 31227603000691/06.03.2023 Zahlbeleg 334035621204 BIC / IBAN: HYVEDEMM DE68 7002 0270 0667 3022 69",
       "soll_eur": "95,02",
-      "haben_eur": null,
-      "saldo_eur": "4.819,28"
+      "haben_eur": null
     },
     {
       "datum": "20.03.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

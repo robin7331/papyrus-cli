@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/beleg_2023_04_05.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-04-05",
+    "issuer_name": "BitMechanics GmbH",
+    "invoice_number": "2023-02-0002",
+    "subject": "Rechnung der BitMechanics GmbH für VNM Fischer GbR",
+    "summary_short": "Rechnung für Elektroinstallationsmaterial",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 872381,
+    "net_amount_cents": 704354,
+    "vat_amount_cents": 168027,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Kunden-Nr.: 1013",
+      "Leistungszeitraum: 05.04.2023",
+      "Zahlungsziel: 12.04.2023"
+    ]
+  }
+}
+```

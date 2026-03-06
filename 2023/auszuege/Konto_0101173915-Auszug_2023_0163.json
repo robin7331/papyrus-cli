@@ -1,8 +1,9 @@
+```json
 {
   "statement_no": "163/2023",
   "rows": [
     {
-      "datum": "12.12.2023",
+      "datum": "11.12.2023",
       "typ": "Eröffnungssaldo",
       "buchungstext": "Kontostand am 11.12.2023, Auszug Nr. 162",
       "soll_eur": null,
@@ -14,8 +15,7 @@
       "typ": "Lastschrift",
       "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 302-5888210-1197921 AMZN Mktp DE GP 3EQ551907FZ3FC GP3EQ551907FZ3FC BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "47,30",
-      "haben_eur": null,
-      "saldo_eur": "1.539,94"
+      "haben_eur": null
     },
     {
       "datum": "12.12.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

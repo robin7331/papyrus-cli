@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "/path/to/raw_scan_2023-05-10_88_42.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-02-10",
+    "issuer_name": "IHK Schwaben",
+    "invoice_number": "3093110900233",
+    "subject": "Beitragsbescheid 2023",
+    "summary_short": "Mitgliedsbeitrag IHK Schwaben für 2023",
+    "document_type": "Bescheid",
+    "gross_amount_cents": 14000,
+    "net_amount_cents": 14000,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "ocr_confidence": 0.95,
+    "ai_confidence": 0.95,
+    "ocr_text": "Beitragsbescheid vom 10.02.2023\nLindenhofstr. 23, 88145 Hergatz\nZu zahlen: 140,00 EUR",
+    "notes": [
+      "Mitgliedsbeitrag für 2023",
+      "Zahlungen wurden bis 06.02.2023 berücksichtigt."
+    ]
+  }
+}
+```

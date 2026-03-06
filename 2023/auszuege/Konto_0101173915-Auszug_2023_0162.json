@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "162/2023",
   "rows": [
@@ -11,11 +12,10 @@
     },
     {
       "datum": "11.12.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung IP / Wert: 10.12.2023 Robin Reiter privat DATUM 10.12.2023, 14.24 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "typ": "Überweisung",
+      "buchungstext": "IP / Wert: 10.12.2023; Robin Reiter privat DATUM 10.12.2023, 14.24 UHR; BIC/IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "500,00",
-      "haben_eur": null,
-      "saldo_eur": "1.587,24"
+      "haben_eur": null
     },
     {
       "datum": "11.12.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

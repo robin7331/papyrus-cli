@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "141/2023",
   "rows": [
@@ -12,10 +13,9 @@
     {
       "datum": "25.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "Google Ireland Limited GG103DEMSS AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 GG103DEMSS BIC / IBAN: CITIIE2X IE64 CITI 9900 5124 4170 26",
-      "soll_eur": null,
-      "haben_eur": "0,02",
-      "saldo_eur": "2.333,75"
+      "buchungstext": "Google Ireland Limited GG103DEMSS AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 GG103DEMSS BIC / IBAN: CITIIE2X IE64 CITI 9900 5124",
+      "soll_eur": "0,02",
+      "haben_eur": null
     },
     {
       "datum": "25.10.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

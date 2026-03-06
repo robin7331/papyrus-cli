@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "113/2023",
   "rows": [
@@ -12,18 +13,16 @@
     {
       "datum": "04.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029129970589 PP.9577.PP . DigitalOcean, Ihr Einkauf bei DigitalOcean",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029129970589; PP.9577.PP . DigitalO cean, Ihr Einkauf bei DigitalOcean;",
       "soll_eur": "24,04",
-      "haben_eur": null,
-      "saldo_eur": "3.488,34"
+      "haben_eur": null
     },
     {
       "datum": "04.09.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A; PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO;",
       "soll_eur": null,
-      "haben_eur": "674,02",
-      "saldo_eur": "4.162,36"
+      "haben_eur": "674,02"
     },
     {
       "datum": "04.09.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```

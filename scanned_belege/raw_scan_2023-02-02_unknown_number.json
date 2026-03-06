@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "raw_scan_2023-02-02_unknown_number.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-05-05",
+    "issuer_name": "Bft Station Klaus Sohler",
+    "invoice_number": "4314",
+    "subject": "Rechnung vom 05.05.2023 für Kunden-Nr. 0",
+    "summary_short": "Rechnung für Dienstleistungen bei Bft Station",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 9996,
+    "net_amount_cents": 8400,
+    "vat_amount_cents": 1596,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Leistungsdatum: 05.05.2023",
+      "Kunden-Nr.: 0",
+      "Zahlbar sofort nach Rechnungsinhalt"
+    ]
+  }
+}
+```

@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "153/2023",
   "rows": [
@@ -11,27 +12,24 @@
     },
     {
       "datum": "23.11.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online ProConnecting Nummer: 27139 DATUM 23.11.2023, 08.20 UHR BIC / IBAN: BYLADEM1SKB DE35 7705 0000 0300 3692 53",
+      "typ": "Überweisung online",
+      "buchungstext": "ProConnecting Nummer: 27139 DATUM 23.11.2023, 08.20 UHR BIC / IBAN: BYLADEM1SKB DE35 7705 0000 0300 3692 53",
       "soll_eur": "94,78",
-      "haben_eur": null,
-      "saldo_eur": "3.151,09"
+      "haben_eur": null
+    },
+    {
+      "datum": "23.11.2023",
+      "typ": "Scheckeinzug",
+      "buchungstext": "Wert: 24.11.2023 SCHECKAUSSTELLER SCHECK-NR. 0112061340486 1332756000020 BIC / IBAN: GENODEFFXXX DE09 5006 0400 0016 0122 47",
+      "soll_eur": null,
+      "haben_eur": "1.295,92"
     },
     {
       "datum": "23.11.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "Scheckeinzug / Wert: 24.11.2023 SCHECKAUSSTELLER SCHECK-NR. 0112061340486 1332756000020 BIC / IBAN: GENODEFFXXX DE09 5006 0400 0016 0122 47",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP/ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1030798150454 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
-      "haben_eur": "1.295,92",
-      "saldo_eur": "4.447,01"
-    },
-    {
-      "datum": "23.11.2023",
-      "typ": "Gutschrift/Überweisung",
-      "buchungstext": "GutschriftÜberweisung PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP/ABBUCHUNG VOM PAYPAL-KON TO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1030798150454 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
-      "soll_eur": null,
-      "haben_eur": "644,61",
-      "saldo_eur": "5.091,62"
+      "haben_eur": "644,61"
     },
     {
       "datum": "23.11.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

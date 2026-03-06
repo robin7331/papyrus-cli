@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "143/2023",
   "rows": [
@@ -11,11 +12,10 @@
     },
     {
       "datum": "30.10.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Dauerauftrag Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
+      "typ": "Dauerauftrag",
+      "buchungstext": "Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
       "soll_eur": "520,00",
-      "haben_eur": null,
-      "saldo_eur": "1.650,47"
+      "haben_eur": null
     },
     {
       "datum": "30.10.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

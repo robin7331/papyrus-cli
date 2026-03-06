@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "/path/to/raw_scan_2023-01-04_55.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-04",
+    "issuer_name": "Robins Tools",
+    "invoice_number": "55",
+    "subject": "Rechnung 55",
+    "summary_short": "Robins Tools Bestellung",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 2565,
+    "net_amount_cents": 2110,
+    "vat_amount_cents": 445,
+    "vat_rate_bps": 2100,
+    "vat_treatment": "VAT_21",
+    "country_code": "NL",
+    "ocr_confidence": 0.92,
+    "ai_confidence": 0.95,
+    "ocr_text": "Rechnung\nBelegnummer 55\nDatum 04.01.2023\nVersendet an: Rubin Philippart\nArtikel: 48 x SMD Magazines Mega Pack\nNettobetrag 21,10 EUR\nUSt 21% 4,45 EUR\nGesamtbetrag 25,65 EUR",
+    "notes": [
+      "Kundenservice: robin@robins-tools.com",
+      "Zahlungsmethode: Bank Transfer"
+    ]
+  }
+}
+```

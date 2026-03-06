@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%2018.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-11-02",
+    "issuer_name": "United Parcel Service Deutschland S.à r.l. & Co. OHG",
+    "invoice_number": "322097810",
+    "subject": "Rechnung UPS für Robins Tools - BitMechanics GmbH",
+    "summary_short": "Rechnung für Druckgebühren",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 631,
+    "net_amount_cents": 5300,
+    "vat_amount_cents": 101,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Gebühr für Rechnung: 5,30 EUR",
+      "USt 19%: 1,01 EUR"
+    ]
+  }
+}
+```

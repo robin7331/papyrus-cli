@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "33/2023",
   "rows": [
@@ -12,10 +13,9 @@
     {
       "datum": "07.03.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025624074196 PP.9577.PP . Ecwid Inc., Ihr Einkauf bei Ecwid Inc. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025624074196 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025624074196; PP.9577.PP. Ecwid Inc., Ihr Einkauf bei Ecwid Inc.; BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "46,41",
-      "haben_eur": null,
-      "saldo_eur": "6.397,55"
+      "haben_eur": null
     },
     {
       "datum": "07.03.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

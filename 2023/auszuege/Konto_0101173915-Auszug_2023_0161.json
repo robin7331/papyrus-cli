@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "161/2023",
   "rows": [
@@ -14,8 +15,7 @@
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-QLRZ8T3Q5HZ1M6JNC80CDGBPFPJ BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
       "soll_eur": null,
-      "haben_eur": "762,18",
-      "saldo_eur": "2.087,24"
+      "haben_eur": "762,18"
     },
     {
       "datum": "08.12.2023",
@@ -27,3 +27,4 @@
     }
   ]
 }
+```

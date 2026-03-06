@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/raw_scan_2023-01-04_52.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-01-04",
+    "issuer_name": "Robins Tools",
+    "invoice_number": "52",
+    "subject": "Rechnung 52 vom 04.01.2023",
+    "summary_short": "Robins Tools Rechnung für Bestellungen.",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 15860,
+    "net_amount_cents": 15860,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "notes": [
+      "Zahlungsmethode: Credit or debit card",
+      "Kundennummer: 52"
+    ]
+  }
+}
+```

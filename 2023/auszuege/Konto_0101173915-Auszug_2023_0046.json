@@ -1,3 +1,4 @@
+```json
 {
   "statement_no": "46/2023",
   "rows": [
@@ -12,26 +13,23 @@
     {
       "datum": "05.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026200574256 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Packlink - Auctane SL 1026200574256 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026200574256 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1026200574256 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "23,50",
-      "haben_eur": null,
-      "saldo_eur": "7.014,95"
+      "haben_eur": null
     },
     {
       "datum": "05.04.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online ETRIS BANK 440002952248 DATUM 05.04.2023, 08.05 UHR BIC / IBAN: ETRIDE31XXX DE40 3003 0600 8201 8003 08",
+      "typ": "Überweisung online",
+      "buchungstext": "ETRIS BANK 440002952248 DATUM 05.04.2023, 08.05 UHR BIC / IBAN: ETRIDE31XXX DE40 3003 0600 8201 8003 08",
       "soll_eur": "17,05",
-      "haben_eur": null,
-      "saldo_eur": "6.997,90"
+      "haben_eur": null
     },
     {
       "datum": "05.04.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online Matthias Hermann Rechnung Nr. 2023-04-10021 DATUM 05.04.2023, 08.07 UHR BIC / IBAN: CSDBDE71XXX DE61 7603 0080 0200 2630 70",
+      "typ": "Überweisung online",
+      "buchungstext": "Matthias Hermann Rechnung Nr. 2023-04-10021 DATUM 05.04.2023, 08.07 UHR BIC / IBAN: CSDBDE71XXX DE61 7603 0080 0200 2630 70",
       "soll_eur": "300,00",
-      "haben_eur": null,
-      "saldo_eur": "6.697,90"
+      "haben_eur": null
     },
     {
       "datum": "05.04.2023",
@@ -43,3 +41,4 @@
     }
   ]
 }
+```

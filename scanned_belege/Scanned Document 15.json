@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "/path/to/Scanned Document 15.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-10-25",
+    "issuer_name": "Bft Station Klaus Sohler",
+    "invoice_number": "4654",
+    "subject": "Rechnung für Bit Mechanics GmbH vom 25.10.2023",
+    "summary_short": "Inklusiv Wartungs- und Ölwechselleistungen",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 10497,
+    "net_amount_cents": 8841,
+    "vat_amount_cents": 1656,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Leistungen: Montage, Ölwechsel und mehr.",
+      "Zahlungsfrist sofort nach Rechnungsstellung."
+    ]
+  }
+}
+```

@@ -1,10 +1,11 @@
+```json
 {
   "statement_no": "45/2023",
   "rows": [
     {
-      "datum": "03.04.2023",
+      "datum": "04.04.2023",
       "typ": "Eröffnungssaldo",
-      "buchungstext": "Kontostand am 03.04.2023, Auszug Nr. 44",
+      "buchungstext": "Kontostand am 04.04.2023, Auszug Nr. 44",
       "soll_eur": null,
       "haben_eur": null,
       "saldo_eur": "7.488,64"
@@ -12,18 +13,16 @@
     {
       "datum": "04.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026157174828 PP.9577.PP . DigitalOcean, Ihr Einkauf bei DigitalOcean AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1026157174828 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026157174828 PP.9577.PP . DigitalO cean, Ihr Einkauf bei DigitalOcean",
       "soll_eur": "20,19",
-      "haben_eur": null,
-      "saldo_eur": "7.468,45"
+      "haben_eur": null
     },
     {
       "datum": "04.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026150836571 PP.9577.PP . Autodesk Ireland Operations UC, Ihr Einkauf bei Autodesk Ireland Operations UC AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1026150836571 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026150836571 PP.9577.PP . Autodesk Ireland Operations UC, Ihr Einkauf bei Autodesk Ireland Operations UC",
       "soll_eur": "430,00",
-      "haben_eur": null,
-      "saldo_eur": "7.038,45"
+      "haben_eur": null
     },
     {
       "datum": "04.04.2023",
@@ -35,3 +34,4 @@
     }
   ]
 }
+```
