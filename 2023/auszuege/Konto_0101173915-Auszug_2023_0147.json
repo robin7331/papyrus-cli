@@ -13,14 +13,14 @@
     {
       "datum": "13.11.2023",
       "typ": "Überweisung",
-      "buchungstext": "IP / Wert: 11.11.2023; Robin Reiter Privat DATUM 11.11.2023, 10.26 UHR; BIC/IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "buchungstext": "Überweisung IP / Wert: 11.11.2023 Robin Reiter Privat DATUM 11.11.2023, 10.26 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "500,00",
       "haben_eur": null
     },
     {
       "datum": "13.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer: HVDSC66 98102; AWV-MELDEPFLICHT BEACHTEN; HOTLINE BUNDESBANK: (0800) 1234-111",
+      "buchungstext": "HISCOX SA HISCOX SA Versicherungsscheinnummer : HVDSC66 98102 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 001963438 BIC / IBAN: CCFRFRPP FR76 3005 6005 0205 0200 0962 265",
       "soll_eur": "38,05",
       "haben_eur": null
     },

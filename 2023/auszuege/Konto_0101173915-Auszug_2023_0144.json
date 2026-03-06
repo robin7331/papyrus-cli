@@ -12,7 +12,7 @@
     },
     {
       "datum": "02.11.2023",
-      "typ": "Lastschrift",
+      "typ": "Abrechnung",
       "buchungstext": "Abrechnung 31.10.2023 / Wert: 30.10.2023 siehe Anlage Nr. 1",
       "soll_eur": "18,80",
       "haben_eur": null
@@ -33,21 +33,21 @@
     },
     {
       "datum": "02.11.2023",
-      "typ": "Überweisung online",
+      "typ": "Überweisung",
       "buchungstext": "Bft Station Klaus Sohler Beleg Nr. 4654 DATUM 02.11.2023, 08.02 UHR BIC / IBAN: GENODEF1WWA DE13 7336 9823 0006 4491 23",
       "soll_eur": "104,97",
       "haben_eur": null
     },
     {
       "datum": "02.11.2023",
-      "typ": "Überweisung online",
+      "typ": "Überweisung",
       "buchungstext": "DHL Express Germany GmbH Rechn. Nr: ZIT5305656 DATUM 02.11.2023, 08.06 UHR BIC / IBAN: PBNKDEFFXXX DE51 3701 0050 0474 8495 09",
       "soll_eur": "158,60",
       "haben_eur": null
     },
     {
       "datum": "02.11.2023",
-      "typ": "Überweisung online",
+      "typ": "Überweisung",
       "buchungstext": "United Parcel Service Rechnung 321889849 DATUM 02.11.2023, 08.45 UHR BIC / IBAN: BNPADEFFXXX DE30 5121 0600 3223 3350 21",
       "soll_eur": "154,21",
       "haben_eur": null

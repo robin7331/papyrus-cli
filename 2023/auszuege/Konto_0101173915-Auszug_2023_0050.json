@@ -13,7 +13,7 @@
     {
       "datum": "13.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026352952648; PP.9577.PP . RAJAPACK GmbH, Ihr Einkauf bei RAJAPACK GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1026352952648 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026352952648 PP.9577.PP . RAJAPACK GmbH, Ihr Einkauf bei RAJAPACK GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1026352952648 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "346,81",
       "haben_eur": null
     },

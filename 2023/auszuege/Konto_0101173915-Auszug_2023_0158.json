@@ -20,21 +20,21 @@
     {
       "datum": "30.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1030938175007/PP.9577.PP/. Kartony2 4 Sp. z o.o., Ihr Einkauf bei Karto ny24 Sp. z o.o. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1030938175007 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1030938175007/PP.9577.PP/. Kartony2 4 Sp. z o.o., Ihr Einkauf bei Kartony24 Sp. z o.o. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1030938175007 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "44,17",
       "haben_eur": null
     },
     {
       "datum": "30.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-9358949-9498746 AMZN Mktp DE 4T GIYN77NPN44RIQ 4TGIYN77NPN44RIQ BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-9358949-9498746 AMZN Mktp DE 4TGIYN77NPN44RIQ 4TGIYN77NPN44RIQ BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "15,45",
       "haben_eur": null
     },
     {
       "datum": "30.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-9358949-9498746 AMZN Mktp DE 79 01457IV79RG6PW 7901457IV79RG6PW BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-9358949-9498746 AMZN Mktp DE 7901457IV79RG6PW 7901457IV79RG6PW BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "452,99",
       "haben_eur": null
     },

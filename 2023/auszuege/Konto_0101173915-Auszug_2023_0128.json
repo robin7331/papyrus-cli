@@ -13,28 +13,28 @@
     {
       "datum": "27.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1029621082461; Ihr Einkauf bei ............ .",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1029621082461 PP.9577.PP, Ihr Einkauf bei ..., BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "645,51",
       "haben_eur": null
     },
     {
       "datum": "27.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029620840347; Ihr Einkauf bei ............ ...",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029620840347 PP.9577.PP, Ihr Einkauf bei ..., AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111, BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "95,88",
       "haben_eur": null
     },
     {
       "datum": "27.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1029620744896; Ihr Einkauf bei ............ ...",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1029620744896 PP.9577.PP, Ihr Einkauf bei ..., BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "530,82",
       "haben_eur": null
     },
     {
       "datum": "27.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung; Beitrag 0923",
+      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung Knappschaft-Bahn-See 2007344822 OB-96957618 EUR 163,28. BEITRAG 0923 - 0923, BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
       "soll_eur": "163,28",
       "haben_eur": null
     },

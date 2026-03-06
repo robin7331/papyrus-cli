@@ -13,28 +13,28 @@
     {
       "datum": "04.10.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029723094362 PP.9577.PP . DigitalO cean, Ihr Einkauf bei DigitalOcean",
-      "soll_eur": "-24,67",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029723094362 PP.9577.PP . DigitalOcean, Ihr Einkauf bei DigitalOcean AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029723094362 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "24,67",
       "haben_eur": null
     },
     {
       "datum": "04.10.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029726213898 PP.9577.PP . Melia Ho tels International S.A., Ihr Einkauf bei Melia Hotels International S. A.",
-      "soll_eur": "-108,00",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029726213898 PP.9577.PP . Melia Hotels International S.A., Ihr Einkauf bei Melia Hotels International S. A. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029726213898 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "108,00",
       "haben_eur": null
     },
     {
       "datum": "04.10.2023",
       "typ": "Lastschrift",
-      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud",
-      "soll_eur": "-60,94",
+      "buchungstext": "ADYEN N.V. SendcloudDE SendcloudDE SendCloud AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 PCX8XJJ6XTNMTM232P BIC / IBAN: DEUTNL2A NL24 DEUT 0265 1950 47",
+      "soll_eur": "60,94",
       "haben_eur": null
     },
     {
       "datum": "04.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE SHOPIFY",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-ZBHWTMGT0BTD522LEWPC9GMDWVQ BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
       "soll_eur": null,
       "haben_eur": "560,97"
     },

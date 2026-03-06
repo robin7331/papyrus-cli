@@ -13,7 +13,7 @@
     {
       "datum": "11.12.2023",
       "typ": "Überweisung",
-      "buchungstext": "IP / Wert: 10.12.2023 Robin Reiter privat DATUM 10.12.2023, 14.24 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "buchungstext": "Überweisung IP / Wert: 10.12.2023\nRobin Reiter privat DATUM 10.12.2023, 14.24 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "500,00",
       "haben_eur": null
     },

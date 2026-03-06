@@ -12,29 +12,29 @@
     },
     {
       "datum": "02.10.2023",
-      "typ": "Lastschrift",
+      "typ": "Abrechnung",
       "buchungstext": "Abrechnung 29.09.2023 / Wert: 29.09.2023 siehe Anlage Nr. 1",
       "soll_eur": "21,30",
       "haben_eur": null
     },
     {
       "datum": "02.10.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Dauerauftrag Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
+      "typ": "Dauerauftrag",
+      "buchungstext": "Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
       "soll_eur": "520,00",
       "haben_eur": null
     },
     {
       "datum": "02.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1029718293866 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1029718293866 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "77,11"
     },
     {
       "datum": "02.10.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-WNF2HIXBEYUJ37YEDPJEPBKJXVA BIC / IBAN: CITINL2 NL41 CITI 2032 3048 05",
+      "buchungstext": "STRIPE SHOPIFY AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 SHOPIFY-WNF2HIXBEYUJ37YEDPJEPBKJXVA BIC / IBAN: CITINL2X NL41 CITI 2032 3048 05",
       "soll_eur": null,
       "haben_eur": "121,92"
     },

@@ -12,15 +12,15 @@
     },
     {
       "datum": "04.05.2023",
-      "typ": "Überweisung online",
-      "buchungstext": "Hetzner Online GmbH R0018737233 DATUM 04.05.2023, 09.53 UHR BIC / IBAN: DEUTDEMM760 DE92 7607 0012 0750 0077 00",
+      "typ": "Überweisung",
+      "buchungstext": "Überweisung online; Hetzner Online GmbH R0018737233 DATUM 04.05.2023, 09.53 UHR BIC/IBAN: DEUTDEMM760 DE92 7607 0012 0750 0077 00",
       "soll_eur": "7,35",
       "haben_eur": null
     },
     {
       "datum": "04.05.2023",
-      "typ": "Überweisung online",
-      "buchungstext": "VBG 20233498381 DATUM 04.05.2023, 09.57 UHR BIC / IBAN: COBADEFFXXX DE66 2004 0000 0131 0291 00",
+      "typ": "Überweisung",
+      "buchungstext": "Überweisung online; VBG 20233498381 DATUM 04.05.2023, 09.57 UHR BIC/IBAN: COBADEFFXXX DE66 2004 0000 0131 0291 00",
       "soll_eur": "97,64",
       "haben_eur": null
     },

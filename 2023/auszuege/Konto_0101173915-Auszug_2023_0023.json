@@ -20,14 +20,14 @@
     {
       "datum": "14.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025234287264 PP.9577.PP Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025234287264 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025234287264 PP.9577.PP, Ihr Einkauf bei AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025234287264 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "735,87",
       "haben_eur": null
     },
     {
       "datum": "14.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025234306187 PP.9577.PP Kab24 GmbH, Ihr Einkauf bei Kab24 GmbH 1025234306187 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025234306187 PP.9577.PP. Kab24 GmbH, Ihr Einkauf bei Kab24 GmbH 1025234306187 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "89,90",
       "haben_eur": null
     },

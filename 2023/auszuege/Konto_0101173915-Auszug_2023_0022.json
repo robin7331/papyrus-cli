@@ -20,14 +20,14 @@
     {
       "datum": "13.02.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG D 028-0519544-3789925 AMZ Amazon.de 1 8HHQYGTNSRAVNBD 18HHQYGTNSRAVNBD BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
+      "buchungstext": "AMAZON EU S.A R.L., NIEDERLASSUNG D 028-0519544-3789925 AMZ Amazon.de 18HHQYGTNSRAVNBD 18HHQYGTNSRAVNBD BIC / IBAN: TUBDDEDD DE93 3003 0880 0013 4410 06",
       "soll_eur": null,
       "haben_eur": "132,67"
     },
     {
       "datum": "13.02.2023",
       "typ": "Überweisung online",
-      "buchungstext": "Digi-Key Electronics PRO FORMA Invoice 95534441 Robin Re iter BitMechanics GmbH DATUM 13.02.2023, 11.35 UHR BIC / IBAN: DRESDEFFXXX DE15 5008 0000 0975 1105 00",
+      "buchungstext": "Digi-Key Electronics PRO FORMA Invoice 95534441 Robin Reiter BitMechanics GmbH DATUM 13.02.2023, 11.35 UHR BIC / IBAN: DRESDEFFXXX DE15 5008 0000 0975 1105 00",
       "soll_eur": "589,40",
       "haben_eur": null
     },

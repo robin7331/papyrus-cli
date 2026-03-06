@@ -12,22 +12,22 @@
     },
     {
       "datum": "08.09.2023",
-      "typ": "Überweisung online",
-      "buchungstext": "RS Components GmbH Rechnungs Nr. 327308163 DATUM 08.09.2023, 09.12 UHR BIC / IBAN: COBADEFFXXX DE44 5084 0005 0134 2096 01",
+      "typ": "Überweisung",
+      "buchungstext": "Überweisung online RS Components GmbH Rechnungs Nr. 327308163 DATUM 08.09.2023, 09.12 UHR BIC / IBAN: COBADEFFXXX DE44 5084 0005 0134 2096 01",
       "soll_eur": "26,41",
       "haben_eur": null
     },
     {
       "datum": "08.09.2023",
-      "typ": "Überweisung online",
-      "buchungstext": "KDM Transport und Logistik GmbH Rechnungs 16689 abzgl. Gutschrift 1 6711 DATUM 08.09.2023, 09.16 UHR BIC / IBAN: DRESDEFF290 DE66 2908 0010 0107 2997 00",
+      "typ": "Überweisung",
+      "buchungstext": "Überweisung online KDM Transport und Logistik GmbH Rechnungs 16689 abzgl. Gutschrift 1 6711 DATUM 08.09.2023, 09.16 UHR BIC / IBAN: DRESDEFF290 DE66 2908 0010 0107 2997 00",
       "soll_eur": "518,18",
       "haben_eur": null
     },
     {
       "datum": "08.09.2023",
-      "typ": "Überweisung online",
-      "buchungstext": "stiftung ear Debitoren-Nr. 102985 Bescheidsnr. 2 111981, 2150770 DATUM 08.09.2023, 10.21 UHR BIC / IBAN: FLESDEMMXXX DE64 7933 0111 0000 4101 36",
+      "typ": "Überweisung",
+      "buchungstext": "Überweisung online stiftung ear Debitoren-Nr. 102985 Bescheidsnr. 2 111981, 2150770 DATUM 08.09.2023, 10.21 UHR BIC / IBAN: FLESDEMMXXX DE64 7933 0111 0000 4101 36",
       "soll_eur": "45,10",
       "haben_eur": null
     },

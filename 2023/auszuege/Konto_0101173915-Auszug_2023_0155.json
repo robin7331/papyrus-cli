@@ -12,15 +12,15 @@
     },
     {
       "datum": "27.11.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online; Shenzhen Skoocom Electronic Co., Lt 194144239001029121 DATUM 27.11.2023, 10.06 UHR BIC/IBAN: CHASLULXXXX LU85 0670 0050 8766 8845",
+      "typ": "Überweisung",
+      "buchungstext": "Überweisung online Shenzhen Skoocom Electronic Co., Lt 194144239001029121 DATUM 27.11.2023, 10.06 UHR BIC / IBAN: CHASLULXXXX LU85 0670 0050 8766 8845",
       "soll_eur": "1.893,25",
       "haben_eur": null
     },
     {
       "datum": "27.11.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "EXYS BV Invoice RE-01-76 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 BIC/IBAN: JVBABE22 BE12 6451 0553 2092",
+      "buchungstext": "GutschriftÜberweisung EXYS BV Invoice RE-01-76 AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 BIC / IBAN: JVBABE22 BE12 6451 0553 2092",
       "soll_eur": null,
       "haben_eur": "443,02"
     },

@@ -12,7 +12,7 @@
     },
     {
       "datum": "03.01.2023",
-      "typ": "Lastschrift",
+      "typ": "Buchung",
       "buchungstext": "kostenfreie Buchung; Rechnung KREISSPARKASSE RAVENSBURG Entgelt Debitkarte für 2023 20230103-BW016-00019513407",
       "soll_eur": "6,00",
       "haben_eur": null
@@ -26,14 +26,14 @@
     },
     {
       "datum": "03.01.2023",
-      "typ": "Lastschrift",
+      "typ": "Überweisung",
       "buchungstext": "Überweisung online; Euro Magnesy 79985/2023 DATUM 03.01.2023, 09.17 UHR; BIC/IBAN: BPKOPLPWXXX PL43 1020 1127 0000 1502 0268 1617",
       "soll_eur": "15,52",
       "haben_eur": null
     },
     {
       "datum": "03.01.2023",
-      "typ": "Lastschrift",
+      "typ": "Überweisung",
       "buchungstext": "Überweisung online; Johann Reiter Lohn DATUM 03.01.2023, 09.20 UHR; BIC/IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
       "soll_eur": "520,00",
       "haben_eur": null

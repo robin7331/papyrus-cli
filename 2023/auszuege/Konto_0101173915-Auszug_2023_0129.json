@@ -13,22 +13,22 @@
     {
       "datum": "28.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029639950199 PP.9577.PP . Welch Allyn GmbH, Ihr Einkauf bei Welch Allyn GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029639950199 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
-      "soll_eur": "-44,93",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029639950199 PP.9577.PP . Welch Al lyn GmbH, Ihr Einkauf bei Welch Al lyn GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029639950199 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "44,93",
       "haben_eur": null
     },
     {
       "datum": "28.09.2023",
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029640648450 PP.9577.PP . Alipay (EUROPE) Limited, Ihr Einkauf bei Alipay (EUROPE) Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029640648450 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
-      "soll_eur": "-46,27",
+      "soll_eur": "46,27",
       "haben_eur": null
     },
     {
       "datum": "28.09.2023",
       "typ": "Lastschrift",
       "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029626888644 PP.9577.PP . Re-In Retail International GmbH, Ihr Einkauf bei Re-In Retail International GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029626888644 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
-      "soll_eur": "-77,35",
+      "soll_eur": "77,35",
       "haben_eur": null
     },
     {

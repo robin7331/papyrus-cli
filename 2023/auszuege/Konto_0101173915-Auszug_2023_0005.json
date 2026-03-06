@@ -13,14 +13,14 @@
     {
       "datum": "12.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 304-6054177-7594765 AMZN Mktp DE 7B X0FPDKAWVO02AB 7BX0FPDKAWVO02AB BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 304-6054177-7594765 AMZN Mktp DE 7B X0FPDKAWVO02AB 7BX0FPDKAWVO02AB BIC/IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "79,99",
       "haben_eur": null
     },
     {
       "datum": "12.01.2023",
-      "typ": "Überweisung online",
-      "buchungstext": "Euro Magnesy 80304/2023 DATUM 12.01.2023, 16.38 UHR BIC / IBAN: BPKOPLPWXXX PL43 1020 1127 0000 1502 0268 1617",
+      "typ": "Überweisung",
+      "buchungstext": "Euro Magnesy 80304/2023 DATUM 12.01.2023, 16.38 UHR BIC/IBAN: BPKOPLPWXXX PL43 1020 1127 0000 1502 0268 1617",
       "soll_eur": "559,62",
       "haben_eur": null
     },

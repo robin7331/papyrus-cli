@@ -13,14 +13,14 @@
     {
       "datum": "14.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Tesla Inc. by Adyen Adyen N.V. Tesla Germany GmbH (Super Charger) CSPMT1VJRUG 1699713741 CK288LZF667QFZP72C BIC / IBAN: DEUTDEFF DE23 1207 0070 0020 0011 63",
+      "buchungstext": "Tesla Inc. by Adyen Adyen N.V. Tesla Germany GmbH (Super Charger) CSPMT1VJRUG 1699713741 CK288LZF667QFZP72C; BIC/IBAN: DEUTDEFF DE23 1207 0070 0020 0011 63",
       "soll_eur": "26,23",
       "haben_eur": null
     },
     {
       "datum": "14.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Tesla Germany GmbH by Adyen Adyen N.V. Tesla Germany GmbH SBSAUDW9RLIFEYIE K 20231112 CHM9P45VW2J7NT6G2C BIC / IBAN: DEUTDEFF DE50 1207 0070 0020 0011 62",
+      "buchungstext": "Tesla Germany GmbH by Adyen Adyen N.V. Tesla Germany GmbH SBSAUDW9RLIFEYIE K 20231112 CHM9P45VW2J7NT6G2C; BIC/IBAN: DEUTDEFF DE50 1207 0070 0020 0011 62",
       "soll_eur": "9,99",
       "haben_eur": null
     },

@@ -27,7 +27,7 @@
     {
       "datum": "05.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024481359913 PP.9577.PP . Alipay (EUROPE) Limited, Ihr Einkauf bei Alipay (EUROPE) Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1024481359913 BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1024481359913 PP.9577.PP . Alipay ( EUROPE) Limited, Ihr Einkauf bei Alipay (EUROPE) Limited AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1024481359913 BIC / IBAN: PPLXLUL2 LU27 9990 0013 5104 200E",
       "soll_eur": "32,22",
       "haben_eur": null
     },

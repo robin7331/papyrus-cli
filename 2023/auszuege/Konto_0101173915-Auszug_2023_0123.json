@@ -13,7 +13,7 @@
     {
       "datum": "19.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029469181992; sevDesk GmbH, Ihr E inkauf bei sevDesk GmbH; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029469181992 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029469181992 . sevDesk GmbH, Ihr Einkauf bei sevDesk GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029469181992 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "27,25",
       "haben_eur": null
     },

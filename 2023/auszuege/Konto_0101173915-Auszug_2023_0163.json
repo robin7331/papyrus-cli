@@ -13,7 +13,7 @@
     {
       "datum": "12.12.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 302-5888210-1197921 AMZN Mktp DE GP3EQ551907FZ3FC BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 302-5888210-1197921 AMZN Mktp DE GP 3EQ551907FZ3FC GP3EQ551907FZ3FC BIC/IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
       "soll_eur": "47,30",
       "haben_eur": null
     },

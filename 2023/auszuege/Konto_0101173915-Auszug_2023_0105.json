@@ -13,14 +13,14 @@
     {
       "datum": "21.08.2023",
       "typ": "Überweisung",
-      "buchungstext": "IP / Wert: 20.08.2023 Robin Reiter Privat DATUM 20.08.2023, 12.01 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "buchungstext": "Überweisung IP / Wert: 20.08.2023 Robin Reiter Privat DATUM 20.08.2023, 12.01 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": "500,00",
       "haben_eur": null
     },
     {
       "datum": "21.08.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO",
+      "buchungstext": "GutschriftÜberweisung PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1028915978964 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "53,15"
     },

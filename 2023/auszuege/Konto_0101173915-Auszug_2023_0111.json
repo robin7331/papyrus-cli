@@ -13,14 +13,14 @@
     {
       "datum": "30.08.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029072790461; Vimeo.com, Inc., Ihr Einkauf bei Vimeo.com, Inc.; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029072790461 . Vimeo.com, Inc., Ihr Einkauf bei Vimeo.com, Inc. AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029072790461 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "86,10",
       "haben_eur": null
     },
     {
       "datum": "30.08.2023",
       "typ": "Dauerauftrag",
-      "buchungstext": "Johann Reiter Lohn",
+      "buchungstext": "Johann Reiter Lohn BIC / IBAN: SOLADES1RVB DE71 6505 0110 0000 1195 68",
       "soll_eur": "520,00",
       "haben_eur": null
     },

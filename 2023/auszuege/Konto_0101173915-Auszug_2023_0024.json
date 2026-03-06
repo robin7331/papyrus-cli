@@ -13,36 +13,36 @@
     {
       "datum": "15.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025271919980 PP.9577.PP. S.K.S. Produkte für die Oberflächentechnologie GmbH, Ihr Einkauf bei S.K.S. Produkte für die Oberflächentechnologie",
-      "soll_eur": "-60,17",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025271919980 PP.9577.PP . S.K.S. Produkte fur die Oberflachentechnologie GmbH, Ihr Einkauf bei S.K.S. Produkte fur die Oberflachentechnolog 1025271919980 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "60,17",
       "haben_eur": null
     },
     {
       "datum": "15.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-6123780-5107562 AMZN Mktp DE 5UZCQJB7TU6SIXWV",
-      "soll_eur": "-75,75",
+      "buchungstext": "AMAZON PAYMENTS EUROPE S.C.A. 028-6123780-5107562 AMZN Mktp DE 5UZCQJB7TU6SIXWV 5UZCQJB7TU6SIXWV BIC / IBAN: TUBDDEDD DE87 3003 0880 1908 2620 06",
+      "soll_eur": "75,75",
       "haben_eur": null
     },
     {
       "datum": "15.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025259932426 PP.9577.PP. AH Hoffmann GmbH, Ihr Einkauf bei AH Hoffmann GmbH",
-      "soll_eur": "-17,99",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025259932426 PP.9577.PP . AH Hoffmann GmbH, Ihr Einkauf bei AH Hoffmann GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025259932426 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "17,99",
       "haben_eur": null
     },
     {
       "datum": "15.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025257200048 PP.9577.PP. Ihr Einkauf bei ..................",
-      "soll_eur": "-440,72",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025257200048 PP.9577.PP . ........ ......, Ihr Einkauf bei ........... ... 1025257200048 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "soll_eur": "440,72",
       "haben_eur": null
     },
     {
       "datum": "15.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025259847926 PP.9577.PP. Re-In Retail International GmbH, Ihr Einkauf bei Re-In Retail International GmbH",
-      "soll_eur": "-94,55",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025259847926 PP.9577.PP . Re-In Retail International GmbH, Ihr Einkauf bei Re-In Retail International GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025259847926 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "soll_eur": "94,55",
       "haben_eur": null
     },
     {

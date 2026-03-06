@@ -13,21 +13,21 @@
     {
       "datum": "12.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026300329119; PP.9577.PP . Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB; BIC/IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1026300329119 PP.9577.PP . Epidemic Sound AB, Ihr Einkauf bei Epidemic Sound AB AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1026300329119 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "12,99",
       "haben_eur": null
     },
     {
       "datum": "12.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026265188057; PP.9577.PP . Herrmann, Papenfuss, Ziebold GbR, Ihr Einkauf bei Herrmann, Papenfuss, Ziebold GbR; BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026265188057 PP.9577.PP . Herrmann , Papenfuss, Ziebold GbR, Ihr Einkauf bei Herrmann, Papenfuss, Ziebold GbR 1026265188057 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "61,95",
       "haben_eur": null
     },
     {
       "datum": "12.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026284849506; PP.9577.PP . S.K.S. Produkte für die Oberflächentechnologie GmbH, Ihr Einkauf bei S.K.S. Produkte für die Oberflächentechnologie; BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026284849506 PP.9577.PP . S.K.S. Produkte fur die Oberflachentechnologie GmbH, Ihr Einkauf bei S.K.S. Produkte fur die Oberflachentechnolog 1026284849506 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "53,48",
       "haben_eur": null
     },

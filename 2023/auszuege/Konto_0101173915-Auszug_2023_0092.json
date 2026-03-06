@@ -22,20 +22,20 @@
       "typ": "Gutschrift/Überweisung",
       "buchungstext": "Robin Reiter Rueckzahlung BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
       "soll_eur": null,
-      "haben_eur": "1.000,00"
+      "haben_eur": "1000,00"
     },
     {
       "datum": "01.08.2023",
       "typ": "Bargeldeinzahlung",
       "buchungstext": "Bargeldeinzahlung",
       "soll_eur": null,
-      "haben_eur": "1.349,00"
+      "haben_eur": "1349,00"
     },
     {
       "datum": "01.08.2023",
-      "typ": "Lastschrift",
+      "typ": "Überweisung",
       "buchungstext": "Überweisung IP KDM Transport und Logistik GmbH Rechnungs Nr.: 16664 Ueberweisung Teil 2 / 2 DATUM 01.08.2023, 09.54 UHR BIC / IBAN: DRESDEFF290 DE66 2908 0010 0107 2997 00",
-      "soll_eur": "2.551,94",
+      "soll_eur": "2551,94",
       "haben_eur": null
     },
     {

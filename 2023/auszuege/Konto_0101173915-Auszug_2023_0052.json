@@ -13,7 +13,7 @@
     {
       "datum": "18.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026452294141; PP.9577.PP . Prusa Development a.s., Ihr Einkauf bei Prusa Development a.s.",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1026452294141 PP.9577.PP . Prusa Development a.s., Ihr Einkauf bei Prusa Development a.s. 1026452294141 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "77,12",
       "haben_eur": null
     },

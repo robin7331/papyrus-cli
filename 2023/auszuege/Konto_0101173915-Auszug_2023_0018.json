@@ -13,21 +13,21 @@
     {
       "datum": "07.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. PP.9577.PP . Ecwid In c., Ihr Einkauf bei Ecwid Inc.; BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025085140110 PP.9577.PP . Ecwid Inc., Ihr Einkauf bei Ecwid Inc. 1025085140110 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "46,41",
       "haben_eur": null
     },
     {
       "datum": "07.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. PP.9577.PP . Welch Al lyn GmbH, Ihr Einkauf bei Welch Al lyn GmbH; BIC/IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1025121673158 PP.9577.PP . Welch Allyn GmbH, Ihr Einkauf bei Welch Allyn GmbH 1025121673158 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "26,94",
       "haben_eur": null
     },
     {
       "datum": "07.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP . neoLab M igge GmbH, Ihr Einkauf bei neoLab M igge GmbH; AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025121180563 PP.9577.PP . neoLab Migge GmbH, Ihr Einkauf bei neoLab Migge GmbH AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025121180563 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "47,60",
       "haben_eur": null
     },

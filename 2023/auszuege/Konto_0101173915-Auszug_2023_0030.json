@@ -12,8 +12,8 @@
     },
     {
       "datum": "01.03.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Abrechnung 28.02.2023 / Wert: 28.02.2023, siehe Anlage Nr. 1",
+      "typ": "Abrechnung",
+      "buchungstext": "Abrechnung 28.02.2023 / Wert: 28.02.2023 siehe Anlage Nr. 1",
       "soll_eur": "24,55",
       "haben_eur": null
     },

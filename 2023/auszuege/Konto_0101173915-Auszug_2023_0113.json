@@ -13,14 +13,14 @@
     {
       "datum": "04.09.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029129970589 PP.9577.PP . DigitalO cean, Ihr Einkauf bei DigitalOcean; BIC/IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1029129970589 PP.9577.PP . DigitalO cean, Ihr Einkauf bei DigitalOcean AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1029129970589 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "24,04",
       "haben_eur": null
     },
     {
       "datum": "04.09.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO; BIC/IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KON TO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1029152313653 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "674,02"
     },

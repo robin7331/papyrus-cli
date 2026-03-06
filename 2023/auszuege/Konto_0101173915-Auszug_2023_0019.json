@@ -12,8 +12,8 @@
     },
     {
       "datum": "08.02.2023",
-      "typ": "Überweisung online",
-      "buchungstext": "KRA-BOX P.P.H.U. ADAM KRASIENKO PRO FORMA - 106 DATUM 08.02.2023, 16.44 UHR BIC / IBAN: PKOPPLPWXXX PL50 1240 6218 1978 0000 4619 1816",
+      "typ": "Überweisung",
+      "buchungstext": "Überweisung online; KRA-BOX P.P.H.U. ADAM KRASIENKO PRO FORMA - 106 DATUM 08.02.2023, 16.44 UHR; BIC / IBAN: PKOPPLPWXXX PL50 1240 6218 1978 0000 4619 1816",
       "soll_eur": "85,00",
       "haben_eur": null
     },

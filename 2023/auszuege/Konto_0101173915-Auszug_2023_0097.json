@@ -12,126 +12,126 @@
     },
     {
       "datum": "08.08.2023",
-      "typ": "Gutschrift",
+      "typ": "Gutschrift/Überweisung",
       "buchungstext": "entgeltfreie Buchung / Wert: 07.08.2023 PayPal (Europe) S.a r.l. et Cie, S. 1028579820069 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1028579820069 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": null,
       "haben_eur": "104,84"
     },
     {
       "datum": "08.08.2023",
-      "typ": "Rücklastschrift",
+      "typ": "Lastschrift",
       "buchungstext": "kostenfreie Buchung Rechnung Rückgabe Lastschrift über 104,84 EUR Einreicher: PayPal (Europe) S.a r.l. et Verwendungszweck: 1028579820069 PP.9577.PP . 20230808-BW016-00021024690",
       "soll_eur": "0,99",
       "haben_eur": null
     },
     {
       "datum": "08.08.2023",
-      "typ": "Gutschrift",
+      "typ": "Gutschrift/Überweisung",
       "buchungstext": "entgeltfreie Buchung / Wert: 07.08.2023 PayPal Europe S.a.r.l. et Cie S.C.A 1028580012069 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1028580012069 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "4,94"
     },
     {
       "datum": "08.08.2023",
-      "typ": "Rücklastschrift",
+      "typ": "Lastschrift",
       "buchungstext": "kostenfreie Buchung Rechnung Rückgabe Lastschrift über 4,94 EUR Einreicher: PayPal Europe S.a.r.l. et C Verwendungszweck: 1028580012069 PP.9577.PP . 20230808-BW016-00021024691",
       "soll_eur": "0,99",
       "haben_eur": null
     },
     {
       "datum": "08.08.2023",
-      "typ": "Gutschrift",
+      "typ": "Gutschrift/Überweisung",
       "buchungstext": "entgeltfreie Buchung / Wert: 07.08.2023 PayPal (Europe) S.a r.l. et Cie, S. 1028579864731 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1028579864731 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": null,
       "haben_eur": "69,00"
     },
     {
       "datum": "08.08.2023",
-      "typ": "Rücklastschrift",
+      "typ": "Lastschrift",
       "buchungstext": "kostenfreie Buchung Rechnung Rückgabe Lastschrift über 69,00 EUR Einreicher: PayPal (Europe) S.a r.l. et Verwendungszweck: 1028579864731 PP.9577.PP . 20230808-BW016-00021024692",
       "soll_eur": "0,99",
       "haben_eur": null
     },
     {
       "datum": "08.08.2023",
-      "typ": "Gutschrift",
+      "typ": "Gutschrift/Überweisung",
       "buchungstext": "entgeltfreie Buchung / Wert: 07.08.2023 PayPal Europe S.a.r.l. et Cie S.C.A 1028579728816 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1028579728816 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "69,00"
     },
     {
       "datum": "08.08.2023",
-      "typ": "Rücklastschrift",
+      "typ": "Lastschrift",
       "buchungstext": "kostenfreie Buchung Rechnung Rückgabe Lastschrift über 69,00 EUR Einreicher: PayPal Europe S.a.r.l. et C Verwendungszweck: 1028579728816 PP.9577.PP . 20230808-BW016-00021024693",
       "soll_eur": "0,99",
       "haben_eur": null
     },
     {
       "datum": "08.08.2023",
-      "typ": "Gutschrift",
+      "typ": "Gutschrift/Überweisung",
       "buchungstext": "entgeltfreie Buchung / Wert: 07.08.2023 PayPal Europe S.a.r.l. et Cie S.C.A 1028580040648 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1028580040648 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "11,15"
     },
     {
       "datum": "08.08.2023",
-      "typ": "Rücklastschrift",
+      "typ": "Lastschrift",
       "buchungstext": "kostenfreie Buchung Rechnung Rückgabe Lastschrift über 11,15 EUR Einreicher: PayPal Europe S.a.r.l. et C Verwendungszweck: 1028580040648 PP.9577.PP . 20230808-BW016-00021024694",
       "soll_eur": "0,99",
       "haben_eur": null
     },
     {
       "datum": "08.08.2023",
-      "typ": "Gutschrift",
+      "typ": "Gutschrift/Überweisung",
       "buchungstext": "entgeltfreie Buchung / Wert: 07.08.2023 PayPal Europe S.a.r.l. et Cie S.C.A 1028579975035 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1028579975035 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "13,00"
     },
     {
       "datum": "08.08.2023",
-      "typ": "Rücklastschrift",
+      "typ": "Lastschrift",
       "buchungstext": "kostenfreie Buchung Rechnung Rückgabe Lastschrift über 13,00 EUR Einreicher: PayPal Europe S.a.r.l. et C Verwendungszweck: 1028579975035 PP.9577.PP . 20230808-BW016-00021024695",
       "soll_eur": "0,99",
       "haben_eur": null
     },
     {
       "datum": "08.08.2023",
-      "typ": "Gutschrift",
+      "typ": "Gutschrift/Überweisung",
       "buchungstext": "entgeltfreie Buchung / Wert: 07.08.2023 PayPal Europe S.a.r.l. et Cie S.C.A 1028579923430 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1028579923430 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "69,00"
     },
     {
       "datum": "08.08.2023",
-      "typ": "Rücklastschrift",
+      "typ": "Lastschrift",
       "buchungstext": "kostenfreie Buchung Rechnung Rückgabe Lastschrift über 69,00 EUR Einreicher: PayPal Europe S.a.r.l. et C Verwendungszweck: 1028579923430 PP.9577.PP . 20230808-BW016-00021024696",
       "soll_eur": "0,99",
       "haben_eur": null
     },
     {
       "datum": "08.08.2023",
-      "typ": "Gutschrift",
+      "typ": "Gutschrift/Überweisung",
       "buchungstext": "entgeltfreie Buchung / Wert: 07.08.2023 PayPal Europe S.a.r.l. et Cie S.C.A 1028579766045 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1028579766045 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "4,94"
     },
     {
       "datum": "08.08.2023",
-      "typ": "Rücklastschrift",
+      "typ": "Lastschrift",
       "buchungstext": "kostenfreie Buchung Rechnung Rückgabe Lastschrift über 4,94 EUR Einreicher: PayPal Europe S.a.r.l. et C Verwendungszweck: 1028579766045 PP.9577.PP . 20230808-BW016-00021024697",
       "soll_eur": "0,99",
       "haben_eur": null
     },
     {
       "datum": "08.08.2023",
-      "typ": "Gutschrift",
+      "typ": "Gutschrift/Überweisung",
       "buchungstext": "entgeltfreie Buchung / Wert: 07.08.2023 PayPal Europe S.a.r.l. et Cie S.C.A 1028592889275 PP.9577.PP . Packlink - Auctane SL, Ihr Einkauf bei Pack link - Auctane SL 1028592889275 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "4,94"
     },
     {
       "datum": "08.08.2023",
-      "typ": "Rücklastschrift",
+      "typ": "Lastschrift",
       "buchungstext": "kostenfreie Buchung Rechnung Rückgabe Lastschrift über 4,94 EUR Einreicher: PayPal Europe S.a.r.l. et C Verwendungszweck: 1028592889275 PP.9577.PP . 20230808-BW016-00021024698",
       "soll_eur": "0,99",
       "haben_eur": null

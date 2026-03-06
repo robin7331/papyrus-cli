@@ -12,15 +12,15 @@
     },
     {
       "datum": "26.04.2023",
-      "typ": "Überweisung online",
-      "buchungstext": "CustomPack Sp. z o.o. Pro Forma Invoice 002023/04/06/P; DATUM 25.04.2023, 22.31 UHR; BIC / IBAN: ALBPPLPWXXX PL87 2490 0005 0000 4600 3856 9940",
+      "typ": "Überweisung",
+      "buchungstext": "Überweisung online; CustomPack Sp. z o.o. Pro Forma Invoice 002023/04/06/P; DATUM 25.04.2023, 22.31 UHR; BIC / IBAN: ALBPPLPWXXX PL87 2490 0005 0000 4600 3856 9940",
       "soll_eur": "1.400,00",
       "haben_eur": null
     },
     {
       "datum": "26.04.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Knappschaft-Bahn-See Deutsche Rentenversicherung; Knappschaft-Bahn-See 7339656526 OB-96957618 EUR 163,28. BEITRAG 0423 - 0423 7339656526 OB-96957618; BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
+      "buchungstext": "Lastschrift; Knappschaft-Bahn-See Deutsche Rentenversicherung; Knappsc haft-Bahn-See 7339656526 OB-96957618 EUR 163,28; BEITRAG 0423 - 0423 7339656526 OB-96957618; BIC / IBAN: WELADEDDXXX DE24 3005 0000 0001 0505 41",
       "soll_eur": "163,28",
       "haben_eur": null
     },

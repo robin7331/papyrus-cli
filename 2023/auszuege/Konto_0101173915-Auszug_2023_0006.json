@@ -13,14 +13,14 @@
     {
       "datum": "13.01.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1024633680786 PP.9577.PP . Paddle.n et, Ihr Einkauf bei Paddle.net 1024633680786 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
+      "buchungstext": "PayPal (Europe) S.a r.l. et Cie, S. C.A. 1024633680786 PP.9577.PP . Paddle.net, Ihr Einkauf bei Paddle.net 1024633680786 PP.9577.PP PAYPAL BIC / IBAN: DEUTDEFF DE88 5007 0010 0175 5263 03",
       "soll_eur": "58,31",
       "haben_eur": null
     },
     {
       "datum": "13.01.2023",
-      "typ": "Überweisung online",
-      "buchungstext": "Suzhou Gaoyuda Trading Co., Ltd. Alibaba Order 163312575501029121 DATUM 13.01.2023, 09.58 UHR BIC / IBAN: CHASLULXXXX LU65 0670 0041 9964 2644",
+      "typ": "Lastschrift",
+      "buchungstext": "Überweisung online; Suzhou Gaoyuda Trading Co., Ltd. Alibaba Order 163312575501029121 DATUM 13.01.2023, 09.58 UHR BIC / IBAN: CHASLULXXXX LU65 0670 0041 9964 2644",
       "soll_eur": "688,51",
       "haben_eur": null
     },

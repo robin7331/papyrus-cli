@@ -13,15 +13,15 @@
     {
       "datum": "20.11.2023",
       "typ": "Überweisung",
-      "buchungstext": "IP / Wert: 19.11.2023 Robin Reiter Privat DATUM 19.11.2023, 13.47 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
-      "soll_eur": "-500,00",
+      "buchungstext": "Überweisung IP / Wert: 19.11.2023 Robin Reiter Privat DATUM 19.11.2023, 13.47 UHR BIC / IBAN: BYLADEM1001 DE12 1203 0000 1064 4462 95",
+      "soll_eur": "500,00",
       "haben_eur": null
     },
     {
       "datum": "20.11.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 32110051000691/07.11.2023 RG 32110051000691/07.11.2023 Zahlbeleg 364397913811 BIC / IBAN: DRESDEFF370 DE75 3708 0040 0232 1130 01",
-      "soll_eur": "-98,43",
+      "buchungstext": "Telekom Deutschland GmbH Mobilfunk Kundenkonto 0047745565 RG 32110051000691/07.11.2023 RG 32110 051000691/07.11.2023 Zahlbeleg 364397913811 BIC / IBAN: DRESDEFF370 DE75 3708 0040 0232 1130 01",
+      "soll_eur": "98,43",
       "haben_eur": null
     },
     {

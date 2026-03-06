@@ -19,7 +19,7 @@
     },
     {
       "datum": "31.07.2023",
-      "typ": "Überweisung online",
+      "typ": "Überweisung",
       "buchungstext": "KDM Transport und Logistik GmbH Rechnungs Nr.: 16664 Ueberweisung Teil 1 / 2 DATUM 31.07.2023, 08.39 UHR BIC / IBAN: DRESDEFF290 DE66 2908 0010 0107 2997 00",
       "soll_eur": "4.000,00",
       "haben_eur": null

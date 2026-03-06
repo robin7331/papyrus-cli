@@ -20,7 +20,7 @@
     {
       "datum": "02.08.2023",
       "typ": "Gutschrift/Überweisung",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1028545816705 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A PP.9577.PP ABBUCHUNG VOM PAYPAL-KONTO AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 YYW1028545816705 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": null,
       "haben_eur": "674,02"
     },

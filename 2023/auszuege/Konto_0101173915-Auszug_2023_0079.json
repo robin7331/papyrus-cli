@@ -12,7 +12,7 @@
     },
     {
       "datum": "03.07.2023",
-      "typ": "Lastschrift",
+      "typ": "Abrechnung",
       "buchungstext": "Abrechnung 30.06.2023 / Wert: 30.06.2023 siehe Anlage Nr. 1",
       "soll_eur": "12,85",
       "haben_eur": null

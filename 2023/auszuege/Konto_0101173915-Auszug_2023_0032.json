@@ -12,8 +12,8 @@
     },
     {
       "datum": "06.03.2023",
-      "typ": "Lastschrift",
-      "buchungstext": "Überweisung online; DHL Express Germany GmbH Rechn. Nr: ZIT4724227 DATUM 05.03.2023, 16.58 UHR; BIC / IBAN: PBNKDEFFXXX DE51 3701 0050 0474 8495 09",
+      "typ": "Überweisung",
+      "buchungstext": "Überweisung online DHL Express Germany GmbH Rechn. Nr: ZIT4724227 DATUM 05.03.2023, 16.58 UHR BIC / IBAN: PBNKDEFFXXX DE51 3701 0050 0474 8495 09",
       "soll_eur": "97,42",
       "haben_eur": null
     },

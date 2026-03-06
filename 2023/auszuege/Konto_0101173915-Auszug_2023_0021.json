@@ -13,21 +13,21 @@
     {
       "datum": "10.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "Leonhardt, Adolf, Spöri, Christoph GbR; Steuerberatungskanzlei LEONHARDT & SPÖRI; Gläubiger-ID: DE45ZZZ00000174923; Mandatsreferenz:449920000002; RNr: 708/16.01.23; Deb:44992 2302080843-0000007; BIC / IBAN: SOLADES1RVB DE51 6505 0110 0000 2397 23",
+      "buchungstext": "Leonhardt, Adolf, Spöri, Christoph GbR Steuerberatungskanzlei LEONHARDT & SPÖRI Gläubiger-ID: DE45ZZZ00000174923 Mandatsreferenz:449920000002 RNr: 708/16.01.23 Deb:44992 2302080843-0000007 BIC / IBAN: SOLADES1RVB DE51 6505 0110 0000 2397 23",
       "soll_eur": "63,55",
       "haben_eur": null
     },
     {
       "datum": "10.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A; 1025171321310; UPS, Ihr Einkauf bei UPS; AWV-MELDEPFLICHT BEACHTEN; HOTLINE BUNDESBANK: (0800) 1234-111; BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025171321310 . UPS, Ihr Einkauf bei UPS AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025171321310 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "104,10",
       "haben_eur": null
     },
     {
       "datum": "10.02.2023",
       "typ": "Lastschrift",
-      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A; 1025170146167; PP.9577.PP; Printgroup GmbH & Co. KG, Ihr Einkauf bei Printgroup GmbH & Co. KG; AWV-MELDEPFLICHT BEACHTEN; HOTLINE BUNDESBANK: (0800) 1234-111; BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
+      "buchungstext": "PayPal Europe S.a.r.l. et Cie S.C.A 1025170146167 PP.9577.PP . Printgroup GmbH & Co. KG, Ihr Einkauf bei Printgroup GmbH & Co. KG AWV-MELDEPFLICHT BEACHTEN HOTLINE BUNDESBANK: (0800) 1234-111 1025170146167 BIC / IBAN: PPLXLUL2 LU89 7510 0013 5104 200E",
       "soll_eur": "20,00",
       "haben_eur": null
     },
