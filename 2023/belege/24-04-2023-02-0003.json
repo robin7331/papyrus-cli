@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "Scanned%20Document%206.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-04-24",
+    "issuer_name": "BitMechanics GmbH",
+    "invoice_number": "2023-02-0003",
+    "subject": "Komplettinstallation Photovoltaik, Rechnung 2023-02-0003",
+    "summary_short": "7.3 kWp Photovoltaik Komplettinstallation",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 704354,
+    "net_amount_cents": 704354,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "notes": [
+      "Kundennummer: 1013",
+      "Leistungszeitraum: 24.04.2023"
+    ]
+  }
+}
+```

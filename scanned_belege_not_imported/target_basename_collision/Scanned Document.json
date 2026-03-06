@@ -1,0 +1,26 @@
+```json
+{
+  "source_pdf": "/path/to/Scanned%20Document.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-03-23",
+    "issuer_name": "Beta LAYOUT GmbH",
+    "invoice_number": "RE-202303/07109",
+    "subject": "Rechnung zu Lieferschein LI-202303/05920 vom 22.03.2023",
+    "summary_short": "Einkauf von Clean Box und Pinzetten",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 6104,
+    "net_amount_cents": 5197,
+    "vat_amount_cents": 907,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Lieferdatum: 22.03.2023",
+      "Bestelldatum: 21.03.2023",
+      "Kundennummer: 44849",
+      "Zahlbar innerhalb von 14 Tagen"
+    ]
+  }
+}
+```

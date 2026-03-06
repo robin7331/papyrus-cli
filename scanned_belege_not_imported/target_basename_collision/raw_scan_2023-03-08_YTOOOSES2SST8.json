@@ -1,0 +1,30 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/raw_scan_2023-03-08_YTOOOSES2SST8.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-04-04",
+    "issuer_name": "ETRIS Bank GmbH",
+    "invoice_number": "440002952248",
+    "subject": "2. Mahnung für Bestellung 420000625956",
+    "summary_short": "Zweite Mahnung für ausstehende Zahlung",
+    "document_type": "Mahnung",
+    "gross_amount_cents": 1705,
+    "net_amount_cents": 1205,
+    "vat_amount_cents": 500,
+    "vat_rate_bps": null,
+    "vat_treatment": "VAT_UNKNOWN",
+    "country_code": "DE",
+    "notes": [
+      "Zahlungsempfänger: ETRIS BANK",
+      "IBAN: DE40 3003 0600 8201 8003 08",
+      "Fälligkeitsdatum: 11.04.2023",
+      "Rechnungsdatum: 08.03.2023",
+      "Kundennummer: 1100623329",
+      "Bestellnummer: 420000625956",
+      "Verwendungszweck: 440002952248",
+      "Gesamtbetrag: 17,05 EUR"
+    ]
+  }
+}
+```

@@ -1,0 +1,24 @@
+```json
+{
+  "source_pdf": "/path/to/Scanned%20Document%207.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-04-21",
+    "issuer_name": "BitMechanics GmbH",
+    "invoice_number": "2023-02-0002-ST-1",
+    "subject": "Storno-Rechnung zu Rechnung 2023-02-0002",
+    "summary_short": "Storno für Solarmodule und Installationen",
+    "document_type": "Storno",
+    "gross_amount_cents": -872318,
+    "net_amount_cents": -701354,
+    "vat_amount_cents": -170964,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Kundennummer: 1013",
+      "Zahlungsziel: sofort fällig"
+    ]
+  }
+}
+```

@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/raw_scan_2023-05-03_B5021211240.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-03-02",
+    "issuer_name": "DHL Express Germany GmbH",
+    "invoice_number": null,
+    "subject": "Zahlungserinnerung",
+    "summary_short": "Offene Rechnungen vom 02.03.2023",
+    "document_type": "Zahlungserinnerung",
+    "gross_amount_cents": 9742,
+    "net_amount_cents": null,
+    "vat_amount_cents": null,
+    "vat_rate_bps": null,
+    "vat_treatment": "VAT_UNKNOWN",
+    "country_code": "DE",
+    "notes": [
+      "Rechnungsnummer: ZIT374107 bis ZIT4724227",
+      "Fällige Rechnungen: EUR 97,42",
+      "Verzugstage: 367, 7, 7"
+    ]
+  }
+}
+```

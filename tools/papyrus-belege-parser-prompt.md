@@ -4,6 +4,7 @@ Das kann z. B. eine Rechnung, Gutschrift, Storno, ein Kassenbeleg oder ein amtli
 
 Ziel:
 Extrahiere die relevanten Inhalte und gib genau ein JSON-Objekt im unten definierten Format aus.
+Wichtig. Es muss ein valid JSON sein. Gebe keine ```json oder ``` mit aus!
 Der Beleg kann mehrseitig sein; irrelevante Seiten ignorieren.
 
 Wichtig:

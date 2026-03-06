@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%2014.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-08-24",
+    "issuer_name": "RS Components GmbH",
+    "invoice_number": "327308163",
+    "subject": "Rechnung für MOSFET Transistor",
+    "summary_short": "Rechnung für MOSFET Transistor am 24.08.2023",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 2641,
+    "net_amount_cents": 2219,
+    "vat_amount_cents": 422,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Rechnungsnummer: 327308163",
+      "Lieferdatum: 24.08.2023",
+      "Zahlungsbedingungen: 30 Tage netto bis zum 23.09.2023"
+    ]
+  }
+}
+```

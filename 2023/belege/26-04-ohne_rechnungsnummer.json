@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "Scanned%20Document%209.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-04-26",
+    "issuer_name": "VBG",
+    "invoice_number": null,
+    "subject": "Beitrag zur gesetzlichen Unfallversicherung",
+    "summary_short": "VBG Beitragsvorauszahlung 2023",
+    "document_type": "Beleg",
+    "gross_amount_cents": 9764,
+    "net_amount_cents": null,
+    "vat_amount_cents": null,
+    "vat_rate_bps": null,
+    "vat_treatment": "VAT_UNKNOWN",
+    "country_code": "DE",
+    "notes": [
+      "Zahlbar bis 15.05.2023",
+      "IBAN: DE66 2004 0000 0131 0291 00",
+      "Verwendungszweck: 2023498381"
+    ]
+  }
+}
+```

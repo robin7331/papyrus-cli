@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "/path/to/Scanned%20Document%208.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-05-02",
+    "issuer_name": "Hetzner Online GmbH",
+    "invoice_number": "R0018787233",
+    "subject": "Sperrung der Leistungen wegen ausstehender Zahlung",
+    "summary_short": "Leistungssperrung aufgrund offener Rechnung von 7,35 EUR",
+    "document_type": "Bescheid",
+    "gross_amount_cents": 735,
+    "net_amount_cents": null,
+    "vat_amount_cents": null,
+    "vat_rate_bps": null,
+    "vat_treatment": "VAT_UNKNOWN",
+    "country_code": "DE",
+    "notes": [
+      "Rechnungsbetrag: 5,70 EUR",
+      "Rücklastschriftgebühr: 1,65 EUR",
+      "Zahlung bis spätestens: 2023-05-05",
+      "Kundennummer: K0046695512",
+      "USt-IdNr.: DE200112279"
+    ]
+  }
+}
+```

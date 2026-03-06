@@ -6,8 +6,8 @@
     "document_date": "2023-05-05",
     "issuer_name": "Bft Station Klaus Sohler",
     "invoice_number": "4314",
-    "subject": "Rechnung vom 05.05.2023 für Kunden-Nr. 0",
-    "summary_short": "Rechnung für Dienstleistungen bei Bft Station",
+    "subject": "Rechnung für KFZ-Service",
+    "summary_short": "Rechnung für Montage, Räder umschrauben und einlagern",
     "document_type": "Rechnung",
     "gross_amount_cents": 9996,
     "net_amount_cents": 8400,
@@ -16,9 +16,9 @@
     "vat_treatment": "VAT_19",
     "country_code": "DE",
     "notes": [
-      "Leistungsdatum: 05.05.2023",
-      "Kunden-Nr.: 0",
-      "Zahlbar sofort nach Rechnungsinhalt"
+      "Kundennummer: 0",
+      "Leistungserstellung: 05.05.2023",
+      "Zahlbar sofort nach Rechnungserhalt"
     ]
   }
 }

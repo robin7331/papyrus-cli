@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "raw_scan_unknown_date_unknown_number_b2536549.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-03-21",
+    "issuer_name": "rose plastic AG",
+    "invoice_number": "910295391",
+    "subject": "Rechnung für Bit Mechanics GmbH",
+    "summary_short": "Lieferung von Verpackungsmaterialien",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 9901,
+    "net_amount_cents": 8300,
+    "vat_amount_cents": 1601,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Leistungsdatum: 2023-03-21",
+      "Kundennummer: 450474",
+      "Bestellnummer: per E-mail 16.03.2023"
+    ]
+  }
+}
+```

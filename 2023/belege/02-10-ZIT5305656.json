@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%2016.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-10-02",
+    "issuer_name": "DHL Express Germany GmbH",
+    "invoice_number": "ZIT5305656",
+    "subject": "Rechnung für Zölle und Leistungen",
+    "summary_short": "Zoll- und Einfuhrsteuern für Oktober 2023",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 14360,
+    "net_amount_cents": 13932,
+    "vat_amount_cents": 428,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Fälligkeitsdatum: 2023-10-09",
+      "Accountnummer: 1432565656",
+      "Enthält Zölle und Einfuhrumsatzsteuer"
+    ]
+  }
+}
+```

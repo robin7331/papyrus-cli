@@ -1,0 +1,26 @@
+```json
+{
+  "source_pdf": "/path/to/Scanned%20Document%2019.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-11-24",
+    "issuer_name": "Fisher Scientific GmbH",
+    "invoice_number": "4023719709",
+    "subject": "Rechnung für Lieferdatum 24.11.23",
+    "summary_short": "Rechnung für Artikel X25 FITTINGS SLIP 1/19 PP",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 3677,
+    "net_amount_cents": 3090,
+    "vat_amount_cents": 587,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Kundennummer: GUESTDE",
+      "Versandhinweis: 60039",
+      "Zahlungsmethode: VISA",
+      "Fälligkeitsdatum: 24.11.2023"
+    ]
+  }
+}
+```

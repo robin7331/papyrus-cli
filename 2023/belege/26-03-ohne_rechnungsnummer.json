@@ -1,0 +1,29 @@
+```json
+{
+  "source_pdf": "Scanned%20Document%205.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-03-26",
+    "issuer_name": "Der Buchhalter e.V.",
+    "invoice_number": null,
+    "subject": "Reisekosten-Formular 2023 Inland - Konferenz (Pixel Pump Kundenakquise)",
+    "summary_short": "Reisekostenabrechnung für Konferenz vom 24.03.2023 bis 26.03.2023",
+    "document_type": "Reisekosten-Formular",
+    "gross_amount_cents": 50430,
+    "net_amount_cents": null,
+    "vat_amount_cents": null,
+    "vat_rate_bps": null,
+    "vat_treatment": "VAT_UNKNOWN",
+    "country_code": "DE",
+    "notes": [
+      "Name: Robin Reiter",
+      "Gefahrene KM: 60",
+      "Beginn: 24.03.2023",
+      "Ende: 26.03.2023",
+      "Erstattungsbetrag: 504,30 EUR",
+      "IBAN: DE12 1203 0000 1064 4462 95",
+      "BIC: BYLADEM1001"
+    ]
+  }
+}
+```

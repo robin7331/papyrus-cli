@@ -1,0 +1,26 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/raw_scan_2025-03-30_e28130.pdf",
+  "year": 2022,
+  "extracted": {
+    "document_date": "2022-04-12",
+    "issuer_name": "J Perkins Distribution Ltd",
+    "invoice_number": "658136",
+    "subject": "Commercial Invoice for BitMechanics GmbH",
+    "summary_short": "Invoice for Model and Hobby spares",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 119500,
+    "net_amount_cents": 119500,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "GB",
+    "notes": [
+      "EORI: DE991329447185781",
+      "VAT ID: DE300112279",
+      "Order Number: 487013",
+      "Shipping Date: 13/04/2022"
+    ]
+  }
+}
+```

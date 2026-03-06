@@ -1,0 +1,26 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%204.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-03-30",
+    "issuer_name": "Welch Allyn GmbH",
+    "invoice_number": "9400231984",
+    "subject": "Rechnung für BP Fitting, M Luer Slip 5/32 Tube",
+    "summary_short": "Rechnung für BP Fitting Lieferung",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 2694,
+    "net_amount_cents": 2264,
+    "vat_amount_cents": 430,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Kundennummer: 11203818",
+      "Versandart: DHL CARRIER DHL STANDARD DELIVERY",
+      "Bestellnummer: WEB5100006659",
+      "Lieferdatum entspricht Rechnungsdatum"
+    ]
+  }
+}
+```

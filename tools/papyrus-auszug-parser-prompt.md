@@ -1,6 +1,7 @@
 ### Wichtige Informationen
 Du bekommst ein PDF von einem Kontoauszug der Sparkasse Ravensburg.
 Dein Ziel ist es alle relevanten Informationen zu sammeln und als JSON object auszugeben.
+Wichtig. Es muss ein valid JSON sein. Gebe keine  ```json oder ``` mit aus!
 Der Kontoauszug kann aus mehreren Seiten bestehen. Schaue dir alle Seiten genau an. Es darf keine Transaktion ausgelassen werden!
 
 Achte darauf, dass der Buchungstext vollständig ist. Kürze hier nicht ab und sieh genau hin!
@@ -18,7 +19,7 @@ Neben klassischen Buchungen gibt es auch Rücklastschrifen, entgeldfreie Buchung
 Es gibt KEINE Transaktion die NICHT erfasst werden sollte.
 
 Hier ist ein Beispieljson eines Kontoauszuges.
-```
+``` json
 {
   "statement_no": "1/2023",
   "rows": [
@@ -74,4 +75,5 @@ Hier ist ein Beispieljson eines Kontoauszuges.
       "saldo_eur": "34.835,75"
     }
   ]
-}```
+}
+```

@@ -1,0 +1,27 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/Scanned%20Document%2023.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-05-17",
+    "issuer_name": "Bundesamt für Justiz",
+    "invoice_number": "EHUIG-00147303/2023-01/01",
+    "subject": "Ordnungsgeldverfahren nach § 335 HGB",
+    "summary_short": "Androhungsverfügung und Kostenentscheidung gegen BitMechanics GmbH",
+    "document_type": "Amtliches Schreiben",
+    "gross_amount_cents": 10350,
+    "net_amount_cents": 10350,
+    "vat_amount_cents": 0,
+    "vat_rate_bps": 0,
+    "vat_treatment": "VAT_0",
+    "country_code": "DE",
+    "notes": [
+      "Kassenzeichen: 855647603255",
+      "Kostenverzeichnis: JVKostenG Nr. 1210",
+      "Verfahrenskosten: 100,00 EUR",
+      "Zustellungskosten: 3,50 EUR",
+      "Zahlung innerhalb sechs Wochen nach Zustellung"
+    ]
+  }
+}
+```

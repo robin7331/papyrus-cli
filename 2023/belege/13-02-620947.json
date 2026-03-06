@@ -1,0 +1,25 @@
+```json
+{
+  "source_pdf": "/Users/robin/Documents/Projects/buchhaltung/scanned_belege/raw_scan_2023-02-13_620947.pdf",
+  "year": 2023,
+  "extracted": {
+    "document_date": "2023-02-13",
+    "issuer_name": "Dimitrij Nazarenus",
+    "invoice_number": "620947",
+    "subject": "Rechnung für EPDM-Schaum Schwarz",
+    "summary_short": "EPDM-Schaum Schwarz Lieferung",
+    "document_type": "Rechnung",
+    "gross_amount_cents": 7575,
+    "net_amount_cents": 6366,
+    "vat_amount_cents": 1209,
+    "vat_rate_bps": 1900,
+    "vat_treatment": "VAT_19",
+    "country_code": "DE",
+    "notes": [
+      "Lieferdatum: 13.02.2023",
+      "OrderID: 028-6123780-5107562",
+      "Zahlungsart: Amazon (Betrag bereits dankend erhalten)"
+    ]
+  }
+}
+```
