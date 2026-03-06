@@ -30,6 +30,18 @@ export type ConvertUsage = {
   totalTokens: number;
 };
 
+export class UnknownModelError extends Error {
+  readonly model: string;
+  readonly availableModels: string[];
+
+  constructor(model: string, availableModels: string[]) {
+    super(`Model "${model}" is not available for this API key.`);
+    this.name = "UnknownModelError";
+    this.model = model;
+    this.availableModels = availableModels;
+  }
+}
+
 const AUTO_RESPONSE_SCHEMA = z.object({
   format: z.enum(["md", "txt"]),
   content: z.string().min(1)
@@ -43,12 +55,7 @@ export async function convertPdf(options: ConvertOptions): Promise<ConvertResult
   const inputPath = resolve(options.inputPath);
   await access(inputPath);
 
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) {
-    throw new Error("OPENAI_API_KEY is not set.");
-  }
-
-  const client = new OpenAI({ apiKey });
+  const client = createOpenAiClient();
 
   const uploaded = await withRateLimitRetry("file upload", () =>
     client.files.create({
@@ -64,23 +71,32 @@ export async function convertPdf(options: ConvertOptions): Promise<ConvertResult
   });
 
   const promptText = buildPromptText(options);
-  const result = await withRateLimitRetry("model run", () =>
-    run(agent, [
-      {
-        role: "user",
-        content: [
-          {
-            type: "input_text",
-            text: promptText
-          },
-          {
-            type: "input_file",
-            file: { id: uploaded.id }
-          }
-        ]
-      }
-    ])
-  );
+  let result;
+  try {
+    result = await withRateLimitRetry("model run", () =>
+      run(agent, [
+        {
+          role: "user",
+          content: [
+            {
+              type: "input_text",
+              text: promptText
+            },
+            {
+              type: "input_file",
+              file: { id: uploaded.id }
+            }
+          ]
+        }
+      ])
+    );
+  } catch (error) {
+    if (isUnknownModelError(error, options.model)) {
+      throw new UnknownModelError(options.model, await listAvailableModels(client));
+    }
+
+    throw error;
+  }
 
   const rawOutput = (result.finalOutput ?? "").trim();
   if (!rawOutput) {
@@ -99,6 +115,39 @@ export async function convertPdf(options: ConvertOptions): Promise<ConvertResult
   }
 
   return { format: "txt", content: rawOutput, usage };
+}
+
+export async function assertModelAvailable(model: string): Promise<void> {
+  const client = createOpenAiClient();
+
+  try {
+    await client.models.retrieve(model);
+  } catch (error) {
+    if (!isUnknownModelError(error, model)) {
+      throw error;
+    }
+
+    throw new UnknownModelError(model, await listAvailableModels(client));
+  }
+}
+
+export async function listAvailableModels(client = createOpenAiClient()): Promise<string[]> {
+  const modelIds: string[] = [];
+
+  for await (const model of client.models.list()) {
+    modelIds.push(model.id);
+  }
+
+  return modelIds.sort((left, right) => left.localeCompare(right, "en"));
+}
+
+function createOpenAiClient(): OpenAI {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error("OPENAI_API_KEY is not set.");
+  }
+
+  return new OpenAI({ apiKey });
 }
 
 function buildPromptText(options: ConvertOptions): string {
@@ -169,6 +218,27 @@ function normalizeExtensionHint(extension: string | undefined): string | undefin
 
   const normalized = extension.trim().replace(/^\.+/, "");
   return normalized || undefined;
+}
+
+function isUnknownModelError(error: unknown, model: string): boolean {
+  const message = error instanceof Error ? error.message : String(error);
+  const normalizedMessage = message.toLowerCase();
+  const errorStatus =
+    typeof error === "object" && error !== null && "status" in error ? error.status : undefined;
+  const errorCode =
+    typeof error === "object" && error !== null && "code" in error ? error.code : undefined;
+  const quotedModel = model.toLowerCase();
+
+  if (errorStatus === 404 || errorCode === "model_not_found") {
+    return true;
+  }
+
+  return (
+    normalizedMessage.includes(quotedModel) &&
+    (normalizedMessage.includes("does not exist") ||
+      normalizedMessage.includes("not found") ||
+      normalizedMessage.includes("unknown model"))
+  );
 }
 
 function parseAutoResponse(rawOutput: string): Omit<ConvertResult, "usage"> {

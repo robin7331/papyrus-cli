@@ -27,6 +27,9 @@ papyrus --help
 # Show installed CLI version
 papyrus --version
 
+# List available models for the current API key
+papyrus --models
+
 # Single file (default behavior; if no API key is found, Papyrus prompts you to paste one)
 papyrus ./path/to/input.pdf
 
@@ -88,9 +91,10 @@ papyrus config clear
 
 ## Arguments Reference
 
-### `<input>`
+### `[input]`
 
 Path to a single PDF file or a folder containing PDFs (processed recursively).
+Required unless you use `--models`.
 
 Example:
 
@@ -165,11 +169,22 @@ papyrus ./docs/invoice.pdf --prompt-file ./my-prompt.txt
 ### `-m, --model <model>`
 
 OpenAI model name used for conversion. Default is `gpt-4o-mini`.
+If the selected model is not available, Papyrus prints the available model IDs before exiting.
 
 Example:
 
 ```bash
 papyrus ./docs/invoice.pdf --model gpt-4.1-mini
+```
+
+### `--models`
+
+Lists the available OpenAI model IDs for the current API key and exits.
+
+Example:
+
+```bash
+papyrus --models
 ```
 
 ### `--concurrency <n>`

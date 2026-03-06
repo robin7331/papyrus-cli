@@ -13,9 +13,12 @@ import {
   setStoredApiKey
 } from "./config.js";
 import {
+  assertModelAvailable,
   convertPdf,
   type ConversionMode,
-  type ConvertUsage
+  type ConvertUsage,
+  listAvailableModels,
+  UnknownModelError
 } from "./openaiPdfToMarkdown.js";
 import {
   defaultOutputPath,
@@ -43,9 +46,10 @@ program
   .name("papyrus")
   .version(cliVersion, "-v, --version", "display version number")
   .description("Convert PDF files to Markdown or text using the OpenAI Agents SDK")
-  .argument("<input>", "Path to input PDF file or folder")
+  .argument("[input]", "Path to input PDF file or folder")
   .option("-o, --output <path>", "Path to output file (single input) or output directory (folder input)")
   .option("-m, --model <model>", "OpenAI model to use", "gpt-4o-mini")
+  .option("--models", "List available OpenAI models for the current API key and exit")
   .option(
     "--concurrency <n>",
     "Max parallel workers for folder input (default: 10)",
@@ -59,16 +63,32 @@ program
   )
   .option("--prompt <text>", "Custom prompt text (enables prompt mode)")
   .option("--prompt-file <path>", "Path to file containing prompt text (enables prompt mode)")
-  .action(async (input: string, options: CliOptions) => {
-    const inputPath = resolve(input);
+  .action(async (input: string | undefined, options: CliOptions) => {
     const startedAt = Date.now();
 
     try {
+      if (options.models) {
+        await ensureApiKey();
+        printAvailableModels(await listAvailableModels());
+        return;
+      }
+
+      if (!input) {
+        throw new Error('Input path is required unless "--models" is used.');
+      }
+
+      const inputPath = resolve(input);
       validateOptionCombination(options);
 
       const promptText = await resolvePromptText(options);
       const conversionMode = resolveConversionMode(promptText);
       const inputKind = await detectInputKind(inputPath);
+      if (inputKind === "file" && !isPdfPath(inputPath)) {
+        throw new Error("Input file must have a .pdf extension.");
+      }
+
+      await ensureApiKey();
+      await assertModelAvailable(options.model);
       let usageTotals: ConvertUsage = emptyUsage();
 
       if (inputKind === "file") {
@@ -84,6 +104,10 @@ program
       printUsageTotals(usageTotals);
       console.log(`Duration: ${((Date.now() - startedAt) / 1000).toFixed(2)}s`);
     } catch (error) {
+      if (error instanceof UnknownModelError) {
+        printAvailableModels(error.availableModels);
+      }
+
       const message = error instanceof Error ? error.message : String(error);
       console.error(`Conversion failed: ${message}`);
       console.error(`Duration: ${((Date.now() - startedAt) / 1000).toFixed(2)}s`);
@@ -160,11 +184,6 @@ async function processSingleFile(
   mode: ConversionMode,
   promptText?: string
 ): Promise<ConvertUsage> {
-  if (!isPdfPath(inputPath)) {
-    throw new Error("Input file must have a .pdf extension.");
-  }
-
-  await ensureApiKey();
   const startedAt = Date.now();
   const displayInput = relative(process.cwd(), inputPath) || inputPath;
   const workerDashboard = process.stdout.isTTY
@@ -258,7 +277,6 @@ async function processFolder(
     return { total: files.length, succeeded: 0, failed: 0, cancelled: true, usage: emptyUsage() };
   }
 
-  await ensureApiKey();
   const outputRoot = options.output ? resolve(options.output) : undefined;
   let succeeded = 0;
   let failed = 0;
@@ -763,6 +781,13 @@ function printUsageTotals(usage: ConvertUsage): void {
   console.log(
     `Token usage: input=${usage.inputTokens}, output=${usage.outputTokens}, total=${usage.totalTokens}, requests=${usage.requests}`
   );
+}
+
+function printAvailableModels(models: string[]): void {
+  console.log(`Available models (${models.length}):`);
+  for (const model of models) {
+    console.log(model);
+  }
 }
 
 function getCliVersion(): string {

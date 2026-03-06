@@ -4,6 +4,7 @@ import { basename, dirname, extname, join, relative } from "node:path";
 export type CliOptions = {
   output?: string;
   model: string;
+  models?: boolean;
   concurrency?: number;
   yes?: boolean;
   format?: string;
