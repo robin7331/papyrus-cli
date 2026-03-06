@@ -100,6 +100,14 @@ export function truncate(value: string, maxLength: number): string {
   return `${value.slice(0, maxLength - 3)}...`;
 }
 
+export const ASCII_SPINNER_FRAMES = ["|", "/", "-", "\\"];
+
+export function getSpinnerFrame(frameIndex: number): string {
+  const normalizedIndex = ((Math.trunc(frameIndex) % ASCII_SPINNER_FRAMES.length) + ASCII_SPINNER_FRAMES.length)
+    % ASCII_SPINNER_FRAMES.length;
+  return ASCII_SPINNER_FRAMES[normalizedIndex] ?? ASCII_SPINNER_FRAMES[0];
+}
+
 export function formatDurationMs(durationMs: number): string {
   return `${(durationMs / 1000).toFixed(2)}s`;
 }

@@ -23,6 +23,7 @@ import {
 import {
   defaultOutputPath,
   formatDurationMs,
+  getSpinnerFrame,
   isPdfPath,
   looksLikeFileOutput,
   parseConcurrency,
@@ -605,21 +606,25 @@ type WorkerLane = {
   state: "idle" | "running" | "done" | "failed";
   file?: string;
   message?: string;
+  spinnerFrame: number;
 };
 
 class AsciiWorkerDashboard {
+  private static readonly spinnerIntervalMs = 80;
   private readonly lanes: WorkerLane[];
   private readonly total: number;
   private readonly workerCount: number;
   private completed = 0;
   private failed = 0;
   private renderedLineCount = 0;
+  private spinnerTimer?: NodeJS.Timeout;
 
   constructor(total: number, workerCount: number) {
     this.total = total;
     this.workerCount = workerCount;
     this.lanes = Array.from({ length: workerCount }, () => ({
-      state: "idle"
+      state: "idle",
+      spinnerFrame: 0
     }));
 
     process.stdout.write("\x1b[?25l");
@@ -641,6 +646,8 @@ class AsciiWorkerDashboard {
     lane.state = "running";
     lane.file = file;
     lane.message = "processing...";
+    lane.spinnerFrame = 0;
+    this.syncSpinnerTimer();
     this.render();
   }
 
@@ -653,6 +660,8 @@ class AsciiWorkerDashboard {
     lane.state = "done";
     lane.file = file;
     lane.message = message;
+    lane.spinnerFrame = 0;
+    this.syncSpinnerTimer();
     this.render();
   }
 
@@ -665,10 +674,13 @@ class AsciiWorkerDashboard {
     lane.state = "failed";
     lane.file = file;
     lane.message = message;
+    lane.spinnerFrame = 0;
+    this.syncSpinnerTimer();
     this.render();
   }
 
   stop(): void {
+    this.clearSpinnerTimer();
     this.render();
     process.stdout.write("\x1b[?25h");
   }
@@ -706,7 +718,7 @@ class AsciiWorkerDashboard {
 
   private renderIcon(lane: WorkerLane): string {
     if (lane.state === "running") {
-      return ">>";
+      return `${getSpinnerFrame(lane.spinnerFrame)} `;
     }
 
     if (lane.state === "done") {
@@ -718,6 +730,50 @@ class AsciiWorkerDashboard {
     }
 
     return "..";
+  }
+
+  private syncSpinnerTimer(): void {
+    if (this.lanes.some((lane) => lane.state === "running")) {
+      this.ensureSpinnerTimer();
+      return;
+    }
+
+    this.clearSpinnerTimer();
+  }
+
+  private ensureSpinnerTimer(): void {
+    if (this.spinnerTimer) {
+      return;
+    }
+
+    this.spinnerTimer = setInterval(() => {
+      let hasRunningLane = false;
+      for (const lane of this.lanes) {
+        if (lane.state !== "running") {
+          continue;
+        }
+
+        lane.spinnerFrame += 1;
+        hasRunningLane = true;
+      }
+
+      if (!hasRunningLane) {
+        this.clearSpinnerTimer();
+        return;
+      }
+
+      this.render();
+    }, AsciiWorkerDashboard.spinnerIntervalMs);
+    this.spinnerTimer.unref?.();
+  }
+
+  private clearSpinnerTimer(): void {
+    if (!this.spinnerTimer) {
+      return;
+    }
+
+    clearInterval(this.spinnerTimer);
+    this.spinnerTimer = undefined;
   }
 }
 

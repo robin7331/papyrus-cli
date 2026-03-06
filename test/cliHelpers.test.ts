@@ -2,8 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { InvalidArgumentError } from "commander";
 import {
+  ASCII_SPINNER_FRAMES,
   defaultOutputPath,
   formatDurationMs,
+  getSpinnerFrame,
   isPdfPath,
   looksLikeFileOutput,
   parseConcurrency,
@@ -128,6 +130,15 @@ test("truncate shortens long values and preserves short ones", () => {
   assert.equal(truncate("abcdef", 10), "abcdef");
   assert.equal(truncate("abcdef", 3), "abc");
   assert.equal(truncate("abcdefghij", 8), "abcde...");
+});
+
+test("getSpinnerFrame cycles through the configured ASCII frames", () => {
+  assert.deepEqual(
+    ASCII_SPINNER_FRAMES.map((_, index) => getSpinnerFrame(index)),
+    ASCII_SPINNER_FRAMES
+  );
+  assert.equal(getSpinnerFrame(ASCII_SPINNER_FRAMES.length), ASCII_SPINNER_FRAMES[0]);
+  assert.equal(getSpinnerFrame(-1), ASCII_SPINNER_FRAMES.at(-1));
 });
 
 test("formatDurationMs formats to seconds with two decimals", () => {
