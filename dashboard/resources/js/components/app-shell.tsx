@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { home } from '@/routes';
+import { index as bwaIndex } from '@/routes/bwa';
 import { index as belegeIndex } from '@/routes/belege';
 import { index as transaktionenIndex } from '@/routes/transaktionen';
 
@@ -20,6 +21,11 @@ const navigationItems = [
         href: home.url(),
         label: 'Home',
         matches: (url: string) => url === '/',
+    },
+    {
+        href: bwaIndex.url(),
+        label: 'BWA',
+        matches: (url: string) => url.startsWith('/bwa'),
     },
     {
         href: transaktionenIndex.url(),
@@ -113,7 +119,7 @@ export function AppShell({ children }: PropsWithChildren) {
                                     </SheetTitle>
                                     <SheetDescription>
                                         Direkter Wechsel zwischen Übersicht,
-                                        Transaktionen und Belegen.
+                                        BWA, Transaktionen und Belegen.
                                     </SheetDescription>
                                 </SheetHeader>
                                 <div className="flex flex-col gap-3 px-4 pb-6">

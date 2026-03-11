@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\ImportedBeleg;
 use App\Models\ImportedTransaction;
 use App\Models\YearSyncState;
+use App\Services\Bookkeeping\BwaEstimateService;
 use App\Services\Bookkeeping\YearDatabaseDiscovery;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -76,6 +77,28 @@ class DashboardController extends Controller
                 ->values()
                 ->all(),
         ]);
+    }
+
+    public function bwa(
+        Request $request,
+        YearDatabaseDiscovery $yearDatabaseDiscovery,
+        BwaEstimateService $bwaEstimateService,
+    ): Response {
+        return Inertia::render(
+            'bwa',
+            $this->buildBwaPageProps($request, $yearDatabaseDiscovery, $bwaEstimateService),
+        );
+    }
+
+    public function bwaPreview(
+        Request $request,
+        YearDatabaseDiscovery $yearDatabaseDiscovery,
+        BwaEstimateService $bwaEstimateService,
+    ): Response {
+        return Inertia::render(
+            'bwa-preview',
+            $this->buildBwaPageProps($request, $yearDatabaseDiscovery, $bwaEstimateService),
+        );
     }
 
     public function transactions(Request $request, YearDatabaseDiscovery $yearDatabaseDiscovery): Response
@@ -303,6 +326,81 @@ class DashboardController extends Controller
         return in_array((int) $selectedYear, $availableYears, true)
             ? (string) (int) $selectedYear
             : 'all';
+    }
+
+    /**
+     * @return list<int>
+     */
+    private function availableEstimateYears(YearDatabaseDiscovery $yearDatabaseDiscovery): array
+    {
+        return $yearDatabaseDiscovery->discover()
+            ->pluck('year')
+            ->merge(
+                ImportedTransaction::query()
+                    ->select('source_year')
+                    ->distinct()
+                    ->orderBy('source_year')
+                    ->pluck('source_year'),
+            )
+            ->map(fn (mixed $year): int => (int) $year)
+            ->unique()
+            ->sort()
+            ->values()
+            ->all();
+    }
+
+    /**
+     * @param  list<int>  $availableYears
+     */
+    private function resolveEstimateYear(Request $request, array $availableYears): ?int
+    {
+        if ($availableYears === []) {
+            return null;
+        }
+
+        $defaultYear = max($availableYears);
+        $requestedYear = (int) $request->query('year', $defaultYear);
+
+        return in_array($requestedYear, $availableYears, true)
+            ? $requestedYear
+            : $defaultYear;
+    }
+
+    /**
+     * @return array{
+     *     availableYears: list<int>,
+     *     selectedYear: int|null,
+     *     estimateLabel: string,
+     *     methodologyNotes: list<string>,
+     *     summary: array<string, int|string>|null,
+     *     months: array<int, array<string, int|string>>,
+     *     transactions: array<int, array<string, int|string|null>>
+     * }
+     */
+    private function buildBwaPageProps(
+        Request $request,
+        YearDatabaseDiscovery $yearDatabaseDiscovery,
+        BwaEstimateService $bwaEstimateService,
+    ): array {
+        $availableYears = $this->availableEstimateYears($yearDatabaseDiscovery);
+        $selectedYear = $this->resolveEstimateYear($request, $availableYears);
+        $estimate = $selectedYear === null
+            ? null
+            : $bwaEstimateService->estimateForYear($selectedYear);
+
+        return [
+            'availableYears' => $availableYears,
+            'selectedYear' => $selectedYear,
+            'estimateLabel' => 'Schätzung / Notfallmethodik auf Basis von Kontobewegungen',
+            'methodologyNotes' => [
+                '72,7 % der verbleibenden Einzahlungseingänge werden als Bruttoerlöse inklusive 19 % Umsatzsteuer behandelt.',
+                '89,2 % der verbleibenden Auszahlungsausgänge werden als Bruttoaufwand mit 19 % Vorsteuer behandelt.',
+                'Privat-, Finanzierungs- und erkennbare Steuerbewegungen werden separat ausgewiesen und nicht in das operative Kernergebnis gemischt.',
+            ],
+            'summary' => $estimate['summary'] ?? null,
+            'months' => $estimate['months'] ?? [],
+            'transactions' => $estimate['transactions'] ?? [],
+        ];
     }
 
     /**

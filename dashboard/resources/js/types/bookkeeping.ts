@@ -173,6 +173,74 @@ export type BelegDateWindow = {
     days: number;
 };
 
+export type BwaEstimateBucket =
+    | 'excluded_private_or_financing'
+    | 'separate_tax_payment'
+    | 'operating_inflow'
+    | 'operating_outflow';
+
+export type BwaEstimateProfitStatus = 'profit' | 'loss' | 'break_even';
+
+export type BwaEstimateSummary = {
+    total_transaction_count: number;
+    operating_transaction_count: number;
+    excluded_transaction_count: number;
+    separate_tax_transaction_count: number;
+    input_vat_transaction_count: number;
+    operating_inflow_gross_cents: number;
+    assumed_output_vat_cents: number;
+    assumed_input_vat_cents: number;
+    estimated_net_vat_payable_cents: number;
+    assumed_revenue_net_cents: number;
+    operating_outflow_gross_cents: number;
+    assumed_expense_net_cents: number;
+    estimated_operating_profit_cents: number;
+    separate_tax_movement_cents: number;
+    excluded_net_movement_cents: number;
+    profit_status: BwaEstimateProfitStatus;
+};
+
+export type BwaEstimateMonth = {
+    month: string;
+    label: string;
+    transaction_count: number;
+    operating_inflow_gross_cents: number;
+    assumed_output_vat_cents: number;
+    assumed_input_vat_cents: number;
+    estimated_net_vat_payable_cents: number;
+    assumed_revenue_net_cents: number;
+    operating_outflow_gross_cents: number;
+    assumed_expense_net_cents: number;
+    estimated_operating_profit_cents: number;
+    separate_tax_movement_cents: number;
+    excluded_net_movement_cents: number;
+};
+
+export type BwaEstimateTransactionRow = {
+    id: number;
+    source_year: number;
+    account_number: string;
+    statement_no: string;
+    booking_date: string | null;
+    transaction_type: string;
+    booking_text: string;
+    amount_cents: number;
+    assumed_input_vat_cents: number;
+    bucket: BwaEstimateBucket;
+    bucket_label: string;
+    classification_reason: string;
+};
+
+export type BwaEstimatePageProps = {
+    availableYears: number[];
+    selectedYear: number | null;
+    estimateLabel: string;
+    methodologyNotes: string[];
+    summary: BwaEstimateSummary | null;
+    months: BwaEstimateMonth[];
+    transactions: BwaEstimateTransactionRow[];
+};
+
 export type BelegDetailPageProps = {
     indexState: BelegIndexState;
     beleg: BelegRow;

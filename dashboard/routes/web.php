@@ -7,6 +7,8 @@ use App\Http\Controllers\TransactionBelegAssociationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'home'])->name('home');
+Route::get('/bwa', [DashboardController::class, 'bwa'])->name('bwa.index');
+Route::get('/bwa/vorschau', [DashboardController::class, 'bwaPreview'])->name('bwa.preview');
 Route::get('/transaktionen', [DashboardController::class, 'transactions'])->name('transaktionen.index');
 Route::get('/transaktionen/{importedTransaction}', [DashboardController::class, 'transaction'])->name('transaktionen.show');
 Route::post('/transaktionen/{importedTransaction}/belege', [TransactionBelegAssociationController::class, 'store'])

@@ -75,6 +75,337 @@ it('renders the home overview with recent stats and missing pdf state', function
         );
 });
 
+it('renders a conservative bwa estimate with classified transactions and month totals', function () {
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-01-05',
+        'transaction_type' => 'Gutschrift',
+        'booking_text' => 'Kundenzahlung Januar',
+        'credit_cents' => 11900,
+        'debit_cents' => null,
+        'amount_cents' => 11900,
+        'balance_after_cents' => 211900,
+        'source_transaction_id' => 8101,
+        'row_index' => 8101,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-01-06',
+        'transaction_type' => 'Lastschrift',
+        'booking_text' => 'Bueromiete Januar',
+        'credit_cents' => null,
+        'debit_cents' => 7000,
+        'amount_cents' => -7000,
+        'balance_after_cents' => 204900,
+        'source_transaction_id' => 8102,
+        'row_index' => 8102,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-01-07',
+        'transaction_type' => 'Überweisung',
+        'booking_text' => 'Finanzamt Umsatzsteuer Januar',
+        'credit_cents' => null,
+        'debit_cents' => 1900,
+        'amount_cents' => -1900,
+        'balance_after_cents' => 203000,
+        'source_transaction_id' => 8103,
+        'row_index' => 8103,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-01-08',
+        'transaction_type' => 'Überweisung',
+        'booking_text' => 'Robin Reiter privat',
+        'credit_cents' => null,
+        'debit_cents' => 50000,
+        'amount_cents' => -50000,
+        'balance_after_cents' => 153000,
+        'source_transaction_id' => 8104,
+        'row_index' => 8104,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-02-01',
+        'transaction_type' => 'Gutschrift',
+        'booking_text' => 'Projekt Februar',
+        'credit_cents' => 23800,
+        'debit_cents' => null,
+        'amount_cents' => 23800,
+        'balance_after_cents' => 176800,
+        'source_transaction_id' => 8105,
+        'row_index' => 8105,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-02-03',
+        'transaction_type' => 'Lastschrift',
+        'booking_text' => 'Steuerberater Rechnung',
+        'credit_cents' => null,
+        'debit_cents' => 11900,
+        'amount_cents' => -11900,
+        'balance_after_cents' => 164900,
+        'source_transaction_id' => 8106,
+        'row_index' => 8106,
+    ]);
+
+    $this->get(route('bwa.index', ['year' => 2023]))
+        ->assertSuccessful()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('selectedYear', 2023)
+            ->where(
+                'estimateLabel',
+                'Schätzung / Notfallmethodik auf Basis von Kontobewegungen',
+            )
+            ->where('summary.total_transaction_count', 6)
+            ->where('summary.operating_transaction_count', 4)
+            ->where('summary.excluded_transaction_count', 1)
+            ->where('summary.separate_tax_transaction_count', 1)
+            ->where('summary.input_vat_transaction_count', 2)
+            ->where('summary.operating_inflow_gross_cents', 35700)
+            ->where('summary.assumed_output_vat_cents', 4144)
+            ->where('summary.assumed_input_vat_cents', 2692)
+            ->where('summary.estimated_net_vat_payable_cents', 1452)
+            ->where('summary.assumed_revenue_net_cents', 31556)
+            ->where('summary.operating_outflow_gross_cents', 18900)
+            ->where('summary.assumed_expense_net_cents', 16208)
+            ->where('summary.estimated_operating_profit_cents', 15348)
+            ->where('summary.separate_tax_movement_cents', -1900)
+            ->where('summary.excluded_net_movement_cents', -50000)
+            ->where('summary.profit_status', 'profit')
+            ->where('months.0.month', '2023-01')
+            ->where('months.0.transaction_count', 4)
+            ->where('months.0.operating_inflow_gross_cents', 11900)
+            ->where('months.0.assumed_output_vat_cents', 1381)
+            ->where('months.0.assumed_input_vat_cents', 997)
+            ->where('months.0.estimated_net_vat_payable_cents', 384)
+            ->where('months.0.assumed_revenue_net_cents', 10519)
+            ->where('months.0.operating_outflow_gross_cents', 7000)
+            ->where('months.0.assumed_expense_net_cents', 6003)
+            ->where('months.0.estimated_operating_profit_cents', 4516)
+            ->where('months.0.separate_tax_movement_cents', -1900)
+            ->where('months.0.excluded_net_movement_cents', -50000)
+            ->where('months.1.month', '2023-02')
+            ->where('months.1.transaction_count', 2)
+            ->where('months.1.operating_inflow_gross_cents', 23800)
+            ->where('months.1.assumed_output_vat_cents', 2763)
+            ->where('months.1.assumed_input_vat_cents', 1695)
+            ->where('months.1.estimated_net_vat_payable_cents', 1068)
+            ->where('months.1.assumed_revenue_net_cents', 21037)
+            ->where('months.1.operating_outflow_gross_cents', 11900)
+            ->where('months.1.assumed_expense_net_cents', 10205)
+            ->where('months.1.estimated_operating_profit_cents', 10832)
+            ->where('transactions', function (Collection $transactions): bool {
+                expect($transactions)->toHaveCount(6);
+
+                $bucketByText = $transactions
+                    ->mapWithKeys(fn (array $transaction): array => [
+                        $transaction['booking_text'] => [
+                            'bucket' => $transaction['bucket'],
+                            'reason' => $transaction['classification_reason'],
+                            'input_vat' => $transaction['assumed_input_vat_cents'],
+                        ],
+                    ]);
+
+                expect($bucketByText['Finanzamt Umsatzsteuer Januar']['bucket'])
+                    ->toBe('separate_tax_payment');
+                expect($bucketByText['Robin Reiter privat']['bucket'])
+                    ->toBe('excluded_private_or_financing');
+                expect($bucketByText['Steuerberater Rechnung']['bucket'])
+                    ->toBe('operating_outflow');
+                expect($bucketByText['Steuerberater Rechnung']['input_vat'])
+                    ->toBe(1695);
+                expect($bucketByText['Bueromiete Januar']['input_vat'])
+                    ->toBe(997);
+                expect($bucketByText['Kundenzahlung Januar']['bucket'])
+                    ->toBe('operating_inflow');
+
+                return true;
+            })
+        );
+});
+
+it('defaults the bwa estimate to the latest imported year', function () {
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-05-05',
+        'transaction_type' => 'Gutschrift',
+        'booking_text' => 'Altjahr Umsatz',
+        'credit_cents' => 11900,
+        'debit_cents' => null,
+        'amount_cents' => 11900,
+        'balance_after_cents' => 611900,
+        'source_transaction_id' => 9101,
+        'row_index' => 9101,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2024,
+        'booking_date' => '2024-05-05',
+        'transaction_type' => 'Gutschrift',
+        'booking_text' => 'Neujahr Umsatz',
+        'credit_cents' => 23800,
+        'debit_cents' => null,
+        'amount_cents' => 23800,
+        'balance_after_cents' => 723800,
+        'source_transaction_id' => 9102,
+        'row_index' => 9102,
+    ]);
+
+    $this->get(route('bwa.index'))
+        ->assertSuccessful()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('selectedYear', 2024)
+            ->where('summary.total_transaction_count', 1)
+            ->where('summary.operating_inflow_gross_cents', 23800)
+            ->where('transactions.0.booking_text', 'Neujahr Umsatz')
+        );
+});
+
+it('renders the bwa preview page with the same estimate data', function () {
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-04-01',
+        'transaction_type' => 'Gutschrift',
+        'booking_text' => 'Projekt April',
+        'credit_cents' => 119000,
+        'debit_cents' => null,
+        'amount_cents' => 119000,
+        'balance_after_cents' => 619000,
+        'source_transaction_id' => 9301,
+        'row_index' => 9301,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-04-02',
+        'transaction_type' => 'Überweisung online',
+        'booking_text' => 'Lieferant Rechnungs Nr 4001',
+        'credit_cents' => null,
+        'debit_cents' => 59500,
+        'amount_cents' => -59500,
+        'balance_after_cents' => 559500,
+        'source_transaction_id' => 9302,
+        'row_index' => 9302,
+    ]);
+
+    $this->get(route('bwa.preview', ['year' => 2023]))
+        ->assertSuccessful()
+        ->assertInertia(fn (Assert $page) => $page
+            ->component('bwa-preview')
+            ->where('selectedYear', 2023)
+            ->where(
+                'estimateLabel',
+                'Schätzung / Notfallmethodik auf Basis von Kontobewegungen',
+            )
+            ->where('summary.assumed_output_vat_cents', 13813)
+            ->where('summary.assumed_input_vat_cents', 8474)
+            ->where('summary.estimated_net_vat_payable_cents', 5339)
+            ->where('months.3.month', '2023-04')
+            ->where('months.3.assumed_revenue_net_cents', 105187)
+            ->where('months.3.assumed_expense_net_cents', 51026)
+        );
+});
+
+it('applies the fixed vat quotas to all operating inflows and outflows', function () {
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-03-01',
+        'transaction_type' => 'Gutschrift',
+        'booking_text' => 'Projektumsatz',
+        'credit_cents' => 119000,
+        'debit_cents' => null,
+        'amount_cents' => 119000,
+        'balance_after_cents' => 519000,
+        'source_transaction_id' => 9201,
+        'row_index' => 9201,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-03-02',
+        'transaction_type' => 'Überweisung online',
+        'booking_text' => 'P-Form Thomas Pfeffer Rechnungs Nr 3901 DATUM 14.02.2023, 09.24 UHR',
+        'credit_cents' => null,
+        'debit_cents' => 59500,
+        'amount_cents' => -59500,
+        'balance_after_cents' => 459500,
+        'source_transaction_id' => 9202,
+        'row_index' => 9202,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-03-03',
+        'transaction_type' => 'Lastschrift',
+        'booking_text' => 'PayPal (Europe) S.a r.l. et Cie, S. C.A. Ihr Einkauf bei Digi-Key Corporation',
+        'credit_cents' => null,
+        'debit_cents' => 11900,
+        'amount_cents' => -11900,
+        'balance_after_cents' => 447600,
+        'source_transaction_id' => 9203,
+        'row_index' => 9203,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-03-04',
+        'transaction_type' => 'Lastschrift',
+        'booking_text' => 'Tesla-DE by Adyen Adyen N.V. Tesla DE SV014AB84D',
+        'credit_cents' => null,
+        'debit_cents' => 23800,
+        'amount_cents' => -23800,
+        'balance_after_cents' => 423800,
+        'source_transaction_id' => 9204,
+        'row_index' => 9204,
+    ]);
+
+    ImportedTransaction::factory()->create([
+        'source_year' => 2023,
+        'booking_date' => '2023-03-05',
+        'transaction_type' => 'Dauerauftrag',
+        'booking_text' => 'Johann Reiter Lohn',
+        'credit_cents' => null,
+        'debit_cents' => 52000,
+        'amount_cents' => -52000,
+        'balance_after_cents' => 371800,
+        'source_transaction_id' => 9205,
+        'row_index' => 9205,
+    ]);
+
+    $this->get(route('bwa.index', ['year' => 2023]))
+        ->assertSuccessful()
+        ->assertInertia(fn (Assert $page) => $page
+            ->where('summary.assumed_output_vat_cents', 13813)
+            ->where('summary.assumed_input_vat_cents', 20965)
+            ->where('summary.estimated_net_vat_payable_cents', -7152)
+            ->where('summary.input_vat_transaction_count', 4)
+            ->where('summary.assumed_expense_net_cents', 126235)
+            ->where('summary.estimated_operating_profit_cents', -21048)
+            ->where('transactions', function (Collection $transactions): bool {
+                $rows = $transactions->mapWithKeys(fn (array $transaction): array => [
+                    $transaction['booking_text'] => $transaction,
+                ]);
+
+                expect($rows['P-Form Thomas Pfeffer Rechnungs Nr 3901 DATUM 14.02.2023, 09.24 UHR']['assumed_input_vat_cents'])
+                    ->toBe(8474);
+                expect($rows['PayPal (Europe) S.a r.l. et Cie, S. C.A. Ihr Einkauf bei Digi-Key Corporation']['assumed_input_vat_cents'])
+                    ->toBe(1695);
+                expect($rows['Tesla-DE by Adyen Adyen N.V. Tesla DE SV014AB84D']['assumed_input_vat_cents'])
+                    ->toBe(3390);
+                expect($rows['Johann Reiter Lohn']['assumed_input_vat_cents'])
+                    ->toBe(7406);
+
+                return true;
+            })
+        );
+});
+
 it('syncs a belege-only year into the app database', function () {
     createSourceDatabase($this->yearsRoot, 2024, [
         'belege' => [

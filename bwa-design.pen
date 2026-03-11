@@ -1,0 +1,406 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "Kx3lN",
+      "x": 899,
+      "y": 0,
+      "name": "BWA DIN A4",
+      "clip": true,
+      "width": 794,
+      "height": 1123,
+      "fill": "#FFFFFF",
+      "stroke": {
+        "thickness": 1,
+        "fill": "#E5E7EB"
+      },
+      "layout": "vertical",
+      "gap": 28,
+      "padding": 56,
+      "children": [
+        {
+          "type": "frame",
+          "id": "NKkcc",
+          "name": "Header",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "frame",
+              "id": "1xTKC",
+              "name": "Header Top",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "6wdzn",
+                  "name": "Company",
+                  "fill": "#111827",
+                  "content": "BitMechanics GmbH",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "nlH4m",
+                  "name": "Doc Type",
+                  "fill": "#111827",
+                  "content": "Betriebswirtschaftliche Auswertung (BWA)",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "gQPMk",
+              "name": "Meta",
+              "width": "fill_container",
+              "gap": 18,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "MmHbp",
+                  "name": "metaLeft",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "OsAP1",
+                      "name": "period",
+                      "fill": "#374151",
+                      "content": "Zeitraum: Januar 2025",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jaMXp",
+                      "name": "basis",
+                      "fill": "#6B7280",
+                      "content": "Basis: SKR 03 · Ist-Versteuerung (falls zutreffend)",
+                      "fontFamily": "Inter",
+                      "fontSize": 11
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "18kZD",
+                  "name": "metaRight",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZUBNO",
+                      "name": "created",
+                      "fill": "#6B7280",
+                      "content": "Erstellt am: 11.03.2026",
+                      "fontFamily": "Inter",
+                      "fontSize": 11
+                    },
+                    {
+                      "type": "text",
+                      "id": "jl72p",
+                      "name": "pageNo",
+                      "fill": "#6B7280",
+                      "content": "Seite 1/1",
+                      "fontFamily": "Inter",
+                      "fontSize": 11
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "wmkTE",
+          "name": "Divider",
+          "fill": "#E5E7EB",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "0ifNF",
+          "name": "KPIs",
+          "width": "fill_container",
+          "gap": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "ASIED",
+              "name": "KPI Umsatz",
+              "width": "fill_container",
+              "fill": "#F9FAFB",
+              "cornerRadius": 12,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#E5E7EB"
+              },
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "YlP5Z",
+                  "fill": "#6B7280",
+                  "content": "Umsatzerlöse",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "wFEiG",
+                  "fill": "#111827",
+                  "content": "0,00 €",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "OFsBA",
+              "name": "KPI Ergebnis",
+              "width": "fill_container",
+              "fill": "#F9FAFB",
+              "cornerRadius": 12,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#E5E7EB"
+              },
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "AeWYx",
+                  "fill": "#6B7280",
+                  "content": "Betriebsergebnis",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "l78Uf",
+                  "fill": "#111827",
+                  "content": "0,00 €",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "qXZFe",
+              "name": "KPI Liquidität",
+              "width": "fill_container",
+              "fill": "#F9FAFB",
+              "cornerRadius": 12,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#E5E7EB"
+              },
+              "layout": "vertical",
+              "gap": 6,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Amu3D",
+                  "fill": "#6B7280",
+                  "content": "Cashflow / Liquidität",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "bG2nh",
+                  "fill": "#111827",
+                  "content": "0,00 €",
+                  "fontFamily": "Inter",
+                  "fontSize": 22,
+                  "fontWeight": "700"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "wP6L8",
+          "name": "BWA Tabelle",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "XtXJx",
+              "name": "tableTitle",
+              "fill": "#111827",
+              "content": "Erfolgsrechnung (Kurz-BWA)",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "wZYWB",
+              "name": "sub",
+              "fill": "#6B7280",
+              "content": "Darstellung nach Kostenarten (SKR 03) · Werte in EUR",
+              "fontFamily": "Inter",
+              "fontSize": 11
+            },
+            {
+              "type": "frame",
+              "id": "8hwVs",
+              "name": "Monospace Block",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#E5E7EB"
+              },
+              "layout": "vertical",
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "yJoDZ",
+                  "name": "BWA Monospace",
+                  "fill": "#111827",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "Position                              Betrag        % Umsatz\n----------------------------------------------------------------\nUmsatzerlöse                           0,00 €       0,0%\n  Erlöse 19%                           0,00 €       0,0%\n  Erlöse 7%                            0,00 €       0,0%\n----------------------------------------------------------------\nWareneinsatz / bezogene Leistungen     0,00 €       0,0%\nRohertrag                              0,00 €       0,0%\n----------------------------------------------------------------\nPersonalkosten                         0,00 €       0,0%\nRaumkosten                             0,00 €       0,0%\nKfz-Kosten                             0,00 €       0,0%\nWerbe-/Reisekosten                     0,00 €       0,0%\nVersicherungen/Beiträge                0,00 €       0,0%\nAbschreibungen                         0,00 €       0,0%\nSonstige betriebliche Aufwendungen     0,00 €       0,0%\n----------------------------------------------------------------\nBetriebsergebnis                       0,00 €       0,0%\nZinsen und ähnliche Aufw.              0,00 €       0,0%\nSteuern vom Einkommen u. Ertrag        0,00 €       0,0%\n----------------------------------------------------------------\nJahresüberschuss / -fehlbetrag         0,00 €       0,0%",
+                  "lineHeight": 1.35,
+                  "fontFamily": "JetBrains Mono",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "myYHA",
+                  "fill": "#6B7280",
+                  "content": "Hinweis: Zahlen sind Platzhalter. In der finalen PDF werden diese aus der Datenbank berechnet und eingesetzt.",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "rectangle",
+          "id": "htRjW",
+          "name": "Footer Divider",
+          "fill": "#E5E7EB",
+          "width": "fill_container",
+          "height": 1
+        },
+        {
+          "type": "frame",
+          "id": "bmDfx",
+          "name": "Footer",
+          "width": "fill_container",
+          "justifyContent": "space_between",
+          "alignItems": "end",
+          "children": [
+            {
+              "type": "frame",
+              "id": "k2Ehi",
+              "name": "footLeft",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZikdK",
+                  "fill": "#6B7280",
+                  "content": "Interne Auswertung · Nicht Bestandteil des Jahresabschlusses",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "DPIWw",
+                  "fill": "#6B7280",
+                  "content": "Datenquelle: Bank/PayPal-Auszüge, Belege, Zuordnung nach GoBD · Kontenrahmen: SKR 03",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Wa3fi",
+              "name": "footRight",
+              "layout": "vertical",
+              "gap": 4,
+              "alignItems": "end",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Xubif",
+                  "fill": "#374151",
+                  "content": "BitMechanics GmbH",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "S2DHn",
+                  "fill": "#6B7280",
+                  "content": "BWA · Stand: 11.03.2026",
+                  "fontFamily": "Inter",
+                  "fontSize": 10,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
